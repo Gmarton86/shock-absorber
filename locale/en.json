@@ -1,0 +1,6 @@
+{
+    "TEST": {
+        "INIT": "Hello world!"
+    },
+    "INIT": "Hello world!"
+}
