@@ -19,11 +19,19 @@ Route::get('/', function () {
 });
 
 
-Route::get('/calculate', function() {
+Route::get('/wheel', function() {
     return view("welcome");
 });
 
-Route::post('/calculate', [OctaveController::class, 'calculate'])->name("calculate");
+Route::post('/wheel', [OctaveController::class, 'calculateWheel'])->name("calculateWheel");
+
+
+Route::get('/carbody', function() {
+    return view("welcome");
+});
+
+Route::post('/carbody', [OctaveController::class, 'calculateBody'])->name("calculateBody");
+
 
 Route::get('/cmd', function() {
     return view("welcome");
