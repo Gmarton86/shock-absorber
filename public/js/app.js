@@ -2123,25 +2123,8429 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
 
 
 
+/*!
+ * @svgdotjs/svg.js - A lightweight library for manipulating and animating SVG.
+ * @version 3.1.1
+ * https://svgjs.dev/
+ *
+ * @copyright Wout Fierens <wout@mick-wout.com>
+ * @license MIT
+ *
+ * BUILT: Fri Jun 25 2021 15:37:54 GMT+0200 (Mitteleuropäische Sommerzeit)
+ */
 
+
+
+
+var SVG = function () {
+  "use strict";
+
+  var methods$1 = {};
+  var names = [];
+
+  function registerMethods(name, m) {
+    if (Array.isArray(name)) {
+      var _iterator = _createForOfIteratorHelper(name),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _name = _step.value;
+          registerMethods(_name, m);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      return;
+    }
+
+    if (_typeof(name) === "object") {
+      for (var _name2 in name) {
+        registerMethods(_name2, name[_name2]);
+      }
+
+      return;
+    }
+
+    addMethodNames(Object.getOwnPropertyNames(m));
+    methods$1[name] = Object.assign(methods$1[name] || {}, m);
+  }
+
+  function getMethodsFor(name) {
+    return methods$1[name] || {};
+  }
+
+  function getMethodNames() {
+    return _toConsumableArray(new Set(names));
+  }
+
+  function addMethodNames(_names) {
+    names.push.apply(names, _toConsumableArray(_names));
+  } // Map function
+
+
+  function map(array, block) {
+    var i;
+    var il = array.length;
+    var result = [];
+
+    for (i = 0; i < il; i++) {
+      result.push(block(array[i]));
+    }
+
+    return result;
+  } // Filter function
+
+
+  function filter(array, block) {
+    var i;
+    var il = array.length;
+    var result = [];
+
+    for (i = 0; i < il; i++) {
+      if (block(array[i])) {
+        result.push(array[i]);
+      }
+    }
+
+    return result;
+  } // Degrees to radians
+
+
+  function radians(d) {
+    return d % 360 * Math.PI / 180;
+  } // Radians to degrees
+
+
+  function degrees(r) {
+    return r * 180 / Math.PI % 360;
+  } // Convert dash-separated-string to camelCase
+
+
+  function camelCase(s) {
+    return s.toLowerCase().replace(/-(.)/g, function (m, g) {
+      return g.toUpperCase();
+    });
+  } // Convert camel cased string to dash separated
+
+
+  function unCamelCase(s) {
+    return s.replace(/([A-Z])/g, function (m, g) {
+      return "-" + g.toLowerCase();
+    });
+  } // Capitalize first letter of a string
+
+
+  function capitalize(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  } // Calculate proportional width and height values when necessary
+
+
+  function proportionalSize(element, width, height, box) {
+    if (width == null || height == null) {
+      box = box || element.bbox();
+
+      if (width == null) {
+        width = box.width / box.height * height;
+      } else if (height == null) {
+        height = box.height / box.width * width;
+      }
+    }
+
+    return {
+      width: width,
+      height: height
+    };
+  }
+  /**
+   * This function adds support for string origins.
+   * It searches for an origin in o.origin o.ox and o.originX.
+   * This way, origin: {x: 'center', y: 50} can be passed as well as ox: 'center', oy: 50
+   **/
+
+
+  function getOrigin(o, element) {
+    var origin = o.origin; // First check if origin is in ox or originX
+
+    var ox = o.ox != null ? o.ox : o.originX != null ? o.originX : "center";
+    var oy = o.oy != null ? o.oy : o.originY != null ? o.originY : "center"; // Then check if origin was used and overwrite in that case
+
+    if (origin != null) {
+      var _ref = Array.isArray(origin) ? origin : _typeof(origin) === "object" ? [origin.x, origin.y] : [origin, origin];
+
+      var _ref2 = _slicedToArray(_ref, 2);
+
+      ox = _ref2[0];
+      oy = _ref2[1];
+    } // Make sure to only call bbox when actually needed
+
+
+    var condX = typeof ox === "string";
+    var condY = typeof oy === "string";
+
+    if (condX || condY) {
+      var _element$bbox = element.bbox(),
+          _height = _element$bbox.height,
+          _width = _element$bbox.width,
+          _x = _element$bbox.x,
+          _y = _element$bbox.y; // And only overwrite if string was passed for this specific axis
+
+
+      if (condX) {
+        ox = ox.includes("left") ? _x : ox.includes("right") ? _x + _width : _x + _width / 2;
+      }
+
+      if (condY) {
+        oy = oy.includes("top") ? _y : oy.includes("bottom") ? _y + _height : _y + _height / 2;
+      }
+    } // Return the origin as it is if it wasn't a string
+
+
+    return [ox, oy];
+  }
+
+  var utils = {
+    __proto__: null,
+    map: map,
+    filter: filter,
+    radians: radians,
+    degrees: degrees,
+    camelCase: camelCase,
+    unCamelCase: unCamelCase,
+    capitalize: capitalize,
+    proportionalSize: proportionalSize,
+    getOrigin: getOrigin
+  }; // Default namespaces
+
+  var _svg2 = "http://www.w3.org/2000/svg";
+  var _html = "http://www.w3.org/1999/xhtml";
+  var xmlns = "http://www.w3.org/2000/xmlns/";
+  var xlink = "http://www.w3.org/1999/xlink";
+  var svgjs = "http://svgjs.dev/svgjs";
+  var namespaces = {
+    __proto__: null,
+    svg: _svg2,
+    html: _html,
+    xmlns: xmlns,
+    xlink: xlink,
+    svgjs: svgjs
+  };
+  var globals = {
+    window: typeof window === "undefined" ? null : window,
+    document: typeof document === "undefined" ? null : document
+  };
+
+  function registerWindow() {
+    var win = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var doc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    globals.window = win;
+    globals.document = doc;
+  }
+
+  var save = {};
+
+  function saveWindow() {
+    save.window = globals.window;
+    save.document = globals.document;
+  }
+
+  function restoreWindow() {
+    globals.window = save.window;
+    globals.document = save.document;
+  }
+
+  function withWindow(win, fn) {
+    saveWindow();
+    registerWindow(win, win.document);
+    fn(win, win.document);
+    restoreWindow();
+  }
+
+  function getWindow() {
+    return globals.window;
+  }
+
+  var Base = /*#__PURE__*/_createClass(function Base() {
+    _classCallCheck(this, Base);
+  });
+
+  var elements = {};
+  var _root = "___SYMBOL___ROOT___"; // Method for element creation
+
+  function create(name) {
+    var ns = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _svg2;
+    // create element
+    return globals.document.createElementNS(ns, name);
+  }
+
+  function makeInstance(element) {
+    var isHTML = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (element instanceof Base) return element;
+
+    if (_typeof(element) === "object") {
+      return adopter(element);
+    }
+
+    if (element == null) {
+      return new elements[_root]();
+    }
+
+    if (typeof element === "string" && element.charAt(0) !== "<") {
+      return adopter(globals.document.querySelector(element));
+    } // Make sure, that HTML elements are created with the correct namespace
+
+
+    var wrapper = isHTML ? globals.document.createElement("div") : create("svg");
+    wrapper.innerHTML = element; // We can use firstChild here because we know,
+    // that the first char is < and thus an element
+
+    element = adopter(wrapper.firstChild); // make sure, that element doesnt have its wrapper attached
+
+    wrapper.removeChild(wrapper.firstChild);
+    return element;
+  }
+
+  function nodeOrNew(name, node) {
+    return node instanceof globals.window.Node ? node : create(name);
+  } // Adopt existing svg elements
+
+
+  function adopt(node) {
+    // check for presence of node
+    if (!node) return null; // make sure a node isn't already adopted
+
+    if (node.instance instanceof Base) return node.instance;
+
+    if (node.nodeName === "#document-fragment") {
+      return new elements.Fragment(node);
+    } // initialize variables
+
+
+    var className = capitalize(node.nodeName || "Dom"); // Make sure that gradients are adopted correctly
+
+    if (className === "LinearGradient" || className === "RadialGradient") {
+      className = "Gradient"; // Fallback to Dom if element is not known
+    } else if (!elements[className]) {
+      className = "Dom";
+    }
+
+    return new elements[className](node);
+  }
+
+  var adopter = adopt;
+
+  function mockAdopt() {
+    var mock = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : adopt;
+    adopter = mock;
+  }
+
+  function register(element) {
+    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : element.name;
+    var asRoot = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    elements[name] = element;
+    if (asRoot) elements[_root] = element;
+    addMethodNames(Object.getOwnPropertyNames(element.prototype));
+    return element;
+  }
+
+  function getClass(name) {
+    return elements[name];
+  } // Element id sequence
+
+
+  var did = 1000; // Get next named element id
+
+  function eid(name) {
+    return "Svgjs" + capitalize(name) + did++;
+  } // Deep new id assignment
+
+
+  function assignNewId(node) {
+    // do the same for SVG child nodes as well
+    for (var i = node.children.length - 1; i >= 0; i--) {
+      assignNewId(node.children[i]);
+    }
+
+    if (node.id) {
+      node.id = eid(node.nodeName);
+      return node;
+    }
+
+    return node;
+  } // Method for extending objects
+
+
+  function extend(modules, methods) {
+    var key, i;
+    modules = Array.isArray(modules) ? modules : [modules];
+
+    for (i = modules.length - 1; i >= 0; i--) {
+      for (key in methods) {
+        modules[i].prototype[key] = methods[key];
+      }
+    }
+  }
+
+  function wrapWithAttrCheck(fn) {
+    return function () {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      var o = args[args.length - 1];
+
+      if (o && o.constructor === Object && !(o instanceof Array)) {
+        return fn.apply(this, args.slice(0, -1)).attr(o);
+      } else {
+        return fn.apply(this, args);
+      }
+    };
+  }
+
+  function siblings() {
+    return this.parent().children();
+  } // Get the current position siblings
+
+
+  function position() {
+    return this.parent().index(this);
+  } // Get the next element (will return null if there is none)
+
+
+  function next() {
+    return this.siblings()[this.position() + 1];
+  } // Get the next element (will return null if there is none)
+
+
+  function prev() {
+    return this.siblings()[this.position() - 1];
+  } // Send given element one step forward
+
+
+  function forward() {
+    var i = this.position();
+    var p = this.parent(); // move node one step forward
+
+    p.add(this.remove(), i + 1);
+    return this;
+  } // Send given element one step backward
+
+
+  function backward() {
+    var i = this.position();
+    var p = this.parent();
+    p.add(this.remove(), i ? i - 1 : 0);
+    return this;
+  } // Send given element all the way to the front
+
+
+  function front() {
+    var p = this.parent(); // Move node forward
+
+    p.add(this.remove());
+    return this;
+  } // Send given element all the way to the back
+
+
+  function back() {
+    var p = this.parent(); // Move node back
+
+    p.add(this.remove(), 0);
+    return this;
+  } // Inserts a given element before the targeted element
+
+
+  function before(element) {
+    element = makeInstance(element);
+    element.remove();
+    var i = this.position();
+    this.parent().add(element, i);
+    return this;
+  } // Inserts a given element after the targeted element
+
+
+  function after(element) {
+    element = makeInstance(element);
+    element.remove();
+    var i = this.position();
+    this.parent().add(element, i + 1);
+    return this;
+  }
+
+  function insertBefore(element) {
+    element = makeInstance(element);
+    element.before(this);
+    return this;
+  }
+
+  function insertAfter(element) {
+    element = makeInstance(element);
+    element.after(this);
+    return this;
+  }
+
+  registerMethods("Dom", {
+    siblings: siblings,
+    position: position,
+    next: next,
+    prev: prev,
+    forward: forward,
+    backward: backward,
+    front: front,
+    back: back,
+    before: before,
+    after: after,
+    insertBefore: insertBefore,
+    insertAfter: insertAfter
+  }); // Parse unit value
+
+  var numberAndUnit = /^([+-]?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?)([a-z%]*)$/i; // Parse hex value
+
+  var hex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i; // Parse rgb value
+
+  var rgb = /rgb\((\d+),(\d+),(\d+)\)/; // Parse reference id
+
+  var _reference = /(#[a-z_][a-z0-9\-_]*)/i; // splits a transformation chain
+
+  var transforms = /\)\s*,?\s*/; // Whitespace
+
+  var whitespace = /\s/g; // Test hex value
+
+  var isHex = /^#[a-f0-9]{3}$|^#[a-f0-9]{6}$/i; // Test rgb value
+
+  var isRgb = /^rgb\(/; // Test for blank string
+
+  var isBlank = /^(\s+)?$/; // Test for numeric string
+
+  var isNumber = /^[+-]?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?$/i; // Test for image url
+
+  var isImage = /\.(jpg|jpeg|png|gif|svg)(\?[^=]+.*)?/i; // split at whitespace and comma
+
+  var delimiter = /[\s,]+/; // Test for path letter
+
+  var isPathLetter = /[MLHVCSQTAZ]/i;
+  var regex = {
+    __proto__: null,
+    numberAndUnit: numberAndUnit,
+    hex: hex,
+    rgb: rgb,
+    reference: _reference,
+    transforms: transforms,
+    whitespace: whitespace,
+    isHex: isHex,
+    isRgb: isRgb,
+    isBlank: isBlank,
+    isNumber: isNumber,
+    isImage: isImage,
+    delimiter: delimiter,
+    isPathLetter: isPathLetter
+  };
+
+  function classes() {
+    var attr = this.attr("class");
+    return attr == null ? [] : attr.trim().split(delimiter);
+  } // Return true if class exists on the node, false otherwise
+
+
+  function hasClass(name) {
+    return this.classes().indexOf(name) !== -1;
+  } // Add class to the node
+
+
+  function addClass(name) {
+    if (!this.hasClass(name)) {
+      var _array = this.classes();
+
+      _array.push(name);
+
+      this.attr("class", _array.join(" "));
+    }
+
+    return this;
+  } // Remove class from the node
+
+
+  function removeClass(name) {
+    if (this.hasClass(name)) {
+      this.attr("class", this.classes().filter(function (c) {
+        return c !== name;
+      }).join(" "));
+    }
+
+    return this;
+  } // Toggle the presence of a class on the node
+
+
+  function toggleClass(name) {
+    return this.hasClass(name) ? this.removeClass(name) : this.addClass(name);
+  }
+
+  registerMethods("Dom", {
+    classes: classes,
+    hasClass: hasClass,
+    addClass: addClass,
+    removeClass: removeClass,
+    toggleClass: toggleClass
+  });
+
+  function css(style, val) {
+    var ret = {};
+
+    if (arguments.length === 0) {
+      // get full style as object
+      this.node.style.cssText.split(/\s*;\s*/).filter(function (el) {
+        return !!el.length;
+      }).forEach(function (el) {
+        var t = el.split(/\s*:\s*/);
+        ret[t[0]] = t[1];
+      });
+      return ret;
+    }
+
+    if (arguments.length < 2) {
+      // get style properties as array
+      if (Array.isArray(style)) {
+        var _iterator2 = _createForOfIteratorHelper(style),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var name = _step2.value;
+            var cased = camelCase(name);
+            ret[cased] = this.node.style[cased];
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+
+        return ret;
+      } // get style for property
+
+
+      if (typeof style === "string") {
+        return this.node.style[camelCase(style)];
+      } // set styles in object
+
+
+      if (_typeof(style) === "object") {
+        for (var _name3 in style) {
+          // set empty string if null/undefined/'' was given
+          this.node.style[camelCase(_name3)] = style[_name3] == null || isBlank.test(style[_name3]) ? "" : style[_name3];
+        }
+      }
+    } // set style for property
+
+
+    if (arguments.length === 2) {
+      this.node.style[camelCase(style)] = val == null || isBlank.test(val) ? "" : val;
+    }
+
+    return this;
+  } // Show element
+
+
+  function show() {
+    return this.css("display", "");
+  } // Hide element
+
+
+  function hide() {
+    return this.css("display", "none");
+  } // Is element visible?
+
+
+  function visible() {
+    return this.css("display") !== "none";
+  }
+
+  registerMethods("Dom", {
+    css: css,
+    show: show,
+    hide: hide,
+    visible: visible
+  });
+
+  function data(a, v, r) {
+    if (a == null) {
+      // get an object of attributes
+      return this.data(map(filter(this.node.attributes, function (el) {
+        return el.nodeName.indexOf("data-") === 0;
+      }), function (el) {
+        return el.nodeName.slice(5);
+      }));
+    } else if (a instanceof Array) {
+      var _data = {};
+
+      var _iterator3 = _createForOfIteratorHelper(a),
+          _step3;
+
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var key = _step3.value;
+          _data[key] = this.data(key);
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+
+      return _data;
+    } else if (_typeof(a) === "object") {
+      for (v in a) {
+        this.data(v, a[v]);
+      }
+    } else if (arguments.length < 2) {
+      try {
+        return JSON.parse(this.attr("data-" + a));
+      } catch (e) {
+        return this.attr("data-" + a);
+      }
+    } else {
+      this.attr("data-" + a, v === null ? null : r === true || typeof v === "string" || typeof v === "number" ? v : JSON.stringify(v));
+    }
+
+    return this;
+  }
+
+  registerMethods("Dom", {
+    data: data
+  });
+
+  function remember(k, v) {
+    // remember every item in an object individually
+    if (_typeof(arguments[0]) === "object") {
+      for (var key in k) {
+        this.remember(key, k[key]);
+      }
+    } else if (arguments.length === 1) {
+      // retrieve memory
+      return this.memory()[k];
+    } else {
+      // store memory
+      this.memory()[k] = v;
+    }
+
+    return this;
+  } // Erase a given memory
+
+
+  function forget() {
+    if (arguments.length === 0) {
+      this._memory = {};
+    } else {
+      for (var i = arguments.length - 1; i >= 0; i--) {
+        delete this.memory()[arguments[i]];
+      }
+    }
+
+    return this;
+  } // This triggers creation of a new hidden class which is not performant
+  // However, this function is not rarely used so it will not happen frequently
+  // Return local memory object
+
+
+  function memory() {
+    return this._memory = this._memory || {};
+  }
+
+  registerMethods("Dom", {
+    remember: remember,
+    forget: forget,
+    memory: memory
+  });
+
+  function sixDigitHex(hex) {
+    return hex.length === 4 ? ["#", hex.substring(1, 2), hex.substring(1, 2), hex.substring(2, 3), hex.substring(2, 3), hex.substring(3, 4), hex.substring(3, 4)].join("") : hex;
+  }
+
+  function componentHex(component) {
+    var integer = Math.round(component);
+    var bounded = Math.max(0, Math.min(255, integer));
+    var hex = bounded.toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  }
+
+  function is(object, space) {
+    for (var i = space.length; i--;) {
+      if (object[space[i]] == null) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function getParameters(a, b) {
+    var params = is(a, "rgb") ? {
+      _a: a.r,
+      _b: a.g,
+      _c: a.b,
+      _d: 0,
+      space: "rgb"
+    } : is(a, "xyz") ? {
+      _a: a.x,
+      _b: a.y,
+      _c: a.z,
+      _d: 0,
+      space: "xyz"
+    } : is(a, "hsl") ? {
+      _a: a.h,
+      _b: a.s,
+      _c: a.l,
+      _d: 0,
+      space: "hsl"
+    } : is(a, "lab") ? {
+      _a: a.l,
+      _b: a.a,
+      _c: a.b,
+      _d: 0,
+      space: "lab"
+    } : is(a, "lch") ? {
+      _a: a.l,
+      _b: a.c,
+      _c: a.h,
+      _d: 0,
+      space: "lch"
+    } : is(a, "cmyk") ? {
+      _a: a.c,
+      _b: a.m,
+      _c: a.y,
+      _d: a.k,
+      space: "cmyk"
+    } : {
+      _a: 0,
+      _b: 0,
+      _c: 0,
+      space: "rgb"
+    };
+    params.space = b || params.space;
+    return params;
+  }
+
+  function cieSpace(space) {
+    if (space === "lab" || space === "xyz" || space === "lch") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function hueToRgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  }
+
+  var Color = /*#__PURE__*/function () {
+    function Color() {
+      _classCallCheck(this, Color);
+
+      this.init.apply(this, arguments);
+    } // Test if given value is a color
+
+
+    _createClass(Color, [{
+      key: "cmyk",
+      value: function cmyk() {
+        // Get the rgb values for the current color
+        var _this$rgb = this.rgb(),
+            _a = _this$rgb._a,
+            _b = _this$rgb._b,
+            _c = _this$rgb._c;
+
+        var _map = [_a, _b, _c].map(function (v) {
+          return v / 255;
+        }),
+            _map2 = _slicedToArray(_map, 3),
+            r = _map2[0],
+            g = _map2[1],
+            b = _map2[2]; // Get the cmyk values in an unbounded format
+
+
+        var k = Math.min(1 - r, 1 - g, 1 - b);
+
+        if (k === 1) {
+          // Catch the black case
+          return new Color(0, 0, 0, 1, "cmyk");
+        }
+
+        var c = (1 - r - k) / (1 - k);
+        var m = (1 - g - k) / (1 - k);
+        var y = (1 - b - k) / (1 - k); // Construct the new color
+
+        var color = new Color(c, m, y, k, "cmyk");
+        return color;
+      }
+    }, {
+      key: "hsl",
+      value: function hsl() {
+        // Get the rgb values
+        var _this$rgb2 = this.rgb(),
+            _a = _this$rgb2._a,
+            _b = _this$rgb2._b,
+            _c = _this$rgb2._c;
+
+        var _map3 = [_a, _b, _c].map(function (v) {
+          return v / 255;
+        }),
+            _map4 = _slicedToArray(_map3, 3),
+            r = _map4[0],
+            g = _map4[1],
+            b = _map4[2]; // Find the maximum and minimum values to get the lightness
+
+
+        var max = Math.max(r, g, b);
+        var min = Math.min(r, g, b);
+        var l = (max + min) / 2; // If the r, g, v values are identical then we are grey
+
+        var isGrey = max === min; // Calculate the hue and saturation
+
+        var delta = max - min;
+        var s = isGrey ? 0 : l > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+        var h = isGrey ? 0 : max === r ? ((g - b) / delta + (g < b ? 6 : 0)) / 6 : max === g ? ((b - r) / delta + 2) / 6 : max === b ? ((r - g) / delta + 4) / 6 : 0; // Construct and return the new color
+
+        var color = new Color(360 * h, 100 * s, 100 * l, "hsl");
+        return color;
+      }
+    }, {
+      key: "init",
+      value: function init() {
+        var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        var c = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        var d = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+        var space = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "rgb";
+        // This catches the case when a falsy value is passed like ''
+        a = !a ? 0 : a; // Reset all values in case the init function is rerun with new color space
+
+        if (this.space) {
+          for (var component in this.space) {
+            delete this[this.space[component]];
+          }
+        }
+
+        if (typeof a === "number") {
+          // Allow for the case that we don't need d...
+          space = typeof d === "string" ? d : space;
+          d = typeof d === "string" ? 0 : d; // Assign the values straight to the color
+
+          Object.assign(this, {
+            _a: a,
+            _b: b,
+            _c: c,
+            _d: d,
+            space: space
+          }); // If the user gave us an array, make the color from it
+        } else if (a instanceof Array) {
+          this.space = b || (typeof a[3] === "string" ? a[3] : a[4]) || "rgb";
+          Object.assign(this, {
+            _a: a[0],
+            _b: a[1],
+            _c: a[2],
+            _d: a[3] || 0
+          });
+        } else if (a instanceof Object) {
+          // Set the object up and assign its values directly
+          var values = getParameters(a, b);
+          Object.assign(this, values);
+        } else if (typeof a === "string") {
+          if (isRgb.test(a)) {
+            var noWhitespace = a.replace(whitespace, "");
+
+            var _rgb$exec$slice$map = rgb.exec(noWhitespace).slice(1, 4).map(function (v) {
+              return parseInt(v);
+            }),
+                _rgb$exec$slice$map2 = _slicedToArray(_rgb$exec$slice$map, 3),
+                _a2 = _rgb$exec$slice$map2[0],
+                _b2 = _rgb$exec$slice$map2[1],
+                _c2 = _rgb$exec$slice$map2[2];
+
+            Object.assign(this, {
+              _a: _a2,
+              _b: _b2,
+              _c: _c2,
+              _d: 0,
+              space: "rgb"
+            });
+          } else if (isHex.test(a)) {
+            var hexParse = function hexParse(v) {
+              return parseInt(v, 16);
+            };
+
+            var _hex$exec$map = hex.exec(sixDigitHex(a)).map(hexParse),
+                _hex$exec$map2 = _slicedToArray(_hex$exec$map, 4),
+                _a3 = _hex$exec$map2[1],
+                _b3 = _hex$exec$map2[2],
+                _c3 = _hex$exec$map2[3];
+
+            Object.assign(this, {
+              _a: _a3,
+              _b: _b3,
+              _c: _c3,
+              _d: 0,
+              space: "rgb"
+            });
+          } else throw Error("Unsupported string format, can't construct Color");
+        } // Now add the components as a convenience
+
+
+        var _a = this._a,
+            _b = this._b,
+            _c = this._c,
+            _d = this._d;
+        var components = this.space === "rgb" ? {
+          r: _a,
+          g: _b,
+          b: _c
+        } : this.space === "xyz" ? {
+          x: _a,
+          y: _b,
+          z: _c
+        } : this.space === "hsl" ? {
+          h: _a,
+          s: _b,
+          l: _c
+        } : this.space === "lab" ? {
+          l: _a,
+          a: _b,
+          b: _c
+        } : this.space === "lch" ? {
+          l: _a,
+          c: _b,
+          h: _c
+        } : this.space === "cmyk" ? {
+          c: _a,
+          m: _b,
+          y: _c,
+          k: _d
+        } : {};
+        Object.assign(this, components);
+      }
+    }, {
+      key: "lab",
+      value: function lab() {
+        // Get the xyz color
+        var _this$xyz = this.xyz(),
+            x = _this$xyz.x,
+            y = _this$xyz.y,
+            z = _this$xyz.z; // Get the lab components
+
+
+        var l = 116 * y - 16;
+        var a = 500 * (x - y);
+        var b = 200 * (y - z); // Construct and return a new color
+
+        var color = new Color(l, a, b, "lab");
+        return color;
+      }
+    }, {
+      key: "lch",
+      value: function lch() {
+        // Get the lab color directly
+        var _this$lab = this.lab(),
+            l = _this$lab.l,
+            a = _this$lab.a,
+            b = _this$lab.b; // Get the chromaticity and the hue using polar coordinates
+
+
+        var c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+        var h = 180 * Math.atan2(b, a) / Math.PI;
+
+        if (h < 0) {
+          h *= -1;
+          h = 360 - h;
+        } // Make a new color and return it
+
+
+        var color = new Color(l, c, h, "lch");
+        return color;
+      }
+      /*
+      Conversion Methods
+      */
+
+    }, {
+      key: "rgb",
+      value: function rgb() {
+        if (this.space === "rgb") {
+          return this;
+        } else if (cieSpace(this.space)) {
+          // Convert to the xyz color space
+          var _x2 = this.x,
+              _y2 = this.y,
+              z = this.z;
+
+          if (this.space === "lab" || this.space === "lch") {
+            // Get the values in the lab space
+            var l = this.l,
+                a = this.a,
+                _b4 = this.b;
+
+            if (this.space === "lch") {
+              var c = this.c,
+                  h = this.h;
+              var dToR = Math.PI / 180;
+              a = c * Math.cos(dToR * h);
+              _b4 = c * Math.sin(dToR * h);
+            } // Undo the nonlinear function
+
+
+            var yL = (l + 16) / 116;
+            var xL = a / 500 + yL;
+            var zL = yL - _b4 / 200; // Get the xyz values
+
+            var ct = 16 / 116;
+            var mx = 0.008856;
+            var nm = 7.787;
+            _x2 = 0.95047 * (Math.pow(xL, 3) > mx ? Math.pow(xL, 3) : (xL - ct) / nm);
+            _y2 = 1.0 * (Math.pow(yL, 3) > mx ? Math.pow(yL, 3) : (yL - ct) / nm);
+            z = 1.08883 * (Math.pow(zL, 3) > mx ? Math.pow(zL, 3) : (zL - ct) / nm);
+          } // Convert xyz to unbounded rgb values
+
+
+          var rU = _x2 * 3.2406 + _y2 * -1.5372 + z * -0.4986;
+          var gU = _x2 * -0.9689 + _y2 * 1.8758 + z * 0.0415;
+          var bU = _x2 * 0.0557 + _y2 * -0.204 + z * 1.057; // Convert the values to true rgb values
+
+          var pow = Math.pow;
+          var bd = 0.0031308;
+          var r = rU > bd ? 1.055 * pow(rU, 1 / 2.4) - 0.055 : 12.92 * rU;
+          var g = gU > bd ? 1.055 * pow(gU, 1 / 2.4) - 0.055 : 12.92 * gU;
+          var b = bU > bd ? 1.055 * pow(bU, 1 / 2.4) - 0.055 : 12.92 * bU; // Make and return the color
+
+          var color = new Color(255 * r, 255 * g, 255 * b);
+          return color;
+        } else if (this.space === "hsl") {
+          // https://bgrins.github.io/TinyColor/docs/tinycolor.html
+          // Get the current hsl values
+          var _h = this.h,
+              s = this.s,
+              _l = this.l;
+          _h /= 360;
+          s /= 100;
+          _l /= 100; // If we are grey, then just make the color directly
+
+          if (s === 0) {
+            _l *= 255;
+
+            var _color2 = new Color(_l, _l, _l);
+
+            return _color2;
+          } // TODO I have no idea what this does :D If you figure it out, tell me!
+
+
+          var q = _l < 0.5 ? _l * (1 + s) : _l + s - _l * s;
+          var p = 2 * _l - q; // Get the rgb values
+
+          var _r = 255 * hueToRgb(p, q, _h + 1 / 3);
+
+          var _g = 255 * hueToRgb(p, q, _h);
+
+          var _b5 = 255 * hueToRgb(p, q, _h - 1 / 3); // Make a new color
+
+
+          var _color = new Color(_r, _g, _b5);
+
+          return _color;
+        } else if (this.space === "cmyk") {
+          // https://gist.github.com/felipesabino/5066336
+          // Get the normalised cmyk values
+          var _c4 = this.c,
+              m = this.m,
+              _y3 = this.y,
+              k = this.k; // Get the rgb values
+
+          var _r2 = 255 * (1 - Math.min(1, _c4 * (1 - k) + k));
+
+          var _g2 = 255 * (1 - Math.min(1, m * (1 - k) + k));
+
+          var _b6 = 255 * (1 - Math.min(1, _y3 * (1 - k) + k)); // Form the color and return it
+
+
+          var _color3 = new Color(_r2, _g2, _b6);
+
+          return _color3;
+        } else {
+          return this;
+        }
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        var _a = this._a,
+            _b = this._b,
+            _c = this._c,
+            _d = this._d,
+            space = this.space;
+        return [_a, _b, _c, _d, space];
+      }
+    }, {
+      key: "toHex",
+      value: function toHex() {
+        var _this$_clamped$map = this._clamped().map(componentHex),
+            _this$_clamped$map2 = _slicedToArray(_this$_clamped$map, 3),
+            r = _this$_clamped$map2[0],
+            g = _this$_clamped$map2[1],
+            b = _this$_clamped$map2[2];
+
+        return "#".concat(r).concat(g).concat(b);
+      }
+    }, {
+      key: "toRgb",
+      value: function toRgb() {
+        var _this$_clamped = this._clamped(),
+            _this$_clamped2 = _slicedToArray(_this$_clamped, 3),
+            rV = _this$_clamped2[0],
+            gV = _this$_clamped2[1],
+            bV = _this$_clamped2[2];
+
+        var string = "rgb(".concat(rV, ",").concat(gV, ",").concat(bV, ")");
+        return string;
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.toHex();
+      }
+    }, {
+      key: "xyz",
+      value: function xyz() {
+        // Normalise the red, green and blue values
+        var _this$rgb3 = this.rgb(),
+            r255 = _this$rgb3._a,
+            g255 = _this$rgb3._b,
+            b255 = _this$rgb3._c;
+
+        var _map5 = [r255, g255, b255].map(function (v) {
+          return v / 255;
+        }),
+            _map6 = _slicedToArray(_map5, 3),
+            r = _map6[0],
+            g = _map6[1],
+            b = _map6[2]; // Convert to the lab rgb space
+
+
+        var rL = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+        var gL = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
+        var bL = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92; // Convert to the xyz color space without bounding the values
+
+        var xU = (rL * 0.4124 + gL * 0.3576 + bL * 0.1805) / 0.95047;
+        var yU = (rL * 0.2126 + gL * 0.7152 + bL * 0.0722) / 1.0;
+        var zU = (rL * 0.0193 + gL * 0.1192 + bL * 0.9505) / 1.08883; // Get the proper xyz values by applying the bounding
+
+        var x = xU > 0.008856 ? Math.pow(xU, 1 / 3) : 7.787 * xU + 16 / 116;
+        var y = yU > 0.008856 ? Math.pow(yU, 1 / 3) : 7.787 * yU + 16 / 116;
+        var z = zU > 0.008856 ? Math.pow(zU, 1 / 3) : 7.787 * zU + 16 / 116; // Make and return the color
+
+        var color = new Color(x, y, z, "xyz");
+        return color;
+      }
+      /*
+      Input and Output methods
+      */
+
+    }, {
+      key: "_clamped",
+      value: function _clamped() {
+        var _this$rgb4 = this.rgb(),
+            _a = _this$rgb4._a,
+            _b = _this$rgb4._b,
+            _c = _this$rgb4._c;
+
+        var max = Math.max,
+            min = Math.min,
+            round = Math.round;
+
+        var format = function format(v) {
+          return max(0, min(round(v), 255));
+        };
+
+        return [_a, _b, _c].map(format);
+      }
+      /*
+      Constructing colors
+      */
+
+    }], [{
+      key: "isColor",
+      value: function isColor(color) {
+        return color && (color instanceof Color || this.isRgb(color) || this.test(color));
+      } // Test if given value is an rgb object
+
+    }, {
+      key: "isRgb",
+      value: function isRgb(color) {
+        return color && typeof color.r === "number" && typeof color.g === "number" && typeof color.b === "number";
+      }
+      /*
+      Generating random colors
+      */
+
+    }, {
+      key: "random",
+      value: function random() {
+        var mode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "vibrant";
+        var t = arguments.length > 1 ? arguments[1] : undefined;
+        var u = arguments.length > 2 ? arguments[2] : undefined;
+        // Get the math modules
+        var random = Math.random,
+            round = Math.round,
+            sin = Math.sin,
+            pi = Math.PI; // Run the correct generator
+
+        if (mode === "vibrant") {
+          var l = (81 - 57) * random() + 57;
+          var c = (83 - 45) * random() + 45;
+          var h = 360 * random();
+          var color = new Color(l, c, h, "lch");
+          return color;
+        } else if (mode === "sine") {
+          t = t == null ? random() : t;
+          var r = round(80 * sin(2 * pi * t / 0.5 + 0.01) + 150);
+          var g = round(50 * sin(2 * pi * t / 0.5 + 4.6) + 200);
+          var b = round(100 * sin(2 * pi * t / 0.5 + 2.3) + 150);
+
+          var _color4 = new Color(r, g, b);
+
+          return _color4;
+        } else if (mode === "pastel") {
+          var _l2 = (94 - 86) * random() + 86;
+
+          var _c5 = (26 - 9) * random() + 9;
+
+          var _h2 = 360 * random();
+
+          var _color5 = new Color(_l2, _c5, _h2, "lch");
+
+          return _color5;
+        } else if (mode === "dark") {
+          var _l3 = 10 + 10 * random();
+
+          var _c6 = (125 - 75) * random() + 86;
+
+          var _h3 = 360 * random();
+
+          var _color6 = new Color(_l3, _c6, _h3, "lch");
+
+          return _color6;
+        } else if (mode === "rgb") {
+          var _r3 = 255 * random();
+
+          var _g3 = 255 * random();
+
+          var _b7 = 255 * random();
+
+          var _color7 = new Color(_r3, _g3, _b7);
+
+          return _color7;
+        } else if (mode === "lab") {
+          var _l4 = 100 * random();
+
+          var a = 256 * random() - 128;
+
+          var _b8 = 256 * random() - 128;
+
+          var _color8 = new Color(_l4, a, _b8, "lab");
+
+          return _color8;
+        } else if (mode === "grey") {
+          var grey = 255 * random();
+
+          var _color9 = new Color(grey, grey, grey);
+
+          return _color9;
+        } else {
+          throw new Error("Unsupported random color mode");
+        }
+      } // Test if given value is a color string
+
+    }, {
+      key: "test",
+      value: function test(color) {
+        return typeof color === "string" && (isHex.test(color) || isRgb.test(color));
+      }
+    }]);
+
+    return Color;
+  }();
+
+  var Point = /*#__PURE__*/function () {
+    // Initialize
+    function Point() {
+      _classCallCheck(this, Point);
+
+      this.init.apply(this, arguments);
+    } // Clone point
+
+
+    _createClass(Point, [{
+      key: "clone",
+      value: function clone() {
+        return new Point(this);
+      }
+    }, {
+      key: "init",
+      value: function init(x, y) {
+        var base = {
+          x: 0,
+          y: 0
+        }; // ensure source as object
+
+        var source = Array.isArray(x) ? {
+          x: x[0],
+          y: x[1]
+        } : _typeof(x) === "object" ? {
+          x: x.x,
+          y: x.y
+        } : {
+          x: x,
+          y: y
+        }; // merge source
+
+        this.x = source.x == null ? base.x : source.x;
+        this.y = source.y == null ? base.y : source.y;
+        return this;
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        return [this.x, this.y];
+      }
+    }, {
+      key: "transform",
+      value: function transform(m) {
+        return this.clone().transformO(m);
+      } // Transform point with matrix
+
+    }, {
+      key: "transformO",
+      value: function transformO(m) {
+        if (!Matrix.isMatrixLike(m)) {
+          m = new Matrix(m);
+        }
+
+        var x = this.x,
+            y = this.y; // Perform the matrix multiplication
+
+        this.x = m.a * x + m.c * y + m.e;
+        this.y = m.b * x + m.d * y + m.f;
+        return this;
+      }
+    }]);
+
+    return Point;
+  }();
+
+  function point(x, y) {
+    return new Point(x, y).transform(this.screenCTM().inverse());
+  }
+
+  function closeEnough(a, b, threshold) {
+    return Math.abs(b - a) < (threshold || 1e-6);
+  }
+
+  var Matrix = /*#__PURE__*/function () {
+    function Matrix() {
+      _classCallCheck(this, Matrix);
+
+      this.init.apply(this, arguments);
+    }
+
+    _createClass(Matrix, [{
+      key: "around",
+      value: function around(cx, cy, matrix) {
+        return this.clone().aroundO(cx, cy, matrix);
+      } // Transform around a center point
+
+    }, {
+      key: "aroundO",
+      value: function aroundO(cx, cy, matrix) {
+        var dx = cx || 0;
+        var dy = cy || 0;
+        return this.translateO(-dx, -dy).lmultiplyO(matrix).translateO(dx, dy);
+      } // Clones this matrix
+
+    }, {
+      key: "clone",
+      value: function clone() {
+        return new Matrix(this);
+      } // Decomposes this matrix into its affine parameters
+
+    }, {
+      key: "decompose",
+      value: function decompose() {
+        var cx = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        var cy = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        // Get the parameters from the matrix
+        var a = this.a;
+        var b = this.b;
+        var c = this.c;
+        var d = this.d;
+        var e = this.e;
+        var f = this.f; // Figure out if the winding direction is clockwise or counterclockwise
+
+        var determinant = a * d - b * c;
+        var ccw = determinant > 0 ? 1 : -1; // Since we only shear in x, we can use the x basis to get the x scale
+        // and the rotation of the resulting matrix
+
+        var sx = ccw * Math.sqrt(a * a + b * b);
+        var thetaRad = Math.atan2(ccw * b, ccw * a);
+        var theta = 180 / Math.PI * thetaRad;
+        var ct = Math.cos(thetaRad);
+        var st = Math.sin(thetaRad); // We can then solve the y basis vector simultaneously to get the other
+        // two affine parameters directly from these parameters
+
+        var lam = (a * c + b * d) / determinant;
+        var sy = c * sx / (lam * a - b) || d * sx / (lam * b + a); // Use the translations
+
+        var tx = e - cx + cx * ct * sx + cy * (lam * ct * sx - st * sy);
+        var ty = f - cy + cx * st * sx + cy * (lam * st * sx + ct * sy); // Construct the decomposition and return it
+
+        return {
+          // Return the affine parameters
+          scaleX: sx,
+          scaleY: sy,
+          shear: lam,
+          rotate: theta,
+          translateX: tx,
+          translateY: ty,
+          originX: cx,
+          originY: cy,
+          // Return the matrix parameters
+          a: this.a,
+          b: this.b,
+          c: this.c,
+          d: this.d,
+          e: this.e,
+          f: this.f
+        };
+      } // Check if two matrices are equal
+
+    }, {
+      key: "equals",
+      value: function equals(other) {
+        if (other === this) return true;
+        var comp = new Matrix(other);
+        return closeEnough(this.a, comp.a) && closeEnough(this.b, comp.b) && closeEnough(this.c, comp.c) && closeEnough(this.d, comp.d) && closeEnough(this.e, comp.e) && closeEnough(this.f, comp.f);
+      } // Flip matrix on x or y, at a given offset
+
+    }, {
+      key: "flip",
+      value: function flip(axis, around) {
+        return this.clone().flipO(axis, around);
+      }
+    }, {
+      key: "flipO",
+      value: function flipO(axis, around) {
+        return axis === "x" ? this.scaleO(-1, 1, around, 0) : axis === "y" ? this.scaleO(1, -1, 0, around) : this.scaleO(-1, -1, axis, around || axis); // Define an x, y flip point
+      } // Initialize
+
+    }, {
+      key: "init",
+      value: function init(source) {
+        var base = Matrix.fromArray([1, 0, 0, 1, 0, 0]); // ensure source as object
+
+        source = source instanceof Element ? source.matrixify() : typeof source === "string" ? Matrix.fromArray(source.split(delimiter).map(parseFloat)) : Array.isArray(source) ? Matrix.fromArray(source) : _typeof(source) === "object" && Matrix.isMatrixLike(source) ? source : _typeof(source) === "object" ? new Matrix().transform(source) : arguments.length === 6 ? Matrix.fromArray([].slice.call(arguments)) : base; // Merge the source matrix with the base matrix
+
+        this.a = source.a != null ? source.a : base.a;
+        this.b = source.b != null ? source.b : base.b;
+        this.c = source.c != null ? source.c : base.c;
+        this.d = source.d != null ? source.d : base.d;
+        this.e = source.e != null ? source.e : base.e;
+        this.f = source.f != null ? source.f : base.f;
+        return this;
+      }
+    }, {
+      key: "inverse",
+      value: function inverse() {
+        return this.clone().inverseO();
+      } // Inverses matrix
+
+    }, {
+      key: "inverseO",
+      value: function inverseO() {
+        // Get the current parameters out of the matrix
+        var a = this.a;
+        var b = this.b;
+        var c = this.c;
+        var d = this.d;
+        var e = this.e;
+        var f = this.f; // Invert the 2x2 matrix in the top left
+
+        var det = a * d - b * c;
+        if (!det) throw new Error("Cannot invert " + this); // Calculate the top 2x2 matrix
+
+        var na = d / det;
+        var nb = -b / det;
+        var nc = -c / det;
+        var nd = a / det; // Apply the inverted matrix to the top right
+
+        var ne = -(na * e + nc * f);
+        var nf = -(nb * e + nd * f); // Construct the inverted matrix
+
+        this.a = na;
+        this.b = nb;
+        this.c = nc;
+        this.d = nd;
+        this.e = ne;
+        this.f = nf;
+        return this;
+      }
+    }, {
+      key: "lmultiply",
+      value: function lmultiply(matrix) {
+        return this.clone().lmultiplyO(matrix);
+      }
+    }, {
+      key: "lmultiplyO",
+      value: function lmultiplyO(matrix) {
+        var r = this;
+        var l = matrix instanceof Matrix ? matrix : new Matrix(matrix);
+        return Matrix.matrixMultiply(l, r, this);
+      } // Left multiplies by the given matrix
+
+    }, {
+      key: "multiply",
+      value: function multiply(matrix) {
+        return this.clone().multiplyO(matrix);
+      }
+    }, {
+      key: "multiplyO",
+      value: function multiplyO(matrix) {
+        // Get the matrices
+        var l = this;
+        var r = matrix instanceof Matrix ? matrix : new Matrix(matrix);
+        return Matrix.matrixMultiply(l, r, this);
+      } // Rotate matrix
+
+    }, {
+      key: "rotate",
+      value: function rotate(r, cx, cy) {
+        return this.clone().rotateO(r, cx, cy);
+      }
+    }, {
+      key: "rotateO",
+      value: function rotateO(r) {
+        var cx = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        var cy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        // Convert degrees to radians
+        r = radians(r);
+        var cos = Math.cos(r);
+        var sin = Math.sin(r);
+        var a = this.a,
+            b = this.b,
+            c = this.c,
+            d = this.d,
+            e = this.e,
+            f = this.f;
+        this.a = a * cos - b * sin;
+        this.b = b * cos + a * sin;
+        this.c = c * cos - d * sin;
+        this.d = d * cos + c * sin;
+        this.e = e * cos - f * sin + cy * sin - cx * cos + cx;
+        this.f = f * cos + e * sin - cx * sin - cy * cos + cy;
+        return this;
+      } // Scale matrix
+
+    }, {
+      key: "scale",
+      value: function scale(x, y, cx, cy) {
+        var _this$clone;
+
+        return (_this$clone = this.clone()).scaleO.apply(_this$clone, arguments);
+      }
+    }, {
+      key: "scaleO",
+      value: function scaleO(x) {
+        var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
+        var cx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        var cy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+
+        // Support uniform scaling
+        if (arguments.length === 3) {
+          cy = cx;
+          cx = y;
+          y = x;
+        }
+
+        var a = this.a,
+            b = this.b,
+            c = this.c,
+            d = this.d,
+            e = this.e,
+            f = this.f;
+        this.a = a * x;
+        this.b = b * y;
+        this.c = c * x;
+        this.d = d * y;
+        this.e = e * x - cx * x + cx;
+        this.f = f * y - cy * y + cy;
+        return this;
+      } // Shear matrix
+
+    }, {
+      key: "shear",
+      value: function shear(a, cx, cy) {
+        return this.clone().shearO(a, cx, cy);
+      }
+    }, {
+      key: "shearO",
+      value: function shearO(lx) {
+        var cx = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        var cy = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        var a = this.a,
+            b = this.b,
+            c = this.c,
+            d = this.d,
+            e = this.e,
+            f = this.f;
+        this.a = a + b * lx;
+        this.c = c + d * lx;
+        this.e = e + f * lx - cy * lx;
+        return this;
+      } // Skew Matrix
+
+    }, {
+      key: "skew",
+      value: function skew(x, y, cx, cy) {
+        var _this$clone2;
+
+        return (_this$clone2 = this.clone()).skewO.apply(_this$clone2, arguments);
+      }
+    }, {
+      key: "skewO",
+      value: function skewO(x) {
+        var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
+        var cx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+        var cy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+
+        // support uniformal skew
+        if (arguments.length === 3) {
+          cy = cx;
+          cx = y;
+          y = x;
+        } // Convert degrees to radians
+
+
+        x = radians(x);
+        y = radians(y);
+        var lx = Math.tan(x);
+        var ly = Math.tan(y);
+        var a = this.a,
+            b = this.b,
+            c = this.c,
+            d = this.d,
+            e = this.e,
+            f = this.f;
+        this.a = a + b * lx;
+        this.b = b + a * ly;
+        this.c = c + d * lx;
+        this.d = d + c * ly;
+        this.e = e + f * lx - cy * lx;
+        this.f = f + e * ly - cx * ly;
+        return this;
+      } // SkewX
+
+    }, {
+      key: "skewX",
+      value: function skewX(x, cx, cy) {
+        return this.skew(x, 0, cx, cy);
+      } // SkewY
+
+    }, {
+      key: "skewY",
+      value: function skewY(y, cx, cy) {
+        return this.skew(0, y, cx, cy);
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        return [this.a, this.b, this.c, this.d, this.e, this.f];
+      } // Convert matrix to string
+
+    }, {
+      key: "toString",
+      value: function toString() {
+        return "matrix(" + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f + ")";
+      } // Transform a matrix into another matrix by manipulating the space
+
+    }, {
+      key: "transform",
+      value: function transform(o) {
+        // Check if o is a matrix and then left multiply it directly
+        if (Matrix.isMatrixLike(o)) {
+          var matrix = new Matrix(o);
+          return matrix.multiplyO(this);
+        } // Get the proposed transformations and the current transformations
+
+
+        var t = Matrix.formatTransforms(o);
+        var current = this;
+
+        var _Point$transform = new Point(t.ox, t.oy).transform(current),
+            ox = _Point$transform.x,
+            oy = _Point$transform.y; // Construct the resulting matrix
+
+
+        var transformer = new Matrix().translateO(t.rx, t.ry).lmultiplyO(current).translateO(-ox, -oy).scaleO(t.scaleX, t.scaleY).skewO(t.skewX, t.skewY).shearO(t.shear).rotateO(t.theta).translateO(ox, oy); // If we want the origin at a particular place, we force it there
+
+        if (isFinite(t.px) || isFinite(t.py)) {
+          var origin = new Point(ox, oy).transform(transformer); // TODO: Replace t.px with isFinite(t.px)
+          // Doesnt work because t.px is also 0 if it wasnt passed
+
+          var _dx = isFinite(t.px) ? t.px - origin.x : 0;
+
+          var _dy = isFinite(t.py) ? t.py - origin.y : 0;
+
+          transformer.translateO(_dx, _dy);
+        } // Translate now after positioning
+
+
+        transformer.translateO(t.tx, t.ty);
+        return transformer;
+      } // Translate matrix
+
+    }, {
+      key: "translate",
+      value: function translate(x, y) {
+        return this.clone().translateO(x, y);
+      }
+    }, {
+      key: "translateO",
+      value: function translateO(x, y) {
+        this.e += x || 0;
+        this.f += y || 0;
+        return this;
+      }
+    }, {
+      key: "valueOf",
+      value: function valueOf() {
+        return {
+          a: this.a,
+          b: this.b,
+          c: this.c,
+          d: this.d,
+          e: this.e,
+          f: this.f
+        };
+      }
+    }], [{
+      key: "formatTransforms",
+      value: function formatTransforms(o) {
+        // Get all of the parameters required to form the matrix
+        var flipBoth = o.flip === "both" || o.flip === true;
+        var flipX = o.flip && (flipBoth || o.flip === "x") ? -1 : 1;
+        var flipY = o.flip && (flipBoth || o.flip === "y") ? -1 : 1;
+        var skewX = o.skew && o.skew.length ? o.skew[0] : isFinite(o.skew) ? o.skew : isFinite(o.skewX) ? o.skewX : 0;
+        var skewY = o.skew && o.skew.length ? o.skew[1] : isFinite(o.skew) ? o.skew : isFinite(o.skewY) ? o.skewY : 0;
+        var scaleX = o.scale && o.scale.length ? o.scale[0] * flipX : isFinite(o.scale) ? o.scale * flipX : isFinite(o.scaleX) ? o.scaleX * flipX : flipX;
+        var scaleY = o.scale && o.scale.length ? o.scale[1] * flipY : isFinite(o.scale) ? o.scale * flipY : isFinite(o.scaleY) ? o.scaleY * flipY : flipY;
+        var shear = o.shear || 0;
+        var theta = o.rotate || o.theta || 0;
+        var origin = new Point(o.origin || o.around || o.ox || o.originX, o.oy || o.originY);
+        var ox = origin.x;
+        var oy = origin.y; // We need Point to be invalid if nothing was passed because we cannot default to 0 here. Thats why NaN
+
+        var position = new Point(o.position || o.px || o.positionX || NaN, o.py || o.positionY || NaN);
+        var px = position.x;
+        var py = position.y;
+        var translate = new Point(o.translate || o.tx || o.translateX, o.ty || o.translateY);
+        var tx = translate.x;
+        var ty = translate.y;
+        var relative = new Point(o.relative || o.rx || o.relativeX, o.ry || o.relativeY);
+        var rx = relative.x;
+        var ry = relative.y; // Populate all of the values
+
+        return {
+          scaleX: scaleX,
+          scaleY: scaleY,
+          skewX: skewX,
+          skewY: skewY,
+          shear: shear,
+          theta: theta,
+          rx: rx,
+          ry: ry,
+          tx: tx,
+          ty: ty,
+          ox: ox,
+          oy: oy,
+          px: px,
+          py: py
+        };
+      }
+    }, {
+      key: "fromArray",
+      value: function fromArray(a) {
+        return {
+          a: a[0],
+          b: a[1],
+          c: a[2],
+          d: a[3],
+          e: a[4],
+          f: a[5]
+        };
+      }
+    }, {
+      key: "isMatrixLike",
+      value: function isMatrixLike(o) {
+        return o.a != null || o.b != null || o.c != null || o.d != null || o.e != null || o.f != null;
+      } // left matrix, right matrix, target matrix which is overwritten
+
+    }, {
+      key: "matrixMultiply",
+      value: function matrixMultiply(l, r, o) {
+        // Work out the product directly
+        var a = l.a * r.a + l.c * r.b;
+        var b = l.b * r.a + l.d * r.b;
+        var c = l.a * r.c + l.c * r.d;
+        var d = l.b * r.c + l.d * r.d;
+        var e = l.e + l.a * r.e + l.c * r.f;
+        var f = l.f + l.b * r.e + l.d * r.f; // make sure to use local variables because l/r and o could be the same
+
+        o.a = a;
+        o.b = b;
+        o.c = c;
+        o.d = d;
+        o.e = e;
+        o.f = f;
+        return o;
+      }
+    }]);
+
+    return Matrix;
+  }();
+
+  function ctm() {
+    return new Matrix(this.node.getCTM());
+  }
+
+  function screenCTM() {
+    /* https://bugzilla.mozilla.org/show_bug.cgi?id=1344537
+    This is needed because FF does not return the transformation matrix
+    for the inner coordinate system when getScreenCTM() is called on nested svgs.
+    However all other Browsers do that */
+    if (typeof this.isRoot === "function" && !this.isRoot()) {
+      var rect = this.rect(1, 1);
+      var m = rect.node.getScreenCTM();
+      rect.remove();
+      return new Matrix(m);
+    }
+
+    return new Matrix(this.node.getScreenCTM());
+  }
+
+  register(Matrix, "Matrix");
+
+  function parser() {
+    // Reuse cached element if possible
+    if (!parser.nodes) {
+      var _svg = makeInstance().size(2, 0);
+
+      _svg.node.style.cssText = ["opacity: 0", "position: absolute", "left: -100%", "top: -100%", "overflow: hidden"].join(";");
+
+      _svg.attr("focusable", "false");
+
+      _svg.attr("aria-hidden", "true");
+
+      var path = _svg.path().node;
+
+      parser.nodes = {
+        svg: _svg,
+        path: path
+      };
+    }
+
+    if (!parser.nodes.svg.node.parentNode) {
+      var b = globals.document.body || globals.document.documentElement;
+      parser.nodes.svg.addTo(b);
+    }
+
+    return parser.nodes;
+  }
+
+  function isNulledBox(box) {
+    return !box.width && !box.height && !box.x && !box.y;
+  }
+
+  function domContains(node) {
+    return node === globals.document || (globals.document.documentElement.contains || function (node) {
+      // This is IE - it does not support contains() for top-level SVGs
+      while (node.parentNode) {
+        node = node.parentNode;
+      }
+
+      return node === globals.document;
+    }).call(globals.document.documentElement, node);
+  }
+
+  var Box = /*#__PURE__*/function () {
+    function Box() {
+      _classCallCheck(this, Box);
+
+      this.init.apply(this, arguments);
+    }
+
+    _createClass(Box, [{
+      key: "addOffset",
+      value: function addOffset() {
+        // offset by window scroll position, because getBoundingClientRect changes when window is scrolled
+        this.x += globals.window.pageXOffset;
+        this.y += globals.window.pageYOffset;
+        return new Box(this);
+      }
+    }, {
+      key: "init",
+      value: function init(source) {
+        var base = [0, 0, 0, 0];
+        source = typeof source === "string" ? source.split(delimiter).map(parseFloat) : Array.isArray(source) ? source : _typeof(source) === "object" ? [source.left != null ? source.left : source.x, source.top != null ? source.top : source.y, source.width, source.height] : arguments.length === 4 ? [].slice.call(arguments) : base;
+        this.x = source[0] || 0;
+        this.y = source[1] || 0;
+        this.width = this.w = source[2] || 0;
+        this.height = this.h = source[3] || 0; // Add more bounding box properties
+
+        this.x2 = this.x + this.w;
+        this.y2 = this.y + this.h;
+        this.cx = this.x + this.w / 2;
+        this.cy = this.y + this.h / 2;
+        return this;
+      }
+    }, {
+      key: "isNulled",
+      value: function isNulled() {
+        return isNulledBox(this);
+      } // Merge rect box with another, return a new instance
+
+    }, {
+      key: "merge",
+      value: function merge(box) {
+        var x = Math.min(this.x, box.x);
+        var y = Math.min(this.y, box.y);
+        var width = Math.max(this.x + this.width, box.x + box.width) - x;
+        var height = Math.max(this.y + this.height, box.y + box.height) - y;
+        return new Box(x, y, width, height);
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        return [this.x, this.y, this.width, this.height];
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.x + " " + this.y + " " + this.width + " " + this.height;
+      }
+    }, {
+      key: "transform",
+      value: function transform(m) {
+        if (!(m instanceof Matrix)) {
+          m = new Matrix(m);
+        }
+
+        var xMin = Infinity;
+        var xMax = -Infinity;
+        var yMin = Infinity;
+        var yMax = -Infinity;
+        var pts = [new Point(this.x, this.y), new Point(this.x2, this.y), new Point(this.x, this.y2), new Point(this.x2, this.y2)];
+        pts.forEach(function (p) {
+          p = p.transform(m);
+          xMin = Math.min(xMin, p.x);
+          xMax = Math.max(xMax, p.x);
+          yMin = Math.min(yMin, p.y);
+          yMax = Math.max(yMax, p.y);
+        });
+        return new Box(xMin, yMin, xMax - xMin, yMax - yMin);
+      }
+    }]);
+
+    return Box;
+  }();
+
+  function getBox(el, getBBoxFn, retry) {
+    var box;
+
+    try {
+      // Try to get the box with the provided function
+      box = getBBoxFn(el.node); // If the box is worthless and not even in the dom, retry
+      // by throwing an error here...
+
+      if (isNulledBox(box) && !domContains(el.node)) {
+        throw new Error("Element not in the dom");
+      }
+    } catch (e) {
+      // ... and calling the retry handler here
+      box = retry(el);
+    }
+
+    return box;
+  }
+
+  function bbox() {
+    // Function to get bbox is getBBox()
+    var getBBox = function getBBox(node) {
+      return node.getBBox();
+    }; // Take all measures so that a stupid browser renders the element
+    // so we can get the bbox from it when we try again
+
+
+    var retry = function retry(el) {
+      try {
+        var clone = el.clone().addTo(parser().svg).show();
+
+        var _box = clone.node.getBBox();
+
+        clone.remove();
+        return _box;
+      } catch (e) {
+        // We give up...
+        throw new Error("Getting bbox of element \"".concat(el.node.nodeName, "\" is not possible: ").concat(e.toString()));
+      }
+    };
+
+    var box = getBox(this, getBBox, retry);
+    var bbox = new Box(box);
+    return bbox;
+  }
+
+  function rbox(el) {
+    var getRBox = function getRBox(node) {
+      return node.getBoundingClientRect();
+    };
+
+    var retry = function retry(el) {
+      // There is no point in trying tricks here because if we insert the element into the dom ourselves
+      // it obviously will be at the wrong position
+      throw new Error("Getting rbox of element \"".concat(el.node.nodeName, "\" is not possible"));
+    };
+
+    var box = getBox(this, getRBox, retry);
+    var rbox = new Box(box); // If an element was passed, we want the bbox in the coordinate system of that element
+
+    if (el) {
+      return rbox.transform(el.screenCTM().inverseO());
+    } // Else we want it in absolute screen coordinates
+    // Therefore we need to add the scrollOffset
+
+
+    return rbox.addOffset();
+  } // Checks whether the given point is inside the bounding box
+
+
+  function inside(x, y) {
+    var box = this.bbox();
+    return x > box.x && y > box.y && x < box.x + box.width && y < box.y + box.height;
+  }
+
+  registerMethods({
+    viewbox: {
+      viewbox: function viewbox(x, y, width, height) {
+        // act as getter
+        if (x == null) return new Box(this.attr("viewBox")); // act as setter
+
+        return this.attr("viewBox", new Box(x, y, width, height));
+      },
+      zoom: function zoom(level, point) {
+        // Its best to rely on the attributes here and here is why:
+        // clientXYZ: Doesn't work on non-root svgs because they dont have a CSSBox (silly!)
+        // getBoundingClientRect: Doesn't work because Chrome just ignores width and height of nested svgs completely
+        //                        that means, their clientRect is always as big as the content.
+        //                        Furthermore this size is incorrect if the element is further transformed by its parents
+        // computedStyle: Only returns meaningful values if css was used with px. We dont go this route here!
+        // getBBox: returns the bounding box of its content - that doesnt help!
+        var _this$attr = this.attr(["width", "height"]),
+            width = _this$attr.width,
+            height = _this$attr.height; // Width and height is a string when a number with a unit is present which we can't use
+        // So we try clientXYZ
+
+
+        if (!width && !height || typeof width === "string" || typeof height === "string") {
+          width = this.node.clientWidth;
+          height = this.node.clientHeight;
+        } // Giving up...
+
+
+        if (!width || !height) {
+          throw new Error("Impossible to get absolute width and height. Please provide an absolute width and height attribute on the zooming element");
+        }
+
+        var v = this.viewbox();
+        var zoomX = width / v.width;
+        var zoomY = height / v.height;
+        var zoom = Math.min(zoomX, zoomY);
+
+        if (level == null) {
+          return zoom;
+        }
+
+        var zoomAmount = zoom / level; // Set the zoomAmount to the highest value which is safe to process and recover from
+        // The * 100 is a bit of wiggle room for the matrix transformation
+
+        if (zoomAmount === Infinity) zoomAmount = Number.MAX_SAFE_INTEGER / 100;
+        point = point || new Point(width / 2 / zoomX + v.x, height / 2 / zoomY + v.y);
+        var box = new Box(v).transform(new Matrix({
+          scale: zoomAmount,
+          origin: point
+        }));
+        return this.viewbox(box);
+      }
+    }
+  });
+  register(Box, "Box");
+
+  var List = /*#__PURE__*/function (_Array) {
+    _inherits(List, _Array);
+
+    var _super = _createSuper(List);
+
+    function List() {
+      var _this3;
+
+      var _this2;
+
+      var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      _classCallCheck(this, List);
+
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
+
+      _this2 = _super.call.apply(_super, [this, arr].concat(args));
+      if (typeof arr === "number") return _possibleConstructorReturn(_this2, _assertThisInitialized(_this2));
+      _this2.length = 0;
+
+      (_this3 = _this2).push.apply(_this3, _toConsumableArray(arr));
+
+      return _this2;
+    }
+
+    return _createClass(List);
+  }( /*#__PURE__*/_wrapNativeSuper(Array));
+
+  extend([List], {
+    each: function each(fnOrMethodName) {
+      for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        args[_key3 - 1] = arguments[_key3];
+      }
+
+      if (typeof fnOrMethodName === "function") {
+        return this.map(function (el, i, arr) {
+          return fnOrMethodName.call(el, el, i, arr);
+        });
+      } else {
+        return this.map(function (el) {
+          return el[fnOrMethodName].apply(el, args);
+        });
+      }
+    },
+    toArray: function toArray() {
+      return Array.prototype.concat.apply([], this);
+    }
+  });
+  var reserved = ["toArray", "constructor", "each"];
+
+  List.extend = function (methods) {
+    methods = methods.reduce(function (obj, name) {
+      // Don't overwrite own methods
+      if (reserved.includes(name)) return obj; // Don't add private methods
+
+      if (name[0] === "_") return obj; // Relay every call to each()
+
+      obj[name] = function () {
+        for (var _len4 = arguments.length, attrs = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+          attrs[_key4] = arguments[_key4];
+        }
+
+        return this.each.apply(this, [name].concat(attrs));
+      };
+
+      return obj;
+    }, {});
+    extend([List], methods);
+  };
+
+  function baseFind(query, parent) {
+    return new List(map((parent || globals.document).querySelectorAll(query), function (node) {
+      return adopt(node);
+    }));
+  } // Scoped find method
+
+
+  function find(query) {
+    return baseFind(query, this.node);
+  }
+
+  function findOne(query) {
+    return adopt(this.node.querySelector(query));
+  }
+
+  var listenerId = 0;
+  var windowEvents = {};
+
+  function getEvents(instance) {
+    var n = instance.getEventHolder(); // We dont want to save events in global space
+
+    if (n === globals.window) n = windowEvents;
+    if (!n.events) n.events = {};
+    return n.events;
+  }
+
+  function getEventTarget(instance) {
+    return instance.getEventTarget();
+  }
+
+  function clearEvents(instance) {
+    var n = instance.getEventHolder();
+    if (n === globals.window) n = windowEvents;
+    if (n.events) n.events = {};
+  } // Add event binder in the SVG namespace
+
+
+  function _on(node, events, listener, binding, options) {
+    var l = listener.bind(binding || node);
+    var instance = makeInstance(node);
+    var bag = getEvents(instance);
+    var n = getEventTarget(instance); // events can be an array of events or a string of events
+
+    events = Array.isArray(events) ? events : events.split(delimiter); // add id to listener
+
+    if (!listener._svgjsListenerId) {
+      listener._svgjsListenerId = ++listenerId;
+    }
+
+    events.forEach(function (event) {
+      var ev = event.split(".")[0];
+      var ns = event.split(".")[1] || "*"; // ensure valid object
+
+      bag[ev] = bag[ev] || {};
+      bag[ev][ns] = bag[ev][ns] || {}; // reference listener
+
+      bag[ev][ns][listener._svgjsListenerId] = l; // add listener
+
+      n.addEventListener(ev, l, options || false);
+    });
+  } // Add event unbinder in the SVG namespace
+
+
+  function _off(node, events, listener, options) {
+    var instance = makeInstance(node);
+    var bag = getEvents(instance);
+    var n = getEventTarget(instance); // listener can be a function or a number
+
+    if (typeof listener === "function") {
+      listener = listener._svgjsListenerId;
+      if (!listener) return;
+    } // events can be an array of events or a string or undefined
+
+
+    events = Array.isArray(events) ? events : (events || "").split(delimiter);
+    events.forEach(function (event) {
+      var ev = event && event.split(".")[0];
+      var ns = event && event.split(".")[1];
+      var namespace, l;
+
+      if (listener) {
+        // remove listener reference
+        if (bag[ev] && bag[ev][ns || "*"]) {
+          // removeListener
+          n.removeEventListener(ev, bag[ev][ns || "*"][listener], options || false);
+          delete bag[ev][ns || "*"][listener];
+        }
+      } else if (ev && ns) {
+        // remove all listeners for a namespaced event
+        if (bag[ev] && bag[ev][ns]) {
+          for (l in bag[ev][ns]) {
+            _off(n, [ev, ns].join("."), l);
+          }
+
+          delete bag[ev][ns];
+        }
+      } else if (ns) {
+        // remove all listeners for a specific namespace
+        for (event in bag) {
+          for (namespace in bag[event]) {
+            if (ns === namespace) {
+              _off(n, [event, ns].join("."));
+            }
+          }
+        }
+      } else if (ev) {
+        // remove all listeners for the event
+        if (bag[ev]) {
+          for (namespace in bag[ev]) {
+            _off(n, [ev, namespace].join("."));
+          }
+
+          delete bag[ev];
+        }
+      } else {
+        // remove all listeners on a given node
+        for (event in bag) {
+          _off(n, event);
+        }
+
+        clearEvents(instance);
+      }
+    });
+  }
+
+  function _dispatch(node, event, data, options) {
+    var n = getEventTarget(node); // Dispatch event
+
+    if (event instanceof globals.window.Event) {
+      n.dispatchEvent(event);
+    } else {
+      event = new globals.window.CustomEvent(event, _objectSpread({
+        detail: data,
+        cancelable: true
+      }, options));
+      n.dispatchEvent(event);
+    }
+
+    return event;
+  }
+
+  var EventTarget = /*#__PURE__*/function (_Base) {
+    _inherits(EventTarget, _Base);
+
+    var _super2 = _createSuper(EventTarget);
+
+    function EventTarget() {
+      _classCallCheck(this, EventTarget);
+
+      return _super2.apply(this, arguments);
+    }
+
+    _createClass(EventTarget, [{
+      key: "addEventListener",
+      value: function addEventListener() {}
+    }, {
+      key: "dispatch",
+      value: function dispatch(event, data, options) {
+        return _dispatch(this, event, data, options);
+      }
+    }, {
+      key: "dispatchEvent",
+      value: function dispatchEvent(event) {
+        var bag = this.getEventHolder().events;
+        if (!bag) return true;
+        var events = bag[event.type];
+
+        for (var i in events) {
+          for (var j in events[i]) {
+            events[i][j](event);
+          }
+        }
+
+        return !event.defaultPrevented;
+      } // Fire given event
+
+    }, {
+      key: "fire",
+      value: function fire(event, data, options) {
+        this.dispatch(event, data, options);
+        return this;
+      }
+    }, {
+      key: "getEventHolder",
+      value: function getEventHolder() {
+        return this;
+      }
+    }, {
+      key: "getEventTarget",
+      value: function getEventTarget() {
+        return this;
+      } // Unbind event from listener
+
+    }, {
+      key: "off",
+      value: function off(event, listener) {
+        _off(this, event, listener);
+
+        return this;
+      } // Bind given event to listener
+
+    }, {
+      key: "on",
+      value: function on(event, listener, binding, options) {
+        _on(this, event, listener, binding, options);
+
+        return this;
+      }
+    }, {
+      key: "removeEventListener",
+      value: function removeEventListener() {}
+    }]);
+
+    return EventTarget;
+  }(Base);
+
+  register(EventTarget, "EventTarget");
+
+  function noop() {} // Default animation values
+
+
+  var timeline = {
+    duration: 400,
+    ease: ">",
+    delay: 0
+  }; // Default attribute values
+
+  var attrs = {
+    // fill and stroke
+    "fill-opacity": 1,
+    "stroke-opacity": 1,
+    "stroke-width": 0,
+    "stroke-linejoin": "miter",
+    "stroke-linecap": "butt",
+    fill: "#000000",
+    stroke: "#000000",
+    opacity: 1,
+    // position
+    x: 0,
+    y: 0,
+    cx: 0,
+    cy: 0,
+    // size
+    width: 0,
+    height: 0,
+    // radius
+    r: 0,
+    rx: 0,
+    ry: 0,
+    // gradient
+    offset: 0,
+    "stop-opacity": 1,
+    "stop-color": "#000000",
+    // text
+    "text-anchor": "start"
+  };
+  var defaults = {
+    __proto__: null,
+    noop: noop,
+    timeline: timeline,
+    attrs: attrs
+  };
+
+  var SVGArray = /*#__PURE__*/function (_Array2) {
+    _inherits(SVGArray, _Array2);
+
+    var _super3 = _createSuper(SVGArray);
+
+    function SVGArray() {
+      var _this5;
+
+      var _this4;
+
+      _classCallCheck(this, SVGArray);
+
+      for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+        args[_key5] = arguments[_key5];
+      }
+
+      _this4 = _super3.call.apply(_super3, [this].concat(args));
+
+      (_this5 = _this4).init.apply(_this5, args);
+
+      return _this4;
+    }
+
+    _createClass(SVGArray, [{
+      key: "clone",
+      value: function clone() {
+        return new this.constructor(this);
+      }
+    }, {
+      key: "init",
+      value: function init(arr) {
+        // This catches the case, that native map tries to create an array with new Array(1)
+        if (typeof arr === "number") return this;
+        this.length = 0;
+        this.push.apply(this, _toConsumableArray(this.parse(arr)));
+        return this;
+      } // Parse whitespace separated string
+
+    }, {
+      key: "parse",
+      value: function parse() {
+        var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+        // If already is an array, no need to parse it
+        if (array instanceof Array) return array;
+        return array.trim().split(delimiter).map(parseFloat);
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        return Array.prototype.concat.apply([], this);
+      }
+    }, {
+      key: "toSet",
+      value: function toSet() {
+        return new Set(this);
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.join(" ");
+      } // Flattens the array if needed
+
+    }, {
+      key: "valueOf",
+      value: function valueOf() {
+        var ret = [];
+        ret.push.apply(ret, _toConsumableArray(this));
+        return ret;
+      }
+    }]);
+
+    return SVGArray;
+  }( /*#__PURE__*/_wrapNativeSuper(Array));
+
+  var SVGNumber = /*#__PURE__*/function () {
+    // Initialize
+    function SVGNumber() {
+      _classCallCheck(this, SVGNumber);
+
+      this.init.apply(this, arguments);
+    }
+
+    _createClass(SVGNumber, [{
+      key: "convert",
+      value: function convert(unit) {
+        return new SVGNumber(this.value, unit);
+      } // Divide number
+
+    }, {
+      key: "divide",
+      value: function divide(number) {
+        number = new SVGNumber(number);
+        return new SVGNumber(this / number, this.unit || number.unit);
+      }
+    }, {
+      key: "init",
+      value: function init(value, unit) {
+        unit = Array.isArray(value) ? value[1] : unit;
+        value = Array.isArray(value) ? value[0] : value; // initialize defaults
+
+        this.value = 0;
+        this.unit = unit || ""; // parse value
+
+        if (typeof value === "number") {
+          // ensure a valid numeric value
+          this.value = isNaN(value) ? 0 : !isFinite(value) ? value < 0 ? -3.4e38 : +3.4e38 : value;
+        } else if (typeof value === "string") {
+          unit = value.match(numberAndUnit);
+
+          if (unit) {
+            // make value numeric
+            this.value = parseFloat(unit[1]); // normalize
+
+            if (unit[5] === "%") {
+              this.value /= 100;
+            } else if (unit[5] === "s") {
+              this.value *= 1000;
+            } // store unit
+
+
+            this.unit = unit[5];
+          }
+        } else {
+          if (value instanceof SVGNumber) {
+            this.value = value.valueOf();
+            this.unit = value.unit;
+          }
+        }
+
+        return this;
+      } // Subtract number
+
+    }, {
+      key: "minus",
+      value: function minus(number) {
+        number = new SVGNumber(number);
+        return new SVGNumber(this - number, this.unit || number.unit);
+      } // Add number
+
+    }, {
+      key: "plus",
+      value: function plus(number) {
+        number = new SVGNumber(number);
+        return new SVGNumber(this + number, this.unit || number.unit);
+      } // Multiply number
+
+    }, {
+      key: "times",
+      value: function times(number) {
+        number = new SVGNumber(number);
+        return new SVGNumber(this * number, this.unit || number.unit);
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        return [this.value, this.unit];
+      }
+    }, {
+      key: "toJSON",
+      value: function toJSON() {
+        return this.toString();
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return (this.unit === "%" ? ~~(this.value * 1e8) / 1e6 : this.unit === "s" ? this.value / 1e3 : this.value) + this.unit;
+      }
+    }, {
+      key: "valueOf",
+      value: function valueOf() {
+        return this.value;
+      }
+    }]);
+
+    return SVGNumber;
+  }();
+
+  var hooks = [];
+
+  function registerAttrHook(fn) {
+    hooks.push(fn);
+  } // Set svg element attribute
+
+
+  function attr(attr, val, ns) {
+    var _this6 = this;
+
+    // act as full getter
+    if (attr == null) {
+      // get an object of attributes
+      attr = {};
+      val = this.node.attributes;
+
+      var _iterator4 = _createForOfIteratorHelper(val),
+          _step4;
+
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var node = _step4.value;
+          attr[node.nodeName] = isNumber.test(node.nodeValue) ? parseFloat(node.nodeValue) : node.nodeValue;
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      return attr;
+    } else if (attr instanceof Array) {
+      // loop through array and get all values
+      return attr.reduce(function (last, curr) {
+        last[curr] = _this6.attr(curr);
+        return last;
+      }, {});
+    } else if (_typeof(attr) === "object" && attr.constructor === Object) {
+      // apply every attribute individually if an object is passed
+      for (val in attr) {
+        this.attr(val, attr[val]);
+      }
+    } else if (val === null) {
+      // remove value
+      this.node.removeAttribute(attr);
+    } else if (val == null) {
+      // act as a getter if the first and only argument is not an object
+      val = this.node.getAttribute(attr);
+      return val == null ? attrs[attr] : isNumber.test(val) ? parseFloat(val) : val;
+    } else {
+      // Loop through hooks and execute them to convert value
+      val = hooks.reduce(function (_val, hook) {
+        return hook(attr, _val, _this6);
+      }, val); // ensure correct numeric values (also accepts NaN and Infinity)
+
+      if (typeof val === "number") {
+        val = new SVGNumber(val);
+      } else if (Color.isColor(val)) {
+        // ensure full hex color
+        val = new Color(val);
+      } else if (val.constructor === Array) {
+        // Check for plain arrays and parse array values
+        val = new SVGArray(val);
+      } // if the passed attribute is leading...
+
+
+      if (attr === "leading") {
+        // ... call the leading method instead
+        if (this.leading) {
+          this.leading(val);
+        }
+      } else {
+        // set given attribute on node
+        typeof ns === "string" ? this.node.setAttributeNS(ns, attr, val.toString()) : this.node.setAttribute(attr, val.toString());
+      } // rebuild if required
+
+
+      if (this.rebuild && (attr === "font-size" || attr === "x")) {
+        this.rebuild();
+      }
+    }
+
+    return this;
+  }
+
+  var Dom = /*#__PURE__*/function (_EventTarget) {
+    _inherits(Dom, _EventTarget);
+
+    var _super4 = _createSuper(Dom);
+
+    function Dom(node, attrs) {
+      var _this7;
+
+      _classCallCheck(this, Dom);
+
+      _this7 = _super4.call(this);
+      _this7.node = node;
+      _this7.type = node.nodeName;
+
+      if (attrs && node !== attrs) {
+        _this7.attr(attrs);
+      }
+
+      return _this7;
+    } // Add given element at a position
+
+
+    _createClass(Dom, [{
+      key: "add",
+      value: function add(element, i) {
+        element = makeInstance(element); // If non-root svg nodes are added we have to remove their namespaces
+
+        if (element.removeNamespace && this.node instanceof globals.window.SVGElement) {
+          element.removeNamespace();
+        }
+
+        if (i == null) {
+          this.node.appendChild(element.node);
+        } else if (element.node !== this.node.childNodes[i]) {
+          this.node.insertBefore(element.node, this.node.childNodes[i]);
+        }
+
+        return this;
+      } // Add element to given container and return self
+
+    }, {
+      key: "addTo",
+      value: function addTo(parent, i) {
+        return makeInstance(parent).put(this, i);
+      } // Returns all child elements
+
+    }, {
+      key: "children",
+      value: function children() {
+        return new List(map(this.node.children, function (node) {
+          return adopt(node);
+        }));
+      } // Remove all elements in this container
+
+    }, {
+      key: "clear",
+      value: function clear() {
+        // remove children
+        while (this.node.hasChildNodes()) {
+          this.node.removeChild(this.node.lastChild);
+        }
+
+        return this;
+      } // Clone element
+
+    }, {
+      key: "clone",
+      value: function clone() {
+        var deep = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+        // write dom data to the dom so the clone can pickup the data
+        this.writeDataToDom(); // clone element and assign new id
+
+        return new this.constructor(assignNewId(this.node.cloneNode(deep)));
+      } // Iterates over all children and invokes a given block
+
+    }, {
+      key: "each",
+      value: function each(block, deep) {
+        var children = this.children();
+        var i, il;
+
+        for (i = 0, il = children.length; i < il; i++) {
+          block.apply(children[i], [i, children]);
+
+          if (deep) {
+            children[i].each(block, deep);
+          }
+        }
+
+        return this;
+      }
+    }, {
+      key: "element",
+      value: function element(nodeName, attrs) {
+        return this.put(new Dom(create(nodeName), attrs));
+      } // Get first child
+
+    }, {
+      key: "first",
+      value: function first() {
+        return adopt(this.node.firstChild);
+      } // Get a element at the given index
+
+    }, {
+      key: "get",
+      value: function get(i) {
+        return adopt(this.node.childNodes[i]);
+      }
+    }, {
+      key: "getEventHolder",
+      value: function getEventHolder() {
+        return this.node;
+      }
+    }, {
+      key: "getEventTarget",
+      value: function getEventTarget() {
+        return this.node;
+      } // Checks if the given element is a child
+
+    }, {
+      key: "has",
+      value: function has(element) {
+        return this.index(element) >= 0;
+      }
+    }, {
+      key: "html",
+      value: function html(htmlOrFn, outerHTML) {
+        return this.xml(htmlOrFn, outerHTML, _html);
+      } // Get / set id
+
+    }, {
+      key: "id",
+      value: function id(_id) {
+        // generate new id if no id set
+        if (typeof _id === "undefined" && !this.node.id) {
+          this.node.id = eid(this.type);
+        } // don't set directly with this.node.id to make `null` work correctly
+
+
+        return this.attr("id", _id);
+      } // Gets index of given element
+
+    }, {
+      key: "index",
+      value: function index(element) {
+        return [].slice.call(this.node.childNodes).indexOf(element.node);
+      } // Get the last child
+
+    }, {
+      key: "last",
+      value: function last() {
+        return adopt(this.node.lastChild);
+      } // matches the element vs a css selector
+
+    }, {
+      key: "matches",
+      value: function matches(selector) {
+        var el = this.node;
+        var matcher = el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector || null;
+        return matcher && matcher.call(el, selector);
+      } // Returns the parent element instance
+
+    }, {
+      key: "parent",
+      value: function parent(type) {
+        var parent = this; // check for parent
+
+        if (!parent.node.parentNode) return null; // get parent element
+
+        parent = adopt(parent.node.parentNode);
+        if (!type) return parent; // loop trough ancestors if type is given
+
+        do {
+          if (typeof type === "string" ? parent.matches(type) : parent instanceof type) return parent;
+        } while (parent = adopt(parent.node.parentNode));
+
+        return parent;
+      } // Basically does the same as `add()` but returns the added element instead
+
+    }, {
+      key: "put",
+      value: function put(element, i) {
+        element = makeInstance(element);
+        this.add(element, i);
+        return element;
+      } // Add element to given container and return container
+
+    }, {
+      key: "putIn",
+      value: function putIn(parent, i) {
+        return makeInstance(parent).add(this, i);
+      } // Remove element
+
+    }, {
+      key: "remove",
+      value: function remove() {
+        if (this.parent()) {
+          this.parent().removeElement(this);
+        }
+
+        return this;
+      } // Remove a given child
+
+    }, {
+      key: "removeElement",
+      value: function removeElement(element) {
+        this.node.removeChild(element.node);
+        return this;
+      } // Replace this with element
+
+    }, {
+      key: "replace",
+      value: function replace(element) {
+        element = makeInstance(element);
+
+        if (this.node.parentNode) {
+          this.node.parentNode.replaceChild(element.node, this.node);
+        }
+
+        return element;
+      }
+    }, {
+      key: "round",
+      value: function round() {
+        var precision = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2;
+        var map = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+        var factor = Math.pow(10, precision);
+        var attrs = this.attr(map);
+
+        for (var i in attrs) {
+          if (typeof attrs[i] === "number") {
+            attrs[i] = Math.round(attrs[i] * factor) / factor;
+          }
+        }
+
+        this.attr(attrs);
+        return this;
+      } // Import / Export raw svg
+
+    }, {
+      key: "svg",
+      value: function svg(svgOrFn, outerSVG) {
+        return this.xml(svgOrFn, outerSVG, _svg2);
+      } // Return id on string conversion
+
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.id();
+      }
+    }, {
+      key: "words",
+      value: function words(text) {
+        // This is faster than removing all children and adding a new one
+        this.node.textContent = text;
+        return this;
+      }
+    }, {
+      key: "wrap",
+      value: function wrap(node) {
+        var parent = this.parent();
+
+        if (!parent) {
+          return this.addTo(node);
+        }
+
+        var position = parent.index(this);
+        return parent.put(node, position).put(this);
+      } // write svgjs data to the dom
+
+    }, {
+      key: "writeDataToDom",
+      value: function writeDataToDom() {
+        // dump variables recursively
+        this.each(function () {
+          this.writeDataToDom();
+        });
+        return this;
+      } // Import / Export raw svg
+
+    }, {
+      key: "xml",
+      value: function xml(xmlOrFn, outerXML, ns) {
+        if (typeof xmlOrFn === "boolean") {
+          ns = outerXML;
+          outerXML = xmlOrFn;
+          xmlOrFn = null;
+        } // act as getter if no svg string is given
+
+
+        if (xmlOrFn == null || typeof xmlOrFn === "function") {
+          // The default for exports is, that the outerNode is included
+          outerXML = outerXML == null ? true : outerXML; // write svgjs data to the dom
+
+          this.writeDataToDom();
+          var current = this; // An export modifier was passed
+
+          if (xmlOrFn != null) {
+            current = adopt(current.node.cloneNode(true)); // If the user wants outerHTML we need to process this node, too
+
+            if (outerXML) {
+              var result = xmlOrFn(current);
+              current = result || current; // The user does not want this node? Well, then he gets nothing
+
+              if (result === false) return "";
+            } // Deep loop through all children and apply modifier
+
+
+            current.each(function () {
+              var result = xmlOrFn(this);
+
+              var _this = result || this; // If modifier returns false, discard node
+
+
+              if (result === false) {
+                this.remove(); // If modifier returns new node, use it
+              } else if (result && this !== _this) {
+                this.replace(_this);
+              }
+            }, true);
+          } // Return outer or inner content
+
+
+          return outerXML ? current.node.outerHTML : current.node.innerHTML;
+        } // Act as setter if we got a string
+        // The default for import is, that the current node is not replaced
+
+
+        outerXML = outerXML == null ? false : outerXML; // Create temporary holder
+
+        var well = create("wrapper", ns);
+        var fragment = globals.document.createDocumentFragment(); // Dump raw svg
+
+        well.innerHTML = xmlOrFn; // Transplant nodes into the fragment
+
+        for (var len = well.children.length; len--;) {
+          fragment.appendChild(well.firstElementChild);
+        }
+
+        var parent = this.parent(); // Add the whole fragment at once
+
+        return outerXML ? this.replace(fragment) && parent : this.add(fragment);
+      }
+    }]);
+
+    return Dom;
+  }(EventTarget);
+
+  extend(Dom, {
+    attr: attr,
+    find: find,
+    findOne: findOne
+  });
+  register(Dom, "Dom");
+
+  var Element = /*#__PURE__*/function (_Dom) {
+    _inherits(Element, _Dom);
+
+    var _super5 = _createSuper(Element);
+
+    function Element(node, attrs) {
+      var _this8;
+
+      _classCallCheck(this, Element);
+
+      _this8 = _super5.call(this, node, attrs); // initialize data object
+
+      _this8.dom = {}; // create circular reference
+
+      _this8.node.instance = _assertThisInitialized(_this8);
+
+      if (node.hasAttribute("svgjs:data")) {
+        // pull svgjs data from the dom (getAttributeNS doesn't work in html5)
+        _this8.setData(JSON.parse(node.getAttribute("svgjs:data")) || {});
+      }
+
+      return _this8;
+    } // Move element by its center
+
+
+    _createClass(Element, [{
+      key: "center",
+      value: function center(x, y) {
+        return this.cx(x).cy(y);
+      } // Move by center over x-axis
+
+    }, {
+      key: "cx",
+      value: function cx(x) {
+        return x == null ? this.x() + this.width() / 2 : this.x(x - this.width() / 2);
+      } // Move by center over y-axis
+
+    }, {
+      key: "cy",
+      value: function cy(y) {
+        return y == null ? this.y() + this.height() / 2 : this.y(y - this.height() / 2);
+      } // Get defs
+
+    }, {
+      key: "defs",
+      value: function defs() {
+        var root = this.root();
+        return root && root.defs();
+      } // Relative move over x and y axes
+
+    }, {
+      key: "dmove",
+      value: function dmove(x, y) {
+        return this.dx(x).dy(y);
+      } // Relative move over x axis
+
+    }, {
+      key: "dx",
+      value: function dx() {
+        var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        return this.x(new SVGNumber(x).plus(this.x()));
+      } // Relative move over y axis
+
+    }, {
+      key: "dy",
+      value: function dy() {
+        var y = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        return this.y(new SVGNumber(y).plus(this.y()));
+      }
+    }, {
+      key: "getEventHolder",
+      value: function getEventHolder() {
+        return this;
+      } // Set height of element
+
+    }, {
+      key: "height",
+      value: function height(_height2) {
+        return this.attr("height", _height2);
+      } // Move element to given x and y values
+
+    }, {
+      key: "move",
+      value: function move(x, y) {
+        return this.x(x).y(y);
+      } // return array of all ancestors of given type up to the root svg
+
+    }, {
+      key: "parents",
+      value: function parents() {
+        var until = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.root();
+        until = makeInstance(until);
+        var parents = new List();
+        var parent = this;
+
+        while ((parent = parent.parent()) && parent.node !== globals.document && parent.nodeName !== "#document-fragment") {
+          parents.push(parent);
+
+          if (parent.node === until.node) {
+            break;
+          }
+        }
+
+        return parents;
+      } // Get referenced element form attribute value
+
+    }, {
+      key: "reference",
+      value: function reference(attr) {
+        attr = this.attr(attr);
+        if (!attr) return null;
+        var m = (attr + "").match(_reference);
+        return m ? makeInstance(m[1]) : null;
+      } // Get parent document
+
+    }, {
+      key: "root",
+      value: function root() {
+        var p = this.parent(getClass(_root));
+        return p && p.root();
+      } // set given data to the elements data property
+
+    }, {
+      key: "setData",
+      value: function setData(o) {
+        this.dom = o;
+        return this;
+      } // Set element size to given width and height
+
+    }, {
+      key: "size",
+      value: function size(width, height) {
+        var p = proportionalSize(this, width, height);
+        return this.width(new SVGNumber(p.width)).height(new SVGNumber(p.height));
+      } // Set width of element
+
+    }, {
+      key: "width",
+      value: function width(_width2) {
+        return this.attr("width", _width2);
+      } // write svgjs data to the dom
+
+    }, {
+      key: "writeDataToDom",
+      value: function writeDataToDom() {
+        // remove previously set data
+        this.node.removeAttribute("svgjs:data");
+
+        if (Object.keys(this.dom).length) {
+          this.node.setAttribute("svgjs:data", JSON.stringify(this.dom)); // see #428
+        }
+
+        return _get(_getPrototypeOf(Element.prototype), "writeDataToDom", this).call(this);
+      } // Move over x-axis
+
+    }, {
+      key: "x",
+      value: function x(_x3) {
+        return this.attr("x", _x3);
+      } // Move over y-axis
+
+    }, {
+      key: "y",
+      value: function y(_y4) {
+        return this.attr("y", _y4);
+      }
+    }]);
+
+    return Element;
+  }(Dom);
+
+  extend(Element, {
+    bbox: bbox,
+    rbox: rbox,
+    inside: inside,
+    point: point,
+    ctm: ctm,
+    screenCTM: screenCTM
+  });
+  register(Element, "Element");
+  var sugar = {
+    stroke: ["color", "width", "opacity", "linecap", "linejoin", "miterlimit", "dasharray", "dashoffset"],
+    fill: ["color", "opacity", "rule"],
+    prefix: function prefix(t, a) {
+      return a === "color" ? t : t + "-" + a;
+    }
+  }; // Add sugar for fill and stroke
+
+  ["fill", "stroke"].forEach(function (m) {
+    var extension = {};
+    var i;
+
+    extension[m] = function (o) {
+      if (typeof o === "undefined") {
+        return this.attr(m);
+      }
+
+      if (typeof o === "string" || o instanceof Color || Color.isRgb(o) || o instanceof Element) {
+        this.attr(m, o);
+      } else {
+        // set all attributes from sugar.fill and sugar.stroke list
+        for (i = sugar[m].length - 1; i >= 0; i--) {
+          if (o[sugar[m][i]] != null) {
+            this.attr(sugar.prefix(m, sugar[m][i]), o[sugar[m][i]]);
+          }
+        }
+      }
+
+      return this;
+    };
+
+    registerMethods(["Element", "Runner"], extension);
+  });
+  registerMethods(["Element", "Runner"], {
+    // Let the user set the matrix directly
+    matrix: function matrix(mat, b, c, d, e, f) {
+      // Act as a getter
+      if (mat == null) {
+        return new Matrix(this);
+      } // Act as a setter, the user can pass a matrix or a set of numbers
+
+
+      return this.attr("transform", new Matrix(mat, b, c, d, e, f));
+    },
+    // Map rotation to transform
+    rotate: function rotate(angle, cx, cy) {
+      return this.transform({
+        rotate: angle,
+        ox: cx,
+        oy: cy
+      }, true);
+    },
+    // Map skew to transform
+    skew: function skew(x, y, cx, cy) {
+      return arguments.length === 1 || arguments.length === 3 ? this.transform({
+        skew: x,
+        ox: y,
+        oy: cx
+      }, true) : this.transform({
+        skew: [x, y],
+        ox: cx,
+        oy: cy
+      }, true);
+    },
+    shear: function shear(lam, cx, cy) {
+      return this.transform({
+        shear: lam,
+        ox: cx,
+        oy: cy
+      }, true);
+    },
+    // Map scale to transform
+    scale: function scale(x, y, cx, cy) {
+      return arguments.length === 1 || arguments.length === 3 ? this.transform({
+        scale: x,
+        ox: y,
+        oy: cx
+      }, true) : this.transform({
+        scale: [x, y],
+        ox: cx,
+        oy: cy
+      }, true);
+    },
+    // Map translate to transform
+    translate: function translate(x, y) {
+      return this.transform({
+        translate: [x, y]
+      }, true);
+    },
+    // Map relative translations to transform
+    relative: function relative(x, y) {
+      return this.transform({
+        relative: [x, y]
+      }, true);
+    },
+    // Map flip to transform
+    flip: function flip() {
+      var direction = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "both";
+      var origin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "center";
+
+      if ("xybothtrue".indexOf(direction) === -1) {
+        origin = direction;
+        direction = "both";
+      }
+
+      return this.transform({
+        flip: direction,
+        origin: origin
+      }, true);
+    },
+    // Opacity
+    opacity: function opacity(value) {
+      return this.attr("opacity", value);
+    }
+  });
+  registerMethods("radius", {
+    // Add x and y radius
+    radius: function radius(x) {
+      var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
+      var type = (this._element || this).type;
+      return type === "radialGradient" ? this.attr("r", new SVGNumber(x)) : this.rx(x).ry(y);
+    }
+  });
+  registerMethods("Path", {
+    // Get path length
+    length: function length() {
+      return this.node.getTotalLength();
+    },
+    // Get point at length
+    pointAt: function pointAt(length) {
+      return new Point(this.node.getPointAtLength(length));
+    }
+  });
+  registerMethods(["Element", "Runner"], {
+    // Set font
+    font: function font(a, v) {
+      if (_typeof(a) === "object") {
+        for (v in a) {
+          this.font(v, a[v]);
+        }
+
+        return this;
+      }
+
+      return a === "leading" ? this.leading(v) : a === "anchor" ? this.attr("text-anchor", v) : a === "size" || a === "family" || a === "weight" || a === "stretch" || a === "variant" || a === "style" ? this.attr("font-" + a, v) : this.attr(a, v);
+    }
+  }); // Add events to elements
+
+  var methods = ["click", "dblclick", "mousedown", "mouseup", "mouseover", "mouseout", "mousemove", "mouseenter", "mouseleave", "touchstart", "touchmove", "touchleave", "touchend", "touchcancel"].reduce(function (last, event) {
+    // add event to Element
+    var fn = function fn(f) {
+      if (f === null) {
+        this.off(event);
+      } else {
+        this.on(event, f);
+      }
+
+      return this;
+    };
+
+    last[event] = fn;
+    return last;
+  }, {});
+  registerMethods("Element", methods);
+
+  function untransform() {
+    return this.attr("transform", null);
+  } // merge the whole transformation chain into one matrix and returns it
+
+
+  function matrixify() {
+    var matrix = (this.attr("transform") || "" // split transformations
+    ).split(transforms).slice(0, -1).map(function (str) {
+      // generate key => value pairs
+      var kv = str.trim().split("(");
+      return [kv[0], kv[1].split(delimiter).map(function (str) {
+        return parseFloat(str);
+      })];
+    }).reverse() // merge every transformation into one matrix
+    .reduce(function (matrix, transform) {
+      if (transform[0] === "matrix") {
+        return matrix.lmultiply(Matrix.fromArray(transform[1]));
+      }
+
+      return matrix[transform[0]].apply(matrix, transform[1]);
+    }, new Matrix());
+    return matrix;
+  } // add an element to another parent without changing the visual representation on the screen
+
+
+  function toParent(parent, i) {
+    if (this === parent) return this;
+    var ctm = this.screenCTM();
+    var pCtm = parent.screenCTM().inverse();
+    this.addTo(parent, i).untransform().transform(pCtm.multiply(ctm));
+    return this;
+  } // same as above with parent equals root-svg
+
+
+  function toRoot(i) {
+    return this.toParent(this.root(), i);
+  } // Add transformations
+
+
+  function transform(o, relative) {
+    // Act as a getter if no object was passed
+    if (o == null || typeof o === "string") {
+      var decomposed = new Matrix(this).decompose();
+      return o == null ? decomposed : decomposed[o];
+    }
+
+    if (!Matrix.isMatrixLike(o)) {
+      // Set the origin according to the defined transform
+      o = _objectSpread(_objectSpread({}, o), {}, {
+        origin: getOrigin(o, this)
+      });
+    } // The user can pass a boolean, an Element or an Matrix or nothing
+
+
+    var cleanRelative = relative === true ? this : relative || false;
+    var result = new Matrix(cleanRelative).transform(o);
+    return this.attr("transform", result);
+  }
+
+  registerMethods("Element", {
+    untransform: untransform,
+    matrixify: matrixify,
+    toParent: toParent,
+    toRoot: toRoot,
+    transform: transform
+  });
+
+  var Container = /*#__PURE__*/function (_Element) {
+    _inherits(Container, _Element);
+
+    var _super6 = _createSuper(Container);
+
+    function Container() {
+      _classCallCheck(this, Container);
+
+      return _super6.apply(this, arguments);
+    }
+
+    _createClass(Container, [{
+      key: "flatten",
+      value: function flatten() {
+        var parent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this;
+        var index = arguments.length > 1 ? arguments[1] : undefined;
+        this.each(function () {
+          if (this instanceof Container) {
+            return this.flatten().ungroup();
+          }
+        });
+        return this;
+      }
+    }, {
+      key: "ungroup",
+      value: function ungroup() {
+        var parent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.parent();
+        var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : parent.index(this);
+        // when parent != this, we want append all elements to the end
+        index = index === -1 ? parent.children().length : index;
+        this.each(function (i, children) {
+          // reverse each
+          return children[children.length - i - 1].toParent(parent, index);
+        });
+        return this.remove();
+      }
+    }]);
+
+    return Container;
+  }(Element);
+
+  register(Container, "Container");
+
+  var Defs = /*#__PURE__*/function (_Container) {
+    _inherits(Defs, _Container);
+
+    var _super7 = _createSuper(Defs);
+
+    function Defs(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Defs);
+
+      return _super7.call(this, nodeOrNew("defs", node), attrs);
+    }
+
+    _createClass(Defs, [{
+      key: "flatten",
+      value: function flatten() {
+        return this;
+      }
+    }, {
+      key: "ungroup",
+      value: function ungroup() {
+        return this;
+      }
+    }]);
+
+    return Defs;
+  }(Container);
+
+  register(Defs, "Defs");
+
+  var Shape = /*#__PURE__*/function (_Element2) {
+    _inherits(Shape, _Element2);
+
+    var _super8 = _createSuper(Shape);
+
+    function Shape() {
+      _classCallCheck(this, Shape);
+
+      return _super8.apply(this, arguments);
+    }
+
+    return _createClass(Shape);
+  }(Element);
+
+  register(Shape, "Shape");
+
+  function rx(rx) {
+    return this.attr("rx", rx);
+  } // Radius y value
+
+
+  function ry(ry) {
+    return this.attr("ry", ry);
+  } // Move over x-axis
+
+
+  function x$3(x) {
+    return x == null ? this.cx() - this.rx() : this.cx(x + this.rx());
+  } // Move over y-axis
+
+
+  function y$3(y) {
+    return y == null ? this.cy() - this.ry() : this.cy(y + this.ry());
+  } // Move by center over x-axis
+
+
+  function cx$1(x) {
+    return this.attr("cx", x);
+  } // Move by center over y-axis
+
+
+  function cy$1(y) {
+    return this.attr("cy", y);
+  } // Set width of element
+
+
+  function width$2(width) {
+    return width == null ? this.rx() * 2 : this.rx(new SVGNumber(width).divide(2));
+  } // Set height of element
+
+
+  function height$2(height) {
+    return height == null ? this.ry() * 2 : this.ry(new SVGNumber(height).divide(2));
+  }
+
+  var circled = {
+    __proto__: null,
+    rx: rx,
+    ry: ry,
+    x: x$3,
+    y: y$3,
+    cx: cx$1,
+    cy: cy$1,
+    width: width$2,
+    height: height$2
+  };
+
+  var Ellipse = /*#__PURE__*/function (_Shape) {
+    _inherits(Ellipse, _Shape);
+
+    var _super9 = _createSuper(Ellipse);
+
+    function Ellipse(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Ellipse);
+
+      return _super9.call(this, nodeOrNew("ellipse", node), attrs);
+    }
+
+    _createClass(Ellipse, [{
+      key: "size",
+      value: function size(width, height) {
+        var p = proportionalSize(this, width, height);
+        return this.rx(new SVGNumber(p.width).divide(2)).ry(new SVGNumber(p.height).divide(2));
+      }
+    }]);
+
+    return Ellipse;
+  }(Shape);
+
+  extend(Ellipse, circled);
+  registerMethods("Container", {
+    // Create an ellipse
+    ellipse: wrapWithAttrCheck(function () {
+      var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : width;
+      return this.put(new Ellipse()).size(width, height).move(0, 0);
+    })
+  });
+  register(Ellipse, "Ellipse");
+
+  var Fragment = /*#__PURE__*/function (_Dom2) {
+    _inherits(Fragment, _Dom2);
+
+    var _super10 = _createSuper(Fragment);
+
+    function Fragment() {
+      var node = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : globals.document.createDocumentFragment();
+
+      _classCallCheck(this, Fragment);
+
+      return _super10.call(this, node);
+    } // Import / Export raw xml
+
+
+    _createClass(Fragment, [{
+      key: "xml",
+      value: function xml(xmlOrFn, outerXML, ns) {
+        if (typeof xmlOrFn === "boolean") {
+          ns = outerXML;
+          outerXML = xmlOrFn;
+          xmlOrFn = null;
+        } // because this is a fragment we have to put all elements into a wrapper first
+        // before we can get the innerXML from it
+
+
+        if (xmlOrFn == null || typeof xmlOrFn === "function") {
+          var wrapper = new Dom(create("wrapper", ns));
+          wrapper.add(this.node.cloneNode(true));
+          return wrapper.xml(false, ns);
+        } // Act as setter if we got a string
+
+
+        return _get(_getPrototypeOf(Fragment.prototype), "xml", this).call(this, xmlOrFn, false, ns);
+      }
+    }]);
+
+    return Fragment;
+  }(Dom);
+
+  register(Fragment, "Fragment");
+
+  function from(x, y) {
+    return (this._element || this).type === "radialGradient" ? this.attr({
+      fx: new SVGNumber(x),
+      fy: new SVGNumber(y)
+    }) : this.attr({
+      x1: new SVGNumber(x),
+      y1: new SVGNumber(y)
+    });
+  }
+
+  function to(x, y) {
+    return (this._element || this).type === "radialGradient" ? this.attr({
+      cx: new SVGNumber(x),
+      cy: new SVGNumber(y)
+    }) : this.attr({
+      x2: new SVGNumber(x),
+      y2: new SVGNumber(y)
+    });
+  }
+
+  var gradiented = {
+    __proto__: null,
+    from: from,
+    to: to
+  };
+
+  var Gradient = /*#__PURE__*/function (_Container2) {
+    _inherits(Gradient, _Container2);
+
+    var _super11 = _createSuper(Gradient);
+
+    function Gradient(type, attrs) {
+      _classCallCheck(this, Gradient);
+
+      return _super11.call(this, nodeOrNew(type + "Gradient", typeof type === "string" ? null : type), attrs);
+    } // custom attr to handle transform
+
+
+    _createClass(Gradient, [{
+      key: "attr",
+      value: function attr(a, b, c) {
+        if (a === "transform") a = "gradientTransform";
+        return _get(_getPrototypeOf(Gradient.prototype), "attr", this).call(this, a, b, c);
+      }
+    }, {
+      key: "bbox",
+      value: function bbox() {
+        return new Box();
+      }
+    }, {
+      key: "targets",
+      value: function targets() {
+        return baseFind('svg [fill*="' + this.id() + '"]');
+      } // Alias string conversion to fill
+
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.url();
+      } // Update gradient
+
+    }, {
+      key: "update",
+      value: function update(block) {
+        // remove all stops
+        this.clear(); // invoke passed block
+
+        if (typeof block === "function") {
+          block.call(this, this);
+        }
+
+        return this;
+      } // Return the fill id
+
+    }, {
+      key: "url",
+      value: function url() {
+        return 'url("#' + this.id() + '")';
+      }
+    }]);
+
+    return Gradient;
+  }(Container);
+
+  extend(Gradient, gradiented);
+  registerMethods({
+    Container: {
+      // Create gradient element in defs
+      gradient: function gradient() {
+        var _this$defs;
+
+        return (_this$defs = this.defs()).gradient.apply(_this$defs, arguments);
+      }
+    },
+    // define gradient
+    Defs: {
+      gradient: wrapWithAttrCheck(function (type, block) {
+        return this.put(new Gradient(type)).update(block);
+      })
+    }
+  });
+  register(Gradient, "Gradient");
+
+  var Pattern = /*#__PURE__*/function (_Container3) {
+    _inherits(Pattern, _Container3);
+
+    var _super12 = _createSuper(Pattern);
+
+    // Initialize node
+    function Pattern(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Pattern);
+
+      return _super12.call(this, nodeOrNew("pattern", node), attrs);
+    } // custom attr to handle transform
+
+
+    _createClass(Pattern, [{
+      key: "attr",
+      value: function attr(a, b, c) {
+        if (a === "transform") a = "patternTransform";
+        return _get(_getPrototypeOf(Pattern.prototype), "attr", this).call(this, a, b, c);
+      }
+    }, {
+      key: "bbox",
+      value: function bbox() {
+        return new Box();
+      }
+    }, {
+      key: "targets",
+      value: function targets() {
+        return baseFind('svg [fill*="' + this.id() + '"]');
+      } // Alias string conversion to fill
+
+    }, {
+      key: "toString",
+      value: function toString() {
+        return this.url();
+      } // Update pattern by rebuilding
+
+    }, {
+      key: "update",
+      value: function update(block) {
+        // remove content
+        this.clear(); // invoke passed block
+
+        if (typeof block === "function") {
+          block.call(this, this);
+        }
+
+        return this;
+      } // Return the fill id
+
+    }, {
+      key: "url",
+      value: function url() {
+        return 'url("#' + this.id() + '")';
+      }
+    }]);
+
+    return Pattern;
+  }(Container);
+
+  registerMethods({
+    Container: {
+      // Create pattern element in defs
+      pattern: function pattern() {
+        var _this$defs2;
+
+        return (_this$defs2 = this.defs()).pattern.apply(_this$defs2, arguments);
+      }
+    },
+    Defs: {
+      pattern: wrapWithAttrCheck(function (width, height, block) {
+        return this.put(new Pattern()).update(block).attr({
+          x: 0,
+          y: 0,
+          width: width,
+          height: height,
+          patternUnits: "userSpaceOnUse"
+        });
+      })
+    }
+  });
+  register(Pattern, "Pattern");
+
+  var Image = /*#__PURE__*/function (_Shape2) {
+    _inherits(Image, _Shape2);
+
+    var _super13 = _createSuper(Image);
+
+    function Image(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Image);
+
+      return _super13.call(this, nodeOrNew("image", node), attrs);
+    } // (re)load image
+
+
+    _createClass(Image, [{
+      key: "load",
+      value: function load(url, callback) {
+        if (!url) return this;
+        var img = new globals.window.Image();
+
+        _on(img, "load", function (e) {
+          var p = this.parent(Pattern); // ensure image size
+
+          if (this.width() === 0 && this.height() === 0) {
+            this.size(img.width, img.height);
+          }
+
+          if (p instanceof Pattern) {
+            // ensure pattern size if not set
+            if (p.width() === 0 && p.height() === 0) {
+              p.size(this.width(), this.height());
+            }
+          }
+
+          if (typeof callback === "function") {
+            callback.call(this, e);
+          }
+        }, this);
+
+        _on(img, "load error", function () {
+          // dont forget to unbind memory leaking events
+          _off(img);
+        });
+
+        return this.attr("href", img.src = url, xlink);
+      }
+    }]);
+
+    return Image;
+  }(Shape);
+
+  registerAttrHook(function (attr, val, _this) {
+    // convert image fill and stroke to patterns
+    if (attr === "fill" || attr === "stroke") {
+      if (isImage.test(val)) {
+        val = _this.root().defs().image(val);
+      }
+    }
+
+    if (val instanceof Image) {
+      val = _this.root().defs().pattern(0, 0, function (pattern) {
+        pattern.add(val);
+      });
+    }
+
+    return val;
+  });
+  registerMethods({
+    Container: {
+      // create image element, load image and set its size
+      image: wrapWithAttrCheck(function (source, callback) {
+        return this.put(new Image()).size(0, 0).load(source, callback);
+      })
+    }
+  });
+  register(Image, "Image");
+
+  var PointArray = /*#__PURE__*/function (_SVGArray) {
+    _inherits(PointArray, _SVGArray);
+
+    var _super14 = _createSuper(PointArray);
+
+    function PointArray() {
+      _classCallCheck(this, PointArray);
+
+      return _super14.apply(this, arguments);
+    }
+
+    _createClass(PointArray, [{
+      key: "bbox",
+      value: // Get bounding box of points
+      function bbox() {
+        var maxX = -Infinity;
+        var maxY = -Infinity;
+        var minX = Infinity;
+        var minY = Infinity;
+        this.forEach(function (el) {
+          maxX = Math.max(el[0], maxX);
+          maxY = Math.max(el[1], maxY);
+          minX = Math.min(el[0], minX);
+          minY = Math.min(el[1], minY);
+        });
+        return new Box(minX, minY, maxX - minX, maxY - minY);
+      } // Move point string
+
+    }, {
+      key: "move",
+      value: function move(x, y) {
+        var box = this.bbox(); // get relative offset
+
+        x -= box.x;
+        y -= box.y; // move every point
+
+        if (!isNaN(x) && !isNaN(y)) {
+          for (var i = this.length - 1; i >= 0; i--) {
+            this[i] = [this[i][0] + x, this[i][1] + y];
+          }
+        }
+
+        return this;
+      } // Parse point string and flat array
+
+    }, {
+      key: "parse",
+      value: function parse() {
+        var array = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [0, 0];
+        var points = []; // if it is an array, we flatten it and therefore clone it to 1 depths
+
+        if (array instanceof Array) {
+          array = Array.prototype.concat.apply([], array);
+        } else {
+          // Else, it is considered as a string
+          // parse points
+          array = array.trim().split(delimiter).map(parseFloat);
+        } // validate points - https://svgwg.org/svg2-draft/shapes.html#DataTypePoints
+        // Odd number of coordinates is an error. In such cases, drop the last odd coordinate.
+
+
+        if (array.length % 2 !== 0) array.pop(); // wrap points in two-tuples
+
+        for (var i = 0, len = array.length; i < len; i = i + 2) {
+          points.push([array[i], array[i + 1]]);
+        }
+
+        return points;
+      } // Resize poly string
+
+    }, {
+      key: "size",
+      value: function size(width, height) {
+        var i;
+        var box = this.bbox(); // recalculate position of all points according to new size
+
+        for (i = this.length - 1; i >= 0; i--) {
+          if (box.width) this[i][0] = (this[i][0] - box.x) * width / box.width + box.x;
+          if (box.height) this[i][1] = (this[i][1] - box.y) * height / box.height + box.y;
+        }
+
+        return this;
+      } // Convert array to line object
+
+    }, {
+      key: "toLine",
+      value: function toLine() {
+        return {
+          x1: this[0][0],
+          y1: this[0][1],
+          x2: this[1][0],
+          y2: this[1][1]
+        };
+      } // Convert array to string
+
+    }, {
+      key: "toString",
+      value: function toString() {
+        var array = []; // convert to a poly point string
+
+        for (var i = 0, il = this.length; i < il; i++) {
+          array.push(this[i].join(","));
+        }
+
+        return array.join(" ");
+      }
+    }, {
+      key: "transform",
+      value: function transform(m) {
+        return this.clone().transformO(m);
+      } // transform points with matrix (similar to Point.transform)
+
+    }, {
+      key: "transformO",
+      value: function transformO(m) {
+        if (!Matrix.isMatrixLike(m)) {
+          m = new Matrix(m);
+        }
+
+        for (var i = this.length; i--;) {
+          // Perform the matrix multiplication
+          var _this$i = _slicedToArray(this[i], 2),
+              _x4 = _this$i[0],
+              _y5 = _this$i[1];
+
+          this[i][0] = m.a * _x4 + m.c * _y5 + m.e;
+          this[i][1] = m.b * _x4 + m.d * _y5 + m.f;
+        }
+
+        return this;
+      }
+    }]);
+
+    return PointArray;
+  }(SVGArray);
+
+  var MorphArray = PointArray; // Move by left top corner over x-axis
+
+  function x$2(x) {
+    return x == null ? this.bbox().x : this.move(x, this.bbox().y);
+  } // Move by left top corner over y-axis
+
+
+  function y$2(y) {
+    return y == null ? this.bbox().y : this.move(this.bbox().x, y);
+  } // Set width of element
+
+
+  function width$1(width) {
+    var b = this.bbox();
+    return width == null ? b.width : this.size(width, b.height);
+  } // Set height of element
+
+
+  function height$1(height) {
+    var b = this.bbox();
+    return height == null ? b.height : this.size(b.width, height);
+  }
+
+  var pointed = {
+    __proto__: null,
+    MorphArray: MorphArray,
+    x: x$2,
+    y: y$2,
+    width: width$1,
+    height: height$1
+  };
+
+  var Line = /*#__PURE__*/function (_Shape3) {
+    _inherits(Line, _Shape3);
+
+    var _super15 = _createSuper(Line);
+
+    // Initialize node
+    function Line(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Line);
+
+      return _super15.call(this, nodeOrNew("line", node), attrs);
+    } // Get array
+
+
+    _createClass(Line, [{
+      key: "array",
+      value: function array() {
+        return new PointArray([[this.attr("x1"), this.attr("y1")], [this.attr("x2"), this.attr("y2")]]);
+      } // Move by left top corner
+
+    }, {
+      key: "move",
+      value: function move(x, y) {
+        return this.attr(this.array().move(x, y).toLine());
+      } // Overwrite native plot() method
+
+    }, {
+      key: "plot",
+      value: function plot(x1, y1, x2, y2) {
+        if (x1 == null) {
+          return this.array();
+        } else if (typeof y1 !== "undefined") {
+          x1 = {
+            x1: x1,
+            y1: y1,
+            x2: x2,
+            y2: y2
+          };
+        } else {
+          x1 = new PointArray(x1).toLine();
+        }
+
+        return this.attr(x1);
+      } // Set element size to given width and height
+
+    }, {
+      key: "size",
+      value: function size(width, height) {
+        var p = proportionalSize(this, width, height);
+        return this.attr(this.array().size(p.width, p.height).toLine());
+      }
+    }]);
+
+    return Line;
+  }(Shape);
+
+  extend(Line, pointed);
+  registerMethods({
+    Container: {
+      // Create a line element
+      line: wrapWithAttrCheck(function () {
+        for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+          args[_key6] = arguments[_key6];
+        }
+
+        // make sure plot is called as a setter
+        // x1 is not necessarily a number, it can also be an array, a string and a PointArray
+        return Line.prototype.plot.apply(this.put(new Line()), args[0] != null ? args : [0, 0, 0, 0]);
+      })
+    }
+  });
+  register(Line, "Line");
+
+  var Marker = /*#__PURE__*/function (_Container4) {
+    _inherits(Marker, _Container4);
+
+    var _super16 = _createSuper(Marker);
+
+    // Initialize node
+    function Marker(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Marker);
+
+      return _super16.call(this, nodeOrNew("marker", node), attrs);
+    } // Set height of element
+
+
+    _createClass(Marker, [{
+      key: "height",
+      value: function height(_height3) {
+        return this.attr("markerHeight", _height3);
+      }
+    }, {
+      key: "orient",
+      value: function orient(_orient) {
+        return this.attr("orient", _orient);
+      } // Set marker refX and refY
+
+    }, {
+      key: "ref",
+      value: function ref(x, y) {
+        return this.attr("refX", x).attr("refY", y);
+      } // Return the fill id
+
+    }, {
+      key: "toString",
+      value: function toString() {
+        return "url(#" + this.id() + ")";
+      } // Update marker
+
+    }, {
+      key: "update",
+      value: function update(block) {
+        // remove all content
+        this.clear(); // invoke passed block
+
+        if (typeof block === "function") {
+          block.call(this, this);
+        }
+
+        return this;
+      } // Set width of element
+
+    }, {
+      key: "width",
+      value: function width(_width3) {
+        return this.attr("markerWidth", _width3);
+      }
+    }]);
+
+    return Marker;
+  }(Container);
+
+  registerMethods({
+    Container: {
+      marker: function marker() {
+        var _this$defs3;
+
+        // Create marker element in defs
+        return (_this$defs3 = this.defs()).marker.apply(_this$defs3, arguments);
+      }
+    },
+    Defs: {
+      // Create marker
+      marker: wrapWithAttrCheck(function (width, height, block) {
+        // Set default viewbox to match the width and height, set ref to cx and cy and set orient to auto
+        return this.put(new Marker()).size(width, height).ref(width / 2, height / 2).viewbox(0, 0, width, height).attr("orient", "auto").update(block);
+      })
+    },
+    marker: {
+      // Create and attach markers
+      marker: function marker(_marker, width, height, block) {
+        var attr = ["marker"]; // Build attribute name
+
+        if (_marker !== "all") attr.push(_marker);
+        attr = attr.join("-"); // Set marker attribute
+
+        _marker = arguments[1] instanceof Marker ? arguments[1] : this.defs().marker(width, height, block);
+        return this.attr(attr, _marker);
+      }
+    }
+  });
+  register(Marker, "Marker");
+  /***
+  Base Class
+  ==========
+  The base stepper class that will be
+  ***/
+
+  function makeSetterGetter(k, f) {
+    return function (v) {
+      if (v == null) return this[k];
+      this[k] = v;
+      if (f) f.call(this);
+      return this;
+    };
+  }
+
+  var easing = {
+    "-": function _(pos) {
+      return pos;
+    },
+    "<>": function _(pos) {
+      return -Math.cos(pos * Math.PI) / 2 + 0.5;
+    },
+    ">": function _(pos) {
+      return Math.sin(pos * Math.PI / 2);
+    },
+    "<": function _(pos) {
+      return -Math.cos(pos * Math.PI / 2) + 1;
+    },
+    bezier: function bezier(x1, y1, x2, y2) {
+      // see https://www.w3.org/TR/css-easing-1/#cubic-bezier-algo
+      return function (t) {
+        if (t < 0) {
+          if (x1 > 0) {
+            return y1 / x1 * t;
+          } else if (x2 > 0) {
+            return y2 / x2 * t;
+          } else {
+            return 0;
+          }
+        } else if (t > 1) {
+          if (x2 < 1) {
+            return (1 - y2) / (1 - x2) * t + (y2 - x2) / (1 - x2);
+          } else if (x1 < 1) {
+            return (1 - y1) / (1 - x1) * t + (y1 - x1) / (1 - x1);
+          } else {
+            return 1;
+          }
+        } else {
+          return 3 * t * Math.pow(1 - t, 2) * y1 + 3 * Math.pow(t, 2) * (1 - t) * y2 + Math.pow(t, 3);
+        }
+      };
+    },
+    // see https://www.w3.org/TR/css-easing-1/#step-timing-function-algo
+    steps: function steps(_steps) {
+      var stepPosition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "end";
+      // deal with "jump-" prefix
+      stepPosition = stepPosition.split("-").reverse()[0];
+      var jumps = _steps;
+
+      if (stepPosition === "none") {
+        --jumps;
+      } else if (stepPosition === "both") {
+        ++jumps;
+      } // The beforeFlag is essentially useless
+
+
+      return function (t) {
+        var beforeFlag = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        // Step is called currentStep in referenced url
+        var step = Math.floor(t * _steps);
+        var jumping = t * step % 1 === 0;
+
+        if (stepPosition === "start" || stepPosition === "both") {
+          ++step;
+        }
+
+        if (beforeFlag && jumping) {
+          --step;
+        }
+
+        if (t >= 0 && step < 0) {
+          step = 0;
+        }
+
+        if (t <= 1 && step > jumps) {
+          step = jumps;
+        }
+
+        return step / jumps;
+      };
+    }
+  };
+
+  var Stepper = /*#__PURE__*/function () {
+    function Stepper() {
+      _classCallCheck(this, Stepper);
+    }
+
+    _createClass(Stepper, [{
+      key: "done",
+      value: function done() {
+        return false;
+      }
+    }]);
+
+    return Stepper;
+  }();
+  /***
+  Easing Functions
+  ================
+  ***/
+
+
+  var Ease = /*#__PURE__*/function (_Stepper) {
+    _inherits(Ease, _Stepper);
+
+    var _super17 = _createSuper(Ease);
+
+    function Ease() {
+      var _this9;
+
+      var fn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : timeline.ease;
+
+      _classCallCheck(this, Ease);
+
+      _this9 = _super17.call(this);
+      _this9.ease = easing[fn] || fn;
+      return _this9;
+    }
+
+    _createClass(Ease, [{
+      key: "step",
+      value: function step(from, to, pos) {
+        if (typeof from !== "number") {
+          return pos < 1 ? from : to;
+        }
+
+        return from + (to - from) * this.ease(pos);
+      }
+    }]);
+
+    return Ease;
+  }(Stepper);
+  /***
+  Controller Types
+  ================
+  ***/
+
+
+  var Controller = /*#__PURE__*/function (_Stepper2) {
+    _inherits(Controller, _Stepper2);
+
+    var _super18 = _createSuper(Controller);
+
+    function Controller(fn) {
+      var _this10;
+
+      _classCallCheck(this, Controller);
+
+      _this10 = _super18.call(this);
+      _this10.stepper = fn;
+      return _this10;
+    }
+
+    _createClass(Controller, [{
+      key: "done",
+      value: function done(c) {
+        return c.done;
+      }
+    }, {
+      key: "step",
+      value: function step(current, target, dt, c) {
+        return this.stepper(current, target, dt, c);
+      }
+    }]);
+
+    return Controller;
+  }(Stepper);
+
+  function recalculate() {
+    // Apply the default parameters
+    var duration = (this._duration || 500) / 1000;
+    var overshoot = this._overshoot || 0; // Calculate the PID natural response
+
+    var eps = 1e-10;
+    var pi = Math.PI;
+    var os = Math.log(overshoot / 100 + eps);
+    var zeta = -os / Math.sqrt(pi * pi + os * os);
+    var wn = 3.9 / (zeta * duration); // Calculate the Spring values
+
+    this.d = 2 * zeta * wn;
+    this.k = wn * wn;
+  }
+
+  var Spring = /*#__PURE__*/function (_Controller) {
+    _inherits(Spring, _Controller);
+
+    var _super19 = _createSuper(Spring);
+
+    function Spring() {
+      var _this11;
+
+      var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 500;
+      var overshoot = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+      _classCallCheck(this, Spring);
+
+      _this11 = _super19.call(this);
+
+      _this11.duration(duration).overshoot(overshoot);
+
+      return _this11;
+    }
+
+    _createClass(Spring, [{
+      key: "step",
+      value: function step(current, target, dt, c) {
+        if (typeof current === "string") return current;
+        c.done = dt === Infinity;
+        if (dt === Infinity) return target;
+        if (dt === 0) return current;
+        if (dt > 100) dt = 16;
+        dt /= 1000; // Get the previous velocity
+
+        var velocity = c.velocity || 0; // Apply the control to get the new position and store it
+
+        var acceleration = -this.d * velocity - this.k * (current - target);
+        var newPosition = current + velocity * dt + acceleration * dt * dt / 2; // Store the velocity
+
+        c.velocity = velocity + acceleration * dt; // Figure out if we have converged, and if so, pass the value
+
+        c.done = Math.abs(target - newPosition) + Math.abs(velocity) < 0.002;
+        return c.done ? target : newPosition;
+      }
+    }]);
+
+    return Spring;
+  }(Controller);
+
+  extend(Spring, {
+    duration: makeSetterGetter("_duration", recalculate),
+    overshoot: makeSetterGetter("_overshoot", recalculate)
+  });
+
+  var PID = /*#__PURE__*/function (_Controller2) {
+    _inherits(PID, _Controller2);
+
+    var _super20 = _createSuper(PID);
+
+    function PID() {
+      var _this12;
+
+      var p = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.1;
+      var i = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.01;
+      var d = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var windup = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1000;
+
+      _classCallCheck(this, PID);
+
+      _this12 = _super20.call(this);
+
+      _this12.p(p).i(i).d(d).windup(windup);
+
+      return _this12;
+    }
+
+    _createClass(PID, [{
+      key: "step",
+      value: function step(current, target, dt, c) {
+        if (typeof current === "string") return current;
+        c.done = dt === Infinity;
+        if (dt === Infinity) return target;
+        if (dt === 0) return current;
+        var p = target - current;
+        var i = (c.integral || 0) + p * dt;
+        var d = (p - (c.error || 0)) / dt;
+        var windup = this._windup; // antiwindup
+
+        if (windup !== false) {
+          i = Math.max(-windup, Math.min(i, windup));
+        }
+
+        c.error = p;
+        c.integral = i;
+        c.done = Math.abs(p) < 0.001;
+        return c.done ? target : current + (this.P * p + this.I * i + this.D * d);
+      }
+    }]);
+
+    return PID;
+  }(Controller);
+
+  extend(PID, {
+    windup: makeSetterGetter("_windup"),
+    p: makeSetterGetter("P"),
+    i: makeSetterGetter("I"),
+    d: makeSetterGetter("D")
+  });
+  var segmentParameters = {
+    M: 2,
+    L: 2,
+    H: 1,
+    V: 1,
+    C: 6,
+    S: 4,
+    Q: 4,
+    T: 2,
+    A: 7,
+    Z: 0
+  };
+  var pathHandlers = {
+    M: function M(c, p, p0) {
+      p.x = p0.x = c[0];
+      p.y = p0.y = c[1];
+      return ["M", p.x, p.y];
+    },
+    L: function L(c, p) {
+      p.x = c[0];
+      p.y = c[1];
+      return ["L", c[0], c[1]];
+    },
+    H: function H(c, p) {
+      p.x = c[0];
+      return ["H", c[0]];
+    },
+    V: function V(c, p) {
+      p.y = c[0];
+      return ["V", c[0]];
+    },
+    C: function C(c, p) {
+      p.x = c[4];
+      p.y = c[5];
+      return ["C", c[0], c[1], c[2], c[3], c[4], c[5]];
+    },
+    S: function S(c, p) {
+      p.x = c[2];
+      p.y = c[3];
+      return ["S", c[0], c[1], c[2], c[3]];
+    },
+    Q: function Q(c, p) {
+      p.x = c[2];
+      p.y = c[3];
+      return ["Q", c[0], c[1], c[2], c[3]];
+    },
+    T: function T(c, p) {
+      p.x = c[0];
+      p.y = c[1];
+      return ["T", c[0], c[1]];
+    },
+    Z: function Z(c, p, p0) {
+      p.x = p0.x;
+      p.y = p0.y;
+      return ["Z"];
+    },
+    A: function A(c, p) {
+      p.x = c[5];
+      p.y = c[6];
+      return ["A", c[0], c[1], c[2], c[3], c[4], c[5], c[6]];
+    }
+  };
+  var mlhvqtcsaz = "mlhvqtcsaz".split("");
+
+  for (var i = 0, il = mlhvqtcsaz.length; i < il; ++i) {
+    pathHandlers[mlhvqtcsaz[i]] = function (i) {
+      return function (c, p, p0) {
+        if (i === "H") c[0] = c[0] + p.x;else if (i === "V") c[0] = c[0] + p.y;else if (i === "A") {
+          c[5] = c[5] + p.x;
+          c[6] = c[6] + p.y;
+        } else {
+          for (var j = 0, jl = c.length; j < jl; ++j) {
+            c[j] = c[j] + (j % 2 ? p.y : p.x);
+          }
+        }
+        return pathHandlers[i](c, p, p0);
+      };
+    }(mlhvqtcsaz[i].toUpperCase());
+  }
+
+  function makeAbsolut(parser) {
+    var command = parser.segment[0];
+    return pathHandlers[command](parser.segment.slice(1), parser.p, parser.p0);
+  }
+
+  function segmentComplete(parser) {
+    return parser.segment.length && parser.segment.length - 1 === segmentParameters[parser.segment[0].toUpperCase()];
+  }
+
+  function startNewSegment(parser, token) {
+    parser.inNumber && finalizeNumber(parser, false);
+    var pathLetter = isPathLetter.test(token);
+
+    if (pathLetter) {
+      parser.segment = [token];
+    } else {
+      var lastCommand = parser.lastCommand;
+      var small = lastCommand.toLowerCase();
+      var isSmall = lastCommand === small;
+      parser.segment = [small === "m" ? isSmall ? "l" : "L" : lastCommand];
+    }
+
+    parser.inSegment = true;
+    parser.lastCommand = parser.segment[0];
+    return pathLetter;
+  }
+
+  function finalizeNumber(parser, inNumber) {
+    if (!parser.inNumber) throw new Error("Parser Error");
+    parser.number && parser.segment.push(parseFloat(parser.number));
+    parser.inNumber = inNumber;
+    parser.number = "";
+    parser.pointSeen = false;
+    parser.hasExponent = false;
+
+    if (segmentComplete(parser)) {
+      finalizeSegment(parser);
+    }
+  }
+
+  function finalizeSegment(parser) {
+    parser.inSegment = false;
+
+    if (parser.absolute) {
+      parser.segment = makeAbsolut(parser);
+    }
+
+    parser.segments.push(parser.segment);
+  }
+
+  function isArcFlag(parser) {
+    if (!parser.segment.length) return false;
+    var isArc = parser.segment[0].toUpperCase() === "A";
+    var length = parser.segment.length;
+    return isArc && (length === 4 || length === 5);
+  }
+
+  function isExponential(parser) {
+    return parser.lastToken.toUpperCase() === "E";
+  }
+
+  function pathParser(d) {
+    var toAbsolute = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    var index = 0;
+    var token = "";
+    var parser = {
+      segment: [],
+      inNumber: false,
+      number: "",
+      lastToken: "",
+      inSegment: false,
+      segments: [],
+      pointSeen: false,
+      hasExponent: false,
+      absolute: toAbsolute,
+      p0: new Point(),
+      p: new Point()
+    };
+
+    while (parser.lastToken = token, token = d.charAt(index++)) {
+      if (!parser.inSegment) {
+        if (startNewSegment(parser, token)) {
+          continue;
+        }
+      }
+
+      if (token === ".") {
+        if (parser.pointSeen || parser.hasExponent) {
+          finalizeNumber(parser, false);
+          --index;
+          continue;
+        }
+
+        parser.inNumber = true;
+        parser.pointSeen = true;
+        parser.number += token;
+        continue;
+      }
+
+      if (!isNaN(parseInt(token))) {
+        if (parser.number === "0" || isArcFlag(parser)) {
+          parser.inNumber = true;
+          parser.number = token;
+          finalizeNumber(parser, true);
+          continue;
+        }
+
+        parser.inNumber = true;
+        parser.number += token;
+        continue;
+      }
+
+      if (token === " " || token === ",") {
+        if (parser.inNumber) {
+          finalizeNumber(parser, false);
+        }
+
+        continue;
+      }
+
+      if (token === "-") {
+        if (parser.inNumber && !isExponential(parser)) {
+          finalizeNumber(parser, false);
+          --index;
+          continue;
+        }
+
+        parser.number += token;
+        parser.inNumber = true;
+        continue;
+      }
+
+      if (token.toUpperCase() === "E") {
+        parser.number += token;
+        parser.hasExponent = true;
+        continue;
+      }
+
+      if (isPathLetter.test(token)) {
+        if (parser.inNumber) {
+          finalizeNumber(parser, false);
+        } else if (!segmentComplete(parser)) {
+          throw new Error("parser Error");
+        } else {
+          finalizeSegment(parser);
+        }
+
+        --index;
+      }
+    }
+
+    if (parser.inNumber) {
+      finalizeNumber(parser, false);
+    }
+
+    if (parser.inSegment && segmentComplete(parser)) {
+      finalizeSegment(parser);
+    }
+
+    return parser.segments;
+  }
+
+  function arrayToString(a) {
+    var s = "";
+
+    for (var _i2 = 0, _il = a.length; _i2 < _il; _i2++) {
+      s += a[_i2][0];
+
+      if (a[_i2][1] != null) {
+        s += a[_i2][1];
+
+        if (a[_i2][2] != null) {
+          s += " ";
+          s += a[_i2][2];
+
+          if (a[_i2][3] != null) {
+            s += " ";
+            s += a[_i2][3];
+            s += " ";
+            s += a[_i2][4];
+
+            if (a[_i2][5] != null) {
+              s += " ";
+              s += a[_i2][5];
+              s += " ";
+              s += a[_i2][6];
+
+              if (a[_i2][7] != null) {
+                s += " ";
+                s += a[_i2][7];
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return s + " ";
+  }
+
+  var PathArray = /*#__PURE__*/function (_SVGArray2) {
+    _inherits(PathArray, _SVGArray2);
+
+    var _super21 = _createSuper(PathArray);
+
+    function PathArray() {
+      _classCallCheck(this, PathArray);
+
+      return _super21.apply(this, arguments);
+    }
+
+    _createClass(PathArray, [{
+      key: "bbox",
+      value: // Get bounding box of path
+      function bbox() {
+        parser().path.setAttribute("d", this.toString());
+        return new Box(parser.nodes.path.getBBox());
+      } // Move path string
+
+    }, {
+      key: "move",
+      value: function move(x, y) {
+        // get bounding box of current situation
+        var box = this.bbox(); // get relative offset
+
+        x -= box.x;
+        y -= box.y;
+
+        if (!isNaN(x) && !isNaN(y)) {
+          // move every point
+          for (var l, _i3 = this.length - 1; _i3 >= 0; _i3--) {
+            l = this[_i3][0];
+
+            if (l === "M" || l === "L" || l === "T") {
+              this[_i3][1] += x;
+              this[_i3][2] += y;
+            } else if (l === "H") {
+              this[_i3][1] += x;
+            } else if (l === "V") {
+              this[_i3][1] += y;
+            } else if (l === "C" || l === "S" || l === "Q") {
+              this[_i3][1] += x;
+              this[_i3][2] += y;
+              this[_i3][3] += x;
+              this[_i3][4] += y;
+
+              if (l === "C") {
+                this[_i3][5] += x;
+                this[_i3][6] += y;
+              }
+            } else if (l === "A") {
+              this[_i3][6] += x;
+              this[_i3][7] += y;
+            }
+          }
+        }
+
+        return this;
+      } // Absolutize and parse path to array
+
+    }, {
+      key: "parse",
+      value: function parse() {
+        var d = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "M0 0";
+
+        if (Array.isArray(d)) {
+          d = Array.prototype.concat.apply([], d).toString();
+        }
+
+        return pathParser(d);
+      } // Resize path string
+
+    }, {
+      key: "size",
+      value: function size(width, height) {
+        // get bounding box of current situation
+        var box = this.bbox();
+        var i, l; // If the box width or height is 0 then we ignore
+        // transformations on the respective axis
+
+        box.width = box.width === 0 ? 1 : box.width;
+        box.height = box.height === 0 ? 1 : box.height; // recalculate position of all points according to new size
+
+        for (i = this.length - 1; i >= 0; i--) {
+          l = this[i][0];
+
+          if (l === "M" || l === "L" || l === "T") {
+            this[i][1] = (this[i][1] - box.x) * width / box.width + box.x;
+            this[i][2] = (this[i][2] - box.y) * height / box.height + box.y;
+          } else if (l === "H") {
+            this[i][1] = (this[i][1] - box.x) * width / box.width + box.x;
+          } else if (l === "V") {
+            this[i][1] = (this[i][1] - box.y) * height / box.height + box.y;
+          } else if (l === "C" || l === "S" || l === "Q") {
+            this[i][1] = (this[i][1] - box.x) * width / box.width + box.x;
+            this[i][2] = (this[i][2] - box.y) * height / box.height + box.y;
+            this[i][3] = (this[i][3] - box.x) * width / box.width + box.x;
+            this[i][4] = (this[i][4] - box.y) * height / box.height + box.y;
+
+            if (l === "C") {
+              this[i][5] = (this[i][5] - box.x) * width / box.width + box.x;
+              this[i][6] = (this[i][6] - box.y) * height / box.height + box.y;
+            }
+          } else if (l === "A") {
+            // resize radii
+            this[i][1] = this[i][1] * width / box.width;
+            this[i][2] = this[i][2] * height / box.height; // move position values
+
+            this[i][6] = (this[i][6] - box.x) * width / box.width + box.x;
+            this[i][7] = (this[i][7] - box.y) * height / box.height + box.y;
+          }
+        }
+
+        return this;
+      } // Convert array to string
+
+    }, {
+      key: "toString",
+      value: function toString() {
+        return arrayToString(this);
+      }
+    }]);
+
+    return PathArray;
+  }(SVGArray);
+
+  var getClassForType = function getClassForType(value) {
+    var type = _typeof(value);
+
+    if (type === "number") {
+      return SVGNumber;
+    } else if (type === "string") {
+      if (Color.isColor(value)) {
+        return Color;
+      } else if (delimiter.test(value)) {
+        return isPathLetter.test(value) ? PathArray : SVGArray;
+      } else if (numberAndUnit.test(value)) {
+        return SVGNumber;
+      } else {
+        return NonMorphable;
+      }
+    } else if (morphableTypes.indexOf(value.constructor) > -1) {
+      return value.constructor;
+    } else if (Array.isArray(value)) {
+      return SVGArray;
+    } else if (type === "object") {
+      return ObjectBag;
+    } else {
+      return NonMorphable;
+    }
+  };
+
+  var Morphable = /*#__PURE__*/function () {
+    function Morphable(stepper) {
+      _classCallCheck(this, Morphable);
+
+      this._stepper = stepper || new Ease("-");
+      this._from = null;
+      this._to = null;
+      this._type = null;
+      this._context = null;
+      this._morphObj = null;
+    }
+
+    _createClass(Morphable, [{
+      key: "at",
+      value: function at(pos) {
+        var _this = this;
+
+        return this._morphObj.fromArray(this._from.map(function (i, index) {
+          return _this._stepper.step(i, _this._to[index], pos, _this._context[index], _this._context);
+        }));
+      }
+    }, {
+      key: "done",
+      value: function done() {
+        var complete = this._context.map(this._stepper.done).reduce(function (last, curr) {
+          return last && curr;
+        }, true);
+
+        return complete;
+      }
+    }, {
+      key: "from",
+      value: function from(val) {
+        if (val == null) {
+          return this._from;
+        }
+
+        this._from = this._set(val);
+        return this;
+      }
+    }, {
+      key: "stepper",
+      value: function stepper(_stepper) {
+        if (_stepper == null) return this._stepper;
+        this._stepper = _stepper;
+        return this;
+      }
+    }, {
+      key: "to",
+      value: function to(val) {
+        if (val == null) {
+          return this._to;
+        }
+
+        this._to = this._set(val);
+        return this;
+      }
+    }, {
+      key: "type",
+      value: function type(_type) {
+        // getter
+        if (_type == null) {
+          return this._type;
+        } // setter
+
+
+        this._type = _type;
+        return this;
+      }
+    }, {
+      key: "_set",
+      value: function _set(value) {
+        if (!this._type) {
+          this.type(getClassForType(value));
+        }
+
+        var result = new this._type(value);
+
+        if (this._type === Color) {
+          result = this._to ? result[this._to[4]]() : this._from ? result[this._from[4]]() : result;
+        }
+
+        if (this._type === ObjectBag) {
+          result = this._to ? result.align(this._to) : this._from ? result.align(this._from) : result;
+        }
+
+        result = result.toArray();
+        this._morphObj = this._morphObj || new this._type();
+        this._context = this._context || Array.apply(null, Array(result.length)).map(Object).map(function (o) {
+          o.done = true;
+          return o;
+        });
+        return result;
+      }
+    }]);
+
+    return Morphable;
+  }();
+
+  var NonMorphable = /*#__PURE__*/function () {
+    function NonMorphable() {
+      _classCallCheck(this, NonMorphable);
+
+      this.init.apply(this, arguments);
+    }
+
+    _createClass(NonMorphable, [{
+      key: "init",
+      value: function init(val) {
+        val = Array.isArray(val) ? val[0] : val;
+        this.value = val;
+        return this;
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        return [this.value];
+      }
+    }, {
+      key: "valueOf",
+      value: function valueOf() {
+        return this.value;
+      }
+    }]);
+
+    return NonMorphable;
+  }();
+
+  var TransformBag = /*#__PURE__*/function () {
+    function TransformBag() {
+      _classCallCheck(this, TransformBag);
+
+      this.init.apply(this, arguments);
+    }
+
+    _createClass(TransformBag, [{
+      key: "init",
+      value: function init(obj) {
+        if (Array.isArray(obj)) {
+          obj = {
+            scaleX: obj[0],
+            scaleY: obj[1],
+            shear: obj[2],
+            rotate: obj[3],
+            translateX: obj[4],
+            translateY: obj[5],
+            originX: obj[6],
+            originY: obj[7]
+          };
+        }
+
+        Object.assign(this, TransformBag.defaults, obj);
+        return this;
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        var v = this;
+        return [v.scaleX, v.scaleY, v.shear, v.rotate, v.translateX, v.translateY, v.originX, v.originY];
+      }
+    }]);
+
+    return TransformBag;
+  }();
+
+  TransformBag.defaults = {
+    scaleX: 1,
+    scaleY: 1,
+    shear: 0,
+    rotate: 0,
+    translateX: 0,
+    translateY: 0,
+    originX: 0,
+    originY: 0
+  };
+
+  var sortByKey = function sortByKey(a, b) {
+    return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
+  };
+
+  var ObjectBag = /*#__PURE__*/function () {
+    function ObjectBag() {
+      _classCallCheck(this, ObjectBag);
+
+      this.init.apply(this, arguments);
+    }
+
+    _createClass(ObjectBag, [{
+      key: "align",
+      value: function align(other) {
+        for (var _i4 = 0, _il2 = this.values.length; _i4 < _il2; ++_i4) {
+          if (this.values[_i4] === Color) {
+            var _this$values;
+
+            var space = other[_i4 + 6];
+            var color = new Color(this.values.splice(_i4 + 2, 5))[space]().toArray();
+
+            (_this$values = this.values).splice.apply(_this$values, [_i4 + 2, 0].concat(_toConsumableArray(color)));
+          }
+        }
+
+        return this;
+      }
+    }, {
+      key: "init",
+      value: function init(objOrArr) {
+        this.values = [];
+
+        if (Array.isArray(objOrArr)) {
+          this.values = objOrArr.slice();
+          return;
+        }
+
+        objOrArr = objOrArr || {};
+        var entries = [];
+
+        for (var _i5 in objOrArr) {
+          var Type = getClassForType(objOrArr[_i5]);
+          var val = new Type(objOrArr[_i5]).toArray();
+          entries.push([_i5, Type, val.length].concat(_toConsumableArray(val)));
+        }
+
+        entries.sort(sortByKey);
+        this.values = entries.reduce(function (last, curr) {
+          return last.concat(curr);
+        }, []);
+        return this;
+      }
+    }, {
+      key: "toArray",
+      value: function toArray() {
+        return this.values;
+      }
+    }, {
+      key: "valueOf",
+      value: function valueOf() {
+        var obj = {};
+        var arr = this.values; // for (var i = 0, len = arr.length; i < len; i += 2) {
+
+        while (arr.length) {
+          var key = arr.shift();
+          var Type = arr.shift();
+          var num = arr.shift();
+          var values = arr.splice(0, num);
+          obj[key] = new Type(values).valueOf();
+        }
+
+        return obj;
+      }
+    }]);
+
+    return ObjectBag;
+  }();
+
+  var morphableTypes = [NonMorphable, TransformBag, ObjectBag];
+
+  function registerMorphableType() {
+    var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    morphableTypes.push.apply(morphableTypes, _toConsumableArray([].concat(type)));
+  }
+
+  function makeMorphable() {
+    extend(morphableTypes, {
+      to: function to(val) {
+        return new Morphable().type(this.constructor).from(this.valueOf()).to(val);
+      },
+      fromArray: function fromArray(arr) {
+        this.init(arr);
+        return this;
+      }
+    });
+  }
+
+  var Path = /*#__PURE__*/function (_Shape4) {
+    _inherits(Path, _Shape4);
+
+    var _super22 = _createSuper(Path);
+
+    // Initialize node
+    function Path(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Path);
+
+      return _super22.call(this, nodeOrNew("path", node), attrs);
+    } // Get array
+
+
+    _createClass(Path, [{
+      key: "array",
+      value: function array() {
+        return this._array || (this._array = new PathArray(this.attr("d")));
+      } // Clear array cache
+
+    }, {
+      key: "clear",
+      value: function clear() {
+        delete this._array;
+        return this;
+      } // Set height of element
+
+    }, {
+      key: "height",
+      value: function height(_height4) {
+        return _height4 == null ? this.bbox().height : this.size(this.bbox().width, _height4);
+      } // Move by left top corner
+
+    }, {
+      key: "move",
+      value: function move(x, y) {
+        return this.attr("d", this.array().move(x, y));
+      } // Plot new path
+
+    }, {
+      key: "plot",
+      value: function plot(d) {
+        return d == null ? this.array() : this.clear().attr("d", typeof d === "string" ? d : this._array = new PathArray(d));
+      } // Set element size to given width and height
+
+    }, {
+      key: "size",
+      value: function size(width, height) {
+        var p = proportionalSize(this, width, height);
+        return this.attr("d", this.array().size(p.width, p.height));
+      } // Set width of element
+
+    }, {
+      key: "width",
+      value: function width(_width4) {
+        return _width4 == null ? this.bbox().width : this.size(_width4, this.bbox().height);
+      } // Move by left top corner over x-axis
+
+    }, {
+      key: "x",
+      value: function x(_x5) {
+        return _x5 == null ? this.bbox().x : this.move(_x5, this.bbox().y);
+      } // Move by left top corner over y-axis
+
+    }, {
+      key: "y",
+      value: function y(_y6) {
+        return _y6 == null ? this.bbox().y : this.move(this.bbox().x, _y6);
+      }
+    }]);
+
+    return Path;
+  }(Shape); // Define morphable array
+
+
+  Path.prototype.MorphArray = PathArray; // Add parent method
+
+  registerMethods({
+    Container: {
+      // Create a wrapped path element
+      path: wrapWithAttrCheck(function (d) {
+        // make sure plot is called as a setter
+        return this.put(new Path()).plot(d || new PathArray());
+      })
+    }
+  });
+  register(Path, "Path");
+
+  function array() {
+    return this._array || (this._array = new PointArray(this.attr("points")));
+  } // Clear array cache
+
+
+  function clear() {
+    delete this._array;
+    return this;
+  } // Move by left top corner
+
+
+  function move$2(x, y) {
+    return this.attr("points", this.array().move(x, y));
+  } // Plot new path
+
+
+  function plot(p) {
+    return p == null ? this.array() : this.clear().attr("points", typeof p === "string" ? p : this._array = new PointArray(p));
+  } // Set element size to given width and height
+
+
+  function size$1(width, height) {
+    var p = proportionalSize(this, width, height);
+    return this.attr("points", this.array().size(p.width, p.height));
+  }
+
+  var poly = {
+    __proto__: null,
+    array: array,
+    clear: clear,
+    move: move$2,
+    plot: plot,
+    size: size$1
+  };
+
+  var Polygon = /*#__PURE__*/function (_Shape5) {
+    _inherits(Polygon, _Shape5);
+
+    var _super23 = _createSuper(Polygon);
+
+    // Initialize node
+    function Polygon(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Polygon);
+
+      return _super23.call(this, nodeOrNew("polygon", node), attrs);
+    }
+
+    return _createClass(Polygon);
+  }(Shape);
+
+  registerMethods({
+    Container: {
+      // Create a wrapped polygon element
+      polygon: wrapWithAttrCheck(function (p) {
+        // make sure plot is called as a setter
+        return this.put(new Polygon()).plot(p || new PointArray());
+      })
+    }
+  });
+  extend(Polygon, pointed);
+  extend(Polygon, poly);
+  register(Polygon, "Polygon");
+
+  var Polyline = /*#__PURE__*/function (_Shape6) {
+    _inherits(Polyline, _Shape6);
+
+    var _super24 = _createSuper(Polyline);
+
+    // Initialize node
+    function Polyline(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Polyline);
+
+      return _super24.call(this, nodeOrNew("polyline", node), attrs);
+    }
+
+    return _createClass(Polyline);
+  }(Shape);
+
+  registerMethods({
+    Container: {
+      // Create a wrapped polygon element
+      polyline: wrapWithAttrCheck(function (p) {
+        // make sure plot is called as a setter
+        return this.put(new Polyline()).plot(p || new PointArray());
+      })
+    }
+  });
+  extend(Polyline, pointed);
+  extend(Polyline, poly);
+  register(Polyline, "Polyline");
+
+  var Rect = /*#__PURE__*/function (_Shape7) {
+    _inherits(Rect, _Shape7);
+
+    var _super25 = _createSuper(Rect);
+
+    // Initialize node
+    function Rect(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Rect);
+
+      return _super25.call(this, nodeOrNew("rect", node), attrs);
+    }
+
+    return _createClass(Rect);
+  }(Shape);
+
+  extend(Rect, {
+    rx: rx,
+    ry: ry
+  });
+  registerMethods({
+    Container: {
+      // Create a rect element
+      rect: wrapWithAttrCheck(function (width, height) {
+        return this.put(new Rect()).size(width, height);
+      })
+    }
+  });
+  register(Rect, "Rect");
+
+  var Queue = /*#__PURE__*/function () {
+    function Queue() {
+      _classCallCheck(this, Queue);
+
+      this._first = null;
+      this._last = null;
+    } // Shows us the first item in the list
+
+
+    _createClass(Queue, [{
+      key: "first",
+      value: function first() {
+        return this._first && this._first.value;
+      } // Shows us the last item in the list
+
+    }, {
+      key: "last",
+      value: function last() {
+        return this._last && this._last.value;
+      }
+    }, {
+      key: "push",
+      value: function push(value) {
+        // An item stores an id and the provided value
+        var item = typeof value.next !== "undefined" ? value : {
+          value: value,
+          next: null,
+          prev: null
+        }; // Deal with the queue being empty or populated
+
+        if (this._last) {
+          item.prev = this._last;
+          this._last.next = item;
+          this._last = item;
+        } else {
+          this._last = item;
+          this._first = item;
+        } // Return the current item
+
+
+        return item;
+      } // Removes the item that was returned from the push
+
+    }, {
+      key: "remove",
+      value: function remove(item) {
+        // Relink the previous item
+        if (item.prev) item.prev.next = item.next;
+        if (item.next) item.next.prev = item.prev;
+        if (item === this._last) this._last = item.prev;
+        if (item === this._first) this._first = item.next; // Invalidate item
+
+        item.prev = null;
+        item.next = null;
+      }
+    }, {
+      key: "shift",
+      value: function shift() {
+        // Check if we have a value
+        var remove = this._first;
+        if (!remove) return null; // If we do, remove it and relink things
+
+        this._first = remove.next;
+        if (this._first) this._first.prev = null;
+        this._last = this._first ? this._last : null;
+        return remove.value;
+      }
+    }]);
+
+    return Queue;
+  }();
+
+  var Animator = {
+    nextDraw: null,
+    frames: new Queue(),
+    timeouts: new Queue(),
+    immediates: new Queue(),
+    timer: function timer() {
+      return globals.window.performance || globals.window.Date;
+    },
+    transforms: [],
+    frame: function frame(fn) {
+      // Store the node
+      var node = Animator.frames.push({
+        run: fn
+      }); // Request an animation frame if we don't have one
+
+      if (Animator.nextDraw === null) {
+        Animator.nextDraw = globals.window.requestAnimationFrame(Animator._draw);
+      } // Return the node so we can remove it easily
+
+
+      return node;
+    },
+    timeout: function timeout(fn, delay) {
+      delay = delay || 0; // Work out when the event should fire
+
+      var time = Animator.timer().now() + delay; // Add the timeout to the end of the queue
+
+      var node = Animator.timeouts.push({
+        run: fn,
+        time: time
+      }); // Request another animation frame if we need one
+
+      if (Animator.nextDraw === null) {
+        Animator.nextDraw = globals.window.requestAnimationFrame(Animator._draw);
+      }
+
+      return node;
+    },
+    immediate: function immediate(fn) {
+      // Add the immediate fn to the end of the queue
+      var node = Animator.immediates.push(fn); // Request another animation frame if we need one
+
+      if (Animator.nextDraw === null) {
+        Animator.nextDraw = globals.window.requestAnimationFrame(Animator._draw);
+      }
+
+      return node;
+    },
+    cancelFrame: function cancelFrame(node) {
+      node != null && Animator.frames.remove(node);
+    },
+    clearTimeout: function clearTimeout(node) {
+      node != null && Animator.timeouts.remove(node);
+    },
+    cancelImmediate: function cancelImmediate(node) {
+      node != null && Animator.immediates.remove(node);
+    },
+    _draw: function _draw(now) {
+      // Run all the timeouts we can run, if they are not ready yet, add them
+      // to the end of the queue immediately! (bad timeouts!!! [sarcasm])
+      var nextTimeout = null;
+      var lastTimeout = Animator.timeouts.last();
+
+      while (nextTimeout = Animator.timeouts.shift()) {
+        // Run the timeout if its time, or push it to the end
+        if (now >= nextTimeout.time) {
+          nextTimeout.run();
+        } else {
+          Animator.timeouts.push(nextTimeout);
+        } // If we hit the last item, we should stop shifting out more items
+
+
+        if (nextTimeout === lastTimeout) break;
+      } // Run all of the animation frames
+
+
+      var nextFrame = null;
+      var lastFrame = Animator.frames.last();
+
+      while (nextFrame !== lastFrame && (nextFrame = Animator.frames.shift())) {
+        nextFrame.run(now);
+      }
+
+      var nextImmediate = null;
+
+      while (nextImmediate = Animator.immediates.shift()) {
+        nextImmediate();
+      } // If we have remaining timeouts or frames, draw until we don't anymore
+
+
+      Animator.nextDraw = Animator.timeouts.first() || Animator.frames.first() ? globals.window.requestAnimationFrame(Animator._draw) : null;
+    }
+  };
+
+  var makeSchedule = function makeSchedule(runnerInfo) {
+    var start = runnerInfo.start;
+    var duration = runnerInfo.runner.duration();
+    var end = start + duration;
+    return {
+      start: start,
+      duration: duration,
+      end: end,
+      runner: runnerInfo.runner
+    };
+  };
+
+  var defaultSource = function defaultSource() {
+    var w = globals.window;
+    return (w.performance || w.Date).now();
+  };
+
+  var Timeline = /*#__PURE__*/function (_EventTarget2) {
+    _inherits(Timeline, _EventTarget2);
+
+    var _super26 = _createSuper(Timeline);
+
+    // Construct a new timeline on the given element
+    function Timeline() {
+      var _this13;
+
+      var timeSource = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultSource;
+
+      _classCallCheck(this, Timeline);
+
+      _this13 = _super26.call(this);
+      _this13._timeSource = timeSource; // Store the timing variables
+
+      _this13._startTime = 0;
+      _this13._speed = 1.0; // Determines how long a runner is hold in memory. Can be a dt or true/false
+
+      _this13._persist = 0; // Keep track of the running animations and their starting parameters
+
+      _this13._nextFrame = null;
+      _this13._paused = true;
+      _this13._runners = [];
+      _this13._runnerIds = [];
+      _this13._lastRunnerId = -1;
+      _this13._time = 0;
+      _this13._lastSourceTime = 0;
+      _this13._lastStepTime = 0; // Make sure that step is always called in class context
+
+      _this13._step = _this13._stepFn.bind(_assertThisInitialized(_this13), false);
+      _this13._stepImmediate = _this13._stepFn.bind(_assertThisInitialized(_this13), true);
+      return _this13;
+    }
+
+    _createClass(Timeline, [{
+      key: "active",
+      value: function active() {
+        return !!this._nextFrame;
+      }
+    }, {
+      key: "finish",
+      value: function finish() {
+        // Go to end and pause
+        this.time(this.getEndTimeOfTimeline() + 1);
+        return this.pause();
+      } // Calculates the end of the timeline
+
+    }, {
+      key: "getEndTime",
+      value: function getEndTime() {
+        var lastRunnerInfo = this.getLastRunnerInfo();
+        var lastDuration = lastRunnerInfo ? lastRunnerInfo.runner.duration() : 0;
+        var lastStartTime = lastRunnerInfo ? lastRunnerInfo.start : this._time;
+        return lastStartTime + lastDuration;
+      }
+    }, {
+      key: "getEndTimeOfTimeline",
+      value: function getEndTimeOfTimeline() {
+        var endTimes = this._runners.map(function (i) {
+          return i.start + i.runner.duration();
+        });
+
+        return Math.max.apply(Math, [0].concat(_toConsumableArray(endTimes)));
+      }
+    }, {
+      key: "getLastRunnerInfo",
+      value: function getLastRunnerInfo() {
+        return this.getRunnerInfoById(this._lastRunnerId);
+      }
+    }, {
+      key: "getRunnerInfoById",
+      value: function getRunnerInfoById(id) {
+        return this._runners[this._runnerIds.indexOf(id)] || null;
+      }
+    }, {
+      key: "pause",
+      value: function pause() {
+        this._paused = true;
+        return this._continue();
+      }
+    }, {
+      key: "persist",
+      value: function persist(dtOrForever) {
+        if (dtOrForever == null) return this._persist;
+        this._persist = dtOrForever;
+        return this;
+      }
+    }, {
+      key: "play",
+      value: function play() {
+        // Now make sure we are not paused and continue the animation
+        this._paused = false;
+        return this.updateTime()._continue();
+      }
+    }, {
+      key: "reverse",
+      value: function reverse(yes) {
+        var currentSpeed = this.speed();
+        if (yes == null) return this.speed(-currentSpeed);
+        var positive = Math.abs(currentSpeed);
+        return this.speed(yes ? -positive : positive);
+      } // schedules a runner on the timeline
+
+    }, {
+      key: "schedule",
+      value: function schedule(runner, delay, when) {
+        if (runner == null) {
+          return this._runners.map(makeSchedule);
+        } // The start time for the next animation can either be given explicitly,
+        // derived from the current timeline time or it can be relative to the
+        // last start time to chain animations directly
+
+
+        var absoluteStartTime = 0;
+        var endTime = this.getEndTime();
+        delay = delay || 0; // Work out when to start the animation
+
+        if (when == null || when === "last" || when === "after") {
+          // Take the last time and increment
+          absoluteStartTime = endTime;
+        } else if (when === "absolute" || when === "start") {
+          absoluteStartTime = delay;
+          delay = 0;
+        } else if (when === "now") {
+          absoluteStartTime = this._time;
+        } else if (when === "relative") {
+          var _runnerInfo = this.getRunnerInfoById(runner.id);
+
+          if (_runnerInfo) {
+            absoluteStartTime = _runnerInfo.start + delay;
+            delay = 0;
+          }
+        } else if (when === "with-last") {
+          var lastRunnerInfo = this.getLastRunnerInfo();
+          var lastStartTime = lastRunnerInfo ? lastRunnerInfo.start : this._time;
+          absoluteStartTime = lastStartTime;
+        } else {
+          throw new Error('Invalid value for the "when" parameter');
+        } // Manage runner
+
+
+        runner.unschedule();
+        runner.timeline(this);
+        var persist = runner.persist();
+        var runnerInfo = {
+          persist: persist === null ? this._persist : persist,
+          start: absoluteStartTime + delay,
+          runner: runner
+        };
+        this._lastRunnerId = runner.id;
+
+        this._runners.push(runnerInfo);
+
+        this._runners.sort(function (a, b) {
+          return a.start - b.start;
+        });
+
+        this._runnerIds = this._runners.map(function (info) {
+          return info.runner.id;
+        });
+
+        this.updateTime()._continue();
+
+        return this;
+      }
+    }, {
+      key: "seek",
+      value: function seek(dt) {
+        return this.time(this._time + dt);
+      }
+    }, {
+      key: "source",
+      value: function source(fn) {
+        if (fn == null) return this._timeSource;
+        this._timeSource = fn;
+        return this;
+      }
+    }, {
+      key: "speed",
+      value: function speed(_speed) {
+        if (_speed == null) return this._speed;
+        this._speed = _speed;
+        return this;
+      }
+    }, {
+      key: "stop",
+      value: function stop() {
+        // Go to start and pause
+        this.time(0);
+        return this.pause();
+      }
+    }, {
+      key: "time",
+      value: function time(_time) {
+        if (_time == null) return this._time;
+        this._time = _time;
+        return this._continue(true);
+      } // Remove the runner from this timeline
+
+    }, {
+      key: "unschedule",
+      value: function unschedule(runner) {
+        var index = this._runnerIds.indexOf(runner.id);
+
+        if (index < 0) return this;
+
+        this._runners.splice(index, 1);
+
+        this._runnerIds.splice(index, 1);
+
+        runner.timeline(null);
+        return this;
+      } // Makes sure, that after pausing the time doesn't jump
+
+    }, {
+      key: "updateTime",
+      value: function updateTime() {
+        if (!this.active()) {
+          this._lastSourceTime = this._timeSource();
+        }
+
+        return this;
+      } // Checks if we are running and continues the animation
+
+    }, {
+      key: "_continue",
+      value: function _continue() {
+        var immediateStep = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+        Animator.cancelFrame(this._nextFrame);
+        this._nextFrame = null;
+        if (immediateStep) return this._stepImmediate();
+        if (this._paused) return this;
+        this._nextFrame = Animator.frame(this._step);
+        return this;
+      }
+    }, {
+      key: "_stepFn",
+      value: function _stepFn() {
+        var immediateStep = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+        // Get the time delta from the last time and update the time
+        var time = this._timeSource();
+
+        var dtSource = time - this._lastSourceTime;
+        if (immediateStep) dtSource = 0;
+        var dtTime = this._speed * dtSource + (this._time - this._lastStepTime);
+        this._lastSourceTime = time; // Only update the time if we use the timeSource.
+        // Otherwise use the current time
+
+        if (!immediateStep) {
+          // Update the time
+          this._time += dtTime;
+          this._time = this._time < 0 ? 0 : this._time;
+        }
+
+        this._lastStepTime = this._time;
+        this.fire("time", this._time); // This is for the case that the timeline was seeked so that the time
+        // is now before the startTime of the runner. Thats why we need to set
+        // the runner to position 0
+        // FIXME:
+        // However, reseting in insertion order leads to bugs. Considering the case,
+        // where 2 runners change the same attribute but in different times,
+        // reseting both of them will lead to the case where the later defined
+        // runner always wins the reset even if the other runner started earlier
+        // and therefore should win the attribute battle
+        // this can be solved by reseting them backwards
+
+        for (var k = this._runners.length; k--;) {
+          // Get and run the current runner and ignore it if its inactive
+          var runnerInfo = this._runners[k];
+          var runner = runnerInfo.runner; // Make sure that we give the actual difference
+          // between runner start time and now
+
+          var dtToStart = this._time - runnerInfo.start; // Dont run runner if not started yet
+          // and try to reset it
+
+          if (dtToStart <= 0) {
+            runner.reset();
+          }
+        } // Run all of the runners directly
+
+
+        var runnersLeft = false;
+
+        for (var _i6 = 0, len = this._runners.length; _i6 < len; _i6++) {
+          // Get and run the current runner and ignore it if its inactive
+          var _runnerInfo2 = this._runners[_i6];
+          var _runner = _runnerInfo2.runner;
+          var dt = dtTime; // Make sure that we give the actual difference
+          // between runner start time and now
+
+          var _dtToStart = this._time - _runnerInfo2.start; // Dont run runner if not started yet
+
+
+          if (_dtToStart <= 0) {
+            runnersLeft = true;
+            continue;
+          } else if (_dtToStart < dt) {
+            // Adjust dt to make sure that animation is on point
+            dt = _dtToStart;
+          }
+
+          if (!_runner.active()) continue; // If this runner is still going, signal that we need another animation
+          // frame, otherwise, remove the completed runner
+
+          var finished = _runner.step(dt).done;
+
+          if (!finished) {
+            runnersLeft = true; // continue
+          } else if (_runnerInfo2.persist !== true) {
+            // runner is finished. And runner might get removed
+            var endTime = _runner.duration() - _runner.time() + this._time;
+
+            if (endTime + _runnerInfo2.persist < this._time) {
+              // Delete runner and correct index
+              _runner.unschedule();
+
+              --_i6;
+              --len;
+            }
+          }
+        } // Basically: we continue when there are runners right from us in time
+        // when -->, and when runners are left from us when <--
+
+
+        if (runnersLeft && !(this._speed < 0 && this._time === 0) || this._runnerIds.length && this._speed < 0 && this._time > 0) {
+          this._continue();
+        } else {
+          this.pause();
+          this.fire("finished");
+        }
+
+        return this;
+      }
+    }]);
+
+    return Timeline;
+  }(EventTarget);
+
+  registerMethods({
+    Element: {
+      timeline: function timeline(_timeline) {
+        if (_timeline == null) {
+          this._timeline = this._timeline || new Timeline();
+          return this._timeline;
+        } else {
+          this._timeline = _timeline;
+          return this;
+        }
+      }
+    }
+  });
+
+  var Runner = /*#__PURE__*/function (_EventTarget3) {
+    _inherits(Runner, _EventTarget3);
+
+    var _super27 = _createSuper(Runner);
+
+    function Runner(options) {
+      var _this14;
+
+      _classCallCheck(this, Runner);
+
+      _this14 = _super27.call(this); // Store a unique id on the runner, so that we can identify it later
+
+      _this14.id = Runner.id++; // Ensure a default value
+
+      options = options == null ? timeline.duration : options; // Ensure that we get a controller
+
+      options = typeof options === "function" ? new Controller(options) : options; // Declare all of the variables
+
+      _this14._element = null;
+      _this14._timeline = null;
+      _this14.done = false;
+      _this14._queue = []; // Work out the stepper and the duration
+
+      _this14._duration = typeof options === "number" && options;
+      _this14._isDeclarative = options instanceof Controller;
+      _this14._stepper = _this14._isDeclarative ? options : new Ease(); // We copy the current values from the timeline because they can change
+
+      _this14._history = {}; // Store the state of the runner
+
+      _this14.enabled = true;
+      _this14._time = 0;
+      _this14._lastTime = 0; // At creation, the runner is in reseted state
+
+      _this14._reseted = true; // Save transforms applied to this runner
+
+      _this14.transforms = new Matrix();
+      _this14.transformId = 1; // Looping variables
+
+      _this14._haveReversed = false;
+      _this14._reverse = false;
+      _this14._loopsDone = 0;
+      _this14._swing = false;
+      _this14._wait = 0;
+      _this14._times = 1;
+      _this14._frameId = null; // Stores how long a runner is stored after beeing done
+
+      _this14._persist = _this14._isDeclarative ? true : null;
+      return _this14;
+    }
+
+    _createClass(Runner, [{
+      key: "active",
+      value: function active(enabled) {
+        if (enabled == null) return this.enabled;
+        this.enabled = enabled;
+        return this;
+      }
+      /*
+      Private Methods
+      ===============
+      Methods that shouldn't be used externally
+      */
+
+    }, {
+      key: "addTransform",
+      value: function addTransform(transform, index) {
+        this.transforms.lmultiplyO(transform);
+        return this;
+      }
+    }, {
+      key: "after",
+      value: function after(fn) {
+        return this.on("finished", fn);
+      }
+    }, {
+      key: "animate",
+      value: function animate(duration, delay, when) {
+        var o = Runner.sanitise(duration, delay, when);
+        var runner = new Runner(o.duration);
+        if (this._timeline) runner.timeline(this._timeline);
+        if (this._element) runner.element(this._element);
+        return runner.loop(o).schedule(o.delay, o.when);
+      }
+    }, {
+      key: "clearTransform",
+      value: function clearTransform() {
+        this.transforms = new Matrix();
+        return this;
+      } // TODO: Keep track of all transformations so that deletion is faster
+
+    }, {
+      key: "clearTransformsFromQueue",
+      value: function clearTransformsFromQueue() {
+        if (!this.done || !this._timeline || !this._timeline._runnerIds.includes(this.id)) {
+          this._queue = this._queue.filter(function (item) {
+            return !item.isTransform;
+          });
+        }
+      }
+    }, {
+      key: "delay",
+      value: function delay(_delay) {
+        return this.animate(0, _delay);
+      }
+    }, {
+      key: "duration",
+      value: function duration() {
+        return this._times * (this._wait + this._duration) - this._wait;
+      }
+    }, {
+      key: "during",
+      value: function during(fn) {
+        return this.queue(null, fn);
+      }
+    }, {
+      key: "ease",
+      value: function ease(fn) {
+        this._stepper = new Ease(fn);
+        return this;
+      }
+      /*
+      Runner Definitions
+      ==================
+      These methods help us define the runtime behaviour of the Runner or they
+      help us make new runners from the current runner
+      */
+
+    }, {
+      key: "element",
+      value: function element(_element) {
+        if (_element == null) return this._element;
+        this._element = _element;
+
+        _element._prepareRunner();
+
+        return this;
+      }
+    }, {
+      key: "finish",
+      value: function finish() {
+        return this.step(Infinity);
+      }
+    }, {
+      key: "loop",
+      value: function loop(times, swing, wait) {
+        // Deal with the user passing in an object
+        if (_typeof(times) === "object") {
+          swing = times.swing;
+          wait = times.wait;
+          times = times.times;
+        } // Sanitise the values and store them
+
+
+        this._times = times || Infinity;
+        this._swing = swing || false;
+        this._wait = wait || 0; // Allow true to be passed
+
+        if (this._times === true) {
+          this._times = Infinity;
+        }
+
+        return this;
+      }
+    }, {
+      key: "loops",
+      value: function loops(p) {
+        var loopDuration = this._duration + this._wait;
+
+        if (p == null) {
+          var loopsDone = Math.floor(this._time / loopDuration);
+          var relativeTime = this._time - loopsDone * loopDuration;
+
+          var _position = relativeTime / this._duration;
+
+          return Math.min(loopsDone + _position, this._times);
+        }
+
+        var whole = Math.floor(p);
+        var partial = p % 1;
+        var time = loopDuration * whole + this._duration * partial;
+        return this.time(time);
+      }
+    }, {
+      key: "persist",
+      value: function persist(dtOrForever) {
+        if (dtOrForever == null) return this._persist;
+        this._persist = dtOrForever;
+        return this;
+      }
+    }, {
+      key: "position",
+      value: function position(p) {
+        // Get all of the variables we need
+        var x = this._time;
+        var d = this._duration;
+        var w = this._wait;
+        var t = this._times;
+        var s = this._swing;
+        var r = this._reverse;
+        var position;
+
+        if (p == null) {
+          /*
+          This function converts a time to a position in the range [0, 1]
+          The full explanation can be found in this desmos demonstration
+          https://www.desmos.com/calculator/u4fbavgche
+          The logic is slightly simplified here because we can use booleans
+          */
+          // Figure out the value without thinking about the start or end time
+          var f = function f(x) {
+            var swinging = s * Math.floor(x % (2 * (w + d)) / (w + d));
+            var backwards = swinging && !r || !swinging && r;
+            var uncliped = Math.pow(-1, backwards) * (x % (w + d)) / d + backwards;
+            var clipped = Math.max(Math.min(uncliped, 1), 0);
+            return clipped;
+          }; // Figure out the value by incorporating the start time
+
+
+          var endTime = t * (w + d) - w;
+          position = x <= 0 ? Math.round(f(1e-5)) : x < endTime ? f(x) : Math.round(f(endTime - 1e-5));
+          return position;
+        } // Work out the loops done and add the position to the loops done
+
+
+        var loopsDone = Math.floor(this.loops());
+        var swingForward = s && loopsDone % 2 === 0;
+        var forwards = swingForward && !r || r && swingForward;
+        position = loopsDone + (forwards ? p : 1 - p);
+        return this.loops(position);
+      }
+    }, {
+      key: "progress",
+      value: function progress(p) {
+        if (p == null) {
+          return Math.min(1, this._time / this.duration());
+        }
+
+        return this.time(p * this.duration());
+      }
+      /*
+      Basic Functionality
+      ===================
+      These methods allow us to attach basic functions to the runner directly
+      */
+
+    }, {
+      key: "queue",
+      value: function queue(initFn, runFn, retargetFn, isTransform) {
+        this._queue.push({
+          initialiser: initFn || noop,
+          runner: runFn || noop,
+          retarget: retargetFn,
+          isTransform: isTransform,
+          initialised: false,
+          finished: false
+        });
+
+        var timeline = this.timeline();
+        timeline && this.timeline()._continue();
+        return this;
+      }
+    }, {
+      key: "reset",
+      value: function reset() {
+        if (this._reseted) return this;
+        this.time(0);
+        this._reseted = true;
+        return this;
+      }
+    }, {
+      key: "reverse",
+      value: function reverse(_reverse) {
+        this._reverse = _reverse == null ? !this._reverse : _reverse;
+        return this;
+      }
+    }, {
+      key: "schedule",
+      value: function schedule(timeline, delay, when) {
+        // The user doesn't need to pass a timeline if we already have one
+        if (!(timeline instanceof Timeline)) {
+          when = delay;
+          delay = timeline;
+          timeline = this.timeline();
+        } // If there is no timeline, yell at the user...
+
+
+        if (!timeline) {
+          throw Error("Runner cannot be scheduled without timeline");
+        } // Schedule the runner on the timeline provided
+
+
+        timeline.schedule(this, delay, when);
+        return this;
+      }
+    }, {
+      key: "step",
+      value: function step(dt) {
+        // If we are inactive, this stepper just gets skipped
+        if (!this.enabled) return this; // Update the time and get the new position
+
+        dt = dt == null ? 16 : dt;
+        this._time += dt;
+        var position = this.position(); // Figure out if we need to run the stepper in this frame
+
+        var running = this._lastPosition !== position && this._time >= 0;
+        this._lastPosition = position; // Figure out if we just started
+
+        var duration = this.duration();
+        var justStarted = this._lastTime <= 0 && this._time > 0;
+        var justFinished = this._lastTime < duration && this._time >= duration;
+        this._lastTime = this._time;
+
+        if (justStarted) {
+          this.fire("start", this);
+        } // Work out if the runner is finished set the done flag here so animations
+        // know, that they are running in the last step (this is good for
+        // transformations which can be merged)
+
+
+        var declarative = this._isDeclarative;
+        this.done = !declarative && !justFinished && this._time >= duration; // Runner is running. So its not in reseted state anymore
+
+        this._reseted = false;
+        var converged = false; // Call initialise and the run function
+
+        if (running || declarative) {
+          this._initialise(running); // clear the transforms on this runner so they dont get added again and again
+
+
+          this.transforms = new Matrix();
+          converged = this._run(declarative ? dt : position);
+          this.fire("step", this);
+        } // correct the done flag here
+        // declaritive animations itself know when they converged
+
+
+        this.done = this.done || converged && declarative;
+
+        if (justFinished) {
+          this.fire("finished", this);
+        }
+
+        return this;
+      }
+      /*
+      Runner animation methods
+      ========================
+      Control how the animation plays
+      */
+
+    }, {
+      key: "time",
+      value: function time(_time2) {
+        if (_time2 == null) {
+          return this._time;
+        }
+
+        var dt = _time2 - this._time;
+        this.step(dt);
+        return this;
+      }
+    }, {
+      key: "timeline",
+      value: function timeline(_timeline2) {
+        // check explicitly for undefined so we can set the timeline to null
+        if (typeof _timeline2 === "undefined") return this._timeline;
+        this._timeline = _timeline2;
+        return this;
+      }
+    }, {
+      key: "unschedule",
+      value: function unschedule() {
+        var timeline = this.timeline();
+        timeline && timeline.unschedule(this);
+        return this;
+      } // Run each initialise function in the runner if required
+
+    }, {
+      key: "_initialise",
+      value: function _initialise(running) {
+        // If we aren't running, we shouldn't initialise when not declarative
+        if (!running && !this._isDeclarative) return; // Loop through all of the initialisers
+
+        for (var _i7 = 0, len = this._queue.length; _i7 < len; ++_i7) {
+          // Get the current initialiser
+          var current = this._queue[_i7]; // Determine whether we need to initialise
+
+          var needsIt = this._isDeclarative || !current.initialised && running;
+          running = !current.finished; // Call the initialiser if we need to
+
+          if (needsIt && running) {
+            current.initialiser.call(this);
+            current.initialised = true;
+          }
+        }
+      } // Save a morpher to the morpher list so that we can retarget it later
+
+    }, {
+      key: "_rememberMorpher",
+      value: function _rememberMorpher(method, morpher) {
+        this._history[method] = {
+          morpher: morpher,
+          caller: this._queue[this._queue.length - 1]
+        }; // We have to resume the timeline in case a controller
+        // is already done without being ever run
+        // This can happen when e.g. this is done:
+        //    anim = el.animate(new SVG.Spring)
+        // and later
+        //    anim.move(...)
+
+        if (this._isDeclarative) {
+          var _timeline3 = this.timeline();
+
+          _timeline3 && _timeline3.play();
+        }
+      } // Try to set the target for a morpher if the morpher exists, otherwise
+      // Run each run function for the position or dt given
+
+    }, {
+      key: "_run",
+      value: function _run(positionOrDt) {
+        // Run all of the _queue directly
+        var allfinished = true;
+
+        for (var _i8 = 0, len = this._queue.length; _i8 < len; ++_i8) {
+          // Get the current function to run
+          var current = this._queue[_i8]; // Run the function if its not finished, we keep track of the finished
+          // flag for the sake of declarative _queue
+
+          var converged = current.runner.call(this, positionOrDt);
+          current.finished = current.finished || converged === true;
+          allfinished = allfinished && current.finished;
+        } // We report when all of the constructors are finished
+
+
+        return allfinished;
+      } // do nothing and return false
+
+    }, {
+      key: "_tryRetarget",
+      value: function _tryRetarget(method, target, extra) {
+        if (this._history[method]) {
+          // if the last method wasnt even initialised, throw it away
+          if (!this._history[method].caller.initialised) {
+            var index = this._queue.indexOf(this._history[method].caller);
+
+            this._queue.splice(index, 1);
+
+            return false;
+          } // for the case of transformations, we use the special retarget function
+          // which has access to the outer scope
+
+
+          if (this._history[method].caller.retarget) {
+            this._history[method].caller.retarget.call(this, target, extra); // for everything else a simple morpher change is sufficient
+
+          } else {
+            this._history[method].morpher.to(target);
+          }
+
+          this._history[method].caller.finished = false;
+
+          var _timeline4 = this.timeline();
+
+          _timeline4 && _timeline4.play();
+          return true;
+        }
+
+        return false;
+      }
+    }], [{
+      key: "sanitise",
+      value: function sanitise(duration, delay, when) {
+        // Initialise the default parameters
+        var times = 1;
+        var swing = false;
+        var wait = 0;
+        duration = duration || timeline.duration;
+        delay = delay || timeline.delay;
+        when = when || "last"; // If we have an object, unpack the values
+
+        if (_typeof(duration) === "object" && !(duration instanceof Stepper)) {
+          delay = duration.delay || delay;
+          when = duration.when || when;
+          swing = duration.swing || swing;
+          times = duration.times || times;
+          wait = duration.wait || wait;
+          duration = duration.duration || timeline.duration;
+        }
+
+        return {
+          duration: duration,
+          delay: delay,
+          swing: swing,
+          times: times,
+          wait: wait,
+          when: when
+        };
+      }
+    }]);
+
+    return Runner;
+  }(EventTarget);
+
+  Runner.id = 0;
+
+  var FakeRunner = /*#__PURE__*/function () {
+    function FakeRunner() {
+      var transforms = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Matrix();
+      var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+      var done = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+      _classCallCheck(this, FakeRunner);
+
+      this.transforms = transforms;
+      this.id = id;
+      this.done = done;
+    }
+
+    _createClass(FakeRunner, [{
+      key: "clearTransformsFromQueue",
+      value: function clearTransformsFromQueue() {}
+    }]);
+
+    return FakeRunner;
+  }();
+
+  extend([Runner, FakeRunner], {
+    mergeWith: function mergeWith(runner) {
+      return new FakeRunner(runner.transforms.lmultiply(this.transforms), runner.id);
+    }
+  }); // FakeRunner.emptyRunner = new FakeRunner()
+
+  var lmultiply = function lmultiply(last, curr) {
+    return last.lmultiplyO(curr);
+  };
+
+  var getRunnerTransform = function getRunnerTransform(runner) {
+    return runner.transforms;
+  };
+
+  function mergeTransforms() {
+    // Find the matrix to apply to the element and apply it
+    var runners = this._transformationRunners.runners;
+    var netTransform = runners.map(getRunnerTransform).reduce(lmultiply, new Matrix());
+    this.transform(netTransform);
+
+    this._transformationRunners.merge();
+
+    if (this._transformationRunners.length() === 1) {
+      this._frameId = null;
+    }
+  }
+
+  var RunnerArray = /*#__PURE__*/function () {
+    function RunnerArray() {
+      _classCallCheck(this, RunnerArray);
+
+      this.runners = [];
+      this.ids = [];
+    }
+
+    _createClass(RunnerArray, [{
+      key: "add",
+      value: function add(runner) {
+        if (this.runners.includes(runner)) return;
+        var id = runner.id + 1;
+        this.runners.push(runner);
+        this.ids.push(id);
+        return this;
+      }
+    }, {
+      key: "clearBefore",
+      value: function clearBefore(id) {
+        var deleteCnt = this.ids.indexOf(id + 1) || 1;
+        this.ids.splice(0, deleteCnt, 0);
+        this.runners.splice(0, deleteCnt, new FakeRunner()).forEach(function (r) {
+          return r.clearTransformsFromQueue();
+        });
+        return this;
+      }
+    }, {
+      key: "edit",
+      value: function edit(id, newRunner) {
+        var index = this.ids.indexOf(id + 1);
+        this.ids.splice(index, 1, id + 1);
+        this.runners.splice(index, 1, newRunner);
+        return this;
+      }
+    }, {
+      key: "getByID",
+      value: function getByID(id) {
+        return this.runners[this.ids.indexOf(id + 1)];
+      }
+    }, {
+      key: "length",
+      value: function length() {
+        return this.ids.length;
+      }
+    }, {
+      key: "merge",
+      value: function merge() {
+        var lastRunner = null;
+
+        for (var _i9 = 0; _i9 < this.runners.length; ++_i9) {
+          var runner = this.runners[_i9];
+          var condition = lastRunner && runner.done && lastRunner.done && ( // don't merge runner when persisted on timeline
+          !runner._timeline || !runner._timeline._runnerIds.includes(runner.id)) && (!lastRunner._timeline || !lastRunner._timeline._runnerIds.includes(lastRunner.id));
+
+          if (condition) {
+            // the +1 happens in the function
+            this.remove(runner.id);
+            var newRunner = runner.mergeWith(lastRunner);
+            this.edit(lastRunner.id, newRunner);
+            lastRunner = newRunner;
+            --_i9;
+          } else {
+            lastRunner = runner;
+          }
+        }
+
+        return this;
+      }
+    }, {
+      key: "remove",
+      value: function remove(id) {
+        var index = this.ids.indexOf(id + 1);
+        this.ids.splice(index, 1);
+        this.runners.splice(index, 1);
+        return this;
+      }
+    }]);
+
+    return RunnerArray;
+  }();
+
+  registerMethods({
+    Element: {
+      animate: function animate(duration, delay, when) {
+        var o = Runner.sanitise(duration, delay, when);
+        var timeline = this.timeline();
+        return new Runner(o.duration).loop(o).element(this).timeline(timeline.play()).schedule(o.delay, o.when);
+      },
+      delay: function delay(by, when) {
+        return this.animate(0, by, when);
+      },
+      // this function searches for all runners on the element and deletes the ones
+      // which run before the current one. This is because absolute transformations
+      // overwfrite anything anyway so there is no need to waste time computing
+      // other runners
+      _clearTransformRunnersBefore: function _clearTransformRunnersBefore(currentRunner) {
+        this._transformationRunners.clearBefore(currentRunner.id);
+      },
+      _currentTransform: function _currentTransform(current) {
+        return this._transformationRunners.runners // we need the equal sign here to make sure, that also transformations
+        // on the same runner which execute before the current transformation are
+        // taken into account
+        .filter(function (runner) {
+          return runner.id <= current.id;
+        }).map(getRunnerTransform).reduce(lmultiply, new Matrix());
+      },
+      _addRunner: function _addRunner(runner) {
+        this._transformationRunners.add(runner); // Make sure that the runner merge is executed at the very end of
+        // all Animator functions. Thats why we use immediate here to execute
+        // the merge right after all frames are run
+
+
+        Animator.cancelImmediate(this._frameId);
+        this._frameId = Animator.immediate(mergeTransforms.bind(this));
+      },
+      _prepareRunner: function _prepareRunner() {
+        if (this._frameId == null) {
+          this._transformationRunners = new RunnerArray().add(new FakeRunner(new Matrix(this)));
+        }
+      }
+    }
+  }); // Will output the elements from array A that are not in the array B
+
+  var difference = function difference(a, b) {
+    return a.filter(function (x) {
+      return !b.includes(x);
+    });
+  };
+
+  extend(Runner, {
+    attr: function attr(a, v) {
+      return this.styleAttr("attr", a, v);
+    },
+    // Add animatable styles
+    css: function css(s, v) {
+      return this.styleAttr("css", s, v);
+    },
+    styleAttr: function styleAttr(type, nameOrAttrs, val) {
+      if (typeof nameOrAttrs === "string") {
+        return this.styleAttr(type, _defineProperty({}, nameOrAttrs, val));
+      }
+
+      var attrs = nameOrAttrs;
+      if (this._tryRetarget(type, attrs)) return this;
+      var morpher = new Morphable(this._stepper).to(attrs);
+      var keys = Object.keys(attrs);
+      this.queue(function () {
+        morpher = morpher.from(this.element()[type](keys));
+      }, function (pos) {
+        this.element()[type](morpher.at(pos).valueOf());
+        return morpher.done();
+      }, function (newToAttrs) {
+        // Check if any new keys were added
+        var newKeys = Object.keys(newToAttrs);
+        var differences = difference(newKeys, keys); // If their are new keys, initialize them and add them to morpher
+
+        if (differences.length) {
+          // Get the values
+          var addedFromAttrs = this.element()[type](differences); // Get the already initialized values
+
+          var oldFromAttrs = new ObjectBag(morpher.from()).valueOf(); // Merge old and new
+
+          Object.assign(oldFromAttrs, addedFromAttrs);
+          morpher.from(oldFromAttrs);
+        } // Get the object from the morpher
+
+
+        var oldToAttrs = new ObjectBag(morpher.to()).valueOf(); // Merge in new attributes
+
+        Object.assign(oldToAttrs, newToAttrs); // Change morpher target
+
+        morpher.to(oldToAttrs); // Make sure that we save the work we did so we don't need it to do again
+
+        keys = newKeys;
+        attrs = newToAttrs;
+      });
+
+      this._rememberMorpher(type, morpher);
+
+      return this;
+    },
+    zoom: function zoom(level, point) {
+      if (this._tryRetarget("zoom", level, point)) return this;
+      var morpher = new Morphable(this._stepper).to(new SVGNumber(level));
+      this.queue(function () {
+        morpher = morpher.from(this.element().zoom());
+      }, function (pos) {
+        this.element().zoom(morpher.at(pos), point);
+        return morpher.done();
+      }, function (newLevel, newPoint) {
+        point = newPoint;
+        morpher.to(newLevel);
+      });
+
+      this._rememberMorpher("zoom", morpher);
+
+      return this;
+    },
+
+    /**
+     ** absolute transformations
+     **/
+    //
+    // M v -----|-----(D M v = F v)------|----->  T v
+    //
+    // 1. define the final state (T) and decompose it (once)
+    //    t = [tx, ty, the, lam, sy, sx]
+    // 2. on every frame: pull the current state of all previous transforms
+    //    (M - m can change)
+    //   and then write this as m = [tx0, ty0, the0, lam0, sy0, sx0]
+    // 3. Find the interpolated matrix F(pos) = m + pos * (t - m)
+    //   - Note F(0) = M
+    //   - Note F(1) = T
+    // 4. Now you get the delta matrix as a result: D = F * inv(M)
+    transform: function transform(transforms, relative, affine) {
+      // If we have a declarative function, we should retarget it if possible
+      relative = transforms.relative || relative;
+
+      if (this._isDeclarative && !relative && this._tryRetarget("transform", transforms)) {
+        return this;
+      } // Parse the parameters
+
+
+      var isMatrix = Matrix.isMatrixLike(transforms);
+      affine = transforms.affine != null ? transforms.affine : affine != null ? affine : !isMatrix; // Create a morepher and set its type
+
+      var morpher = new Morphable(this._stepper).type(affine ? TransformBag : Matrix);
+      var origin;
+      var element;
+      var current;
+      var currentAngle;
+      var startTransform;
+
+      function setup() {
+        // make sure element and origin is defined
+        element = element || this.element();
+        origin = origin || getOrigin(transforms, element);
+        startTransform = new Matrix(relative ? undefined : element); // add the runner to the element so it can merge transformations
+
+        element._addRunner(this); // Deactivate all transforms that have run so far if we are absolute
+
+
+        if (!relative) {
+          element._clearTransformRunnersBefore(this);
+        }
+      }
+
+      function run(pos) {
+        // clear all other transforms before this in case something is saved
+        // on this runner. We are absolute. We dont need these!
+        if (!relative) this.clearTransform();
+
+        var _Point$transform2 = new Point(origin).transform(element._currentTransform(this)),
+            x = _Point$transform2.x,
+            y = _Point$transform2.y;
+
+        var target = new Matrix(_objectSpread(_objectSpread({}, transforms), {}, {
+          origin: [x, y]
+        }));
+        var start = this._isDeclarative && current ? current : startTransform;
+
+        if (affine) {
+          target = target.decompose(x, y);
+          start = start.decompose(x, y); // Get the current and target angle as it was set
+
+          var rTarget = target.rotate;
+          var rCurrent = start.rotate; // Figure out the shortest path to rotate directly
+
+          var possibilities = [rTarget - 360, rTarget, rTarget + 360];
+          var distances = possibilities.map(function (a) {
+            return Math.abs(a - rCurrent);
+          });
+          var shortest = Math.min.apply(Math, _toConsumableArray(distances));
+          var index = distances.indexOf(shortest);
+          target.rotate = possibilities[index];
+        }
+
+        if (relative) {
+          // we have to be careful here not to overwrite the rotation
+          // with the rotate method of Matrix
+          if (!isMatrix) {
+            target.rotate = transforms.rotate || 0;
+          }
+
+          if (this._isDeclarative && currentAngle) {
+            start.rotate = currentAngle;
+          }
+        }
+
+        morpher.from(start);
+        morpher.to(target);
+        var affineParameters = morpher.at(pos);
+        currentAngle = affineParameters.rotate;
+        current = new Matrix(affineParameters);
+        this.addTransform(current);
+
+        element._addRunner(this);
+
+        return morpher.done();
+      }
+
+      function retarget(newTransforms) {
+        // only get a new origin if it changed since the last call
+        if ((newTransforms.origin || "center").toString() !== (transforms.origin || "center").toString()) {
+          origin = getOrigin(newTransforms, element);
+        } // overwrite the old transformations with the new ones
+
+
+        transforms = _objectSpread(_objectSpread({}, newTransforms), {}, {
+          origin: origin
+        });
+      }
+
+      this.queue(setup, run, retarget, true);
+      this._isDeclarative && this._rememberMorpher("transform", morpher);
+      return this;
+    },
+    // Animatable x-axis
+    x: function x(_x6, relative) {
+      return this._queueNumber("x", _x6);
+    },
+    // Animatable y-axis
+    y: function y(_y7) {
+      return this._queueNumber("y", _y7);
+    },
+    dx: function dx() {
+      var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      return this._queueNumberDelta("x", x);
+    },
+    dy: function dy() {
+      var y = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      return this._queueNumberDelta("y", y);
+    },
+    dmove: function dmove(x, y) {
+      return this.dx(x).dy(y);
+    },
+    _queueNumberDelta: function _queueNumberDelta(method, to) {
+      to = new SVGNumber(to); // Try to change the target if we have this method already registerd
+
+      if (this._tryRetarget(method, to)) return this; // Make a morpher and queue the animation
+
+      var morpher = new Morphable(this._stepper).to(to);
+      var from = null;
+      this.queue(function () {
+        from = this.element()[method]();
+        morpher.from(from);
+        morpher.to(from + to);
+      }, function (pos) {
+        this.element()[method](morpher.at(pos));
+        return morpher.done();
+      }, function (newTo) {
+        morpher.to(from + new SVGNumber(newTo));
+      }); // Register the morpher so that if it is changed again, we can retarget it
+
+      this._rememberMorpher(method, morpher);
+
+      return this;
+    },
+    _queueObject: function _queueObject(method, to) {
+      // Try to change the target if we have this method already registerd
+      if (this._tryRetarget(method, to)) return this; // Make a morpher and queue the animation
+
+      var morpher = new Morphable(this._stepper).to(to);
+      this.queue(function () {
+        morpher.from(this.element()[method]());
+      }, function (pos) {
+        this.element()[method](morpher.at(pos));
+        return morpher.done();
+      }); // Register the morpher so that if it is changed again, we can retarget it
+
+      this._rememberMorpher(method, morpher);
+
+      return this;
+    },
+    _queueNumber: function _queueNumber(method, value) {
+      return this._queueObject(method, new SVGNumber(value));
+    },
+    // Animatable center x-axis
+    cx: function cx(x) {
+      return this._queueNumber("cx", x);
+    },
+    // Animatable center y-axis
+    cy: function cy(y) {
+      return this._queueNumber("cy", y);
+    },
+    // Add animatable move
+    move: function move(x, y) {
+      return this.x(x).y(y);
+    },
+    // Add animatable center
+    center: function center(x, y) {
+      return this.cx(x).cy(y);
+    },
+    // Add animatable size
+    size: function size(width, height) {
+      // animate bbox based size for all other elements
+      var box;
+
+      if (!width || !height) {
+        box = this._element.bbox();
+      }
+
+      if (!width) {
+        width = box.width / box.height * height;
+      }
+
+      if (!height) {
+        height = box.height / box.width * width;
+      }
+
+      return this.width(width).height(height);
+    },
+    // Add animatable width
+    width: function width(_width5) {
+      return this._queueNumber("width", _width5);
+    },
+    // Add animatable height
+    height: function height(_height5) {
+      return this._queueNumber("height", _height5);
+    },
+    // Add animatable plot
+    plot: function plot(a, b, c, d) {
+      // Lines can be plotted with 4 arguments
+      if (arguments.length === 4) {
+        return this.plot([a, b, c, d]);
+      }
+
+      if (this._tryRetarget("plot", a)) return this;
+      var morpher = new Morphable(this._stepper).type(this._element.MorphArray).to(a);
+      this.queue(function () {
+        morpher.from(this._element.array());
+      }, function (pos) {
+        this._element.plot(morpher.at(pos));
+
+        return morpher.done();
+      });
+
+      this._rememberMorpher("plot", morpher);
+
+      return this;
+    },
+    // Add leading method
+    leading: function leading(value) {
+      return this._queueNumber("leading", value);
+    },
+    // Add animatable viewbox
+    viewbox: function viewbox(x, y, width, height) {
+      return this._queueObject("viewbox", new Box(x, y, width, height));
+    },
+    update: function update(o) {
+      if (_typeof(o) !== "object") {
+        return this.update({
+          offset: arguments[0],
+          color: arguments[1],
+          opacity: arguments[2]
+        });
+      }
+
+      if (o.opacity != null) this.attr("stop-opacity", o.opacity);
+      if (o.color != null) this.attr("stop-color", o.color);
+      if (o.offset != null) this.attr("offset", o.offset);
+      return this;
+    }
+  });
+  extend(Runner, {
+    rx: rx,
+    ry: ry,
+    from: from,
+    to: to
+  });
+  register(Runner, "Runner");
+
+  var Svg = /*#__PURE__*/function (_Container5) {
+    _inherits(Svg, _Container5);
+
+    var _super28 = _createSuper(Svg);
+
+    function Svg(node) {
+      var _this15;
+
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Svg);
+
+      _this15 = _super28.call(this, nodeOrNew("svg", node), attrs);
+
+      _this15.namespace();
+
+      return _this15;
+    } // Creates and returns defs element
+
+
+    _createClass(Svg, [{
+      key: "defs",
+      value: function defs() {
+        if (!this.isRoot()) return this.root().defs();
+        return adopt(this.node.querySelector("defs")) || this.put(new Defs());
+      }
+    }, {
+      key: "isRoot",
+      value: function isRoot() {
+        return !this.node.parentNode || !(this.node.parentNode instanceof globals.window.SVGElement) && this.node.parentNode.nodeName !== "#document-fragment";
+      } // Add namespaces
+
+    }, {
+      key: "namespace",
+      value: function namespace() {
+        if (!this.isRoot()) return this.root().namespace();
+        return this.attr({
+          xmlns: _svg2,
+          version: "1.1"
+        }).attr("xmlns:xlink", xlink, xmlns).attr("xmlns:svgjs", svgjs, xmlns);
+      }
+    }, {
+      key: "removeNamespace",
+      value: function removeNamespace() {
+        return this.attr({
+          xmlns: null,
+          version: null
+        }).attr("xmlns:xlink", null, xmlns).attr("xmlns:svgjs", null, xmlns);
+      } // Check if this is a root svg
+      // If not, call root() from this element
+
+    }, {
+      key: "root",
+      value: function root() {
+        if (this.isRoot()) return this;
+        return _get(_getPrototypeOf(Svg.prototype), "root", this).call(this);
+      }
+    }]);
+
+    return Svg;
+  }(Container);
+
+  registerMethods({
+    Container: {
+      // Create nested svg document
+      nested: wrapWithAttrCheck(function () {
+        return this.put(new Svg());
+      })
+    }
+  });
+  register(Svg, "Svg", true);
+
+  var _Symbol = /*#__PURE__*/function (_Container6) {
+    _inherits(_Symbol, _Container6);
+
+    var _super29 = _createSuper(_Symbol);
+
+    // Initialize node
+    function _Symbol(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, _Symbol);
+
+      return _super29.call(this, nodeOrNew("symbol", node), attrs);
+    }
+
+    return _createClass(_Symbol);
+  }(Container);
+
+  registerMethods({
+    Container: {
+      symbol: wrapWithAttrCheck(function () {
+        return this.put(new _Symbol());
+      })
+    }
+  });
+  register(_Symbol, "Symbol");
+
+  function plain(text) {
+    // clear if build mode is disabled
+    if (this._build === false) {
+      this.clear();
+    } // create text node
+
+
+    this.node.appendChild(globals.document.createTextNode(text));
+    return this;
+  } // Get length of text element
+
+
+  function length() {
+    return this.node.getComputedTextLength();
+  } // Move over x-axis
+  // Text is moved by its bounding box
+  // text-anchor does NOT matter
+
+
+  function x$1(x) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+
+    if (x == null) {
+      return box.x;
+    }
+
+    return this.attr("x", this.attr("x") + x - box.x);
+  } // Move over y-axis
+
+
+  function y$1(y) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+
+    if (y == null) {
+      return box.y;
+    }
+
+    return this.attr("y", this.attr("y") + y - box.y);
+  }
+
+  function move$1(x, y) {
+    var box = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.bbox();
+    return this.x(x, box).y(y, box);
+  } // Move center over x-axis
+
+
+  function cx(x) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+
+    if (x == null) {
+      return box.cx;
+    }
+
+    return this.attr("x", this.attr("x") + x - box.cx);
+  } // Move center over y-axis
+
+
+  function cy(y) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+
+    if (y == null) {
+      return box.cy;
+    }
+
+    return this.attr("y", this.attr("y") + y - box.cy);
+  }
+
+  function center(x, y) {
+    var box = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.bbox();
+    return this.cx(x, box).cy(y, box);
+  }
+
+  function ax(x) {
+    return this.attr("x", x);
+  }
+
+  function ay(y) {
+    return this.attr("y", y);
+  }
+
+  function amove(x, y) {
+    return this.ax(x).ay(y);
+  } // Enable / disable build mode
+
+
+  function build(build) {
+    this._build = !!build;
+    return this;
+  }
+
+  var textable = {
+    __proto__: null,
+    plain: plain,
+    length: length,
+    x: x$1,
+    y: y$1,
+    move: move$1,
+    cx: cx,
+    cy: cy,
+    center: center,
+    ax: ax,
+    ay: ay,
+    amove: amove,
+    build: build
+  };
+
+  var Text = /*#__PURE__*/function (_Shape8) {
+    _inherits(Text, _Shape8);
+
+    var _super30 = _createSuper(Text);
+
+    // Initialize node
+    function Text(node) {
+      var _this16;
+
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Text);
+
+      _this16 = _super30.call(this, nodeOrNew("text", node), attrs);
+      _this16.dom.leading = new SVGNumber(1.3); // store leading value for rebuilding
+
+      _this16._rebuild = true; // enable automatic updating of dy values
+
+      _this16._build = false; // disable build mode for adding multiple lines
+
+      return _this16;
+    } // Set / get leading
+
+
+    _createClass(Text, [{
+      key: "leading",
+      value: function leading(value) {
+        // act as getter
+        if (value == null) {
+          return this.dom.leading;
+        } // act as setter
+
+
+        this.dom.leading = new SVGNumber(value);
+        return this.rebuild();
+      } // Rebuild appearance type
+
+    }, {
+      key: "rebuild",
+      value: function rebuild(_rebuild) {
+        // store new rebuild flag if given
+        if (typeof _rebuild === "boolean") {
+          this._rebuild = _rebuild;
+        } // define position of all lines
+
+
+        if (this._rebuild) {
+          var self = this;
+          var blankLineOffset = 0;
+          var leading = this.dom.leading;
+          this.each(function (i) {
+            var fontSize = globals.window.getComputedStyle(this.node).getPropertyValue("font-size");
+            var dy = leading * new SVGNumber(fontSize);
+
+            if (this.dom.newLined) {
+              this.attr("x", self.attr("x"));
+
+              if (this.text() === "\n") {
+                blankLineOffset += dy;
+              } else {
+                this.attr("dy", i ? dy + blankLineOffset : 0);
+                blankLineOffset = 0;
+              }
+            }
+          });
+          this.fire("rebuild");
+        }
+
+        return this;
+      } // overwrite method from parent to set data properly
+
+    }, {
+      key: "setData",
+      value: function setData(o) {
+        this.dom = o;
+        this.dom.leading = new SVGNumber(o.leading || 1.3);
+        return this;
+      } // Set the text content
+
+    }, {
+      key: "text",
+      value: function text(_text) {
+        // act as getter
+        if (_text === undefined) {
+          var children = this.node.childNodes;
+          var firstLine = 0;
+          _text = "";
+
+          for (var _i10 = 0, len = children.length; _i10 < len; ++_i10) {
+            // skip textPaths - they are no lines
+            if (children[_i10].nodeName === "textPath") {
+              if (_i10 === 0) firstLine = 1;
+              continue;
+            } // add newline if its not the first child and newLined is set to true
+
+
+            if (_i10 !== firstLine && children[_i10].nodeType !== 3 && adopt(children[_i10]).dom.newLined === true) {
+              _text += "\n";
+            } // add content of this node
+
+
+            _text += children[_i10].textContent;
+          }
+
+          return _text;
+        } // remove existing content
+
+
+        this.clear().build(true);
+
+        if (typeof _text === "function") {
+          // call block
+          _text.call(this, this);
+        } else {
+          // store text and make sure text is not blank
+          _text = (_text + "").split("\n"); // build new lines
+
+          for (var j = 0, jl = _text.length; j < jl; j++) {
+            this.newLine(_text[j]);
+          }
+        } // disable build mode and rebuild lines
+
+
+        return this.build(false).rebuild();
+      }
+    }]);
+
+    return Text;
+  }(Shape);
+
+  extend(Text, textable);
+  registerMethods({
+    Container: {
+      // Create text element
+      text: wrapWithAttrCheck(function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        return this.put(new Text()).text(text);
+      }),
+      // Create plain text element
+      plain: wrapWithAttrCheck(function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        return this.put(new Text()).plain(text);
+      })
+    }
+  });
+  register(Text, "Text");
+
+  var Tspan = /*#__PURE__*/function (_Shape9) {
+    _inherits(Tspan, _Shape9);
+
+    var _super31 = _createSuper(Tspan);
+
+    // Initialize node
+    function Tspan(node) {
+      var _this17;
+
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Tspan);
+
+      _this17 = _super31.call(this, nodeOrNew("tspan", node), attrs);
+      _this17._build = false; // disable build mode for adding multiple lines
+
+      return _this17;
+    } // Shortcut dx
+
+
+    _createClass(Tspan, [{
+      key: "dx",
+      value: function dx(_dx2) {
+        return this.attr("dx", _dx2);
+      } // Shortcut dy
+
+    }, {
+      key: "dy",
+      value: function dy(_dy2) {
+        return this.attr("dy", _dy2);
+      } // Create new line
+
+    }, {
+      key: "newLine",
+      value: function newLine() {
+        // mark new line
+        this.dom.newLined = true; // fetch parent
+
+        var text = this.parent(); // early return in case we are not in a text element
+
+        if (!(text instanceof Text)) {
+          return this;
+        }
+
+        var i = text.index(this);
+        var fontSize = globals.window.getComputedStyle(this.node).getPropertyValue("font-size");
+        var dy = text.dom.leading * new SVGNumber(fontSize); // apply new position
+
+        return this.dy(i ? dy : 0).attr("x", text.x());
+      } // Set text content
+
+    }, {
+      key: "text",
+      value: function text(_text2) {
+        if (_text2 == null) return this.node.textContent + (this.dom.newLined ? "\n" : "");
+
+        if (typeof _text2 === "function") {
+          this.clear().build(true);
+
+          _text2.call(this, this);
+
+          this.build(false);
+        } else {
+          this.plain(_text2);
+        }
+
+        return this;
+      }
+    }]);
+
+    return Tspan;
+  }(Shape);
+
+  extend(Tspan, textable);
+  registerMethods({
+    Tspan: {
+      tspan: wrapWithAttrCheck(function () {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        var tspan = new Tspan(); // clear if build mode is disabled
+
+        if (!this._build) {
+          this.clear();
+        } // add new tspan
+
+
+        return this.put(tspan).text(text);
+      })
+    },
+    Text: {
+      newLine: function newLine() {
+        var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        return this.tspan(text).newLine();
+      }
+    }
+  });
+  register(Tspan, "Tspan");
+
+  var Circle = /*#__PURE__*/function (_Shape10) {
+    _inherits(Circle, _Shape10);
+
+    var _super32 = _createSuper(Circle);
+
+    function Circle(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Circle);
+
+      return _super32.call(this, nodeOrNew("circle", node), attrs);
+    }
+
+    _createClass(Circle, [{
+      key: "radius",
+      value: function radius(r) {
+        return this.attr("r", r);
+      } // Radius x value
+
+    }, {
+      key: "rx",
+      value: function rx(_rx) {
+        return this.attr("r", _rx);
+      } // Alias radius x value
+
+    }, {
+      key: "ry",
+      value: function ry(_ry) {
+        return this.rx(_ry);
+      }
+    }, {
+      key: "size",
+      value: function size(_size) {
+        return this.radius(new SVGNumber(_size).divide(2));
+      }
+    }]);
+
+    return Circle;
+  }(Shape);
+
+  extend(Circle, {
+    x: x$3,
+    y: y$3,
+    cx: cx$1,
+    cy: cy$1,
+    width: width$2,
+    height: height$2
+  });
+  registerMethods({
+    Container: {
+      // Create circle element
+      circle: wrapWithAttrCheck(function () {
+        var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        return this.put(new Circle()).size(size).move(0, 0);
+      })
+    }
+  });
+  register(Circle, "Circle");
+
+  var ClipPath = /*#__PURE__*/function (_Container7) {
+    _inherits(ClipPath, _Container7);
+
+    var _super33 = _createSuper(ClipPath);
+
+    function ClipPath(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, ClipPath);
+
+      return _super33.call(this, nodeOrNew("clipPath", node), attrs);
+    } // Unclip all clipped elements and remove itself
+
+
+    _createClass(ClipPath, [{
+      key: "remove",
+      value: function remove() {
+        // unclip all targets
+        this.targets().forEach(function (el) {
+          el.unclip();
+        }); // remove clipPath from parent
+
+        return _get(_getPrototypeOf(ClipPath.prototype), "remove", this).call(this);
+      }
+    }, {
+      key: "targets",
+      value: function targets() {
+        return baseFind('svg [clip-path*="' + this.id() + '"]');
+      }
+    }]);
+
+    return ClipPath;
+  }(Container);
+
+  registerMethods({
+    Container: {
+      // Create clipping element
+      clip: wrapWithAttrCheck(function () {
+        return this.defs().put(new ClipPath());
+      })
+    },
+    Element: {
+      // Distribute clipPath to svg element
+      clipper: function clipper() {
+        return this.reference("clip-path");
+      },
+      clipWith: function clipWith(element) {
+        // use given clip or create a new one
+        var clipper = element instanceof ClipPath ? element : this.parent().clip().add(element); // apply mask
+
+        return this.attr("clip-path", 'url("#' + clipper.id() + '")');
+      },
+      // Unclip element
+      unclip: function unclip() {
+        return this.attr("clip-path", null);
+      }
+    }
+  });
+  register(ClipPath, "ClipPath");
+
+  var ForeignObject = /*#__PURE__*/function (_Element3) {
+    _inherits(ForeignObject, _Element3);
+
+    var _super34 = _createSuper(ForeignObject);
+
+    function ForeignObject(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, ForeignObject);
+
+      return _super34.call(this, nodeOrNew("foreignObject", node), attrs);
+    }
+
+    return _createClass(ForeignObject);
+  }(Element);
+
+  registerMethods({
+    Container: {
+      foreignObject: wrapWithAttrCheck(function (width, height) {
+        return this.put(new ForeignObject()).size(width, height);
+      })
+    }
+  });
+  register(ForeignObject, "ForeignObject");
+
+  function dmove(dx, dy) {
+    this.children().forEach(function (child, i) {
+      var bbox; // We have to wrap this for elements that dont have a bbox
+      // e.g. title and other descriptive elements
+
+      try {
+        // Get the childs bbox
+        bbox = child.bbox();
+      } catch (e) {
+        return;
+      } // Get childs matrix
+
+
+      var m = new Matrix(child); // Translate childs matrix by amount and
+      // transform it back into parents space
+
+      var matrix = m.translate(dx, dy).transform(m.inverse()); // Calculate new x and y from old box
+
+      var p = new Point(bbox.x, bbox.y).transform(matrix); // Move element
+
+      child.move(p.x, p.y);
+    });
+    return this;
+  }
+
+  function dx(dx) {
+    return this.dmove(dx, 0);
+  }
+
+  function dy(dy) {
+    return this.dmove(0, dy);
+  }
+
+  function height(height) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+    if (height == null) return box.height;
+    return this.size(box.width, height, box);
+  }
+
+  function move() {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var box = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.bbox();
+    var dx = x - box.x;
+    var dy = y - box.y;
+    return this.dmove(dx, dy);
+  }
+
+  function size(width, height) {
+    var box = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.bbox();
+    var p = proportionalSize(this, width, height, box);
+    var scaleX = p.width / box.width;
+    var scaleY = p.height / box.height;
+    this.children().forEach(function (child, i) {
+      var o = new Point(box).transform(new Matrix(child).inverse());
+      child.scale(scaleX, scaleY, o.x, o.y);
+    });
+    return this;
+  }
+
+  function width(width) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+    if (width == null) return box.width;
+    return this.size(width, box.height, box);
+  }
+
+  function x(x) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+    if (x == null) return box.x;
+    return this.move(x, box.y, box);
+  }
+
+  function y(y) {
+    var box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.bbox();
+    if (y == null) return box.y;
+    return this.move(box.x, y, box);
+  }
+
+  var containerGeometry = {
+    __proto__: null,
+    dmove: dmove,
+    dx: dx,
+    dy: dy,
+    height: height,
+    move: move,
+    size: size,
+    width: width,
+    x: x,
+    y: y
+  };
+
+  var G = /*#__PURE__*/function (_Container8) {
+    _inherits(G, _Container8);
+
+    var _super35 = _createSuper(G);
+
+    function G(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, G);
+
+      return _super35.call(this, nodeOrNew("g", node), attrs);
+    }
+
+    return _createClass(G);
+  }(Container);
+
+  extend(G, containerGeometry);
+  registerMethods({
+    Container: {
+      // Create a group element
+      group: wrapWithAttrCheck(function () {
+        return this.put(new G());
+      })
+    }
+  });
+  register(G, "G");
+
+  var A = /*#__PURE__*/function (_Container9) {
+    _inherits(A, _Container9);
+
+    var _super36 = _createSuper(A);
+
+    function A(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, A);
+
+      return _super36.call(this, nodeOrNew("a", node), attrs);
+    } // Link target attribute
+
+
+    _createClass(A, [{
+      key: "target",
+      value: function target(_target) {
+        return this.attr("target", _target);
+      } // Link url
+
+    }, {
+      key: "to",
+      value: function to(url) {
+        return this.attr("href", url, xlink);
+      }
+    }]);
+
+    return A;
+  }(Container);
+
+  extend(A, containerGeometry);
+  registerMethods({
+    Container: {
+      // Create a hyperlink element
+      link: wrapWithAttrCheck(function (url) {
+        return this.put(new A()).to(url);
+      })
+    },
+    Element: {
+      unlink: function unlink() {
+        var link = this.linker();
+        if (!link) return this;
+        var parent = link.parent();
+
+        if (!parent) {
+          return this.remove();
+        }
+
+        var index = parent.index(link);
+        parent.add(this, index);
+        link.remove();
+        return this;
+      },
+      linkTo: function linkTo(url) {
+        // reuse old link if possible
+        var link = this.linker();
+
+        if (!link) {
+          link = new A();
+          this.wrap(link);
+        }
+
+        if (typeof url === "function") {
+          url.call(link, link);
+        } else {
+          link.to(url);
+        }
+
+        return this;
+      },
+      linker: function linker() {
+        var link = this.parent();
+
+        if (link && link.node.nodeName.toLowerCase() === "a") {
+          return link;
+        }
+
+        return null;
+      }
+    }
+  });
+  register(A, "A");
+
+  var Mask = /*#__PURE__*/function (_Container10) {
+    _inherits(Mask, _Container10);
+
+    var _super37 = _createSuper(Mask);
+
+    // Initialize node
+    function Mask(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Mask);
+
+      return _super37.call(this, nodeOrNew("mask", node), attrs);
+    } // Unmask all masked elements and remove itself
+
+
+    _createClass(Mask, [{
+      key: "remove",
+      value: function remove() {
+        // unmask all targets
+        this.targets().forEach(function (el) {
+          el.unmask();
+        }); // remove mask from parent
+
+        return _get(_getPrototypeOf(Mask.prototype), "remove", this).call(this);
+      }
+    }, {
+      key: "targets",
+      value: function targets() {
+        return baseFind('svg [mask*="' + this.id() + '"]');
+      }
+    }]);
+
+    return Mask;
+  }(Container);
+
+  registerMethods({
+    Container: {
+      mask: wrapWithAttrCheck(function () {
+        return this.defs().put(new Mask());
+      })
+    },
+    Element: {
+      // Distribute mask to svg element
+      masker: function masker() {
+        return this.reference("mask");
+      },
+      maskWith: function maskWith(element) {
+        // use given mask or create a new one
+        var masker = element instanceof Mask ? element : this.parent().mask().add(element); // apply mask
+
+        return this.attr("mask", 'url("#' + masker.id() + '")');
+      },
+      // Unmask element
+      unmask: function unmask() {
+        return this.attr("mask", null);
+      }
+    }
+  });
+  register(Mask, "Mask");
+
+  var Stop = /*#__PURE__*/function (_Element4) {
+    _inherits(Stop, _Element4);
+
+    var _super38 = _createSuper(Stop);
+
+    function Stop(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Stop);
+
+      return _super38.call(this, nodeOrNew("stop", node), attrs);
+    } // add color stops
+
+
+    _createClass(Stop, [{
+      key: "update",
+      value: function update(o) {
+        if (typeof o === "number" || o instanceof SVGNumber) {
+          o = {
+            offset: arguments[0],
+            color: arguments[1],
+            opacity: arguments[2]
+          };
+        } // set attributes
+
+
+        if (o.opacity != null) this.attr("stop-opacity", o.opacity);
+        if (o.color != null) this.attr("stop-color", o.color);
+        if (o.offset != null) this.attr("offset", new SVGNumber(o.offset));
+        return this;
+      }
+    }]);
+
+    return Stop;
+  }(Element);
+
+  registerMethods({
+    Gradient: {
+      // Add a color stop
+      stop: function stop(offset, color, opacity) {
+        return this.put(new Stop()).update(offset, color, opacity);
+      }
+    }
+  });
+  register(Stop, "Stop");
+
+  function cssRule(selector, rule) {
+    if (!selector) return "";
+    if (!rule) return selector;
+    var ret = selector + "{";
+
+    for (var _i11 in rule) {
+      ret += unCamelCase(_i11) + ":" + rule[_i11] + ";";
+    }
+
+    ret += "}";
+    return ret;
+  }
+
+  var Style = /*#__PURE__*/function (_Element5) {
+    _inherits(Style, _Element5);
+
+    var _super39 = _createSuper(Style);
+
+    function Style(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Style);
+
+      return _super39.call(this, nodeOrNew("style", node), attrs);
+    }
+
+    _createClass(Style, [{
+      key: "addText",
+      value: function addText() {
+        var w = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        this.node.textContent += w;
+        return this;
+      }
+    }, {
+      key: "font",
+      value: function font(name, src) {
+        var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+        return this.rule("@font-face", _objectSpread({
+          fontFamily: name,
+          src: src
+        }, params));
+      }
+    }, {
+      key: "rule",
+      value: function rule(selector, obj) {
+        return this.addText(cssRule(selector, obj));
+      }
+    }]);
+
+    return Style;
+  }(Element);
+
+  registerMethods("Dom", {
+    style: function style(selector, obj) {
+      return this.put(new Style()).rule(selector, obj);
+    },
+    fontface: function fontface(name, src, params) {
+      return this.put(new Style()).font(name, src, params);
+    }
+  });
+  register(Style, "Style");
+
+  var TextPath = /*#__PURE__*/function (_Text) {
+    _inherits(TextPath, _Text);
+
+    var _super40 = _createSuper(TextPath);
+
+    // Initialize node
+    function TextPath(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, TextPath);
+
+      return _super40.call(this, nodeOrNew("textPath", node), attrs);
+    } // return the array of the path track element
+
+
+    _createClass(TextPath, [{
+      key: "array",
+      value: function array() {
+        var track = this.track();
+        return track ? track.array() : null;
+      } // Plot path if any
+
+    }, {
+      key: "plot",
+      value: function plot(d) {
+        var track = this.track();
+        var pathArray = null;
+
+        if (track) {
+          pathArray = track.plot(d);
+        }
+
+        return d == null ? pathArray : this;
+      } // Get the path element
+
+    }, {
+      key: "track",
+      value: function track() {
+        return this.reference("href");
+      }
+    }]);
+
+    return TextPath;
+  }(Text);
+
+  registerMethods({
+    Container: {
+      textPath: wrapWithAttrCheck(function (text, path) {
+        // Convert text to instance if needed
+        if (!(text instanceof Text)) {
+          text = this.text(text);
+        }
+
+        return text.path(path);
+      })
+    },
+    Text: {
+      // Create path for text to run on
+      path: wrapWithAttrCheck(function (track) {
+        var importNodes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+        var textPath = new TextPath(); // if track is a path, reuse it
+
+        if (!(track instanceof Path)) {
+          // create path element
+          track = this.defs().path(track);
+        } // link textPath to path and add content
+
+
+        textPath.attr("href", "#" + track, xlink); // Transplant all nodes from text to textPath
+
+        var node;
+
+        if (importNodes) {
+          while (node = this.node.firstChild) {
+            textPath.node.appendChild(node);
+          }
+        } // add textPath element as child node and return textPath
+
+
+        return this.put(textPath);
+      }),
+      // Get the textPath children
+      textPath: function textPath() {
+        return this.findOne("textPath");
+      }
+    },
+    Path: {
+      // creates a textPath from this path
+      text: wrapWithAttrCheck(function (text) {
+        // Convert text to instance if needed
+        if (!(text instanceof Text)) {
+          text = new Text().addTo(this.parent()).text(text);
+        } // Create textPath from text and path and return
+
+
+        return text.path(this);
+      }),
+      targets: function targets() {
+        var _this18 = this;
+
+        return baseFind("svg textPath").filter(function (node) {
+          return (node.attr("href") || "").includes(_this18.id());
+        }); // Does not work in IE11. Use when IE support is dropped
+        // return baseFind('svg textPath[*|href*="' + this.id() + '"]')
+      }
+    }
+  });
+  TextPath.prototype.MorphArray = PathArray;
+  register(TextPath, "TextPath");
+
+  var Use = /*#__PURE__*/function (_Shape11) {
+    _inherits(Use, _Shape11);
+
+    var _super41 = _createSuper(Use);
+
+    function Use(node) {
+      var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : node;
+
+      _classCallCheck(this, Use);
+
+      return _super41.call(this, nodeOrNew("use", node), attrs);
+    } // Use element as a reference
+
+
+    _createClass(Use, [{
+      key: "use",
+      value: function use(element, file) {
+        // Set lined element
+        return this.attr("href", (file || "") + "#" + element, xlink);
+      }
+    }]);
+
+    return Use;
+  }(Shape);
+
+  registerMethods({
+    Container: {
+      // Create a use element
+      use: wrapWithAttrCheck(function (element, file) {
+        return this.put(new Use()).use(element, file);
+      })
+    }
+  });
+  register(Use, "Use");
+  /* Optional Modules */
+
+  var SVG$1 = makeInstance;
+  extend([Svg, _Symbol, Image, Pattern, Marker], getMethodsFor("viewbox"));
+  extend([Line, Polyline, Polygon, Path], getMethodsFor("marker"));
+  extend(Text, getMethodsFor("Text"));
+  extend(Path, getMethodsFor("Path"));
+  extend(Defs, getMethodsFor("Defs"));
+  extend([Text, Tspan], getMethodsFor("Tspan"));
+  extend([Rect, Ellipse, Gradient, Runner], getMethodsFor("radius"));
+  extend(EventTarget, getMethodsFor("EventTarget"));
+  extend(Dom, getMethodsFor("Dom"));
+  extend(Element, getMethodsFor("Element"));
+  extend(Shape, getMethodsFor("Shape"));
+  extend([Container, Fragment], getMethodsFor("Container"));
+  extend(Gradient, getMethodsFor("Gradient"));
+  extend(Runner, getMethodsFor("Runner"));
+  List.extend(getMethodNames());
+  registerMorphableType([SVGNumber, Color, Box, Matrix, SVGArray, PointArray, PathArray]);
+  makeMorphable();
+  var svgMembers = {
+    __proto__: null,
+    Morphable: Morphable,
+    registerMorphableType: registerMorphableType,
+    makeMorphable: makeMorphable,
+    TransformBag: TransformBag,
+    ObjectBag: ObjectBag,
+    NonMorphable: NonMorphable,
+    defaults: defaults,
+    utils: utils,
+    namespaces: namespaces,
+    regex: regex,
+    SVG: SVG$1,
+    parser: parser,
+    find: baseFind,
+    getWindow: getWindow,
+    registerWindow: registerWindow,
+    restoreWindow: restoreWindow,
+    saveWindow: saveWindow,
+    withWindow: withWindow,
+    Animator: Animator,
+    Controller: Controller,
+    Ease: Ease,
+    PID: PID,
+    Spring: Spring,
+    easing: easing,
+    Queue: Queue,
+    Runner: Runner,
+    Timeline: Timeline,
+    Array: SVGArray,
+    Box: Box,
+    Color: Color,
+    EventTarget: EventTarget,
+    Matrix: Matrix,
+    Number: SVGNumber,
+    PathArray: PathArray,
+    Point: Point,
+    PointArray: PointArray,
+    List: List,
+    Circle: Circle,
+    ClipPath: ClipPath,
+    Container: Container,
+    Defs: Defs,
+    Dom: Dom,
+    Element: Element,
+    Ellipse: Ellipse,
+    ForeignObject: ForeignObject,
+    Fragment: Fragment,
+    Gradient: Gradient,
+    G: G,
+    A: A,
+    Image: Image,
+    Line: Line,
+    Marker: Marker,
+    Mask: Mask,
+    Path: Path,
+    Pattern: Pattern,
+    Polygon: Polygon,
+    Polyline: Polyline,
+    Rect: Rect,
+    Shape: Shape,
+    Stop: Stop,
+    Style: Style,
+    Svg: Svg,
+    Symbol: _Symbol,
+    Text: Text,
+    TextPath: TextPath,
+    Tspan: Tspan,
+    Use: Use,
+    windowEvents: windowEvents,
+    getEvents: getEvents,
+    getEventTarget: getEventTarget,
+    clearEvents: clearEvents,
+    on: _on,
+    off: _off,
+    dispatch: _dispatch,
+    root: _root,
+    create: create,
+    makeInstance: makeInstance,
+    nodeOrNew: nodeOrNew,
+    adopt: adopt,
+    mockAdopt: mockAdopt,
+    register: register,
+    getClass: getClass,
+    eid: eid,
+    assignNewId: assignNewId,
+    extend: extend,
+    wrapWithAttrCheck: wrapWithAttrCheck
+  };
+
+  function SVG(element, isHTML) {
+    return makeInstance(element, isHTML);
+  }
+
+  Object.assign(SVG, svgMembers);
+  return SVG;
+}();
 
 function Example() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
@@ -2182,6 +10586,76 @@ function Example() {
     console.log(rub);
   };
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var slider = document.getElementById("slider");
+    var width = 400;
+    var height = 300;
+    var draw = SVG().addTo("#auto").size(width, "100%").viewbox(0, 0, width, height);
+    var wheelCanvas = draw.group().flip("y", height / 2);
+    var wheel = wheelCanvas.group();
+    wheel.circle(100, 100).center(185, 110).fill("black").stroke({
+      width: 15,
+      color: "white"
+    });
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+      width: 5,
+      color: "white"
+    });
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+      width: 5,
+      color: "white"
+    }).rotate(45);
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+      width: 5,
+      color: "white"
+    }).rotate(90);
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+      width: 5,
+      color: "white"
+    }).rotate(135);
+    wheel.animate(1000).ease("-").rotate(360).loop();
+    var chassisCanvas = draw.group().flip("y", height / 2);
+    var chassis = chassisCanvas.group();
+    chassis.path("M 360,110 L 255,110 C 265,230 105,230 115,110 C 85,110 35,110 35,130 C 50,180 50,150 50,180 C 50,240 205,240 260,240 C 260,240 335,290 360,290").fill("black").stroke({
+      width: 10,
+      color: "white"
+    });
+    var absorberStart = chassis.circle(5).fill("red").center(185, 215).back();
+    var absorberEnd = wheel.circle(5).fill("red").center(185, 110);
+    chassis.cy(chassis.cy() - 20);
+    var absorber = chassisCanvas.group(); //const absorberLine = absorber.line(absorberStart.cx(), absorberStart.cy(), absorberEnd.cx(), absorberEnd.cy()).stroke({width:5, color: 'red'});
+
+    var absorberLine = absorber.path("M 185,215 L 160,205 L 200,195 L 160,185 L 200,175 L 160,165 L 200,155 L 160,145 L 200,135 L 160,125 L 185,115").fill("none").stroke({
+      width: 2,
+      color: "red",
+      linecap: "round"
+    });
+    absorber.back();
+    chassis.forward();
+    wheel.front();
+    var wheelStartX = absorberEnd.cx();
+    var wheelStartY = absorberEnd.cy();
+    var chassisStartX = absorberStart.cx();
+    var chassisStartY = absorberStart.cy();
+    var start = performance.now();
+
+    var animateWheel = function animateWheel(now) {
+      var x1 = wheelStartX;
+      var y1 = wheelStartY + parseInt(slider.value);
+      wheelCanvas.center(x1, y1);
+      var x2 = chassisStartX;
+      var y2 = chassisStartY + slider.value / 5;
+      chassis.center(chassis.cx(), y2);
+      absorberLine.height(y2 - y1);
+      absorberLine.cy(y1 + (y2 - y1) / 2 + 10);
+      SVG.Animator.frame(function () {
+        animateWheel(performance.now());
+      });
+    };
+
+    animateWheel(performance.now());
+  });
+
   var exportCsv = function exportCsv(e) {
     e.preventDefault();
     axios__WEBPACK_IMPORTED_MODULE_3___default().get('/export/logs').then(function (res) {
@@ -2195,8 +10669,20 @@ function Example() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "row justify-content-center",
+      className: "row justify-center mx-auto",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        id: "auto",
+        className: "flex items-center justify-center"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "mb-3 flex items-center justify-center",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+          defaultValue: "0",
+          type: "range",
+          id: "slider",
+          max: "100",
+          min: "-100"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "flex mx-auto items-center justify-center shadow-lg mt-56 mx-8 mb-4 max-w-lg",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
           className: "w-full max-w-xl bg-white rounded-lg px-4 pt-2",

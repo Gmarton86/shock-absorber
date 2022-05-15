@@ -1,3 +1,3 @@
-require('../../config/i18n')
+require("../../config/i18n");
 
-require('./components/Example');
+require("./components/Example");
