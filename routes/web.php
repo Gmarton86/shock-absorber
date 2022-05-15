@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogsController;
+use App\Mail\LogsMail;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +24,6 @@ Route::get('/', function () {
 Route::post('/logs', [LogsController::class, 'store']);
 Route::get('/logs', [LogsController::class, 'index']);
 Route::get('/logs/{username}', [LogsController::class, 'show']);
+Route::get('/export/logs', [LogsController::class, 'exportCsv']);
+
+Route::get('/email', [EmailController::class, 'email']);

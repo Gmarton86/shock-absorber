@@ -9,6 +9,7 @@ function Example() {
     const [command, setCommand] = useState("");
     const [commnadResponse, setCommandResponse] = useState("");
     const [rubResponse, setRubResponse] = useState("");
+    const FileDownload = require("js-file-download");
 
     const handleSubmitCommand = (e) => {
         e.preventDefault();
@@ -25,6 +26,14 @@ function Example() {
         // }).catch(console.log)
         console.log(rub);
     }
+
+    const exportCsv = (e) => {
+        e.preventDefault();
+        axios.get('/export/logs').then(
+        res => {
+            FileDownload(res.data, "logs.csv");
+        }).catch(console.log)
+    };
 
     const { t } = useTranslation();
     return (
@@ -79,6 +88,14 @@ function Example() {
                     </div>
                 </div>
             </div>
+            <button
+                className="bg-yellow-300 rounded-tr-full rounded-br-full hover:bg-red-300 py-2 px-4"
+                onClick={(e) => exportCsv(e)}
+            >
+                <p className="font-semibold text-base uppercase">
+                    Export
+                </p>
+            </button>
         </div>
     );
 }
