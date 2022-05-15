@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OctaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/calculate', function() {
+    return view("welcome");
+});
+
+Route::post('/calculate', [OctaveController::class, 'calculate'])->name("calculate");
+
+Route::get('/cmd', function() {
+    return view("welcome");
+});
+
+Route::post('/cmd', [OctaveController::class, 'command'])->name("cmd");
+
