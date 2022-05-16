@@ -18,9 +18,7 @@ class OctaveController extends Controller {
             $values = array_splice($result, 0, 2);
 
             if(isset($request->i)) {
-                  return view("welcome", [
-                    "data" => $result[$request->i]
-                ]);
+                return $result[$request->i];
             }
         }
     }
@@ -52,9 +50,7 @@ class OctaveController extends Controller {
 
             exec("octave-cli --eval \"" . $cmd . "\"", $result);
 
-            return view("welcome", [
-                "data" => $result
-            ]);
+            return $result;
         }
     }
 }
