@@ -7445,18 +7445,42 @@ function Example() {
 
     const handleSubmitCommand = (e) => {
         e.preventDefault();
-        // axios.get('/command').then(response => {
-        //     setCommandResponse(response.data)
-        // }).catch(console.log)
+        axios.post('/cmd', {
+            cmd: command
+        }).then(response => {
+             setCommandResponse(response.data)
+             let result = document.getElementById("cmdresult");
+             result.innerHTML = response.data;
+         }).catch(console.log)
         console.log(command);
     };
 
+
     const handleSubmitRub = (e) => {
         e.preventDefault();
-        // axios.get('/rub').then(response => {
-        //     setRubResponse(response.data)
-        // }).catch(console.log)
-        console.log(rub);
+
+        let i = 0;
+
+        console.log("test " + rub);
+
+        const getWheelData = () => {
+            let slider = document.getElementById("slider");
+
+
+            axios.post('/wheel', {
+                i,
+                r: rub
+            }).then(response => {
+             setRubResponse(response.data)
+            
+             slider.value = response.data * 5000;
+             console.log(slider.value);
+            }).catch(console.log)
+
+            i++;
+        };
+    
+        let interval = setInterval(getWheelData, 30);
     };
 
     const chartData = [
@@ -7513,7 +7537,7 @@ function Example() {
             .fill("white")
             .stroke({ width: 5, color: "#24252A" })
             .rotate(135);
-        wheel.animate(1000).ease("-").rotate(360).loop();
+     //   wheel.animate(1000).ease("-").rotate(360).loop();
 
         const chassisCanvas = draw.group().flip("y", height / 2);
         const chassis = chassisCanvas.group();
@@ -7572,15 +7596,13 @@ function Example() {
                 chartData.shift();
             }
 
-            console.log(chartData[chartData.length - 1].wheel);
-            console.log(chartData.length);
 
             SVG.Animator.frame(() => {
                 animateWheel(performance.now());
             });
         };
         animateWheel(performance.now());
-    });
+    }, []);
 
     const exportCsv = (e) => {
         e.preventDefault();
@@ -7601,7 +7623,7 @@ function Example() {
                 </section>
 
                 <section className="mt-10">
-                    <form className="flex flex-col" method="POST" action="#">
+                    <form className="flex flex-col">
                         <LineChart
                             width={400}
                             height={200}
@@ -7651,6 +7673,8 @@ function Example() {
                                 {t("R_PLACEHOLDER_2")}
                             </label>
                             <input
+                                value={rub}
+                                onChange={(e) => setRub(e.target.value)}
                                 type="text"
                                 className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                             ></input>
@@ -7658,6 +7682,7 @@ function Example() {
                         <button
                             className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
                             type="submit"
+                            onClick={(e) => handleSubmitRub(e)}
                         >
                             {t("CALCULATE_BUTTON")}
                         </button>
@@ -7681,8 +7706,8 @@ function Example() {
                         >
                             <div className="mb-6 pt-3 rounded bg-gray-200">
                                 <div className="mb-3 flex items-center justify-center">
-                                    <h5 className="text-gray-600">
-                                        {t("OCTAVE_RESULTS_PLACEHOLDER")}
+                                    <h5 className="text-gray-600" id="cmdresult">
+                                        
                                     </h5>
                                 </div>
                             </div>
@@ -7695,6 +7720,8 @@ function Example() {
                                 </label>
                                 <input
                                     type="text"
+                                    value={command}
+                                    onChange={e => setCommand(e.target.value)}
                                     className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 ></input>
                             </div>
@@ -7702,6 +7729,7 @@ function Example() {
                             <button
                                 className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
                                 type="submit"
+                                onClick={handleSubmitCommand}
                             >
                                 {t("CALCULATE_BUTTON")}
                             </button>
