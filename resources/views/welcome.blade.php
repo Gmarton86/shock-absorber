@@ -3,36 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
-    <body>
-      test
-
-      <?php
-
-        if(isset($data)) {
-            var_dump($data);
-        }
-      ?>
-
-        WHEEL
-      <form method="POST" action="{{route('wheel')}}">
-        @csrf <!-- {{ csrf_field() }} -->
-        r
-        <input type="text" name="r" id="r">
-        i
-        <input type="text" name="i" id="i">
-
-        <input type="submit" value="Vypočítať">
-      </form>
-
-        <form method="POST" action="{{route('cmd')}}">
-        @csrf <!-- {{ csrf_field() }} -->
-        cmd
-        <input type="text" name="cmd" id="cmd">
-
-        <input type="submit" value="Vypočítať">
-      </form>
+    <body class="antialiased relative flex flex-row justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-white">
+        <div id="example"></div> 
+        <script src="{{ mix('js/app.js')}}"> </script>
     </body>
 </html>

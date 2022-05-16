@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogsController;
+use App\Mail\LogsMail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\OctaveController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,22 +24,29 @@ Route::get('/', function () {
 });
 
 
-Route::get('/wheel', function() {
+Route::post('/logs', [LogsController::class, 'store']);
+Route::get('/logs', [LogsController::class, 'index']);
+Route::get('/logs/{username}', [LogsController::class, 'show']);
+Route::get('/export/logs', [LogsController::class, 'exportCsv']);
+
+Route::get('/email', [EmailController::class, 'email']);
+
+
+Route::get('/wheel', function () {
     return view("welcome");
 });
 
 Route::post('/wheel', [OctaveController::class, 'wheel'])->name("wheel");
 
-Route::get('/carbody', function() {
+Route::get('/carbody', function () {
     return view("welcome");
 });
 
 Route::post('/carbody', [OctaveController::class, 'body'])->name("carbody");
 
 
-Route::get('/cmd', function() {
+Route::get('/cmd', function () {
     return view("welcome");
 });
 
 Route::post('/cmd', [OctaveController::class, 'command'])->name("cmd");
-
