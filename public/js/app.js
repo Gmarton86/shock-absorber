@@ -1,6 +1,22 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \**********************************************************************/
+/***/ ((module) => {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2120,6 +2136,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/useTranslation.js");
 /* harmony import */ var _config_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../config/i18n */ "./config/i18n.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/chart/LineChart.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/CartesianGrid.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/XAxis.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/YAxis.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/Line.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -2182,6 +2203,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 
@@ -10586,6 +10608,16 @@ function Example() {
     console.log(rub);
   };
 
+  var chartData = [{
+    wheel: 5,
+    chassis: 5
+  }, {
+    wheel: 15,
+    chassis: 5
+  }, {
+    wheel: -51,
+    chassis: 15
+  }];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var slider = document.getElementById("slider");
     var width = 400;
@@ -10593,41 +10625,40 @@ function Example() {
     var draw = SVG().addTo("#auto").size(width, "100%").viewbox(0, 0, width, height);
     var wheelCanvas = draw.group().flip("y", height / 2);
     var wheel = wheelCanvas.group();
-    wheel.circle(100, 100).center(185, 110).fill("black").stroke({
+    wheel.circle(100, 100).center(185, 110).fill("white").stroke({
       width: 15,
-      color: "white"
+      color: "#24252A"
     });
-    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("white").stroke({
       width: 5,
-      color: "white"
+      color: "#24252A"
     });
-    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("white").stroke({
       width: 5,
-      color: "white"
+      color: "#24252A"
     }).rotate(45);
-    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("white").stroke({
       width: 5,
-      color: "white"
+      color: "#24252A"
     }).rotate(90);
-    wheel.line(175, 150, 225, 250).center(185, 110).fill("black").stroke({
+    wheel.line(175, 150, 225, 250).center(185, 110).fill("white").stroke({
       width: 5,
-      color: "white"
+      color: "#24252A"
     }).rotate(135);
     wheel.animate(1000).ease("-").rotate(360).loop();
     var chassisCanvas = draw.group().flip("y", height / 2);
     var chassis = chassisCanvas.group();
-    chassis.path("M 360,110 L 255,110 C 265,230 105,230 115,110 C 85,110 35,110 35,130 C 50,180 50,150 50,180 C 50,240 205,240 260,240 C 260,240 335,290 360,290").fill("black").stroke({
-      width: 10,
-      color: "white"
+    chassis.path("M 360,110 L 255,110 C 265,230 105,230 115,110 C 85,110 35,110 35,130 C 50,180 50,150 50,180 C 50,240 205,240 260,240 C 260,240 335,290 360,290").fill("white").stroke({
+      width: 5,
+      color: "#24252A"
     });
-    var absorberStart = chassis.circle(5).fill("red").center(185, 215).back();
-    var absorberEnd = wheel.circle(5).fill("red").center(185, 110);
-    chassis.cy(chassis.cy() - 20);
-    var absorber = chassisCanvas.group(); //const absorberLine = absorber.line(absorberStart.cx(), absorberStart.cy(), absorberEnd.cx(), absorberEnd.cy()).stroke({width:5, color: 'red'});
-
-    var absorberLine = absorber.path("M 185,215 L 160,205 L 200,195 L 160,185 L 200,175 L 160,165 L 200,155 L 160,145 L 200,135 L 160,125 L 185,115").fill("none").stroke({
-      width: 2,
-      color: "red",
+    var absorberStart = chassis.circle(5).fill("#D0312D").center(185, 215).back();
+    var absorberEnd = wheel.circle(5).fill("#D0312D").center(185, 110);
+    chassis.cy(chassis.cy() - 30);
+    var absorber = chassisCanvas.group();
+    var absorberLine = absorber.path("M 185,215 L 160,205 L 200,195 L 160,185 L 200,175 L 160,165 L 200,155 L 160,145 L 200,135 L 160,125 L 200,115 L 185,105").fill("none").stroke({
+      width: 3,
+      color: "#D0312D",
       linecap: "round"
     });
     absorber.back();
@@ -10642,12 +10673,23 @@ function Example() {
     var animateWheel = function animateWheel(now) {
       var x1 = wheelStartX;
       var y1 = wheelStartY + parseInt(slider.value);
-      wheelCanvas.center(x1, y1);
+      wheelCanvas.center(wheelStartX, y1);
       var x2 = chassisStartX;
       var y2 = chassisStartY + slider.value / 5;
       chassis.center(chassis.cx(), y2);
       absorberLine.height(y2 - y1);
-      absorberLine.cy(y1 + (y2 - y1) / 2 + 10);
+      absorberLine.cy(y1 + (y2 - y1) / 2);
+      chartData.push({
+        wheel: slider.value,
+        chassis: slider.value / 5
+      });
+
+      if (chartData.length == 201) {
+        chartData.shift();
+      }
+
+      console.log(chartData[chartData.length - 1].wheel);
+      console.log(chartData.length);
       SVG.Animator.frame(function () {
         animateWheel(performance.now());
       });
@@ -10682,62 +10724,65 @@ function Example() {
           max: "100",
           min: "-100"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "flex mx-auto items-center justify-center shadow-lg mt-56 mx-8 mb-4 max-w-lg",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
-          className: "w-full max-w-xl bg-white rounded-lg px-4 pt-2",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "flex flex-wrap -mx-3 mb-6",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              className: "px-4 pt-3 pb-2 text-gray-800 text-lg",
-              children: t("SEND_REQUEST")
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
+        className: "mt-10",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+          className: "flex flex-col",
+          method: "POST",
+          action: "#",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(recharts__WEBPACK_IMPORTED_MODULE_6__.LineChart, {
+            width: 400,
+            height: 200,
+            data: chartData,
+            margin: {
+              top: 5,
+              right: 50,
+              left: 0,
+              bottom: 5
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(recharts__WEBPACK_IMPORTED_MODULE_7__.CartesianGrid, {
+              strokeDasharray: "3 3"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(recharts__WEBPACK_IMPORTED_MODULE_8__.XAxis, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(recharts__WEBPACK_IMPORTED_MODULE_9__.YAxis, {
+              type: "number",
+              domain: [-100, 100]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(recharts__WEBPACK_IMPORTED_MODULE_10__.Line, {
+              type: "monotone",
+              dataKey: "wheel",
+              stroke: "#8884d8"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(recharts__WEBPACK_IMPORTED_MODULE_10__.Line, {
+              type: "monotone",
+              dataKey: "chassis",
+              stroke: "#82ca9d"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "mb-6 pt-3 rounded bg-gray-200",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              id: "auto",
+              className: "flex items-center justify-center"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "w-full md:w-full px-3 mb-2 mt-2",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
-                className: "bg-gray-100 text-black rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white",
-                name: "body",
-                placeholder: t("REQUEST_PLACEHOLDER"),
-                required: true,
-                onChange: function onChange(e) {
-                  return setCommand(e.target.value);
-                }
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "w-full md:w-full flex items-start md:w-full px-3",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                className: "-mr-1",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                  type: "button",
-                  onClick: function onClick(e) {
-                    return handleSubmitCommand(e);
-                  },
-                  className: "bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100",
-                  value: t("SUBMIT")
-                })
+              className: "mb-3 flex items-center justify-center",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                defaultValue: "0",
+                type: "range",
+                id: "slider",
+                max: "100",
+                min: "-100"
               })
             })]
-          })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "mt-5",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "rounded-full bg-white shadow flex w-full",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "number",
-            placeholder: t("R_PLACEHOLDER"),
-            className: "w-full rounded-tl-full rounded-bl-full py-2 px-4 text-black",
-            onChange: function onChange(e) {
-              return setRub(e.target.value);
-            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "mb-6 pt-3 rounded bg-gray-200",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              className: "block text-gray-700 text-sm font-bold mb-2 ml-3",
+              "for": "email",
+              children: t("R_PLACEHOLDER_2")
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "text",
+              className: "bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+            })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            className: "bg-yellow-300 rounded-tr-full rounded-br-full hover:bg-red-300 py-2 px-4",
-            onClick: function onClick(e) {
-              return handleSubmitRub(e);
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              className: "font-semibold text-base uppercase",
-              children: t("SUBMIT")
-            })
+            className: "bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200",
+            type: "submit",
+            children: t("CALCULATE_BUTTON")
           })]
         })
       })]
@@ -10917,6 +10962,53 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/performance-now/lib/performance-now.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/performance-now/lib/performance-now.js ***!
+  \*************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
+// Generated by CoffeeScript 1.12.2
+(function() {
+  var getNanoSeconds, hrtime, loadTime, moduleLoadTime, nodeLoadTime, upTime;
+
+  if ((typeof performance !== "undefined" && performance !== null) && performance.now) {
+    module.exports = function() {
+      return performance.now();
+    };
+  } else if ((typeof process !== "undefined" && process !== null) && process.hrtime) {
+    module.exports = function() {
+      return (getNanoSeconds() - nodeLoadTime) / 1e6;
+    };
+    hrtime = process.hrtime;
+    getNanoSeconds = function() {
+      var hr;
+      hr = hrtime();
+      return hr[0] * 1e9 + hr[1];
+    };
+    moduleLoadTime = getNanoSeconds();
+    upTime = process.uptime() * 1e9;
+    nodeLoadTime = moduleLoadTime - upTime;
+  } else if (Date.now) {
+    module.exports = function() {
+      return Date.now() - loadTime;
+    };
+    loadTime = Date.now();
+  } else {
+    module.exports = function() {
+      return new Date().getTime() - loadTime;
+    };
+    loadTime = new Date().getTime();
+  }
+
+}).call(this);
+
+//# sourceMappingURL=performance-now.js.map
 
 
 /***/ }),
@@ -11111,6 +11203,885 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/checkPropTypes.js":
+/*!***************************************************!*\
+  !*** ./node_modules/prop-types/checkPropTypes.js ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var printWarning = function() {};
+
+if (true) {
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+  var loggedTypeFailures = {};
+  var has = __webpack_require__(/*! ./lib/has */ "./node_modules/prop-types/lib/has.js");
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) { /**/ }
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (true) {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
+              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function() {
+  if (true) {
+    loggedTypeFailures = {};
+  }
+}
+
+module.exports = checkPropTypes;
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!************************************************************!*\
+  !*** ./node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var has = __webpack_require__(/*! ./lib/has */ "./node_modules/prop-types/lib/has.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
+
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bigint: createPrimitiveTypeChecker('bigint'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message, data) {
+    this.message = message;
+    this.data = data && typeof data === 'object' ? data: {};
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ( true && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError(
+          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
+          {expectedType: expectedType}
+        );
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (true) {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var expectedTypes = [];
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+        if (checkerResult == null) {
+          return null;
+        }
+        if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
+          expectedTypes.push(checkerResult.data.expectedType);
+        }
+      }
+      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function invalidValidatorError(componentName, location, propFullName, key, type) {
+    return new PropTypeError(
+      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
+      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
+    );
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (has(shapeTypes, key) && typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/prop-types/index.js ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+} else {}
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \*************************************************************/
+/***/ ((module) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/lib/has.js":
+/*!********************************************!*\
+  !*** ./node_modules/prop-types/lib/has.js ***!
+  \********************************************/
+/***/ ((module) => {
+
+module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
+
+
+/***/ }),
+
+/***/ "./node_modules/raf/index.js":
+/*!***********************************!*\
+  !*** ./node_modules/raf/index.js ***!
+  \***********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var now = __webpack_require__(/*! performance-now */ "./node_modules/performance-now/lib/performance-now.js")
+  , root = typeof window === 'undefined' ? __webpack_require__.g : window
+  , vendors = ['moz', 'webkit']
+  , suffix = 'AnimationFrame'
+  , raf = root['request' + suffix]
+  , caf = root['cancel' + suffix] || root['cancelRequest' + suffix]
+
+for(var i = 0; !raf && i < vendors.length; i++) {
+  raf = root[vendors[i] + 'Request' + suffix]
+  caf = root[vendors[i] + 'Cancel' + suffix]
+      || root[vendors[i] + 'CancelRequest' + suffix]
+}
+
+// Some versions of FF have rAF but not cAF
+if(!raf || !caf) {
+  var last = 0
+    , id = 0
+    , queue = []
+    , frameDuration = 1000 / 60
+
+  raf = function(callback) {
+    if(queue.length === 0) {
+      var _now = now()
+        , next = Math.max(0, frameDuration - (_now - last))
+      last = next + _now
+      setTimeout(function() {
+        var cp = queue.slice(0)
+        // Clear queue here to prevent
+        // callbacks from appending listeners
+        // to the current frame's queue
+        queue.length = 0
+        for(var i = 0; i < cp.length; i++) {
+          if(!cp[i].cancelled) {
+            try{
+              cp[i].callback(last)
+            } catch(e) {
+              setTimeout(function() { throw e }, 0)
+            }
+          }
+        }
+      }, Math.round(next))
+    }
+    queue.push({
+      handle: ++id,
+      callback: callback,
+      cancelled: false
+    })
+    return id
+  }
+
+  caf = function(handle) {
+    for(var i = 0; i < queue.length; i++) {
+      if(queue[i].handle === handle) {
+        queue[i].cancelled = true
+      }
+    }
+  }
+}
+
+module.exports = function(fn) {
+  // Wrap in a new function to prevent
+  // `cancel` potentially being assigned
+  // to the native rAF function
+  return raf.call(root, fn)
+}
+module.exports.cancel = function() {
+  caf.apply(root, arguments)
+}
+module.exports.polyfill = function(object) {
+  if (!object) {
+    object = root;
+  }
+  object.requestAnimationFrame = raf
+  object.cancelAnimationFrame = caf
+}
 
 
 /***/ }),
@@ -37772,6 +38743,3394 @@ function getDisplayName(Component) {
 
 /***/ }),
 
+/***/ "./node_modules/react-is/cjs/react-is.development.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-is/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/react-is/index.js ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "polyfill": () => (/* binding */ polyfill)
+/* harmony export */ });
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+function componentWillMount() {
+  // Call this.constructor.gDSFP to support sub-classes.
+  var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+  if (state !== null && state !== undefined) {
+    this.setState(state);
+  }
+}
+
+function componentWillReceiveProps(nextProps) {
+  // Call this.constructor.gDSFP to support sub-classes.
+  // Use the setState() updater to ensure state isn't stale in certain edge cases.
+  function updater(prevState) {
+    var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+    return state !== null && state !== undefined ? state : null;
+  }
+  // Binding "this" is important for shallow renderer support.
+  this.setState(updater.bind(this));
+}
+
+function componentWillUpdate(nextProps, nextState) {
+  try {
+    var prevProps = this.props;
+    var prevState = this.state;
+    this.props = nextProps;
+    this.state = nextState;
+    this.__reactInternalSnapshotFlag = true;
+    this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
+      prevProps,
+      prevState
+    );
+  } finally {
+    this.props = prevProps;
+    this.state = prevState;
+  }
+}
+
+// React may warn about cWM/cWRP/cWU methods being deprecated.
+// Add a flag to suppress these warnings for this special case.
+componentWillMount.__suppressDeprecationWarning = true;
+componentWillReceiveProps.__suppressDeprecationWarning = true;
+componentWillUpdate.__suppressDeprecationWarning = true;
+
+function polyfill(Component) {
+  var prototype = Component.prototype;
+
+  if (!prototype || !prototype.isReactComponent) {
+    throw new Error('Can only polyfill class components');
+  }
+
+  if (
+    typeof Component.getDerivedStateFromProps !== 'function' &&
+    typeof prototype.getSnapshotBeforeUpdate !== 'function'
+  ) {
+    return Component;
+  }
+
+  // If new component APIs are defined, "unsafe" lifecycles won't be called.
+  // Error if any of these lifecycles are present,
+  // Because they would work differently between older and newer (16.3+) versions of React.
+  var foundWillMountName = null;
+  var foundWillReceivePropsName = null;
+  var foundWillUpdateName = null;
+  if (typeof prototype.componentWillMount === 'function') {
+    foundWillMountName = 'componentWillMount';
+  } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+    foundWillMountName = 'UNSAFE_componentWillMount';
+  }
+  if (typeof prototype.componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'componentWillReceiveProps';
+  } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+  }
+  if (typeof prototype.componentWillUpdate === 'function') {
+    foundWillUpdateName = 'componentWillUpdate';
+  } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+    foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+  }
+  if (
+    foundWillMountName !== null ||
+    foundWillReceivePropsName !== null ||
+    foundWillUpdateName !== null
+  ) {
+    var componentName = Component.displayName || Component.name;
+    var newApiName =
+      typeof Component.getDerivedStateFromProps === 'function'
+        ? 'getDerivedStateFromProps()'
+        : 'getSnapshotBeforeUpdate()';
+
+    throw Error(
+      'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
+        componentName +
+        ' uses ' +
+        newApiName +
+        ' but also contains the following legacy lifecycles:' +
+        (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
+        (foundWillReceivePropsName !== null
+          ? '\n  ' + foundWillReceivePropsName
+          : '') +
+        (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
+        '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
+        'https://fb.me/react-async-component-lifecycle-hooks'
+    );
+  }
+
+  // React <= 16.2 does not support static getDerivedStateFromProps.
+  // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+  // Newer versions of React will ignore these lifecycles if gDSFP exists.
+  if (typeof Component.getDerivedStateFromProps === 'function') {
+    prototype.componentWillMount = componentWillMount;
+    prototype.componentWillReceiveProps = componentWillReceiveProps;
+  }
+
+  // React <= 16.2 does not support getSnapshotBeforeUpdate.
+  // As a workaround, use cWU to invoke the new lifecycle.
+  // Newer versions of React will ignore that lifecycle if gSBU exists.
+  if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+    if (typeof prototype.componentDidUpdate !== 'function') {
+      throw new Error(
+        'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
+      );
+    }
+
+    prototype.componentWillUpdate = componentWillUpdate;
+
+    var componentDidUpdate = prototype.componentDidUpdate;
+
+    prototype.componentDidUpdate = function componentDidUpdatePolyfill(
+      prevProps,
+      prevState,
+      maybeSnapshot
+    ) {
+      // 16.3+ will not execute our will-update method;
+      // It will pass a snapshot value to did-update though.
+      // Older versions will require our polyfilled will-update value.
+      // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+      // Because for <= 15.x versions this might be a "prevContext" object.
+      // We also can't just check "__reactInternalSnapshot",
+      // Because get-snapshot might return a falsy value.
+      // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+      var snapshot = this.__reactInternalSnapshotFlag
+        ? this.__reactInternalSnapshot
+        : maybeSnapshot;
+
+      componentDidUpdate.call(this, prevProps, prevState, snapshot);
+    };
+  }
+
+  return Component;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/Animate.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-smooth/es6/Animate.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var fast_equals__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! fast-equals */ "./node_modules/fast-equals/dist/fast-equals.js");
+/* harmony import */ var fast_equals__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(fast_equals__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _AnimateManager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AnimateManager */ "./node_modules/react-smooth/es6/AnimateManager.js");
+/* harmony import */ var _easing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./easing */ "./node_modules/react-smooth/es6/easing.js");
+/* harmony import */ var _configUpdate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./configUpdate */ "./node_modules/react-smooth/es6/configUpdate.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./node_modules/react-smooth/es6/util.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+
+var Animate = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Animate, _PureComponent);
+
+  var _super = _createSuper(Animate);
+
+  function Animate(props, context) {
+    var _this;
+
+    _classCallCheck(this, Animate);
+
+    _this = _super.call(this, props, context);
+    var _this$props = _this.props,
+        isActive = _this$props.isActive,
+        attributeName = _this$props.attributeName,
+        from = _this$props.from,
+        to = _this$props.to,
+        steps = _this$props.steps,
+        children = _this$props.children;
+    _this.handleStyleChange = _this.handleStyleChange.bind(_assertThisInitialized(_this));
+    _this.changeStyle = _this.changeStyle.bind(_assertThisInitialized(_this));
+
+    if (!isActive) {
+      _this.state = {
+        style: {}
+      }; // if children is a function and animation is not active, set style to 'to'
+
+      if (typeof children === 'function') {
+        _this.state = {
+          style: to
+        };
+      }
+
+      return _possibleConstructorReturn(_this);
+    }
+
+    if (steps && steps.length) {
+      _this.state = {
+        style: steps[0].style
+      };
+    } else if (from) {
+      if (typeof children === 'function') {
+        _this.state = {
+          style: from
+        };
+        return _possibleConstructorReturn(_this);
+      }
+
+      _this.state = {
+        style: attributeName ? _defineProperty({}, attributeName, from) : from
+      };
+    } else {
+      _this.state = {
+        style: {}
+      };
+    }
+
+    return _this;
+  }
+
+  _createClass(Animate, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props2 = this.props,
+          isActive = _this$props2.isActive,
+          canBegin = _this$props2.canBegin;
+      this.mounted = true;
+
+      if (!isActive || !canBegin) {
+        return;
+      }
+
+      this.runAnimation(this.props);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this$props3 = this.props,
+          isActive = _this$props3.isActive,
+          canBegin = _this$props3.canBegin,
+          attributeName = _this$props3.attributeName,
+          shouldReAnimate = _this$props3.shouldReAnimate;
+
+      if (!canBegin) {
+        return;
+      }
+
+      if (!isActive) {
+        var newState = {
+          style: attributeName ? _defineProperty({}, attributeName, this.props.to) : this.props.to
+        };
+
+        if (this.state && this.state.style) {
+          if (attributeName && this.state.style[attributeName] !== this.props.to || !attributeName && this.state.style !== this.props.to) {
+            // eslint-disable-next-line react/no-did-update-set-state
+            this.setState(newState);
+          }
+        }
+
+        return;
+      }
+
+      if ((0,fast_equals__WEBPACK_IMPORTED_MODULE_5__.deepEqual)(prevProps.to, this.props.to) && prevProps.canBegin && prevProps.isActive) {
+        return;
+      }
+
+      var isTriggered = !prevProps.canBegin || !prevProps.isActive;
+
+      if (this.manager) {
+        this.manager.stop();
+      }
+
+      if (this.stopJSAnimation) {
+        this.stopJSAnimation();
+      }
+
+      var from = isTriggered || shouldReAnimate ? this.props.from : prevProps.to;
+
+      if (this.state && this.state.style) {
+        var _newState = {
+          style: attributeName ? _defineProperty({}, attributeName, from) : from
+        };
+
+        if (attributeName && this.state.style[attributeName] !== from || !attributeName && this.state.style !== from) {
+          // eslint-disable-next-line react/no-did-update-set-state
+          this.setState(_newState);
+        }
+      }
+
+      this.runAnimation(_objectSpread(_objectSpread({}, this.props), {}, {
+        from: from,
+        begin: 0
+      }));
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.mounted = false;
+
+      if (this.unSubscribe) {
+        this.unSubscribe();
+      }
+
+      if (this.manager) {
+        this.manager.stop();
+        this.manager = null;
+      }
+
+      if (this.stopJSAnimation) {
+        this.stopJSAnimation();
+      }
+    }
+  }, {
+    key: "runJSAnimation",
+    value: function runJSAnimation(props) {
+      var _this2 = this;
+
+      var from = props.from,
+          to = props.to,
+          duration = props.duration,
+          easing = props.easing,
+          begin = props.begin,
+          onAnimationEnd = props.onAnimationEnd,
+          onAnimationStart = props.onAnimationStart;
+      var startAnimation = (0,_configUpdate__WEBPACK_IMPORTED_MODULE_3__["default"])(from, to, (0,_easing__WEBPACK_IMPORTED_MODULE_2__.configEasing)(easing), duration, this.changeStyle);
+
+      var finalStartAnimation = function finalStartAnimation() {
+        _this2.stopJSAnimation = startAnimation();
+      };
+
+      this.manager.start([onAnimationStart, begin, finalStartAnimation, duration, onAnimationEnd]);
+    }
+  }, {
+    key: "runStepAnimation",
+    value: function runStepAnimation(props) {
+      var _this3 = this;
+
+      var steps = props.steps,
+          begin = props.begin,
+          onAnimationStart = props.onAnimationStart;
+      var _steps$ = steps[0],
+          initialStyle = _steps$.style,
+          _steps$$duration = _steps$.duration,
+          initialTime = _steps$$duration === void 0 ? 0 : _steps$$duration;
+
+      var addStyle = function addStyle(sequence, nextItem, index) {
+        if (index === 0) {
+          return sequence;
+        }
+
+        var duration = nextItem.duration,
+            _nextItem$easing = nextItem.easing,
+            easing = _nextItem$easing === void 0 ? 'ease' : _nextItem$easing,
+            style = nextItem.style,
+            nextProperties = nextItem.properties,
+            onAnimationEnd = nextItem.onAnimationEnd;
+        var preItem = index > 0 ? steps[index - 1] : nextItem;
+        var properties = nextProperties || Object.keys(style);
+
+        if (typeof easing === 'function' || easing === 'spring') {
+          return [].concat(_toConsumableArray(sequence), [_this3.runJSAnimation.bind(_this3, {
+            from: preItem.style,
+            to: style,
+            duration: duration,
+            easing: easing
+          }), duration]);
+        }
+
+        var transition = (0,_util__WEBPACK_IMPORTED_MODULE_4__.getTransitionVal)(properties, duration, easing);
+
+        var newStyle = _objectSpread(_objectSpread(_objectSpread({}, preItem.style), style), {}, {
+          transition: transition
+        });
+
+        return [].concat(_toConsumableArray(sequence), [newStyle, duration, onAnimationEnd]).filter(_util__WEBPACK_IMPORTED_MODULE_4__.identity);
+      };
+
+      return this.manager.start([onAnimationStart].concat(_toConsumableArray(steps.reduce(addStyle, [initialStyle, Math.max(initialTime, begin)])), [props.onAnimationEnd]));
+    }
+  }, {
+    key: "runAnimation",
+    value: function runAnimation(props) {
+      if (!this.manager) {
+        this.manager = (0,_AnimateManager__WEBPACK_IMPORTED_MODULE_1__["default"])();
+      }
+
+      var begin = props.begin,
+          duration = props.duration,
+          attributeName = props.attributeName,
+          propsTo = props.to,
+          easing = props.easing,
+          onAnimationStart = props.onAnimationStart,
+          onAnimationEnd = props.onAnimationEnd,
+          steps = props.steps,
+          children = props.children;
+      var manager = this.manager;
+      this.unSubscribe = manager.subscribe(this.handleStyleChange);
+
+      if (typeof easing === 'function' || typeof children === 'function' || easing === 'spring') {
+        this.runJSAnimation(props);
+        return;
+      }
+
+      if (steps.length > 1) {
+        this.runStepAnimation(props);
+        return;
+      }
+
+      var to = attributeName ? _defineProperty({}, attributeName, propsTo) : propsTo;
+      var transition = (0,_util__WEBPACK_IMPORTED_MODULE_4__.getTransitionVal)(Object.keys(to), duration, easing);
+      manager.start([onAnimationStart, begin, _objectSpread(_objectSpread({}, to), {}, {
+        transition: transition
+      }), duration, onAnimationEnd]);
+    }
+  }, {
+    key: "handleStyleChange",
+    value: function handleStyleChange(style) {
+      this.changeStyle(style);
+    }
+  }, {
+    key: "changeStyle",
+    value: function changeStyle(style) {
+      if (this.mounted) {
+        this.setState({
+          style: style
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props4 = this.props,
+          children = _this$props4.children,
+          begin = _this$props4.begin,
+          duration = _this$props4.duration,
+          attributeName = _this$props4.attributeName,
+          easing = _this$props4.easing,
+          isActive = _this$props4.isActive,
+          steps = _this$props4.steps,
+          from = _this$props4.from,
+          to = _this$props4.to,
+          canBegin = _this$props4.canBegin,
+          onAnimationEnd = _this$props4.onAnimationEnd,
+          shouldReAnimate = _this$props4.shouldReAnimate,
+          onAnimationReStart = _this$props4.onAnimationReStart,
+          others = _objectWithoutProperties(_this$props4, ["children", "begin", "duration", "attributeName", "easing", "isActive", "steps", "from", "to", "canBegin", "onAnimationEnd", "shouldReAnimate", "onAnimationReStart"]);
+
+      var count = react__WEBPACK_IMPORTED_MODULE_0__.Children.count(children);
+      var stateStyle = (0,_util__WEBPACK_IMPORTED_MODULE_4__.translateStyle)(this.state.style);
+
+      if (typeof children === 'function') {
+        return children(stateStyle);
+      }
+
+      if (!isActive || count === 0) {
+        return children;
+      }
+
+      var cloneContainer = function cloneContainer(container) {
+        var _container$props = container.props,
+            _container$props$styl = _container$props.style,
+            style = _container$props$styl === void 0 ? {} : _container$props$styl,
+            className = _container$props.className;
+        var res = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(container, _objectSpread(_objectSpread({}, others), {}, {
+          style: _objectSpread(_objectSpread({}, style), stateStyle),
+          className: className
+        }));
+        return res;
+      };
+
+      if (count === 1) {
+        return cloneContainer(react__WEBPACK_IMPORTED_MODULE_0__.Children.only(children));
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.Children.map(children, function (child) {
+        return cloneContainer(child);
+      }));
+    }
+  }]);
+
+  return Animate;
+}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
+
+Animate.displayName = 'Animate';
+Animate.propTypes = {
+  from: prop_types__WEBPACK_IMPORTED_MODULE_6___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_6___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_6___default().string)]),
+  to: prop_types__WEBPACK_IMPORTED_MODULE_6___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_6___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_6___default().string)]),
+  attributeName: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().string),
+  // animation duration
+  duration: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+  begin: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number),
+  easing: prop_types__WEBPACK_IMPORTED_MODULE_6___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_6___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func)]),
+  steps: prop_types__WEBPACK_IMPORTED_MODULE_6___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_6___default().shape({
+    duration: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().number.isRequired),
+    style: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().object.isRequired),
+    easing: prop_types__WEBPACK_IMPORTED_MODULE_6___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_6___default().oneOf(['ease', 'ease-in', 'ease-out', 'ease-in-out', 'linear']), (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func)]),
+    // transition css properties(dash case), optional
+    properties: prop_types__WEBPACK_IMPORTED_MODULE_6___default().arrayOf('string'),
+    onAnimationEnd: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func)
+  })),
+  children: prop_types__WEBPACK_IMPORTED_MODULE_6___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_6___default().node), (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func)]),
+  isActive: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+  canBegin: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+  onAnimationEnd: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func),
+  // decide if it should reanimate with initial from style when props change
+  shouldReAnimate: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().bool),
+  onAnimationStart: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func),
+  onAnimationReStart: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().func)
+};
+Animate.defaultProps = {
+  begin: 0,
+  duration: 1000,
+  from: '',
+  to: '',
+  attributeName: '',
+  easing: 'ease',
+  isActive: true,
+  canBegin: true,
+  steps: [],
+  onAnimationEnd: function onAnimationEnd() {},
+  onAnimationStart: function onAnimationStart() {}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Animate);
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/AnimateGroup.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-smooth/es6/AnimateGroup.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/index.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _AnimateGroupChild__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AnimateGroupChild */ "./node_modules/react-smooth/es6/AnimateGroupChild.js");
+
+
+
+
+
+function AnimateGroup(props) {
+  var component = props.component,
+      children = props.children,
+      appear = props.appear,
+      enter = props.enter,
+      leave = props.leave;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_2__.TransitionGroup, {
+    component: component
+  }, react__WEBPACK_IMPORTED_MODULE_0__.Children.map(children, function (child, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AnimateGroupChild__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      appearOptions: appear,
+      enterOptions: enter,
+      leaveOptions: leave,
+      key: "child-".concat(index) // eslint-disable-line
+
+    }, child);
+  }));
+}
+
+AnimateGroup.propTypes = {
+  appear: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+  enter: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+  leave: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+  children: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_3___default().array), (prop_types__WEBPACK_IMPORTED_MODULE_3___default().element)]),
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().any)
+};
+AnimateGroup.defaultProps = {
+  component: 'span'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AnimateGroup);
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/AnimateGroupChild.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-smooth/es6/AnimateGroupChild.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/index.js");
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Animate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Animate */ "./node_modules/react-smooth/es6/Animate.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+if (Number.isFinite === undefined) {
+  Number.isFinite = function (value) {
+    return typeof value === 'number' && isFinite(value);
+  };
+}
+
+var parseDurationOfSingleTransition = function parseDurationOfSingleTransition() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var steps = options.steps,
+      duration = options.duration;
+
+  if (steps && steps.length) {
+    return steps.reduce(function (result, entry) {
+      return result + (Number.isFinite(entry.duration) && entry.duration > 0 ? entry.duration : 0);
+    }, 0);
+  }
+
+  if (Number.isFinite(duration)) {
+    return duration;
+  }
+
+  return 0;
+};
+
+var AnimateGroupChild = /*#__PURE__*/function (_Component) {
+  _inherits(AnimateGroupChild, _Component);
+
+  var _super = _createSuper(AnimateGroupChild);
+
+  function AnimateGroupChild() {
+    var _this;
+
+    _classCallCheck(this, AnimateGroupChild);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.state = {
+      isActive: false
+    };
+
+    _this.handleEnter = function (node, isAppearing) {
+      var _this$props = _this.props,
+          appearOptions = _this$props.appearOptions,
+          enterOptions = _this$props.enterOptions;
+
+      _this.handleStyleActive(isAppearing ? appearOptions : enterOptions);
+    };
+
+    _this.handleExit = function () {
+      _this.handleStyleActive(_this.props.leaveOptions);
+    };
+
+    return _this;
+  }
+
+  _createClass(AnimateGroupChild, [{
+    key: "handleStyleActive",
+    value: function handleStyleActive(style) {
+      if (style) {
+        var onAnimationEnd = style.onAnimationEnd ? function () {
+          style.onAnimationEnd();
+        } : null;
+        this.setState(_objectSpread(_objectSpread({}, style), {}, {
+          onAnimationEnd: onAnimationEnd,
+          isActive: true
+        }));
+      }
+    }
+  }, {
+    key: "parseTimeout",
+    value: function parseTimeout() {
+      var _this$props2 = this.props,
+          appearOptions = _this$props2.appearOptions,
+          enterOptions = _this$props2.enterOptions,
+          leaveOptions = _this$props2.leaveOptions;
+      return parseDurationOfSingleTransition(appearOptions) + parseDurationOfSingleTransition(enterOptions) + parseDurationOfSingleTransition(leaveOptions);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props3 = this.props,
+          children = _this$props3.children,
+          appearOptions = _this$props3.appearOptions,
+          enterOptions = _this$props3.enterOptions,
+          leaveOptions = _this$props3.leaveOptions,
+          props = _objectWithoutProperties(_this$props3, ["children", "appearOptions", "enterOptions", "leaveOptions"]);
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_2__.Transition, _extends({}, props, {
+        onEnter: this.handleEnter,
+        onExit: this.handleExit,
+        timeout: this.parseTimeout()
+      }), function () {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Animate__WEBPACK_IMPORTED_MODULE_1__["default"], _this2.state, react__WEBPACK_IMPORTED_MODULE_0__.Children.only(children));
+      });
+    }
+  }]);
+
+  return AnimateGroupChild;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+AnimateGroupChild.propTypes = {
+  appearOptions: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+  enterOptions: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+  leaveOptions: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().element)
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AnimateGroupChild);
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/AnimateManager.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-smooth/es6/AnimateManager.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createAnimateManager)
+/* harmony export */ });
+/* harmony import */ var _setRafTimeout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setRafTimeout */ "./node_modules/react-smooth/es6/setRafTimeout.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function createAnimateManager() {
+  var currStyle = {};
+
+  var handleChange = function handleChange() {
+    return null;
+  };
+
+  var shouldStop = false;
+
+  var setStyle = function setStyle(_style) {
+    if (shouldStop) {
+      return;
+    }
+
+    if (Array.isArray(_style)) {
+      if (!_style.length) {
+        return;
+      }
+
+      var styles = _style;
+
+      var _styles = _toArray(styles),
+          curr = _styles[0],
+          restStyles = _styles.slice(1);
+
+      if (typeof curr === 'number') {
+        (0,_setRafTimeout__WEBPACK_IMPORTED_MODULE_0__["default"])(setStyle.bind(null, restStyles), curr);
+        return;
+      }
+
+      setStyle(curr);
+      (0,_setRafTimeout__WEBPACK_IMPORTED_MODULE_0__["default"])(setStyle.bind(null, restStyles));
+      return;
+    }
+
+    if (_typeof(_style) === 'object') {
+      currStyle = _style;
+      handleChange(currStyle);
+    }
+
+    if (typeof _style === 'function') {
+      _style();
+    }
+  };
+
+  return {
+    stop: function stop() {
+      shouldStop = true;
+    },
+    start: function start(style) {
+      shouldStop = false;
+      setStyle(style);
+    },
+    subscribe: function subscribe(_handleChange) {
+      handleChange = _handleChange;
+      return function () {
+        handleChange = function handleChange() {
+          return null;
+        };
+      };
+    }
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/configUpdate.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-smooth/es6/configUpdate.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var raf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! raf */ "./node_modules/raf/index.js");
+/* harmony import */ var raf__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(raf__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./node_modules/react-smooth/es6/util.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var alpha = function alpha(begin, end, k) {
+  return begin + (end - begin) * k;
+};
+
+var needContinue = function needContinue(_ref) {
+  var from = _ref.from,
+      to = _ref.to;
+  return from !== to;
+};
+/*
+ * @description: cal new from value and velocity in each stepper
+ * @return: { [styleProperty]: { from, to, velocity } }
+ */
+
+
+var calStepperVals = function calStepperVals(easing, preVals, steps) {
+  var nextStepVals = (0,_util__WEBPACK_IMPORTED_MODULE_1__.mapObject)(function (key, val) {
+    if (needContinue(val)) {
+      var _easing = easing(val.from, val.to, val.velocity),
+          _easing2 = _slicedToArray(_easing, 2),
+          newX = _easing2[0],
+          newV = _easing2[1];
+
+      return _objectSpread(_objectSpread({}, val), {}, {
+        from: newX,
+        velocity: newV
+      });
+    }
+
+    return val;
+  }, preVals);
+
+  if (steps < 1) {
+    return (0,_util__WEBPACK_IMPORTED_MODULE_1__.mapObject)(function (key, val) {
+      if (needContinue(val)) {
+        return _objectSpread(_objectSpread({}, val), {}, {
+          velocity: alpha(val.velocity, nextStepVals[key].velocity, steps),
+          from: alpha(val.from, nextStepVals[key].from, steps)
+        });
+      }
+
+      return val;
+    }, preVals);
+  }
+
+  return calStepperVals(easing, nextStepVals, steps - 1);
+}; // configure update function
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (from, to, easing, duration, render) {
+  var interKeys = (0,_util__WEBPACK_IMPORTED_MODULE_1__.getIntersectionKeys)(from, to);
+  var timingStyle = interKeys.reduce(function (res, key) {
+    return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, key, [from[key], to[key]]));
+  }, {});
+  var stepperStyle = interKeys.reduce(function (res, key) {
+    return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, key, {
+      from: from[key],
+      velocity: 0,
+      to: to[key]
+    }));
+  }, {});
+  var cafId = -1;
+  var preTime;
+  var beginTime;
+
+  var update = function update() {
+    return null;
+  };
+
+  var getCurrStyle = function getCurrStyle() {
+    return (0,_util__WEBPACK_IMPORTED_MODULE_1__.mapObject)(function (key, val) {
+      return val.from;
+    }, stepperStyle);
+  };
+
+  var shouldStopAnimation = function shouldStopAnimation() {
+    return !Object.values(stepperStyle).filter(needContinue).length;
+  }; // stepper timing function like spring
+
+
+  var stepperUpdate = function stepperUpdate(now) {
+    if (!preTime) {
+      preTime = now;
+    }
+
+    var deltaTime = now - preTime;
+    var steps = deltaTime / easing.dt;
+    stepperStyle = calStepperVals(easing, stepperStyle, steps); // get union set and add compatible prefix
+
+    render(_objectSpread(_objectSpread(_objectSpread({}, from), to), getCurrStyle(stepperStyle)));
+    preTime = now;
+
+    if (!shouldStopAnimation()) {
+      cafId = raf__WEBPACK_IMPORTED_MODULE_0___default()(update);
+    }
+  }; // t => val timing function like cubic-bezier
+
+
+  var timingUpdate = function timingUpdate(now) {
+    if (!beginTime) {
+      beginTime = now;
+    }
+
+    var t = (now - beginTime) / duration;
+    var currStyle = (0,_util__WEBPACK_IMPORTED_MODULE_1__.mapObject)(function (key, val) {
+      return alpha.apply(void 0, _toConsumableArray(val).concat([easing(t)]));
+    }, timingStyle); // get union set and add compatible prefix
+
+    render(_objectSpread(_objectSpread(_objectSpread({}, from), to), currStyle));
+
+    if (t < 1) {
+      cafId = raf__WEBPACK_IMPORTED_MODULE_0___default()(update);
+    } else {
+      var finalStyle = (0,_util__WEBPACK_IMPORTED_MODULE_1__.mapObject)(function (key, val) {
+        return alpha.apply(void 0, _toConsumableArray(val).concat([easing(1)]));
+      }, timingStyle);
+      render(_objectSpread(_objectSpread(_objectSpread({}, from), to), finalStyle));
+    }
+  };
+
+  update = easing.isStepper ? stepperUpdate : timingUpdate; // return start animation method
+
+  return function () {
+    raf__WEBPACK_IMPORTED_MODULE_0___default()(update); // return stop animation method
+
+    return function () {
+      (0,raf__WEBPACK_IMPORTED_MODULE_0__.cancel)(cafId);
+    };
+  };
+});
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/easing.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-smooth/es6/easing.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "configBezier": () => (/* binding */ configBezier),
+/* harmony export */   "configEasing": () => (/* binding */ configEasing),
+/* harmony export */   "configSpring": () => (/* binding */ configSpring)
+/* harmony export */ });
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./node_modules/react-smooth/es6/util.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+var ACCURACY = 1e-4;
+
+var cubicBezierFactor = function cubicBezierFactor(c1, c2) {
+  return [0, 3 * c1, 3 * c2 - 6 * c1, 3 * c1 - 3 * c2 + 1];
+};
+
+var multyTime = function multyTime(params, t) {
+  return params.map(function (param, i) {
+    return param * Math.pow(t, i);
+  }).reduce(function (pre, curr) {
+    return pre + curr;
+  });
+};
+
+var cubicBezier = function cubicBezier(c1, c2) {
+  return function (t) {
+    var params = cubicBezierFactor(c1, c2);
+    return multyTime(params, t);
+  };
+};
+
+var derivativeCubicBezier = function derivativeCubicBezier(c1, c2) {
+  return function (t) {
+    var params = cubicBezierFactor(c1, c2);
+    var newParams = [].concat(_toConsumableArray(params.map(function (param, i) {
+      return param * i;
+    }).slice(1)), [0]);
+    return multyTime(newParams, t);
+  };
+}; // calculate cubic-bezier using Newton's method
+
+
+var configBezier = function configBezier() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  var x1 = args[0],
+      y1 = args[1],
+      x2 = args[2],
+      y2 = args[3];
+
+  if (args.length === 1) {
+    switch (args[0]) {
+      case 'linear':
+        x1 = 0.0;
+        y1 = 0.0;
+        x2 = 1.0;
+        y2 = 1.0;
+        break;
+
+      case 'ease':
+        x1 = 0.25;
+        y1 = 0.1;
+        x2 = 0.25;
+        y2 = 1.0;
+        break;
+
+      case 'ease-in':
+        x1 = 0.42;
+        y1 = 0.0;
+        x2 = 1.0;
+        y2 = 1.0;
+        break;
+
+      case 'ease-out':
+        x1 = 0.42;
+        y1 = 0.0;
+        x2 = 0.58;
+        y2 = 1.0;
+        break;
+
+      case 'ease-in-out':
+        x1 = 0.0;
+        y1 = 0.0;
+        x2 = 0.58;
+        y2 = 1.0;
+        break;
+
+      default:
+        {
+          var easing = args[0].split('(');
+
+          if (easing[0] === 'cubic-bezier' && easing[1].split(')')[0].split(',').length === 4) {
+            var _easing$1$split$0$spl = easing[1].split(')')[0].split(',').map(function (x) {
+              return parseFloat(x);
+            });
+
+            var _easing$1$split$0$spl2 = _slicedToArray(_easing$1$split$0$spl, 4);
+
+            x1 = _easing$1$split$0$spl2[0];
+            y1 = _easing$1$split$0$spl2[1];
+            x2 = _easing$1$split$0$spl2[2];
+            y2 = _easing$1$split$0$spl2[3];
+          } else {
+            (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)(false, '[configBezier]: arguments should be one of ' + 'oneOf \'linear\', \'ease\', \'ease-in\', \'ease-out\', ' + '\'ease-in-out\',\'cubic-bezier(x1,y1,x2,y2)\', instead received %s', args);
+          }
+        }
+    }
+  }
+
+  (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)([x1, x2, y1, y2].every(function (num) {
+    return typeof num === 'number' && num >= 0 && num <= 1;
+  }), '[configBezier]: arguments should be x1, y1, x2, y2 of [0, 1] instead received %s', args);
+  var curveX = cubicBezier(x1, x2);
+  var curveY = cubicBezier(y1, y2);
+  var derCurveX = derivativeCubicBezier(x1, x2);
+
+  var rangeValue = function rangeValue(value) {
+    if (value > 1) {
+      return 1;
+    } else if (value < 0) {
+      return 0;
+    }
+
+    return value;
+  };
+
+  var bezier = function bezier(_t) {
+    var t = _t > 1 ? 1 : _t;
+    var x = t;
+
+    for (var i = 0; i < 8; ++i) {
+      var evalT = curveX(x) - t;
+      var derVal = derCurveX(x);
+
+      if (Math.abs(evalT - t) < ACCURACY || derVal < ACCURACY) {
+        return curveY(x);
+      }
+
+      x = rangeValue(x - evalT / derVal);
+    }
+
+    return curveY(x);
+  };
+
+  bezier.isStepper = false;
+  return bezier;
+};
+var configSpring = function configSpring() {
+  var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _config$stiff = config.stiff,
+      stiff = _config$stiff === void 0 ? 100 : _config$stiff,
+      _config$damping = config.damping,
+      damping = _config$damping === void 0 ? 8 : _config$damping,
+      _config$dt = config.dt,
+      dt = _config$dt === void 0 ? 17 : _config$dt;
+
+  var stepper = function stepper(currX, destX, currV) {
+    var FSpring = -(currX - destX) * stiff;
+    var FDamping = currV * damping;
+    var newV = currV + (FSpring - FDamping) * dt / 1000;
+    var newX = currV * dt / 1000 + currX;
+
+    if (Math.abs(newX - destX) < ACCURACY && Math.abs(newV) < ACCURACY) {
+      return [destX, 0];
+    }
+
+    return [newX, newV];
+  };
+
+  stepper.isStepper = true;
+  stepper.dt = dt;
+  return stepper;
+};
+var configEasing = function configEasing() {
+  for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    args[_key2] = arguments[_key2];
+  }
+
+  var easing = args[0];
+
+  if (typeof easing === 'string') {
+    switch (easing) {
+      case 'ease':
+      case 'ease-in-out':
+      case 'ease-out':
+      case 'ease-in':
+      case 'linear':
+        return configBezier(easing);
+
+      case 'spring':
+        return configSpring();
+
+      default:
+        if (easing.split('(')[0] === 'cubic-bezier') {
+          return configBezier(easing);
+        }
+
+        (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)(false, '[configEasing]: first argument should be one of \'ease\', \'ease-in\', ' + '\'ease-out\', \'ease-in-out\',\'cubic-bezier(x1,y1,x2,y2)\', \'linear\' and \'spring\', instead  received %s', args);
+    }
+  }
+
+  if (typeof easing === 'function') {
+    return easing;
+  }
+
+  (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)(false, '[configEasing]: first argument type should be function or ' + 'string, instead received %s', args);
+  return null;
+};
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/react-smooth/es6/index.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AnimateGroup": () => (/* reexport safe */ _AnimateGroup__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   "configBezier": () => (/* reexport safe */ _easing__WEBPACK_IMPORTED_MODULE_1__.configBezier),
+/* harmony export */   "configSpring": () => (/* reexport safe */ _easing__WEBPACK_IMPORTED_MODULE_1__.configSpring),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "translateStyle": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.translateStyle)
+/* harmony export */ });
+/* harmony import */ var _Animate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Animate */ "./node_modules/react-smooth/es6/Animate.js");
+/* harmony import */ var _easing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./easing */ "./node_modules/react-smooth/es6/easing.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "./node_modules/react-smooth/es6/util.js");
+/* harmony import */ var _AnimateGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AnimateGroup */ "./node_modules/react-smooth/es6/AnimateGroup.js");
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Animate__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/setRafTimeout.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-smooth/es6/setRafTimeout.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ setRafTimeout)
+/* harmony export */ });
+/* harmony import */ var raf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! raf */ "./node_modules/raf/index.js");
+/* harmony import */ var raf__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(raf__WEBPACK_IMPORTED_MODULE_0__);
+
+function setRafTimeout(callback) {
+  var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var currTime = -1;
+
+  var shouldUpdate = function shouldUpdate(now) {
+    if (currTime < 0) {
+      currTime = now;
+    }
+
+    if (now - currTime > timeout) {
+      callback(now);
+      currTime = -1;
+    } else {
+      raf__WEBPACK_IMPORTED_MODULE_0___default()(shouldUpdate);
+    }
+  };
+
+  raf__WEBPACK_IMPORTED_MODULE_0___default()(shouldUpdate);
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-smooth/es6/util.js":
+/*!***********************************************!*\
+  !*** ./node_modules/react-smooth/es6/util.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "compose": () => (/* binding */ compose),
+/* harmony export */   "debug": () => (/* binding */ debug),
+/* harmony export */   "debugf": () => (/* binding */ debugf),
+/* harmony export */   "generatePrefixStyle": () => (/* binding */ generatePrefixStyle),
+/* harmony export */   "getDashCase": () => (/* binding */ getDashCase),
+/* harmony export */   "getIntersectionKeys": () => (/* binding */ getIntersectionKeys),
+/* harmony export */   "getTransitionVal": () => (/* binding */ getTransitionVal),
+/* harmony export */   "identity": () => (/* binding */ identity),
+/* harmony export */   "log": () => (/* binding */ log),
+/* harmony export */   "mapObject": () => (/* binding */ mapObject),
+/* harmony export */   "translateStyle": () => (/* binding */ translateStyle),
+/* harmony export */   "warn": () => (/* binding */ warn)
+/* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/* eslint no-console: 0 */
+var PREFIX_LIST = ['Webkit', 'Moz', 'O', 'ms'];
+var IN_LINE_PREFIX_LIST = ['-webkit-', '-moz-', '-o-', '-ms-'];
+var IN_COMPATIBLE_PROPERTY = ['transform', 'transformOrigin', 'transition'];
+var getIntersectionKeys = function getIntersectionKeys(preObj, nextObj) {
+  return [Object.keys(preObj), Object.keys(nextObj)].reduce(function (a, b) {
+    return a.filter(function (c) {
+      return b.includes(c);
+    });
+  });
+};
+var identity = function identity(param) {
+  return param;
+};
+/*
+ * @description: convert camel case to dash case
+ * string => string
+ */
+
+var getDashCase = function getDashCase(name) {
+  return name.replace(/([A-Z])/g, function (v) {
+    return "-".concat(v.toLowerCase());
+  });
+};
+/*
+ * @description: add compatible style prefix
+ * (string, string) => object
+ */
+
+var generatePrefixStyle = function generatePrefixStyle(name, value) {
+  if (IN_COMPATIBLE_PROPERTY.indexOf(name) === -1) {
+    return _defineProperty({}, name, value);
+  }
+
+  var isTransition = name === 'transition';
+  var camelName = name.replace(/(\w)/, function (v) {
+    return v.toUpperCase();
+  });
+  var styleVal = value;
+  return PREFIX_LIST.reduce(function (result, property, i) {
+    if (isTransition) {
+      styleVal = value.replace(/(transform|transform-origin)/gim, "".concat(IN_LINE_PREFIX_LIST[i], "$1"));
+    }
+
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, property + camelName, styleVal));
+  }, {});
+};
+var log = function log() {
+  var _console;
+
+  (_console = console).log.apply(_console, arguments);
+};
+/*
+ * @description: log the value of a varible
+ * string => any => any
+ */
+
+var debug = function debug(name) {
+  return function (item) {
+    log(name, item);
+    return item;
+  };
+};
+/*
+ * @description: log name, args, return value of a function
+ * function => function
+ */
+
+var debugf = function debugf(tag, f) {
+  return function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var res = f.apply(void 0, args);
+    var name = tag || f.name || 'anonymous function';
+    var argNames = "(".concat(args.map(JSON.stringify).join(', '), ")");
+    log("".concat(name, ": ").concat(argNames, " => ").concat(JSON.stringify(res)));
+    return res;
+  };
+};
+/*
+ * @description: map object on every element in this object.
+ * (function, object) => object
+ */
+
+var mapObject = function mapObject(fn, obj) {
+  return Object.keys(obj).reduce(function (res, key) {
+    return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, key, fn(key, obj[key])));
+  }, {});
+};
+/*
+ * @description: add compatible prefix to style
+ * object => object
+ */
+
+var translateStyle = function translateStyle(style) {
+  return Object.keys(style).reduce(function (res, key) {
+    return _objectSpread(_objectSpread({}, res), generatePrefixStyle(key, res[key]));
+  }, style);
+};
+var compose = function compose() {
+  for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    args[_key2] = arguments[_key2];
+  }
+
+  if (!args.length) {
+    return identity;
+  }
+
+  var fns = args.reverse(); // first function can receive multiply arguments
+
+  var firstFn = fns[0];
+  var tailsFn = fns.slice(1);
+  return function () {
+    return tailsFn.reduce(function (res, fn) {
+      return fn(res);
+    }, firstFn.apply(void 0, arguments));
+  };
+};
+var getTransitionVal = function getTransitionVal(props, duration, easing) {
+  return props.map(function (prop) {
+    return "".concat(getDashCase(prop), " ").concat(duration, "ms ").concat(easing);
+  }).join(',');
+};
+var isDev = "development" !== 'production';
+var warn = function warn(condition, format, a, b, c, d, e, f) {
+  if (isDev && typeof console !== 'undefined' && console.warn) {
+    if (format === undefined) {
+      console.warn('LogUtils requires an error message argument');
+    }
+
+    if (!condition) {
+      if (format === undefined) {
+        console.warn('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+      } else {
+        var args = [a, b, c, d, e, f];
+        var argIndex = 0;
+        console.warn(format.replace(/%s/g, function () {
+          return args[argIndex++];
+        }));
+      }
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/CSSTransition.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-transition-group/CSSTransition.js ***!
+  \**************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var PropTypes = _interopRequireWildcard(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _addClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/addClass */ "./node_modules/dom-helpers/class/addClass.js"));
+
+var _removeClass = _interopRequireDefault(__webpack_require__(/*! dom-helpers/class/removeClass */ "./node_modules/dom-helpers/class/removeClass.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ "./node_modules/react-transition-group/Transition.js"));
+
+var _PropTypes = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/utils/PropTypes.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var addClass = function addClass(node, classes) {
+  return node && classes && classes.split(' ').forEach(function (c) {
+    return (0, _addClass.default)(node, c);
+  });
+};
+
+var removeClass = function removeClass(node, classes) {
+  return node && classes && classes.split(' ').forEach(function (c) {
+    return (0, _removeClass.default)(node, c);
+  });
+};
+/**
+ * A transition component inspired by the excellent
+ * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
+ * using CSS transitions or animations. It's built upon the
+ * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
+ * component, so it inherits all of its props.
+ *
+ * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
+ * and `exit` states of the transition. The first class is applied and then a
+ * second `*-active` class in order to activate the CSSS transition. After the
+ * transition, matching `*-done` class names are applied to persist the
+ * transition state.
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
+ *         <div>
+ *           {"I'll receive my-node-* classes"}
+ *         </div>
+ *       </CSSTransition>
+ *       <button type="button" onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the `in` prop is set to `true`, the child component will first receive
+ * the class `example-enter`, then the `example-enter-active` will be added in
+ * the next tick. `CSSTransition` [forces a
+ * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
+ * between before adding the `example-enter-active`. This is an important trick
+ * because it allows us to transition between `example-enter` and
+ * `example-enter-active` even though they were added immediately one after
+ * another. Most notably, this is what makes it possible for us to animate
+ * _appearance_.
+ *
+ * ```css
+ * .my-node-enter {
+ *   opacity: 0;
+ * }
+ * .my-node-enter-active {
+ *   opacity: 1;
+ *   transition: opacity 200ms;
+ * }
+ * .my-node-exit {
+ *   opacity: 1;
+ * }
+ * .my-node-exit-active {
+ *   opacity: 0;
+ *   transition: opacity: 200ms;
+ * }
+ * ```
+ *
+ * `*-active` classes represent which styles you want to animate **to**.
+ */
+
+
+var CSSTransition =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(CSSTransition, _React$Component);
+
+  function CSSTransition() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+
+    _this.onEnter = function (node, appearing) {
+      var _this$getClassNames = _this.getClassNames(appearing ? 'appear' : 'enter'),
+          className = _this$getClassNames.className;
+
+      _this.removeClasses(node, 'exit');
+
+      addClass(node, className);
+
+      if (_this.props.onEnter) {
+        _this.props.onEnter(node, appearing);
+      }
+    };
+
+    _this.onEntering = function (node, appearing) {
+      var _this$getClassNames2 = _this.getClassNames(appearing ? 'appear' : 'enter'),
+          activeClassName = _this$getClassNames2.activeClassName;
+
+      _this.reflowAndAddClass(node, activeClassName);
+
+      if (_this.props.onEntering) {
+        _this.props.onEntering(node, appearing);
+      }
+    };
+
+    _this.onEntered = function (node, appearing) {
+      var appearClassName = _this.getClassNames('appear').doneClassName;
+
+      var enterClassName = _this.getClassNames('enter').doneClassName;
+
+      var doneClassName = appearing ? appearClassName + " " + enterClassName : enterClassName;
+
+      _this.removeClasses(node, appearing ? 'appear' : 'enter');
+
+      addClass(node, doneClassName);
+
+      if (_this.props.onEntered) {
+        _this.props.onEntered(node, appearing);
+      }
+    };
+
+    _this.onExit = function (node) {
+      var _this$getClassNames3 = _this.getClassNames('exit'),
+          className = _this$getClassNames3.className;
+
+      _this.removeClasses(node, 'appear');
+
+      _this.removeClasses(node, 'enter');
+
+      addClass(node, className);
+
+      if (_this.props.onExit) {
+        _this.props.onExit(node);
+      }
+    };
+
+    _this.onExiting = function (node) {
+      var _this$getClassNames4 = _this.getClassNames('exit'),
+          activeClassName = _this$getClassNames4.activeClassName;
+
+      _this.reflowAndAddClass(node, activeClassName);
+
+      if (_this.props.onExiting) {
+        _this.props.onExiting(node);
+      }
+    };
+
+    _this.onExited = function (node) {
+      var _this$getClassNames5 = _this.getClassNames('exit'),
+          doneClassName = _this$getClassNames5.doneClassName;
+
+      _this.removeClasses(node, 'exit');
+
+      addClass(node, doneClassName);
+
+      if (_this.props.onExited) {
+        _this.props.onExited(node);
+      }
+    };
+
+    _this.getClassNames = function (type) {
+      var classNames = _this.props.classNames;
+      var isStringClassNames = typeof classNames === 'string';
+      var prefix = isStringClassNames && classNames ? classNames + '-' : '';
+      var className = isStringClassNames ? prefix + type : classNames[type];
+      var activeClassName = isStringClassNames ? className + '-active' : classNames[type + 'Active'];
+      var doneClassName = isStringClassNames ? className + '-done' : classNames[type + 'Done'];
+      return {
+        className: className,
+        activeClassName: activeClassName,
+        doneClassName: doneClassName
+      };
+    };
+
+    return _this;
+  }
+
+  var _proto = CSSTransition.prototype;
+
+  _proto.removeClasses = function removeClasses(node, type) {
+    var _this$getClassNames6 = this.getClassNames(type),
+        className = _this$getClassNames6.className,
+        activeClassName = _this$getClassNames6.activeClassName,
+        doneClassName = _this$getClassNames6.doneClassName;
+
+    className && removeClass(node, className);
+    activeClassName && removeClass(node, activeClassName);
+    doneClassName && removeClass(node, doneClassName);
+  };
+
+  _proto.reflowAndAddClass = function reflowAndAddClass(node, className) {
+    // This is for to force a repaint,
+    // which is necessary in order to transition styles when adding a class name.
+    if (className) {
+      /* eslint-disable no-unused-expressions */
+      node && node.scrollTop;
+      /* eslint-enable no-unused-expressions */
+
+      addClass(node, className);
+    }
+  };
+
+  _proto.render = function render() {
+    var props = _extends({}, this.props);
+
+    delete props.classNames;
+    return _react.default.createElement(_Transition.default, _extends({}, props, {
+      onEnter: this.onEnter,
+      onEntered: this.onEntered,
+      onEntering: this.onEntering,
+      onExit: this.onExit,
+      onExiting: this.onExiting,
+      onExited: this.onExited
+    }));
+  };
+
+  return CSSTransition;
+}(_react.default.Component);
+
+CSSTransition.defaultProps = {
+  classNames: ''
+};
+CSSTransition.propTypes =  true ? _extends({}, _Transition.default.propTypes, {
+  /**
+   * The animation classNames applied to the component as it enters, exits or
+   * has finished the transition. A single name can be provided and it will be
+   * suffixed for each stage: e.g.
+   *
+   * `classNames="fade"` applies `fade-enter`, `fade-enter-active`,
+   * `fade-enter-done`, `fade-exit`, `fade-exit-active`, `fade-exit-done`,
+   * `fade-appear`, `fade-appear-active`, and `fade-appear-done`.
+   *
+   * **Note**: `fade-appear-done` and `fade-enter-done` will _both_ be applied.
+   * This allows you to define different behavior for when appearing is done and
+   * when regular entering is done, using selectors like
+   * `.fade-enter-done:not(.fade-appear-done)`. For example, you could apply an
+   * epic entrance animation when element first appears in the DOM using
+   * [Animate.css](https://daneden.github.io/animate.css/). Otherwise you can
+   * simply use `fade-enter-done` for defining both cases.
+   *
+   * Each individual classNames can also be specified independently like:
+   *
+   * ```js
+   * classNames={{
+   *  appear: 'my-appear',
+   *  appearActive: 'my-active-appear',
+   *  appearDone: 'my-done-appear',
+   *  enter: 'my-enter',
+   *  enterActive: 'my-active-enter',
+   *  enterDone: 'my-done-enter',
+   *  exit: 'my-exit',
+   *  exitActive: 'my-active-exit',
+   *  exitDone: 'my-done-exit',
+   * }}
+   * ```
+   *
+   * If you want to set these classes using CSS Modules:
+   *
+   * ```js
+   * import styles from './styles.css';
+   * ```
+   *
+   * you might want to use camelCase in your CSS file, that way could simply
+   * spread them instead of listing them one by one:
+   *
+   * ```js
+   * classNames={{ ...styles }}
+   * ```
+   *
+   * @type {string | {
+   *  appear?: string,
+   *  appearActive?: string,
+   *  appearDone?: string,
+   *  enter?: string,
+   *  enterActive?: string,
+   *  enterDone?: string,
+   *  exit?: string,
+   *  exitActive?: string,
+   *  exitDone?: string,
+   * }}
+   */
+  classNames: _PropTypes.classNamesShape,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter' or 'appear' class is
+   * applied.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEnter: PropTypes.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter-active' or
+   * 'appear-active' class is applied.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: PropTypes.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'enter' or
+   * 'appear' classes are **removed** and the `done` class is added to the DOM node.
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntered: PropTypes.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit' class is
+   * applied.
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExit: PropTypes.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit-active' is applied.
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExiting: PropTypes.func,
+
+  /**
+   * A `<Transition>` callback fired immediately after the 'exit' classes
+   * are **removed** and the `exit-done` class is added to the DOM node.
+   *
+   * @type Function(node: HtmlElement)
+   */
+  onExited: PropTypes.func
+}) : 0;
+var _default = CSSTransition;
+exports["default"] = _default;
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/ReplaceTransition.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/react-transition-group/ReplaceTransition.js ***!
+  \******************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ "./node_modules/react-transition-group/TransitionGroup.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+/**
+ * The `<ReplaceTransition>` component is a specialized `Transition` component
+ * that animates between two children.
+ *
+ * ```jsx
+ * <ReplaceTransition in>
+ *   <Fade><div>I appear first</div></Fade>
+ *   <Fade><div>I replace the above</div></Fade>
+ * </ReplaceTransition>
+ * ```
+ */
+var ReplaceTransition =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(ReplaceTransition, _React$Component);
+
+  function ReplaceTransition() {
+    var _this;
+
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(_args)) || this;
+
+    _this.handleEnter = function () {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      return _this.handleLifecycle('onEnter', 0, args);
+    };
+
+    _this.handleEntering = function () {
+      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        args[_key3] = arguments[_key3];
+      }
+
+      return _this.handleLifecycle('onEntering', 0, args);
+    };
+
+    _this.handleEntered = function () {
+      for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        args[_key4] = arguments[_key4];
+      }
+
+      return _this.handleLifecycle('onEntered', 0, args);
+    };
+
+    _this.handleExit = function () {
+      for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+        args[_key5] = arguments[_key5];
+      }
+
+      return _this.handleLifecycle('onExit', 1, args);
+    };
+
+    _this.handleExiting = function () {
+      for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+        args[_key6] = arguments[_key6];
+      }
+
+      return _this.handleLifecycle('onExiting', 1, args);
+    };
+
+    _this.handleExited = function () {
+      for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+        args[_key7] = arguments[_key7];
+      }
+
+      return _this.handleLifecycle('onExited', 1, args);
+    };
+
+    return _this;
+  }
+
+  var _proto = ReplaceTransition.prototype;
+
+  _proto.handleLifecycle = function handleLifecycle(handler, idx, originalArgs) {
+    var _child$props;
+
+    var children = this.props.children;
+
+    var child = _react.default.Children.toArray(children)[idx];
+
+    if (child.props[handler]) (_child$props = child.props)[handler].apply(_child$props, originalArgs);
+    if (this.props[handler]) this.props[handler]((0, _reactDom.findDOMNode)(this));
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        children = _this$props.children,
+        inProp = _this$props.in,
+        props = _objectWithoutPropertiesLoose(_this$props, ["children", "in"]);
+
+    var _React$Children$toArr = _react.default.Children.toArray(children),
+        first = _React$Children$toArr[0],
+        second = _React$Children$toArr[1];
+
+    delete props.onEnter;
+    delete props.onEntering;
+    delete props.onEntered;
+    delete props.onExit;
+    delete props.onExiting;
+    delete props.onExited;
+    return _react.default.createElement(_TransitionGroup.default, props, inProp ? _react.default.cloneElement(first, {
+      key: 'first',
+      onEnter: this.handleEnter,
+      onEntering: this.handleEntering,
+      onEntered: this.handleEntered
+    }) : _react.default.cloneElement(second, {
+      key: 'second',
+      onEnter: this.handleExit,
+      onEntering: this.handleExiting,
+      onEntered: this.handleExited
+    }));
+  };
+
+  return ReplaceTransition;
+}(_react.default.Component);
+
+ReplaceTransition.propTypes =  true ? {
+  in: _propTypes.default.bool.isRequired,
+  children: function children(props, propName) {
+    if (_react.default.Children.count(props[propName]) !== 2) return new Error("\"" + propName + "\" must be exactly two transition components.");
+    return null;
+  }
+} : 0;
+var _default = ReplaceTransition;
+exports["default"] = _default;
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/Transition.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-transition-group/Transition.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports["default"] = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
+
+var PropTypes = _interopRequireWildcard(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+
+var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js");
+
+var _PropTypes = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/utils/PropTypes.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+var UNMOUNTED = 'unmounted';
+exports.UNMOUNTED = UNMOUNTED;
+var EXITED = 'exited';
+exports.EXITED = EXITED;
+var ENTERING = 'entering';
+exports.ENTERING = ENTERING;
+var ENTERED = 'entered';
+exports.ENTERED = ENTERED;
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 0 },
+ *   entered:  { opacity: 1 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+exports.EXITING = EXITING;
+
+var Transition =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context.transitionGroup; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  var _proto = Transition.prototype;
+
+  _proto.getChildContext = function getChildContext() {
+    return {
+      transitionGroup: null // allows for nested Transitions
+
+    };
+  };
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  }; // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      var node = _reactDom.default.findDOMNode(this);
+
+      if (nextStatus === ENTERING) {
+        this.performEnter(node, mounting);
+      } else {
+        this.performExit(node);
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(node, mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context.transitionGroup ? this.context.transitionGroup.isMounting : mounting;
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(node);
+      });
+      return;
+    }
+
+    this.props.onEnter(node, appearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(node, appearing);
+
+      _this2.onTransitionEnd(node, enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(node, appearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit(node) {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts(); // no exit animation skip right to EXITED
+
+    if (!exit) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(node);
+      });
+      return;
+    }
+
+    this.props.onExit(node);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(node);
+
+      _this3.onTransitionEnd(node, timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(node);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(node, timeout, handler) {
+    this.setNextCallback(handler);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      this.props.addEndListener(node, this.nextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        childProps = _objectWithoutPropertiesLoose(_this$props, ["children"]); // filter props for Transtition
+
+
+    delete childProps.in;
+    delete childProps.mountOnEnter;
+    delete childProps.unmountOnExit;
+    delete childProps.appear;
+    delete childProps.enter;
+    delete childProps.exit;
+    delete childProps.timeout;
+    delete childProps.addEndListener;
+    delete childProps.onEnter;
+    delete childProps.onEntering;
+    delete childProps.onEntered;
+    delete childProps.onExit;
+    delete childProps.onExiting;
+    delete childProps.onExited;
+
+    if (typeof children === 'function') {
+      return children(status, childProps);
+    }
+
+    var child = _react.default.Children.only(children);
+
+    return _react.default.cloneElement(child, childProps);
+  };
+
+  return Transition;
+}(_react.default.Component);
+
+Transition.contextTypes = {
+  transitionGroup: PropTypes.object
+};
+Transition.childContextTypes = {
+  transitionGroup: function transitionGroup() {}
+};
+Transition.propTypes =  true ? {
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.element.isRequired]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: PropTypes.bool,
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: PropTypes.bool,
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: PropTypes.bool,
+
+  /**
+   * Normally a component is not transitioned if it is shown when the `<Transition>` component mounts.
+   * If you want to transition on the first mount set `appear` to `true`, and the
+   * component will transition in as soon as the `<Transition>` mounts.
+   *
+   * > Note: there are no specific "appear" states. `appear` only adds an additional `enter` transition.
+   */
+  appear: PropTypes.bool,
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: PropTypes.bool,
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: PropTypes.bool,
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _PropTypes.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. **Note:** Timeouts are still used as a fallback if provided.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: PropTypes.func,
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: PropTypes.func,
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: PropTypes.func,
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: PropTypes.func,
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: PropTypes.func,
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: PropTypes.func,
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: PropTypes.func // Name the function so it is clearer in the documentation
+
+} : 0;
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = 0;
+Transition.EXITED = 1;
+Transition.ENTERING = 2;
+Transition.ENTERED = 3;
+Transition.EXITING = 4;
+
+var _default = (0, _reactLifecyclesCompat.polyfill)(Transition);
+
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/TransitionGroup.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-transition-group/TransitionGroup.js ***!
+  \****************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactLifecyclesCompat = __webpack_require__(/*! react-lifecycles-compat */ "./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js");
+
+var _ChildMapping = __webpack_require__(/*! ./utils/ChildMapping */ "./node_modules/react-transition-group/utils/ChildMapping.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var values = Object.values || function (obj) {
+  return Object.keys(obj).map(function (k) {
+    return obj[k];
+  });
+};
+
+var defaultProps = {
+  component: 'div',
+  childFactory: function childFactory(child) {
+    return child;
+  }
+  /**
+   * The `<TransitionGroup>` component manages a set of transition components
+   * (`<Transition>` and `<CSSTransition>`) in a list. Like with the transition
+   * components, `<TransitionGroup>` is a state machine for managing the mounting
+   * and unmounting of components over time.
+   *
+   * Consider the example below. As items are removed or added to the TodoList the
+   * `in` prop is toggled automatically by the `<TransitionGroup>`.
+   *
+   * Note that `<TransitionGroup>`  does not define any animation behavior!
+   * Exactly _how_ a list item animates is up to the individual transition
+   * component. This means you can mix and match animations across different list
+   * items.
+   */
+
+};
+
+var TransitionGroup =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(TransitionGroup, _React$Component);
+
+  function TransitionGroup(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+
+    var handleExited = _this.handleExited.bind(_assertThisInitialized(_assertThisInitialized(_this))); // Initial children should all be entering, dependent on appear
+
+
+    _this.state = {
+      handleExited: handleExited,
+      firstRender: true
+    };
+    return _this;
+  }
+
+  var _proto = TransitionGroup.prototype;
+
+  _proto.getChildContext = function getChildContext() {
+    return {
+      transitionGroup: {
+        isMounting: !this.appeared
+      }
+    };
+  };
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.appeared = true;
+    this.mounted = true;
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.mounted = false;
+  };
+
+  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
+    var prevChildMapping = _ref.children,
+        handleExited = _ref.handleExited,
+        firstRender = _ref.firstRender;
+    return {
+      children: firstRender ? (0, _ChildMapping.getInitialChildMapping)(nextProps, handleExited) : (0, _ChildMapping.getNextChildMapping)(nextProps, prevChildMapping, handleExited),
+      firstRender: false
+    };
+  };
+
+  _proto.handleExited = function handleExited(child, node) {
+    var currentChildMapping = (0, _ChildMapping.getChildMapping)(this.props.children);
+    if (child.key in currentChildMapping) return;
+
+    if (child.props.onExited) {
+      child.props.onExited(node);
+    }
+
+    if (this.mounted) {
+      this.setState(function (state) {
+        var children = _extends({}, state.children);
+
+        delete children[child.key];
+        return {
+          children: children
+        };
+      });
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        Component = _this$props.component,
+        childFactory = _this$props.childFactory,
+        props = _objectWithoutPropertiesLoose(_this$props, ["component", "childFactory"]);
+
+    var children = values(this.state.children).map(childFactory);
+    delete props.appear;
+    delete props.enter;
+    delete props.exit;
+
+    if (Component === null) {
+      return children;
+    }
+
+    return _react.default.createElement(Component, props, children);
+  };
+
+  return TransitionGroup;
+}(_react.default.Component);
+
+TransitionGroup.childContextTypes = {
+  transitionGroup: _propTypes.default.object.isRequired
+};
+TransitionGroup.propTypes =  true ? {
+  /**
+   * `<TransitionGroup>` renders a `<div>` by default. You can change this
+   * behavior by providing a `component` prop.
+   * If you use React v16+ and would like to avoid a wrapping `<div>` element
+   * you can pass in `component={null}`. This is useful if the wrapping div
+   * borks your css styles.
+   */
+  component: _propTypes.default.any,
+
+  /**
+   * A set of `<Transition>` components, that are toggled `in` and out as they
+   * leave. the `<TransitionGroup>` will inject specific transition props, so
+   * remember to spread them through if you are wrapping the `<Transition>` as
+   * with our `<Fade>` example.
+   *
+   * While this component is meant for multiple `Transition` or `CSSTransition`
+   * children, sometimes you may want to have a single transition child with
+   * content that you want to be transitioned out and in when you change it
+   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+   * the transition child as you change its content, this will cause
+   * `TransitionGroup` to transition the child out and back in.
+   */
+  children: _propTypes.default.node,
+
+  /**
+   * A convenience prop that enables or disables appear animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  appear: _propTypes.default.bool,
+
+  /**
+   * A convenience prop that enables or disables enter animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  enter: _propTypes.default.bool,
+
+  /**
+   * A convenience prop that enables or disables exit animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  exit: _propTypes.default.bool,
+
+  /**
+   * You may need to apply reactive updates to a child as it is exiting.
+   * This is generally done by using `cloneElement` however in the case of an exiting
+   * child the element has already been removed and not accessible to the consumer.
+   *
+   * If you do need to update a child as it leaves you can provide a `childFactory`
+   * to wrap every child, even the ones that are leaving.
+   *
+   * @type Function(child: ReactElement) -> ReactElement
+   */
+  childFactory: _propTypes.default.func
+} : 0;
+TransitionGroup.defaultProps = defaultProps;
+
+var _default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup);
+
+exports["default"] = _default;
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-transition-group/index.js ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _CSSTransition = _interopRequireDefault(__webpack_require__(/*! ./CSSTransition */ "./node_modules/react-transition-group/CSSTransition.js"));
+
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(/*! ./ReplaceTransition */ "./node_modules/react-transition-group/ReplaceTransition.js"));
+
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(/*! ./TransitionGroup */ "./node_modules/react-transition-group/TransitionGroup.js"));
+
+var _Transition = _interopRequireDefault(__webpack_require__(/*! ./Transition */ "./node_modules/react-transition-group/Transition.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = {
+  Transition: _Transition.default,
+  TransitionGroup: _TransitionGroup.default,
+  ReplaceTransition: _ReplaceTransition.default,
+  CSSTransition: _CSSTransition.default
+};
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/utils/ChildMapping.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/react-transition-group/utils/ChildMapping.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.getChildMapping = getChildMapping;
+exports.mergeChildMappings = mergeChildMappings;
+exports.getInitialChildMapping = getInitialChildMapping;
+exports.getNextChildMapping = getNextChildMapping;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+/**
+ * Given `this.props.children`, return an object mapping key to child.
+ *
+ * @param {*} children `this.props.children`
+ * @return {object} Mapping of key to child
+ */
+function getChildMapping(children, mapFn) {
+  var mapper = function mapper(child) {
+    return mapFn && (0, _react.isValidElement)(child) ? mapFn(child) : child;
+  };
+
+  var result = Object.create(null);
+  if (children) _react.Children.map(children, function (c) {
+    return c;
+  }).forEach(function (child) {
+    // run the map function here instead so that the key is the computed one
+    result[child.key] = mapper(child);
+  });
+  return result;
+}
+/**
+ * When you're adding or removing children some may be added or removed in the
+ * same render pass. We want to show *both* since we want to simultaneously
+ * animate elements in and out. This function takes a previous set of keys
+ * and a new set of keys and merges them with its best guess of the correct
+ * ordering. In the future we may expose some of the utilities in
+ * ReactMultiChild to make this easy, but for now React itself does not
+ * directly have this concept of the union of prevChildren and nextChildren
+ * so we implement it here.
+ *
+ * @param {object} prev prev children as returned from
+ * `ReactTransitionChildMapping.getChildMapping()`.
+ * @param {object} next next children as returned from
+ * `ReactTransitionChildMapping.getChildMapping()`.
+ * @return {object} a key set that contains all keys in `prev` and all keys
+ * in `next` in a reasonable order.
+ */
+
+
+function mergeChildMappings(prev, next) {
+  prev = prev || {};
+  next = next || {};
+
+  function getValueForKey(key) {
+    return key in next ? next[key] : prev[key];
+  } // For each key of `next`, the list of keys to insert before that key in
+  // the combined list
+
+
+  var nextKeysPending = Object.create(null);
+  var pendingKeys = [];
+
+  for (var prevKey in prev) {
+    if (prevKey in next) {
+      if (pendingKeys.length) {
+        nextKeysPending[prevKey] = pendingKeys;
+        pendingKeys = [];
+      }
+    } else {
+      pendingKeys.push(prevKey);
+    }
+  }
+
+  var i;
+  var childMapping = {};
+
+  for (var nextKey in next) {
+    if (nextKeysPending[nextKey]) {
+      for (i = 0; i < nextKeysPending[nextKey].length; i++) {
+        var pendingNextKey = nextKeysPending[nextKey][i];
+        childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
+      }
+    }
+
+    childMapping[nextKey] = getValueForKey(nextKey);
+  } // Finally, add the keys which didn't appear before any key in `next`
+
+
+  for (i = 0; i < pendingKeys.length; i++) {
+    childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
+  }
+
+  return childMapping;
+}
+
+function getProp(child, prop, props) {
+  return props[prop] != null ? props[prop] : child.props[prop];
+}
+
+function getInitialChildMapping(props, onExited) {
+  return getChildMapping(props.children, function (child) {
+    return (0, _react.cloneElement)(child, {
+      onExited: onExited.bind(null, child),
+      in: true,
+      appear: getProp(child, 'appear', props),
+      enter: getProp(child, 'enter', props),
+      exit: getProp(child, 'exit', props)
+    });
+  });
+}
+
+function getNextChildMapping(nextProps, prevChildMapping, onExited) {
+  var nextChildMapping = getChildMapping(nextProps.children);
+  var children = mergeChildMappings(prevChildMapping, nextChildMapping);
+  Object.keys(children).forEach(function (key) {
+    var child = children[key];
+    if (!(0, _react.isValidElement)(child)) return;
+    var hasPrev = key in prevChildMapping;
+    var hasNext = key in nextChildMapping;
+    var prevChild = prevChildMapping[key];
+    var isLeaving = (0, _react.isValidElement)(prevChild) && !prevChild.props.in; // item is new (entering)
+
+    if (hasNext && (!hasPrev || isLeaving)) {
+      // console.log('entering', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        onExited: onExited.bind(null, child),
+        in: true,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    } else if (!hasNext && hasPrev && !isLeaving) {
+      // item is old (exiting)
+      // console.log('leaving', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        in: false
+      });
+    } else if (hasNext && hasPrev && (0, _react.isValidElement)(prevChild)) {
+      // item hasn't changed transition states
+      // copy over the last transition props;
+      // console.log('unchanged', key)
+      children[key] = (0, _react.cloneElement)(child, {
+        onExited: onExited.bind(null, child),
+        in: prevChild.props.in,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    }
+  });
+  return children;
+}
+
+/***/ }),
+
+/***/ "./node_modules/react-transition-group/utils/PropTypes.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-transition-group/utils/PropTypes.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.classNamesShape = exports.timeoutsShape = void 0;
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var timeoutsShape =  true ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+  enter: _propTypes.default.number,
+  exit: _propTypes.default.number,
+  appear: _propTypes.default.number
+}).isRequired]) : 0;
+exports.timeoutsShape = timeoutsShape;
+var classNamesShape =  true ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  active: _propTypes.default.string
+}), _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  enterDone: _propTypes.default.string,
+  enterActive: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  exitDone: _propTypes.default.string,
+  exitActive: _propTypes.default.string
+})]) : 0;
+exports.classNamesShape = classNamesShape;
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
@@ -41376,6 +45735,16848 @@ if (false) {} else {
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/recharts-scale/es6/getNiceTickValues.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/recharts-scale/es6/getNiceTickValues.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getNiceTickValues": () => (/* binding */ getNiceTickValues),
+/* harmony export */   "getTickValues": () => (/* binding */ getTickValues),
+/* harmony export */   "getTickValuesFixedDomain": () => (/* binding */ getTickValuesFixedDomain)
+/* harmony export */ });
+/* harmony import */ var decimal_js_light__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! decimal.js-light */ "./node_modules/decimal.js-light/decimal.js");
+/* harmony import */ var decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(decimal_js_light__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util/utils */ "./node_modules/recharts-scale/es6/util/utils.js");
+/* harmony import */ var _util_arithmetic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util/arithmetic */ "./node_modules/recharts-scale/es6/util/arithmetic.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+/**
+ * @fileOverview calculate tick values of scale
+ * @author xile611, arcthur
+ * @date 2015-09-17
+ */
+
+
+
+/**
+ * Calculate a interval of a minimum value and a maximum value
+ *
+ * @param  {Number} min       The minimum value
+ * @param  {Number} max       The maximum value
+ * @return {Array} An interval
+ */
+
+function getValidInterval(_ref) {
+  var _ref2 = _slicedToArray(_ref, 2),
+      min = _ref2[0],
+      max = _ref2[1];
+
+  var validMin = min,
+      validMax = max; // exchange
+
+  if (min > max) {
+    validMin = max;
+    validMax = min;
+  }
+
+  return [validMin, validMax];
+}
+/**
+ * Calculate the step which is easy to understand between ticks, like 10, 20, 25
+ *
+ * @param  {Decimal} roughStep        The rough step calculated by deviding the
+ * difference by the tickCount
+ * @param  {Boolean} allowDecimals    Allow the ticks to be decimals or not
+ * @param  {Integer} correctionFactor A correction factor
+ * @return {Decimal} The step which is easy to understand between two ticks
+ */
+
+
+function getFormatStep(roughStep, allowDecimals, correctionFactor) {
+  if (roughStep.lte(0)) {
+    return new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(0);
+  }
+
+  var digitCount = _util_arithmetic__WEBPACK_IMPORTED_MODULE_2__["default"].getDigitCount(roughStep.toNumber()); // The ratio between the rough step and the smallest number which has a bigger
+  // order of magnitudes than the rough step
+
+  var digitCountValue = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(10).pow(digitCount);
+  var stepRatio = roughStep.div(digitCountValue); // When an integer and a float multiplied, the accuracy of result may be wrong
+
+  var stepRatioScale = digitCount !== 1 ? 0.05 : 0.1;
+  var amendStepRatio = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(Math.ceil(stepRatio.div(stepRatioScale).toNumber())).add(correctionFactor).mul(stepRatioScale);
+  var formatStep = amendStepRatio.mul(digitCountValue);
+  return allowDecimals ? formatStep : new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(Math.ceil(formatStep));
+}
+/**
+ * calculate the ticks when the minimum value equals to the maximum value
+ *
+ * @param  {Number}  value         The minimum valuue which is also the maximum value
+ * @param  {Integer} tickCount     The count of ticks
+ * @param  {Boolean} allowDecimals Allow the ticks to be decimals or not
+ * @return {Array}                 ticks
+ */
+
+
+function getTickOfSingleValue(value, tickCount, allowDecimals) {
+  var step = 1; // calculate the middle value of ticks
+
+  var middle = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(value);
+
+  if (!middle.isint() && allowDecimals) {
+    var absVal = Math.abs(value);
+
+    if (absVal < 1) {
+      // The step should be a float number when the difference is smaller than 1
+      step = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(10).pow(_util_arithmetic__WEBPACK_IMPORTED_MODULE_2__["default"].getDigitCount(value) - 1);
+      middle = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(Math.floor(middle.div(step).toNumber())).mul(step);
+    } else if (absVal > 1) {
+      // Return the maximum integer which is smaller than 'value' when 'value' is greater than 1
+      middle = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(Math.floor(value));
+    }
+  } else if (value === 0) {
+    middle = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(Math.floor((tickCount - 1) / 2));
+  } else if (!allowDecimals) {
+    middle = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(Math.floor(value));
+  }
+
+  var middleIndex = Math.floor((tickCount - 1) / 2);
+  var fn = (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.compose)((0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.map)(function (n) {
+    return middle.add(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(n - middleIndex).mul(step)).toNumber();
+  }), _util_utils__WEBPACK_IMPORTED_MODULE_1__.range);
+  return fn(0, tickCount);
+}
+/**
+ * Calculate the step
+ *
+ * @param  {Number}  min              The minimum value of an interval
+ * @param  {Number}  max              The maximum value of an interval
+ * @param  {Integer} tickCount        The count of ticks
+ * @param  {Boolean} allowDecimals    Allow the ticks to be decimals or not
+ * @param  {Number}  correctionFactor A correction factor
+ * @return {Object}  The step, minimum value of ticks, maximum value of ticks
+ */
+
+
+function calculateStep(min, max, tickCount, allowDecimals) {
+  var correctionFactor = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+
+  // dirty hack (for recharts' test)
+  if (!Number.isFinite((max - min) / (tickCount - 1))) {
+    return {
+      step: new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(0),
+      tickMin: new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(0),
+      tickMax: new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(0)
+    };
+  } // The step which is easy to understand between two ticks
+
+
+  var step = getFormatStep(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(max).sub(min).div(tickCount - 1), allowDecimals, correctionFactor); // A medial value of ticks
+
+  var middle; // When 0 is inside the interval, 0 should be a tick
+
+  if (min <= 0 && max >= 0) {
+    middle = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(0);
+  } else {
+    // calculate the middle value
+    middle = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(min).add(max).div(2); // minus modulo value
+
+    middle = middle.sub(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(middle).mod(step));
+  }
+
+  var belowCount = Math.ceil(middle.sub(min).div(step).toNumber());
+  var upCount = Math.ceil(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(max).sub(middle).div(step).toNumber());
+  var scaleCount = belowCount + upCount + 1;
+
+  if (scaleCount > tickCount) {
+    // When more ticks need to cover the interval, step should be bigger.
+    return calculateStep(min, max, tickCount, allowDecimals, correctionFactor + 1);
+  }
+
+  if (scaleCount < tickCount) {
+    // When less ticks can cover the interval, we should add some additional ticks
+    upCount = max > 0 ? upCount + (tickCount - scaleCount) : upCount;
+    belowCount = max > 0 ? belowCount : belowCount + (tickCount - scaleCount);
+  }
+
+  return {
+    step: step,
+    tickMin: middle.sub(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(belowCount).mul(step)),
+    tickMax: middle.add(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(upCount).mul(step))
+  };
+}
+/**
+ * Calculate the ticks of an interval, the count of ticks will be guraranteed
+ *
+ * @param  {Number}  min, max      min: The minimum value, max: The maximum value
+ * @param  {Integer} tickCount     The count of ticks
+ * @param  {Boolean} allowDecimals Allow the ticks to be decimals or not
+ * @return {Array}   ticks
+ */
+
+
+function getNiceTickValuesFn(_ref3) {
+  var _ref4 = _slicedToArray(_ref3, 2),
+      min = _ref4[0],
+      max = _ref4[1];
+
+  var tickCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+  var allowDecimals = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  // More than two ticks should be return
+  var count = Math.max(tickCount, 2);
+
+  var _getValidInterval = getValidInterval([min, max]),
+      _getValidInterval2 = _slicedToArray(_getValidInterval, 2),
+      cormin = _getValidInterval2[0],
+      cormax = _getValidInterval2[1];
+
+  if (cormin === -Infinity || cormax === Infinity) {
+    var _values = cormax === Infinity ? [cormin].concat(_toConsumableArray((0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.range)(0, tickCount - 1).map(function () {
+      return Infinity;
+    }))) : [].concat(_toConsumableArray((0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.range)(0, tickCount - 1).map(function () {
+      return -Infinity;
+    })), [cormax]);
+
+    return min > max ? (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.reverse)(_values) : _values;
+  }
+
+  if (cormin === cormax) {
+    return getTickOfSingleValue(cormin, tickCount, allowDecimals);
+  } // Get the step between two ticks
+
+
+  var _calculateStep = calculateStep(cormin, cormax, count, allowDecimals),
+      step = _calculateStep.step,
+      tickMin = _calculateStep.tickMin,
+      tickMax = _calculateStep.tickMax;
+
+  var values = _util_arithmetic__WEBPACK_IMPORTED_MODULE_2__["default"].rangeStep(tickMin, tickMax.add(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(0.1).mul(step)), step);
+  return min > max ? (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.reverse)(values) : values;
+}
+/**
+ * Calculate the ticks of an interval, the count of ticks won't be guraranteed
+ *
+ * @param  {Number}  min, max      min: The minimum value, max: The maximum value
+ * @param  {Integer} tickCount     The count of ticks
+ * @param  {Boolean} allowDecimals Allow the ticks to be decimals or not
+ * @return {Array}   ticks
+ */
+
+
+function getTickValuesFn(_ref5) {
+  var _ref6 = _slicedToArray(_ref5, 2),
+      min = _ref6[0],
+      max = _ref6[1];
+
+  var tickCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+  var allowDecimals = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  // More than two ticks should be return
+  var count = Math.max(tickCount, 2);
+
+  var _getValidInterval3 = getValidInterval([min, max]),
+      _getValidInterval4 = _slicedToArray(_getValidInterval3, 2),
+      cormin = _getValidInterval4[0],
+      cormax = _getValidInterval4[1];
+
+  if (cormin === -Infinity || cormax === Infinity) {
+    return [min, max];
+  }
+
+  if (cormin === cormax) {
+    return getTickOfSingleValue(cormin, tickCount, allowDecimals);
+  }
+
+  var step = getFormatStep(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(cormax).sub(cormin).div(count - 1), allowDecimals, 0);
+  var fn = (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.compose)((0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.map)(function (n) {
+    return new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(cormin).add(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(n).mul(step)).toNumber();
+  }), _util_utils__WEBPACK_IMPORTED_MODULE_1__.range);
+  var values = fn(0, count).filter(function (entry) {
+    return entry >= cormin && entry <= cormax;
+  });
+  return min > max ? (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.reverse)(values) : values;
+}
+/**
+ * Calculate the ticks of an interval, the count of ticks won't be guraranteed,
+ * but the domain will be guaranteed
+ *
+ * @param  {Number}  min, max      min: The minimum value, max: The maximum value
+ * @param  {Integer} tickCount     The count of ticks
+ * @param  {Boolean} allowDecimals Allow the ticks to be decimals or not
+ * @return {Array}   ticks
+ */
+
+
+function getTickValuesFixedDomainFn(_ref7, tickCount) {
+  var _ref8 = _slicedToArray(_ref7, 2),
+      min = _ref8[0],
+      max = _ref8[1];
+
+  var allowDecimals = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  // More than two ticks should be return
+  var _getValidInterval5 = getValidInterval([min, max]),
+      _getValidInterval6 = _slicedToArray(_getValidInterval5, 2),
+      cormin = _getValidInterval6[0],
+      cormax = _getValidInterval6[1];
+
+  if (cormin === -Infinity || cormax === Infinity) {
+    return [min, max];
+  }
+
+  if (cormin === cormax) {
+    return [cormin];
+  }
+
+  var count = Math.max(tickCount, 2);
+  var step = getFormatStep(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(cormax).sub(cormin).div(count - 1), allowDecimals, 0);
+  var values = [].concat(_toConsumableArray(_util_arithmetic__WEBPACK_IMPORTED_MODULE_2__["default"].rangeStep(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(cormin), new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(cormax).sub(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(0.99).mul(step)), step)), [cormax]);
+  return min > max ? (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.reverse)(values) : values;
+}
+
+var getNiceTickValues = (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.memoize)(getNiceTickValuesFn);
+var getTickValues = (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.memoize)(getTickValuesFn);
+var getTickValuesFixedDomain = (0,_util_utils__WEBPACK_IMPORTED_MODULE_1__.memoize)(getTickValuesFixedDomainFn);
+
+/***/ }),
+
+/***/ "./node_modules/recharts-scale/es6/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/recharts-scale/es6/index.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getNiceTickValues": () => (/* reexport safe */ _getNiceTickValues__WEBPACK_IMPORTED_MODULE_0__.getNiceTickValues),
+/* harmony export */   "getTickValues": () => (/* reexport safe */ _getNiceTickValues__WEBPACK_IMPORTED_MODULE_0__.getTickValues),
+/* harmony export */   "getTickValuesFixedDomain": () => (/* reexport safe */ _getNiceTickValues__WEBPACK_IMPORTED_MODULE_0__.getTickValuesFixedDomain)
+/* harmony export */ });
+/* harmony import */ var _getNiceTickValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getNiceTickValues */ "./node_modules/recharts-scale/es6/getNiceTickValues.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/recharts-scale/es6/util/arithmetic.js":
+/*!************************************************************!*\
+  !*** ./node_modules/recharts-scale/es6/util/arithmetic.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var decimal_js_light__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! decimal.js-light */ "./node_modules/decimal.js-light/decimal.js");
+/* harmony import */ var decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(decimal_js_light__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./node_modules/recharts-scale/es6/util/utils.js");
+/**
+ * @fileOverview 一些公用的运算方法
+ * @author xile611
+ * @date 2015-09-17
+ */
+
+
+/**
+ * 获取数值的位数
+ * 其中绝对值属于区间[0.1, 1)， 得到的值为0
+ * 绝对值属于区间[0.01, 0.1)，得到的位数为 -1
+ * 绝对值属于区间[0.001, 0.01)，得到的位数为 -2
+ *
+ * @param  {Number} value 数值
+ * @return {Integer} 位数
+ */
+
+function getDigitCount(value) {
+  var result;
+
+  if (value === 0) {
+    result = 1;
+  } else {
+    result = Math.floor(new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(value).abs().log(10).toNumber()) + 1;
+  }
+
+  return result;
+}
+/**
+ * 按照固定的步长获取[start, end)这个区间的数据
+ * 并且需要处理js计算精度的问题
+ *
+ * @param  {Decimal} start 起点
+ * @param  {Decimal} end   终点，不包含该值
+ * @param  {Decimal} step  步长
+ * @return {Array}         若干数值
+ */
+
+
+function rangeStep(start, end, step) {
+  var num = new (decimal_js_light__WEBPACK_IMPORTED_MODULE_0___default())(start);
+  var i = 0;
+  var result = []; // magic number to prevent infinite loop
+
+  while (num.lt(end) && i < 100000) {
+    result.push(num.toNumber());
+    num = num.add(step);
+    i++;
+  }
+
+  return result;
+}
+/**
+ * 对数值进行线性插值
+ *
+ * @param  {Number} a  定义域的极点
+ * @param  {Number} b  定义域的极点
+ * @param  {Number} t  [0, 1]内的某个值
+ * @return {Number}    定义域内的某个值
+ */
+
+
+var interpolateNumber = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.curry)(function (a, b, t) {
+  var newA = +a;
+  var newB = +b;
+  return newA + t * (newB - newA);
+});
+/**
+ * 线性插值的逆运算
+ *
+ * @param  {Number} a 定义域的极点
+ * @param  {Number} b 定义域的极点
+ * @param  {Number} x 可以认为是插值后的一个输出值
+ * @return {Number}   当x在 a ~ b这个范围内时，返回值属于[0, 1]
+ */
+
+var uninterpolateNumber = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.curry)(function (a, b, x) {
+  var diff = b - +a;
+  diff = diff || Infinity;
+  return (x - a) / diff;
+});
+/**
+ * 线性插值的逆运算，并且有截断的操作
+ *
+ * @param  {Number} a 定义域的极点
+ * @param  {Number} b 定义域的极点
+ * @param  {Number} x 可以认为是插值后的一个输出值
+ * @return {Number}   当x在 a ~ b这个区间内时，返回值属于[0, 1]，
+ * 当x不在 a ~ b这个区间时，会截断到 a ~ b 这个区间
+ */
+
+var uninterpolateTruncation = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.curry)(function (a, b, x) {
+  var diff = b - +a;
+  diff = diff || Infinity;
+  return Math.max(0, Math.min(1, (x - a) / diff));
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  rangeStep: rangeStep,
+  getDigitCount: getDigitCount,
+  interpolateNumber: interpolateNumber,
+  uninterpolateNumber: uninterpolateNumber,
+  uninterpolateTruncation: uninterpolateTruncation
+});
+
+/***/ }),
+
+/***/ "./node_modules/recharts-scale/es6/util/utils.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/recharts-scale/es6/util/utils.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PLACE_HOLDER": () => (/* binding */ PLACE_HOLDER),
+/* harmony export */   "compose": () => (/* binding */ compose),
+/* harmony export */   "curry": () => (/* binding */ curry),
+/* harmony export */   "map": () => (/* binding */ map),
+/* harmony export */   "memoize": () => (/* binding */ memoize),
+/* harmony export */   "range": () => (/* binding */ range),
+/* harmony export */   "reverse": () => (/* binding */ reverse)
+/* harmony export */ });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var identity = function identity(i) {
+  return i;
+};
+
+var PLACE_HOLDER = {
+  '@@functional/placeholder': true
+};
+
+var isPlaceHolder = function isPlaceHolder(val) {
+  return val === PLACE_HOLDER;
+};
+
+var curry0 = function curry0(fn) {
+  return function _curried() {
+    if (arguments.length === 0 || arguments.length === 1 && isPlaceHolder(arguments.length <= 0 ? undefined : arguments[0])) {
+      return _curried;
+    }
+
+    return fn.apply(void 0, arguments);
+  };
+};
+
+var curryN = function curryN(n, fn) {
+  if (n === 1) {
+    return fn;
+  }
+
+  return curry0(function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var argsLength = args.filter(function (arg) {
+      return arg !== PLACE_HOLDER;
+    }).length;
+
+    if (argsLength >= n) {
+      return fn.apply(void 0, args);
+    }
+
+    return curryN(n - argsLength, curry0(function () {
+      for (var _len2 = arguments.length, restArgs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        restArgs[_key2] = arguments[_key2];
+      }
+
+      var newArgs = args.map(function (arg) {
+        return isPlaceHolder(arg) ? restArgs.shift() : arg;
+      });
+      return fn.apply(void 0, _toConsumableArray(newArgs).concat(restArgs));
+    }));
+  });
+};
+
+var curry = function curry(fn) {
+  return curryN(fn.length, fn);
+};
+var range = function range(begin, end) {
+  var arr = [];
+
+  for (var i = begin; i < end; ++i) {
+    arr[i - begin] = i;
+  }
+
+  return arr;
+};
+var map = curry(function (fn, arr) {
+  if (Array.isArray(arr)) {
+    return arr.map(fn);
+  }
+
+  return Object.keys(arr).map(function (key) {
+    return arr[key];
+  }).map(fn);
+});
+var compose = function compose() {
+  for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+    args[_key3] = arguments[_key3];
+  }
+
+  if (!args.length) {
+    return identity;
+  }
+
+  var fns = args.reverse(); // first function can receive multiply arguments
+
+  var firstFn = fns[0];
+  var tailsFn = fns.slice(1);
+  return function () {
+    return tailsFn.reduce(function (res, fn) {
+      return fn(res);
+    }, firstFn.apply(void 0, arguments));
+  };
+};
+var reverse = function reverse(arr) {
+  if (Array.isArray(arr)) {
+    return arr.reverse();
+  } // can be string
+
+
+  return arr.split('').reverse.join('');
+};
+var memoize = function memoize(fn) {
+  var lastArgs = null;
+  var lastResult = null;
+  return function () {
+    for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+      args[_key4] = arguments[_key4];
+    }
+
+    if (lastArgs && args.every(function (val, i) {
+      return val === lastArgs[i];
+    })) {
+      return lastResult;
+    }
+
+    lastArgs = args;
+    lastResult = fn.apply(void 0, args);
+    return lastResult;
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/Brush.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/Brush.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Brush": () => (/* binding */ Brush)
+/* harmony export */ });
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_range__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/range */ "./node_modules/lodash/range.js");
+/* harmony import */ var lodash_range__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_range__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var d3_scale__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/band.js");
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _component_Text__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../component/Text */ "./node_modules/recharts/es6/component/Text.js");
+/* harmony import */ var _util_ChartUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/ChartUtils */ "./node_modules/recharts/es6/util/ChartUtils.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_CssPrefixUtils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/CssPrefixUtils */ "./node_modules/recharts/es6/util/CssPrefixUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Brush
+ */
+
+
+
+
+
+
+
+
+
+
+var createScale = function createScale(_ref) {
+  var data = _ref.data,
+      startIndex = _ref.startIndex,
+      endIndex = _ref.endIndex,
+      x = _ref.x,
+      width = _ref.width,
+      travellerWidth = _ref.travellerWidth;
+
+  if (!data || !data.length) {
+    return {};
+  }
+
+  var len = data.length;
+  var scale = (0,d3_scale__WEBPACK_IMPORTED_MODULE_4__.point)().domain(lodash_range__WEBPACK_IMPORTED_MODULE_1___default()(0, len)).range([x, x + width - travellerWidth]);
+  var scaleValues = scale.domain().map(function (entry) {
+    return scale(entry);
+  });
+  return {
+    isTextActive: false,
+    isSlideMoving: false,
+    isTravellerMoving: false,
+    startX: scale(startIndex),
+    endX: scale(endIndex),
+    scale: scale,
+    scaleValues: scaleValues
+  };
+};
+
+var isTouch = function isTouch(e) {
+  return e.changedTouches && !!e.changedTouches.length;
+};
+
+var Brush = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Brush, _PureComponent);
+
+  var _super = _createSuper(Brush);
+
+  function Brush(props) {
+    var _this;
+
+    _classCallCheck(this, Brush);
+
+    _this = _super.call(this, props);
+    _this.leaveTimer = void 0;
+    _this.travellerDragStartHandlers = void 0;
+
+    _this.handleDrag = function (e) {
+      if (_this.leaveTimer) {
+        clearTimeout(_this.leaveTimer);
+        _this.leaveTimer = null;
+      }
+
+      if (_this.state.isTravellerMoving) {
+        _this.handleTravellerMove(e);
+      } else if (_this.state.isSlideMoving) {
+        _this.handleSlideDrag(e);
+      }
+    };
+
+    _this.handleTouchMove = function (e) {
+      if (e.changedTouches != null && e.changedTouches.length > 0) {
+        _this.handleDrag(e.changedTouches[0]);
+      }
+    };
+
+    _this.handleDragEnd = function () {
+      _this.setState({
+        isTravellerMoving: false,
+        isSlideMoving: false
+      });
+
+      _this.detachDragEndListener();
+    };
+
+    _this.handleLeaveWrapper = function () {
+      if (_this.state.isTravellerMoving || _this.state.isSlideMoving) {
+        _this.leaveTimer = window.setTimeout(_this.handleDragEnd, _this.props.leaveTimeOut);
+      }
+    };
+
+    _this.handleEnterSlideOrTraveller = function () {
+      _this.setState({
+        isTextActive: true
+      });
+    };
+
+    _this.handleLeaveSlideOrTraveller = function () {
+      _this.setState({
+        isTextActive: false
+      });
+    };
+
+    _this.handleSlideDragStart = function (e) {
+      var event = isTouch(e) ? e.changedTouches[0] : e;
+
+      _this.setState({
+        isTravellerMoving: false,
+        isSlideMoving: true,
+        slideMoveStartX: event.pageX
+      });
+
+      _this.attachDragEndListener();
+    };
+
+    _this.travellerDragStartHandlers = {
+      startX: _this.handleTravellerDragStart.bind(_assertThisInitialized(_this), 'startX'),
+      endX: _this.handleTravellerDragStart.bind(_assertThisInitialized(_this), 'endX')
+    };
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Brush, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.leaveTimer) {
+        clearTimeout(this.leaveTimer);
+        this.leaveTimer = null;
+      }
+
+      this.detachDragEndListener();
+    }
+  }, {
+    key: "getIndex",
+    value: function getIndex(_ref2) {
+      var startX = _ref2.startX,
+          endX = _ref2.endX;
+      var scaleValues = this.state.scaleValues;
+      var _this$props = this.props,
+          gap = _this$props.gap,
+          data = _this$props.data;
+      var lastIndex = data.length - 1;
+      var min = Math.min(startX, endX);
+      var max = Math.max(startX, endX);
+      var minIndex = Brush.getIndexInRange(scaleValues, min);
+      var maxIndex = Brush.getIndexInRange(scaleValues, max);
+      return {
+        startIndex: minIndex - minIndex % gap,
+        endIndex: maxIndex === lastIndex ? lastIndex : maxIndex - maxIndex % gap
+      };
+    }
+  }, {
+    key: "getTextOfTick",
+    value: function getTextOfTick(index) {
+      var _this$props2 = this.props,
+          data = _this$props2.data,
+          tickFormatter = _this$props2.tickFormatter,
+          dataKey = _this$props2.dataKey;
+      var text = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_5__.getValueByDataKey)(data[index], dataKey, index);
+      return lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(tickFormatter) ? tickFormatter(text, index) : text;
+    }
+  }, {
+    key: "attachDragEndListener",
+    value: function attachDragEndListener() {
+      window.addEventListener('mouseup', this.handleDragEnd, true);
+      window.addEventListener('touchend', this.handleDragEnd, true);
+    }
+  }, {
+    key: "detachDragEndListener",
+    value: function detachDragEndListener() {
+      window.removeEventListener('mouseup', this.handleDragEnd, true);
+      window.removeEventListener('touchend', this.handleDragEnd, true);
+    }
+  }, {
+    key: "handleSlideDrag",
+    value: function handleSlideDrag(e) {
+      var _this$state = this.state,
+          slideMoveStartX = _this$state.slideMoveStartX,
+          startX = _this$state.startX,
+          endX = _this$state.endX;
+      var _this$props3 = this.props,
+          x = _this$props3.x,
+          width = _this$props3.width,
+          travellerWidth = _this$props3.travellerWidth,
+          startIndex = _this$props3.startIndex,
+          endIndex = _this$props3.endIndex,
+          onChange = _this$props3.onChange;
+      var delta = e.pageX - slideMoveStartX;
+
+      if (delta > 0) {
+        delta = Math.min(delta, x + width - travellerWidth - endX, x + width - travellerWidth - startX);
+      } else if (delta < 0) {
+        delta = Math.max(delta, x - startX, x - endX);
+      }
+
+      var newIndex = this.getIndex({
+        startX: startX + delta,
+        endX: endX + delta
+      });
+
+      if ((newIndex.startIndex !== startIndex || newIndex.endIndex !== endIndex) && onChange) {
+        onChange(newIndex);
+      }
+
+      this.setState({
+        startX: startX + delta,
+        endX: endX + delta,
+        slideMoveStartX: e.pageX
+      });
+    }
+  }, {
+    key: "handleTravellerDragStart",
+    value: function handleTravellerDragStart(id, e) {
+      var event = isTouch(e) ? e.changedTouches[0] : e;
+      this.setState({
+        isSlideMoving: false,
+        isTravellerMoving: true,
+        movingTravellerId: id,
+        brushMoveStartX: event.pageX
+      });
+      this.attachDragEndListener();
+    }
+  }, {
+    key: "handleTravellerMove",
+    value: function handleTravellerMove(e) {
+      var _this$setState;
+
+      var _this$state2 = this.state,
+          brushMoveStartX = _this$state2.brushMoveStartX,
+          movingTravellerId = _this$state2.movingTravellerId,
+          endX = _this$state2.endX,
+          startX = _this$state2.startX;
+      var prevValue = this.state[movingTravellerId];
+      var _this$props4 = this.props,
+          x = _this$props4.x,
+          width = _this$props4.width,
+          travellerWidth = _this$props4.travellerWidth,
+          onChange = _this$props4.onChange,
+          gap = _this$props4.gap,
+          data = _this$props4.data;
+      var params = {
+        startX: this.state.startX,
+        endX: this.state.endX
+      };
+      var delta = e.pageX - brushMoveStartX;
+
+      if (delta > 0) {
+        delta = Math.min(delta, x + width - travellerWidth - prevValue);
+      } else if (delta < 0) {
+        delta = Math.max(delta, x - prevValue);
+      }
+
+      params[movingTravellerId] = prevValue + delta;
+      var newIndex = this.getIndex(params);
+      var startIndex = newIndex.startIndex,
+          endIndex = newIndex.endIndex;
+
+      var isFullGap = function isFullGap() {
+        var lastIndex = data.length - 1;
+
+        if (movingTravellerId === 'startX' && (endX > startX ? startIndex % gap === 0 : endIndex % gap === 0) || endX < startX && endIndex === lastIndex || movingTravellerId === 'endX' && (endX > startX ? endIndex % gap === 0 : startIndex % gap === 0) || endX > startX && endIndex === lastIndex) {
+          return true;
+        }
+
+        return false;
+      };
+
+      this.setState((_this$setState = {}, _defineProperty(_this$setState, movingTravellerId, prevValue + delta), _defineProperty(_this$setState, "brushMoveStartX", e.pageX), _this$setState), function () {
+        if (onChange) {
+          if (isFullGap()) {
+            onChange(newIndex);
+          }
+        }
+      });
+    }
+  }, {
+    key: "renderBackground",
+    value: function renderBackground() {
+      var _this$props5 = this.props,
+          x = _this$props5.x,
+          y = _this$props5.y,
+          width = _this$props5.width,
+          height = _this$props5.height,
+          fill = _this$props5.fill,
+          stroke = _this$props5.stroke;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("rect", {
+        stroke: stroke,
+        fill: fill,
+        x: x,
+        y: y,
+        width: width,
+        height: height
+      });
+    }
+  }, {
+    key: "renderPanorama",
+    value: function renderPanorama() {
+      var _this$props6 = this.props,
+          x = _this$props6.x,
+          y = _this$props6.y,
+          width = _this$props6.width,
+          height = _this$props6.height,
+          data = _this$props6.data,
+          children = _this$props6.children,
+          padding = _this$props6.padding;
+      var chartElement = react__WEBPACK_IMPORTED_MODULE_2__.Children.only(children);
+
+      if (!chartElement) {
+        return null;
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(chartElement, {
+        x: x,
+        y: y,
+        width: width,
+        height: height,
+        margin: padding,
+        compact: true,
+        data: data
+      });
+    }
+  }, {
+    key: "renderTravellerLayer",
+    value: function renderTravellerLayer(travellerX, id) {
+      var _this$props7 = this.props,
+          y = _this$props7.y,
+          travellerWidth = _this$props7.travellerWidth,
+          height = _this$props7.height,
+          traveller = _this$props7.traveller;
+      var x = Math.max(travellerX, this.props.x);
+
+      var travellerProps = _objectSpread(_objectSpread({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_6__.filterProps)(this.props)), {}, {
+        x: x,
+        y: y,
+        width: travellerWidth,
+        height: height
+      });
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_7__.Layer, {
+        className: "recharts-brush-traveller",
+        onMouseEnter: this.handleEnterSlideOrTraveller,
+        onMouseLeave: this.handleLeaveSlideOrTraveller,
+        onMouseDown: this.travellerDragStartHandlers[id],
+        onTouchStart: this.travellerDragStartHandlers[id],
+        style: {
+          cursor: 'col-resize'
+        }
+      }, Brush.renderTraveller(traveller, travellerProps));
+    }
+  }, {
+    key: "renderSlide",
+    value: function renderSlide(startX, endX) {
+      var _this$props8 = this.props,
+          y = _this$props8.y,
+          height = _this$props8.height,
+          stroke = _this$props8.stroke,
+          travellerWidth = _this$props8.travellerWidth;
+      var x = Math.min(startX, endX) + travellerWidth;
+      var width = Math.max(Math.abs(endX - startX) - travellerWidth, 0);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("rect", {
+        className: "recharts-brush-slide",
+        onMouseEnter: this.handleEnterSlideOrTraveller,
+        onMouseLeave: this.handleLeaveSlideOrTraveller,
+        onMouseDown: this.handleSlideDragStart,
+        onTouchStart: this.handleSlideDragStart,
+        style: {
+          cursor: 'move'
+        },
+        stroke: "none",
+        fill: stroke,
+        fillOpacity: 0.2,
+        x: x,
+        y: y,
+        width: width,
+        height: height
+      });
+    }
+  }, {
+    key: "renderText",
+    value: function renderText() {
+      var _this$props9 = this.props,
+          startIndex = _this$props9.startIndex,
+          endIndex = _this$props9.endIndex,
+          y = _this$props9.y,
+          height = _this$props9.height,
+          travellerWidth = _this$props9.travellerWidth,
+          stroke = _this$props9.stroke;
+      var _this$state3 = this.state,
+          startX = _this$state3.startX,
+          endX = _this$state3.endX;
+      var offset = 5;
+      var attrs = {
+        pointerEvents: 'none',
+        fill: stroke
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_7__.Layer, {
+        className: "recharts-brush-texts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_component_Text__WEBPACK_IMPORTED_MODULE_8__.Text, _extends({
+        textAnchor: "end",
+        verticalAnchor: "middle",
+        x: Math.min(startX, endX) - offset,
+        y: y + height / 2
+      }, attrs), this.getTextOfTick(startIndex)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_component_Text__WEBPACK_IMPORTED_MODULE_8__.Text, _extends({
+        textAnchor: "start",
+        verticalAnchor: "middle",
+        x: Math.max(startX, endX) + travellerWidth + offset,
+        y: y + height / 2
+      }, attrs), this.getTextOfTick(endIndex)));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props10 = this.props,
+          data = _this$props10.data,
+          className = _this$props10.className,
+          children = _this$props10.children,
+          x = _this$props10.x,
+          y = _this$props10.y,
+          width = _this$props10.width,
+          height = _this$props10.height,
+          alwaysShowText = _this$props10.alwaysShowText;
+      var _this$state4 = this.state,
+          startX = _this$state4.startX,
+          endX = _this$state4.endX,
+          isTextActive = _this$state4.isTextActive,
+          isSlideMoving = _this$state4.isSlideMoving,
+          isTravellerMoving = _this$state4.isTravellerMoving;
+
+      if (!data || !data.length || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_9__.isNumber)(x) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_9__.isNumber)(y) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_9__.isNumber)(width) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_9__.isNumber)(height) || width <= 0 || height <= 0) {
+        return null;
+      }
+
+      var layerClass = classnames__WEBPACK_IMPORTED_MODULE_3___default()('recharts-brush', className);
+      var isPanoramic = react__WEBPACK_IMPORTED_MODULE_2__.Children.count(children) === 1;
+      var style = (0,_util_CssPrefixUtils__WEBPACK_IMPORTED_MODULE_10__.generatePrefixStyle)('userSelect', 'none');
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_7__.Layer, {
+        className: layerClass,
+        onMouseMove: this.handleDrag,
+        onMouseLeave: this.handleLeaveWrapper,
+        onTouchMove: this.handleTouchMove,
+        style: style
+      }, this.renderBackground(), isPanoramic && this.renderPanorama(), this.renderSlide(startX, endX), this.renderTravellerLayer(startX, 'startX'), this.renderTravellerLayer(endX, 'endX'), (isTextActive || isSlideMoving || isTravellerMoving || alwaysShowText) && this.renderText());
+    }
+  }], [{
+    key: "renderDefaultTraveller",
+    value: function renderDefaultTraveller(props) {
+      var x = props.x,
+          y = props.y,
+          width = props.width,
+          height = props.height,
+          stroke = props.stroke;
+      var lineY = Math.floor(y + height / 2) - 1;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("rect", {
+        x: x,
+        y: y,
+        width: width,
+        height: height,
+        fill: stroke,
+        stroke: "none"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("line", {
+        x1: x + 1,
+        y1: lineY,
+        x2: x + width - 1,
+        y2: lineY,
+        fill: "none",
+        stroke: "#fff"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("line", {
+        x1: x + 1,
+        y1: lineY + 2,
+        x2: x + width - 1,
+        y2: lineY + 2,
+        fill: "none",
+        stroke: "#fff"
+      }));
+    }
+  }, {
+    key: "renderTraveller",
+    value: function renderTraveller(option, props) {
+      var rectangle;
+
+      if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.isValidElement(option)) {
+        rectangle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(option, props);
+      } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(option)) {
+        rectangle = option(props);
+      } else {
+        rectangle = Brush.renderDefaultTraveller(props);
+      }
+
+      return rectangle;
+    }
+  }, {
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      var data = nextProps.data,
+          width = nextProps.width,
+          x = nextProps.x,
+          travellerWidth = nextProps.travellerWidth,
+          updateId = nextProps.updateId,
+          startIndex = nextProps.startIndex,
+          endIndex = nextProps.endIndex;
+
+      if (data !== prevState.prevData || updateId !== prevState.prevUpdateId) {
+        return _objectSpread({
+          prevData: data,
+          prevTravellerWidth: travellerWidth,
+          prevUpdateId: updateId,
+          prevX: x,
+          prevWidth: width
+        }, data && data.length ? createScale({
+          data: data,
+          width: width,
+          x: x,
+          travellerWidth: travellerWidth,
+          startIndex: startIndex,
+          endIndex: endIndex
+        }) : {
+          scale: null,
+          scaleValues: null
+        });
+      }
+
+      if (prevState.scale && (width !== prevState.prevWidth || x !== prevState.prevX || travellerWidth !== prevState.prevTravellerWidth)) {
+        prevState.scale.range([x, x + width - travellerWidth]);
+        var scaleValues = prevState.scale.domain().map(function (entry) {
+          return prevState.scale(entry);
+        });
+        return {
+          prevData: data,
+          prevTravellerWidth: travellerWidth,
+          prevUpdateId: updateId,
+          prevX: x,
+          prevWidth: width,
+          startX: prevState.scale(nextProps.startIndex),
+          endX: prevState.scale(nextProps.endIndex),
+          scaleValues: scaleValues
+        };
+      }
+
+      return null;
+    }
+  }, {
+    key: "getIndexInRange",
+    value: function getIndexInRange(range, x) {
+      var len = range.length;
+      var start = 0;
+      var end = len - 1;
+
+      while (end - start > 1) {
+        var middle = Math.floor((start + end) / 2);
+
+        if (range[middle] > x) {
+          end = middle;
+        } else {
+          start = middle;
+        }
+      }
+
+      return x >= range[end] ? end : start;
+    }
+  }]);
+
+  return Brush;
+}(react__WEBPACK_IMPORTED_MODULE_2__.PureComponent);
+Brush.displayName = 'Brush';
+Brush.defaultProps = {
+  height: 40,
+  travellerWidth: 5,
+  gap: 1,
+  fill: '#fff',
+  stroke: '#666',
+  padding: {
+    top: 1,
+    right: 1,
+    bottom: 1,
+    left: 1
+  },
+  leaveTimeOut: 1000,
+  alwaysShowText: false
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/CartesianAxis.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/CartesianAxis.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CartesianAxis": () => (/* binding */ CartesianAxis)
+/* harmony export */ });
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_ShallowEqual__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/ShallowEqual */ "./node_modules/recharts/es6/util/ShallowEqual.js");
+/* harmony import */ var _util_DOMUtils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/DOMUtils */ "./node_modules/recharts/es6/util/DOMUtils.js");
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _component_Text__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../component/Text */ "./node_modules/recharts/es6/component/Text.js");
+/* harmony import */ var _component_Label__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../component/Label */ "./node_modules/recharts/es6/component/Label.js");
+/* harmony import */ var _util_Global__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/Global */ "./node_modules/recharts/es6/util/Global.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Cartesian Axis
+ */
+
+
+
+
+
+
+
+
+
+
+var CartesianAxis = /*#__PURE__*/function (_Component) {
+  _inherits(CartesianAxis, _Component);
+
+  var _super = _createSuper(CartesianAxis);
+
+  function CartesianAxis() {
+    _classCallCheck(this, CartesianAxis);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(CartesianAxis, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(_ref) {
+      var viewBox = _ref.viewBox,
+          restProps = _objectWithoutProperties(_ref, ["viewBox"]);
+
+      // props.viewBox is sometimes generated every time -
+      // check that specially as object equality is likely to fail
+      var _this$props = this.props,
+          viewBoxOld = _this$props.viewBox,
+          restPropsOld = _objectWithoutProperties(_this$props, ["viewBox"]);
+
+      return !(0,_util_ShallowEqual__WEBPACK_IMPORTED_MODULE_4__.shallowEqual)(viewBox, viewBoxOld) || !(0,_util_ShallowEqual__WEBPACK_IMPORTED_MODULE_4__.shallowEqual)(restProps, restPropsOld);
+    }
+    /**
+     * Calculate the coordinates of endpoints in ticks
+     * @param  {Object} data The data of a simple tick
+     * @return {Object} (x1, y1): The coordinate of endpoint close to tick text
+     *  (x2, y2): The coordinate of endpoint close to axis
+     */
+
+  }, {
+    key: "getTickLineCoord",
+    value: function getTickLineCoord(data) {
+      var _this$props2 = this.props,
+          x = _this$props2.x,
+          y = _this$props2.y,
+          width = _this$props2.width,
+          height = _this$props2.height,
+          orientation = _this$props2.orientation,
+          tickSize = _this$props2.tickSize,
+          mirror = _this$props2.mirror,
+          tickMargin = _this$props2.tickMargin;
+      var x1, x2, y1, y2, tx, ty;
+      var sign = mirror ? -1 : 1;
+      var finalTickSize = data.tickSize || tickSize;
+      var tickCoord = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(data.tickCoord) ? data.tickCoord : data.coordinate;
+
+      switch (orientation) {
+        case 'top':
+          x1 = x2 = data.coordinate;
+          y2 = y + +!mirror * height;
+          y1 = y2 - sign * finalTickSize;
+          ty = y1 - sign * tickMargin;
+          tx = tickCoord;
+          break;
+
+        case 'left':
+          y1 = y2 = data.coordinate;
+          x2 = x + +!mirror * width;
+          x1 = x2 - sign * finalTickSize;
+          tx = x1 - sign * tickMargin;
+          ty = tickCoord;
+          break;
+
+        case 'right':
+          y1 = y2 = data.coordinate;
+          x2 = x + +mirror * width;
+          x1 = x2 + sign * finalTickSize;
+          tx = x1 + sign * tickMargin;
+          ty = tickCoord;
+          break;
+
+        default:
+          x1 = x2 = data.coordinate;
+          y2 = y + +mirror * height;
+          y1 = y2 + sign * finalTickSize;
+          ty = y1 + sign * tickMargin;
+          tx = tickCoord;
+          break;
+      }
+
+      return {
+        line: {
+          x1: x1,
+          y1: y1,
+          x2: x2,
+          y2: y2
+        },
+        tick: {
+          x: tx,
+          y: ty
+        }
+      };
+    }
+  }, {
+    key: "getTickTextAnchor",
+    value: function getTickTextAnchor() {
+      var _this$props3 = this.props,
+          orientation = _this$props3.orientation,
+          mirror = _this$props3.mirror;
+      var textAnchor;
+
+      switch (orientation) {
+        case 'left':
+          textAnchor = mirror ? 'start' : 'end';
+          break;
+
+        case 'right':
+          textAnchor = mirror ? 'end' : 'start';
+          break;
+
+        default:
+          textAnchor = 'middle';
+          break;
+      }
+
+      return textAnchor;
+    }
+  }, {
+    key: "getTickVerticalAnchor",
+    value: function getTickVerticalAnchor() {
+      var _this$props4 = this.props,
+          orientation = _this$props4.orientation,
+          mirror = _this$props4.mirror;
+      var verticalAnchor = 'end';
+
+      switch (orientation) {
+        case 'left':
+        case 'right':
+          verticalAnchor = 'middle';
+          break;
+
+        case 'top':
+          verticalAnchor = mirror ? 'start' : 'end';
+          break;
+
+        default:
+          verticalAnchor = mirror ? 'end' : 'start';
+          break;
+      }
+
+      return verticalAnchor;
+    }
+  }, {
+    key: "renderAxisLine",
+    value: function renderAxisLine() {
+      var _this$props5 = this.props,
+          x = _this$props5.x,
+          y = _this$props5.y,
+          width = _this$props5.width,
+          height = _this$props5.height,
+          orientation = _this$props5.orientation,
+          mirror = _this$props5.mirror,
+          axisLine = _this$props5.axisLine;
+
+      var props = _objectSpread(_objectSpread(_objectSpread({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_6__.filterProps)(this.props)), (0,_util_types__WEBPACK_IMPORTED_MODULE_6__.filterProps)(axisLine)), {}, {
+        fill: 'none'
+      });
+
+      if (orientation === 'top' || orientation === 'bottom') {
+        var needHeight = +(orientation === 'top' && !mirror || orientation === 'bottom' && mirror);
+        props = _objectSpread(_objectSpread({}, props), {}, {
+          x1: x,
+          y1: y + needHeight * height,
+          x2: x + width,
+          y2: y + needHeight * height
+        });
+      } else {
+        var needWidth = +(orientation === 'left' && !mirror || orientation === 'right' && mirror);
+        props = _objectSpread(_objectSpread({}, props), {}, {
+          x1: x + needWidth * width,
+          y1: y,
+          x2: x + needWidth * width,
+          y2: y + height
+        });
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("line", _extends({}, props, {
+        className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('recharts-cartesian-axis-line', lodash_get__WEBPACK_IMPORTED_MODULE_0___default()(axisLine, 'className'))
+      }));
+    }
+  }, {
+    key: "renderTicks",
+    value:
+    /**
+     * render the ticks
+     * @param {Array} ticks The ticks to actually render (overrides what was passed in props)
+     * @return {ReactComponent} renderedTicks
+     */
+    function renderTicks(ticks) {
+      var _this = this;
+
+      var _this$props6 = this.props,
+          tickLine = _this$props6.tickLine,
+          stroke = _this$props6.stroke,
+          tick = _this$props6.tick,
+          tickFormatter = _this$props6.tickFormatter,
+          unit = _this$props6.unit;
+      var finalTicks = CartesianAxis.getTicks(_objectSpread(_objectSpread({}, this.props), {}, {
+        ticks: ticks
+      }));
+      var textAnchor = this.getTickTextAnchor();
+      var verticalAnchor = this.getTickVerticalAnchor();
+      var axisProps = (0,_util_types__WEBPACK_IMPORTED_MODULE_6__.filterProps)(this.props);
+      var customTickProps = (0,_util_types__WEBPACK_IMPORTED_MODULE_6__.filterProps)(tick);
+
+      var tickLineProps = _objectSpread(_objectSpread({}, axisProps), {}, {
+        fill: 'none'
+      }, (0,_util_types__WEBPACK_IMPORTED_MODULE_6__.filterProps)(tickLine));
+
+      var items = finalTicks.map(function (entry, i) {
+        var _this$getTickLineCoor = _this.getTickLineCoord(entry),
+            lineCoord = _this$getTickLineCoor.line,
+            tickCoord = _this$getTickLineCoor.tick;
+
+        var tickProps = _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+          textAnchor: textAnchor,
+          verticalAnchor: verticalAnchor
+        }, axisProps), {}, {
+          stroke: 'none',
+          fill: stroke
+        }, customTickProps), tickCoord), {}, {
+          index: i,
+          payload: entry,
+          visibleTicksCount: finalTicks.length,
+          tickFormatter: tickFormatter
+        });
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_7__.Layer, _extends({
+          className: "recharts-cartesian-axis-tick",
+          key: "tick-".concat(i) // eslint-disable-line react/no-array-index-key
+
+        }, (0,_util_types__WEBPACK_IMPORTED_MODULE_6__.adaptEventsOfChild)(_this.props, entry, i)), tickLine && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("line", _extends({}, tickLineProps, lineCoord, {
+          className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('recharts-cartesian-axis-tick-line', lodash_get__WEBPACK_IMPORTED_MODULE_0___default()(tickLine, 'className'))
+        })), tick && CartesianAxis.renderTickItem(tick, tickProps, "".concat(lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(tickFormatter) ? tickFormatter(entry.value, i) : entry.value).concat(unit || '')));
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("g", {
+        className: "recharts-cartesian-axis-ticks"
+      }, items);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props7 = this.props,
+          axisLine = _this$props7.axisLine,
+          width = _this$props7.width,
+          height = _this$props7.height,
+          ticksGenerator = _this$props7.ticksGenerator,
+          className = _this$props7.className,
+          hide = _this$props7.hide;
+
+      if (hide) {
+        return null;
+      }
+
+      var _this$props8 = this.props,
+          ticks = _this$props8.ticks,
+          noTicksProps = _objectWithoutProperties(_this$props8, ["ticks"]);
+
+      var finalTicks = ticks;
+
+      if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(ticksGenerator)) {
+        finalTicks = ticks && ticks.length > 0 ? ticksGenerator(this.props) : ticksGenerator(noTicksProps);
+      }
+
+      if (width <= 0 || height <= 0 || !finalTicks || !finalTicks.length) {
+        return null;
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_7__.Layer, {
+        className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('recharts-cartesian-axis', className)
+      }, axisLine && this.renderAxisLine(), this.renderTicks(finalTicks), _component_Label__WEBPACK_IMPORTED_MODULE_8__.Label.renderCallByParent(this.props));
+    }
+  }], [{
+    key: "getTicks",
+    value: // todo Array<Tick>
+    function getTicks(props) {
+      var tick = props.tick,
+          ticks = props.ticks,
+          viewBox = props.viewBox,
+          minTickGap = props.minTickGap,
+          orientation = props.orientation,
+          interval = props.interval,
+          tickFormatter = props.tickFormatter,
+          unit = props.unit;
+
+      if (!ticks || !ticks.length || !tick) {
+        return [];
+      }
+
+      if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(interval) || _util_Global__WEBPACK_IMPORTED_MODULE_9__.Global.isSsr) {
+        return CartesianAxis.getNumberIntervalTicks(ticks, typeof interval === 'number' && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(interval) ? interval : 0);
+      }
+
+      if (interval === 'preserveStartEnd') {
+        return CartesianAxis.getTicksStart({
+          ticks: ticks,
+          tickFormatter: tickFormatter,
+          viewBox: viewBox,
+          orientation: orientation,
+          minTickGap: minTickGap,
+          unit: unit
+        }, true);
+      }
+
+      if (interval === 'preserveStart') {
+        return CartesianAxis.getTicksStart({
+          ticks: ticks,
+          tickFormatter: tickFormatter,
+          viewBox: viewBox,
+          orientation: orientation,
+          minTickGap: minTickGap,
+          unit: unit
+        });
+      }
+
+      return CartesianAxis.getTicksEnd({
+        ticks: ticks,
+        tickFormatter: tickFormatter,
+        viewBox: viewBox,
+        orientation: orientation,
+        minTickGap: minTickGap,
+        unit: unit
+      });
+    }
+  }, {
+    key: "getNumberIntervalTicks",
+    value: function getNumberIntervalTicks(ticks, interval) {
+      return ticks.filter(function (entry, i) {
+        return i % (interval + 1) === 0;
+      });
+    }
+  }, {
+    key: "getTicksStart",
+    value: function getTicksStart(_ref2, preserveEnd) {
+      var ticks = _ref2.ticks,
+          tickFormatter = _ref2.tickFormatter,
+          viewBox = _ref2.viewBox,
+          orientation = _ref2.orientation,
+          minTickGap = _ref2.minTickGap,
+          unit = _ref2.unit;
+      var x = viewBox.x,
+          y = viewBox.y,
+          width = viewBox.width,
+          height = viewBox.height;
+      var sizeKey = orientation === 'top' || orientation === 'bottom' ? 'width' : 'height';
+      var result = (ticks || []).slice(); // we need add the width of 'unit' only when sizeKey === 'width'
+
+      var unitSize = unit && sizeKey === 'width' ? (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_10__.getStringSize)(unit)[sizeKey] : 0;
+      var len = result.length;
+      var sign = len >= 2 ? (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.mathSign)(result[1].coordinate - result[0].coordinate) : 1;
+      var start, end;
+
+      if (sign === 1) {
+        start = sizeKey === 'width' ? x : y;
+        end = sizeKey === 'width' ? x + width : y + height;
+      } else {
+        start = sizeKey === 'width' ? x + width : y + height;
+        end = sizeKey === 'width' ? x : y;
+      }
+
+      if (preserveEnd) {
+        // Try to guarantee the tail to be displayed
+        var tail = ticks[len - 1];
+        var tailContent = lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(tickFormatter) ? tickFormatter(tail.value, len - 1) : tail.value;
+        var tailSize = (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_10__.getStringSize)(tailContent)[sizeKey] + unitSize;
+        var tailGap = sign * (tail.coordinate + sign * tailSize / 2 - end);
+        result[len - 1] = tail = _objectSpread(_objectSpread({}, tail), {}, {
+          tickCoord: tailGap > 0 ? tail.coordinate - tailGap * sign : tail.coordinate
+        });
+        var isTailShow = sign * (tail.tickCoord - sign * tailSize / 2 - start) >= 0 && sign * (tail.tickCoord + sign * tailSize / 2 - end) <= 0;
+
+        if (isTailShow) {
+          end = tail.tickCoord - sign * (tailSize / 2 + minTickGap);
+          result[len - 1] = _objectSpread(_objectSpread({}, tail), {}, {
+            isShow: true
+          });
+        }
+      }
+
+      var count = preserveEnd ? len - 1 : len;
+
+      for (var i = 0; i < count; i++) {
+        var entry = result[i];
+        var content = lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(tickFormatter) ? tickFormatter(entry.value, i) : entry.value;
+        var size = (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_10__.getStringSize)(content)[sizeKey] + unitSize;
+
+        if (i === 0) {
+          var gap = sign * (entry.coordinate - sign * size / 2 - start);
+          result[i] = entry = _objectSpread(_objectSpread({}, entry), {}, {
+            tickCoord: gap < 0 ? entry.coordinate - gap * sign : entry.coordinate
+          });
+        } else {
+          result[i] = entry = _objectSpread(_objectSpread({}, entry), {}, {
+            tickCoord: entry.coordinate
+          });
+        }
+
+        var isShow = sign * (entry.tickCoord - sign * size / 2 - start) >= 0 && sign * (entry.tickCoord + sign * size / 2 - end) <= 0;
+
+        if (isShow) {
+          start = entry.tickCoord + sign * (size / 2 + minTickGap);
+          result[i] = _objectSpread(_objectSpread({}, entry), {}, {
+            isShow: true
+          });
+        }
+      }
+
+      return result.filter(function (entry) {
+        return entry.isShow;
+      });
+    }
+  }, {
+    key: "getTicksEnd",
+    value: function getTicksEnd(_ref3) {
+      var ticks = _ref3.ticks,
+          tickFormatter = _ref3.tickFormatter,
+          viewBox = _ref3.viewBox,
+          orientation = _ref3.orientation,
+          minTickGap = _ref3.minTickGap,
+          unit = _ref3.unit;
+      var x = viewBox.x,
+          y = viewBox.y,
+          width = viewBox.width,
+          height = viewBox.height;
+      var sizeKey = orientation === 'top' || orientation === 'bottom' ? 'width' : 'height'; // we need add the width of 'unit' only when sizeKey === 'width'
+
+      var unitSize = unit && sizeKey === 'width' ? (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_10__.getStringSize)(unit)[sizeKey] : 0;
+      var result = (ticks || []).slice();
+      var len = result.length;
+      var sign = len >= 2 ? (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.mathSign)(result[1].coordinate - result[0].coordinate) : 1;
+      var start, end;
+
+      if (sign === 1) {
+        start = sizeKey === 'width' ? x : y;
+        end = sizeKey === 'width' ? x + width : y + height;
+      } else {
+        start = sizeKey === 'width' ? x + width : y + height;
+        end = sizeKey === 'width' ? x : y;
+      }
+
+      for (var i = len - 1; i >= 0; i--) {
+        var entry = result[i];
+        var content = lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(tickFormatter) ? tickFormatter(entry.value, len - i - 1) : entry.value;
+        var size = (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_10__.getStringSize)(content)[sizeKey] + unitSize;
+
+        if (i === len - 1) {
+          var gap = sign * (entry.coordinate + sign * size / 2 - end);
+          result[i] = entry = _objectSpread(_objectSpread({}, entry), {}, {
+            tickCoord: gap > 0 ? entry.coordinate - gap * sign : entry.coordinate
+          });
+        } else {
+          result[i] = entry = _objectSpread(_objectSpread({}, entry), {}, {
+            tickCoord: entry.coordinate
+          });
+        }
+
+        var isShow = sign * (entry.tickCoord - sign * size / 2 - start) >= 0 && sign * (entry.tickCoord + sign * size / 2 - end) <= 0;
+
+        if (isShow) {
+          end = entry.tickCoord - sign * (size / 2 + minTickGap);
+          result[i] = _objectSpread(_objectSpread({}, entry), {}, {
+            isShow: true
+          });
+        }
+      }
+
+      return result.filter(function (entry) {
+        return entry.isShow;
+      });
+    }
+  }, {
+    key: "renderTickItem",
+    value: function renderTickItem(option, props, value) {
+      var tickItem;
+
+      if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.isValidElement(option)) {
+        tickItem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(option, props);
+      } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(option)) {
+        tickItem = option(props);
+      } else {
+        tickItem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_component_Text__WEBPACK_IMPORTED_MODULE_11__.Text, _extends({}, props, {
+          className: "recharts-cartesian-axis-tick-value"
+        }), value);
+      }
+
+      return tickItem;
+    }
+  }]);
+
+  return CartesianAxis;
+}(react__WEBPACK_IMPORTED_MODULE_2__.Component);
+CartesianAxis.displayName = 'CartesianAxis';
+CartesianAxis.defaultProps = {
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
+  viewBox: {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0
+  },
+  // The orientation of axis
+  orientation: 'bottom',
+  // The ticks
+  ticks: [],
+  stroke: '#666',
+  tickLine: true,
+  axisLine: true,
+  tick: true,
+  mirror: false,
+  minTickGap: 5,
+  // The width or height of tick
+  tickSize: 6,
+  tickMargin: 2,
+  interval: 'preserveEnd'
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/CartesianGrid.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/CartesianGrid.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CartesianGrid": () => (/* binding */ CartesianGrid)
+/* harmony export */ });
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Cartesian Grid
+ */
+
+
+
+var CartesianGrid = /*#__PURE__*/function (_PureComponent) {
+  _inherits(CartesianGrid, _PureComponent);
+
+  var _super = _createSuper(CartesianGrid);
+
+  function CartesianGrid() {
+    _classCallCheck(this, CartesianGrid);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(CartesianGrid, [{
+    key: "renderHorizontal",
+    value:
+    /**
+     * Draw the horizontal grid lines
+     * @param {Array} horizontalPoints either passed in as props or generated from function
+     * @return {Group} Horizontal lines
+     */
+    function renderHorizontal(horizontalPoints) {
+      var _this = this;
+
+      var _this$props = this.props,
+          x = _this$props.x,
+          width = _this$props.width,
+          horizontal = _this$props.horizontal;
+
+      if (!horizontalPoints || !horizontalPoints.length) {
+        return null;
+      }
+
+      var items = horizontalPoints.map(function (entry, i) {
+        var props = _objectSpread(_objectSpread({}, _this.props), {}, {
+          x1: x,
+          y1: entry,
+          x2: x + width,
+          y2: entry,
+          key: "line-".concat(i),
+          index: i
+        });
+
+        return CartesianGrid.renderLineItem(horizontal, props);
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("g", {
+        className: "recharts-cartesian-grid-horizontal"
+      }, items);
+    }
+    /**
+     * Draw vertical grid lines
+     * @param {Array} verticalPoints either passed in as props or generated from function
+     * @return {Group} Vertical lines
+     */
+
+  }, {
+    key: "renderVertical",
+    value: function renderVertical(verticalPoints) {
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          y = _this$props2.y,
+          height = _this$props2.height,
+          vertical = _this$props2.vertical;
+
+      if (!verticalPoints || !verticalPoints.length) {
+        return null;
+      }
+
+      var items = verticalPoints.map(function (entry, i) {
+        var props = _objectSpread(_objectSpread({}, _this2.props), {}, {
+          x1: entry,
+          y1: y,
+          x2: entry,
+          y2: y + height,
+          key: "line-".concat(i),
+          index: i
+        });
+
+        return CartesianGrid.renderLineItem(vertical, props);
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("g", {
+        className: "recharts-cartesian-grid-vertical"
+      }, items);
+    }
+    /**
+     * Draw vertical grid stripes filled by colors
+     * @param {Array} verticalPoints either passed in as props or generated from function
+     * @return {Group} Vertical stripes
+     */
+
+  }, {
+    key: "renderVerticalStripes",
+    value: function renderVerticalStripes(verticalPoints) {
+      var verticalFill = this.props.verticalFill;
+
+      if (!verticalFill || !verticalFill.length) {
+        return null;
+      }
+
+      var _this$props3 = this.props,
+          fillOpacity = _this$props3.fillOpacity,
+          x = _this$props3.x,
+          y = _this$props3.y,
+          width = _this$props3.width,
+          height = _this$props3.height;
+      var verticalPointsUpdated = verticalPoints.slice().sort(function (a, b) {
+        return a - b;
+      });
+
+      if (x !== verticalPointsUpdated[0]) {
+        verticalPointsUpdated.unshift(0);
+      }
+
+      var items = verticalPointsUpdated.map(function (entry, i) {
+        var lineWidth = verticalPointsUpdated[i + 1] ? verticalPointsUpdated[i + 1] - entry : x + width - entry;
+
+        if (lineWidth <= 0) {
+          return null;
+        }
+
+        var colorIndex = i % verticalFill.length;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("rect", {
+          key: "react-".concat(i) // eslint-disable-line react/no-array-index-key
+          ,
+          x: Math.round(entry + x - x),
+          y: y,
+          width: lineWidth,
+          height: height,
+          stroke: "none",
+          fill: verticalFill[colorIndex],
+          fillOpacity: fillOpacity,
+          className: "recharts-cartesian-grid-bg"
+        });
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("g", {
+        className: "recharts-cartesian-gridstripes-vertical"
+      }, items);
+    }
+    /**
+     * Draw horizontal grid stripes filled by colors
+     * @param {Array} horizontalPoints either passed in as props or generated from function
+     * @return {Group} Horizontal stripes
+     */
+
+  }, {
+    key: "renderHorizontalStripes",
+    value: function renderHorizontalStripes(horizontalPoints) {
+      var horizontalFill = this.props.horizontalFill;
+
+      if (!horizontalFill || !horizontalFill.length) {
+        return null;
+      }
+
+      var _this$props4 = this.props,
+          fillOpacity = _this$props4.fillOpacity,
+          x = _this$props4.x,
+          y = _this$props4.y,
+          width = _this$props4.width,
+          height = _this$props4.height;
+      var horizontalPointsUpdated = horizontalPoints.slice().sort(function (a, b) {
+        return a - b;
+      });
+
+      if (y !== horizontalPointsUpdated[0]) {
+        horizontalPointsUpdated.unshift(0);
+      }
+
+      var items = horizontalPointsUpdated.map(function (entry, i) {
+        var lineHeight = horizontalPointsUpdated[i + 1] ? horizontalPointsUpdated[i + 1] - entry : y + height - entry;
+
+        if (lineHeight <= 0) {
+          return null;
+        }
+
+        var colorIndex = i % horizontalFill.length;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("rect", {
+          key: "react-".concat(i) // eslint-disable-line react/no-array-index-key
+          ,
+          y: Math.round(entry + y - y),
+          x: x,
+          height: lineHeight,
+          width: width,
+          stroke: "none",
+          fill: horizontalFill[colorIndex],
+          fillOpacity: fillOpacity,
+          className: "recharts-cartesian-grid-bg"
+        });
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("g", {
+        className: "recharts-cartesian-gridstripes-horizontal"
+      }, items);
+    }
+  }, {
+    key: "renderBackground",
+    value: function renderBackground() {
+      var fill = this.props.fill;
+
+      if (!fill || fill === 'none') {
+        return null;
+      }
+
+      var _this$props5 = this.props,
+          fillOpacity = _this$props5.fillOpacity,
+          x = _this$props5.x,
+          y = _this$props5.y,
+          width = _this$props5.width,
+          height = _this$props5.height;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("rect", {
+        x: x,
+        y: y,
+        width: width,
+        height: height,
+        stroke: "none",
+        fill: fill,
+        fillOpacity: fillOpacity,
+        className: "recharts-cartesian-grid-bg"
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props6 = this.props,
+          x = _this$props6.x,
+          y = _this$props6.y,
+          width = _this$props6.width,
+          height = _this$props6.height,
+          horizontal = _this$props6.horizontal,
+          vertical = _this$props6.vertical,
+          horizontalCoordinatesGenerator = _this$props6.horizontalCoordinatesGenerator,
+          verticalCoordinatesGenerator = _this$props6.verticalCoordinatesGenerator,
+          xAxis = _this$props6.xAxis,
+          yAxis = _this$props6.yAxis,
+          offset = _this$props6.offset,
+          chartWidth = _this$props6.chartWidth,
+          chartHeight = _this$props6.chartHeight;
+
+      if (!(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(width) || width <= 0 || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(height) || height <= 0 || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(x) || x !== +x || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(y) || y !== +y) {
+        return null;
+      }
+
+      var _this$props7 = this.props,
+          horizontalPoints = _this$props7.horizontalPoints,
+          verticalPoints = _this$props7.verticalPoints; // No horizontal points are specified
+
+      if ((!horizontalPoints || !horizontalPoints.length) && lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(horizontalCoordinatesGenerator)) {
+        horizontalPoints = horizontalCoordinatesGenerator({
+          yAxis: yAxis,
+          width: chartWidth,
+          height: chartHeight,
+          offset: offset
+        });
+      } // No vertical points are specified
+
+
+      if ((!verticalPoints || !verticalPoints.length) && lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(verticalCoordinatesGenerator)) {
+        verticalPoints = verticalCoordinatesGenerator({
+          xAxis: xAxis,
+          width: chartWidth,
+          height: chartHeight,
+          offset: offset
+        });
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("g", {
+        className: "recharts-cartesian-grid"
+      }, this.renderBackground(), horizontal && this.renderHorizontal(horizontalPoints), vertical && this.renderVertical(verticalPoints), horizontal && this.renderHorizontalStripes(horizontalPoints), vertical && this.renderVerticalStripes(verticalPoints));
+    }
+  }], [{
+    key: "renderLineItem",
+    value: function renderLineItem(option, props) {
+      var lineItem;
+
+      if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.isValidElement(option)) {
+        lineItem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.cloneElement(option, props);
+      } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(option)) {
+        lineItem = option(props);
+      } else {
+        var x1 = props.x1,
+            y1 = props.y1,
+            x2 = props.x2,
+            y2 = props.y2,
+            key = props.key,
+            others = _objectWithoutProperties(props, ["x1", "y1", "x2", "y2", "key"]);
+
+        lineItem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("line", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_3__.filterProps)(others), {
+          x1: x1,
+          y1: y1,
+          x2: x2,
+          y2: y2,
+          fill: "none",
+          key: key
+        }));
+      }
+
+      return lineItem;
+    }
+  }]);
+
+  return CartesianGrid;
+}(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+CartesianGrid.displayName = 'CartesianGrid';
+CartesianGrid.defaultProps = {
+  horizontal: true,
+  vertical: true,
+  // The ordinates of horizontal grid lines
+  horizontalPoints: [],
+  // The abscissas of vertical grid lines
+  verticalPoints: [],
+  stroke: '#ccc',
+  fill: 'none',
+  // The fill of colors of grid lines
+  verticalFill: [],
+  horizontalFill: []
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/ErrorBar.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/ErrorBar.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ErrorBar": () => (/* binding */ ErrorBar)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/**
+ * @fileOverview Render a group of error bar
+ */
+
+
+
+function ErrorBar(props) {
+  var offset = props.offset,
+      layout = props.layout,
+      width = props.width,
+      dataKey = props.dataKey,
+      data = props.data,
+      dataPointFormatter = props.dataPointFormatter,
+      xAxis = props.xAxis,
+      yAxis = props.yAxis,
+      others = _objectWithoutProperties(props, ["offset", "layout", "width", "dataKey", "data", "dataPointFormatter", "xAxis", "yAxis"]);
+
+  var svgProps = (0,_util_types__WEBPACK_IMPORTED_MODULE_1__.filterProps)(others);
+  var errorBars = data.map(function (entry, i) {
+    var _dataPointFormatter = dataPointFormatter(entry, dataKey),
+        x = _dataPointFormatter.x,
+        y = _dataPointFormatter.y,
+        value = _dataPointFormatter.value,
+        errorVal = _dataPointFormatter.errorVal;
+
+    if (!errorVal) {
+      return null;
+    }
+
+    var lineCoordinates = [];
+    var lowBound, highBound;
+
+    if (Array.isArray(errorVal)) {
+      var _errorVal = _slicedToArray(errorVal, 2);
+
+      lowBound = _errorVal[0];
+      highBound = _errorVal[1];
+    } else {
+      lowBound = highBound = errorVal;
+    }
+
+    if (layout === 'vertical') {
+      // error bar for horizontal charts, the y is fixed, x is a range value
+      var scale = xAxis.scale;
+      var yMid = y + offset;
+      var yMin = yMid + width;
+      var yMax = yMid - width;
+      var xMin = scale(value - lowBound);
+      var xMax = scale(value + highBound); // the right line of |--|
+
+      lineCoordinates.push({
+        x1: xMax,
+        y1: yMin,
+        x2: xMax,
+        y2: yMax
+      }); // the middle line of |--|
+
+      lineCoordinates.push({
+        x1: xMin,
+        y1: yMid,
+        x2: xMax,
+        y2: yMid
+      }); // the left line of |--|
+
+      lineCoordinates.push({
+        x1: xMin,
+        y1: yMin,
+        x2: xMin,
+        y2: yMax
+      });
+    } else if (layout === 'horizontal') {
+      // error bar for horizontal charts, the x is fixed, y is a range value
+      var _scale = yAxis.scale;
+      var xMid = x + offset;
+
+      var _xMin = xMid - width;
+
+      var _xMax = xMid + width;
+
+      var _yMin = _scale(value - lowBound);
+
+      var _yMax = _scale(value + highBound); // the top line
+
+
+      lineCoordinates.push({
+        x1: _xMin,
+        y1: _yMax,
+        x2: _xMax,
+        y2: _yMax
+      }); // the middle line
+
+      lineCoordinates.push({
+        x1: xMid,
+        y1: _yMin,
+        x2: xMid,
+        y2: _yMax
+      }); // the bottom line
+
+      lineCoordinates.push({
+        x1: _xMin,
+        y1: _yMin,
+        x2: _xMax,
+        y2: _yMin
+      });
+    }
+
+    return (
+      /*#__PURE__*/
+      // eslint-disable-next-line react/no-array-index-key
+      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_2__.Layer, _extends({
+        className: "recharts-errorBar",
+        key: "bar-".concat(i)
+      }, svgProps), lineCoordinates.map(function (coordinates, index) {
+        return (
+          /*#__PURE__*/
+          // eslint-disable-next-line react/no-array-index-key
+          react__WEBPACK_IMPORTED_MODULE_0__.createElement("line", _extends({}, coordinates, {
+            key: "line-".concat(index)
+          }))
+        );
+      }))
+    );
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_2__.Layer, {
+    className: "recharts-errorBars"
+  }, errorBars);
+}
+ErrorBar.defaultProps = {
+  stroke: 'black',
+  strokeWidth: 1.5,
+  width: 5,
+  offset: 0,
+  layout: 'horizontal'
+};
+ErrorBar.displayName = 'ErrorBar';
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/Line.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/Line.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Line": () => (/* binding */ Line)
+/* harmony export */ });
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_smooth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-smooth */ "./node_modules/react-smooth/es6/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _shape_Curve__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../shape/Curve */ "./node_modules/recharts/es6/shape/Curve.js");
+/* harmony import */ var _shape_Dot__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../shape/Dot */ "./node_modules/recharts/es6/shape/Dot.js");
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _component_LabelList__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../component/LabelList */ "./node_modules/recharts/es6/component/LabelList.js");
+/* harmony import */ var _ErrorBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ErrorBar */ "./node_modules/recharts/es6/cartesian/ErrorBar.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_ReactUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/ReactUtils */ "./node_modules/recharts/es6/util/ReactUtils.js");
+/* harmony import */ var _util_Global__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../util/Global */ "./node_modules/recharts/es6/util/Global.js");
+/* harmony import */ var _util_ChartUtils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/ChartUtils */ "./node_modules/recharts/es6/util/ChartUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Line
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Line = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Line, _PureComponent);
+
+  var _super = _createSuper(Line);
+
+  function Line() {
+    var _this;
+
+    _classCallCheck(this, Line);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.mainCurve = void 0;
+    _this.state = {
+      isAnimationFinished: true,
+      totalLength: 0
+    };
+
+    _this.getStrokeDasharray = function (length, totalLength, lines) {
+      var lineLength = lines.reduce(function (pre, next) {
+        return pre + next;
+      });
+      var count = Math.floor(length / lineLength);
+      var remainLength = length % lineLength;
+      var restLength = totalLength - length;
+      var remainLines = [];
+
+      for (var i = 0, sum = 0;; sum += lines[i], ++i) {
+        if (sum + lines[i] > remainLength) {
+          remainLines = [].concat(_toConsumableArray(lines.slice(0, i)), [remainLength - sum]);
+          break;
+        }
+      }
+
+      var emptyLines = remainLines.length % 2 === 0 ? [0, restLength] : [restLength];
+      return [].concat(_toConsumableArray(Line.repeat(lines, count)), _toConsumableArray(remainLines), emptyLines).map(function (line) {
+        return "".concat(line, "px");
+      }).join(', ');
+    };
+
+    _this.id = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.uniqueId)('recharts-line-');
+
+    _this.pathRef = function (node) {
+      _this.mainCurve = node;
+    };
+
+    _this.handleAnimationEnd = function () {
+      _this.setState({
+        isAnimationFinished: true
+      });
+
+      if (_this.props.onAnimationEnd) {
+        _this.props.onAnimationEnd();
+      }
+    };
+
+    _this.handleAnimationStart = function () {
+      _this.setState({
+        isAnimationFinished: false
+      });
+
+      if (_this.props.onAnimationStart) {
+        _this.props.onAnimationStart();
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass(Line, [{
+    key: "componentDidMount",
+    value:
+    /* eslint-disable  react/no-did-mount-set-state */
+    function componentDidMount() {
+      if (!this.props.isAnimationActive) {
+        return;
+      }
+
+      var totalLength = this.getTotalLength();
+      this.setState({
+        totalLength: totalLength
+      });
+    }
+  }, {
+    key: "getTotalLength",
+    value: function getTotalLength() {
+      var curveDom = this.mainCurve;
+
+      try {
+        return curveDom && curveDom.getTotalLength && curveDom.getTotalLength() || 0;
+      } catch (err) {
+        return 0;
+      }
+    }
+  }, {
+    key: "renderErrorBar",
+    value: function renderErrorBar() {
+      if (this.props.isAnimationActive && !this.state.isAnimationFinished) {
+        return null;
+      }
+
+      var _this$props = this.props,
+          points = _this$props.points,
+          xAxis = _this$props.xAxis,
+          yAxis = _this$props.yAxis,
+          layout = _this$props.layout,
+          children = _this$props.children;
+      var errorBarItems = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_7__.findAllByType)(children, _ErrorBar__WEBPACK_IMPORTED_MODULE_8__.ErrorBar.displayName);
+
+      if (!errorBarItems) {
+        return null;
+      }
+
+      function dataPointFormatter(dataPoint, dataKey) {
+        return {
+          x: dataPoint.x,
+          y: dataPoint.y,
+          value: dataPoint.value,
+          errorVal: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_9__.getValueByDataKey)(dataPoint.payload, dataKey)
+        };
+      }
+
+      return errorBarItems.map(function (item, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(item, {
+          // eslint-disable-next-line react/no-array-index-key
+          key: "bar-".concat(i),
+          data: points,
+          xAxis: xAxis,
+          yAxis: yAxis,
+          layout: layout,
+          dataPointFormatter: dataPointFormatter
+        });
+      });
+    }
+  }, {
+    key: "renderDots",
+    value: function renderDots(needClip, clipPathId) {
+      var isAnimationActive = this.props.isAnimationActive;
+
+      if (isAnimationActive && !this.state.isAnimationFinished) {
+        return null;
+      }
+
+      var _this$props2 = this.props,
+          dot = _this$props2.dot,
+          points = _this$props2.points,
+          dataKey = _this$props2.dataKey;
+      var lineProps = (0,_util_types__WEBPACK_IMPORTED_MODULE_10__.filterProps)(this.props);
+      var customDotProps = (0,_util_types__WEBPACK_IMPORTED_MODULE_10__.filterProps)(dot, true);
+      var dots = points.map(function (entry, i) {
+        var dotProps = _objectSpread(_objectSpread(_objectSpread({
+          key: "dot-".concat(i),
+          r: 3
+        }, lineProps), customDotProps), {}, {
+          value: entry.value,
+          dataKey: dataKey,
+          cx: entry.x,
+          cy: entry.y,
+          index: i,
+          payload: entry.payload
+        });
+
+        return Line.renderDotItem(dot, dotProps);
+      });
+      var dotsProps = {
+        clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_11__.Layer, _extends({
+        className: "recharts-line-dots",
+        key: "dots"
+      }, dotsProps), dots);
+    }
+  }, {
+    key: "renderCurveStatically",
+    value: function renderCurveStatically(points, needClip, clipPathId, props) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      var _this$props3 = this.props,
+          type = _this$props3.type,
+          layout = _this$props3.layout,
+          connectNulls = _this$props3.connectNulls,
+          ref = _this$props3.ref,
+          others = _objectWithoutProperties(_this$props3, ["type", "layout", "connectNulls", "ref"]);
+
+      var curveProps = _objectSpread(_objectSpread(_objectSpread({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_10__.filterProps)(others, true)), {}, {
+        fill: 'none',
+        className: 'recharts-line-curve',
+        clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null,
+        points: points
+      }, props), {}, {
+        type: type,
+        layout: layout,
+        connectNulls: connectNulls
+      });
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_shape_Curve__WEBPACK_IMPORTED_MODULE_12__.Curve, _extends({}, curveProps, {
+        pathRef: this.pathRef
+      }));
+    }
+  }, {
+    key: "renderCurveWithAnimation",
+    value: function renderCurveWithAnimation(needClip, clipPathId) {
+      var _this2 = this;
+
+      var _this$props4 = this.props,
+          points = _this$props4.points,
+          strokeDasharray = _this$props4.strokeDasharray,
+          isAnimationActive = _this$props4.isAnimationActive,
+          animationBegin = _this$props4.animationBegin,
+          animationDuration = _this$props4.animationDuration,
+          animationEasing = _this$props4.animationEasing,
+          animationId = _this$props4.animationId,
+          animateNewValues = _this$props4.animateNewValues,
+          width = _this$props4.width,
+          height = _this$props4.height;
+      var _this$state = this.state,
+          prevPoints = _this$state.prevPoints,
+          totalLength = _this$state.totalLength;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react_smooth__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        begin: animationBegin,
+        duration: animationDuration,
+        isActive: isAnimationActive,
+        easing: animationEasing,
+        from: {
+          t: 0
+        },
+        to: {
+          t: 1
+        },
+        key: "line-".concat(animationId),
+        onAnimationEnd: this.handleAnimationEnd,
+        onAnimationStart: this.handleAnimationStart
+      }, function (_ref) {
+        var t = _ref.t;
+
+        if (prevPoints) {
+          var prevPointsDiffFactor = prevPoints.length / points.length;
+          var stepData = points.map(function (entry, index) {
+            var prevPointIndex = Math.floor(index * prevPointsDiffFactor);
+
+            if (prevPoints[prevPointIndex]) {
+              var prev = prevPoints[prevPointIndex];
+              var interpolatorX = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.interpolateNumber)(prev.x, entry.x);
+              var interpolatorY = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.interpolateNumber)(prev.y, entry.y);
+              return _objectSpread(_objectSpread({}, entry), {}, {
+                x: interpolatorX(t),
+                y: interpolatorY(t)
+              });
+            } // magic number of faking previous x and y location
+
+
+            if (animateNewValues) {
+              var _interpolatorX = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.interpolateNumber)(width * 2, entry.x);
+
+              var _interpolatorY = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.interpolateNumber)(height / 2, entry.y);
+
+              return _objectSpread(_objectSpread({}, entry), {}, {
+                x: _interpolatorX(t),
+                y: _interpolatorY(t)
+              });
+            }
+
+            return _objectSpread(_objectSpread({}, entry), {}, {
+              x: entry.x,
+              y: entry.y
+            });
+          });
+          return _this2.renderCurveStatically(stepData, needClip, clipPathId);
+        }
+
+        var interpolator = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.interpolateNumber)(0, totalLength);
+        var curLength = interpolator(t);
+        var currentStrokeDasharray;
+
+        if (strokeDasharray) {
+          var lines = "".concat(strokeDasharray).split(/[,\s]+/gim).map(function (num) {
+            return parseFloat(num);
+          });
+          currentStrokeDasharray = _this2.getStrokeDasharray(curLength, totalLength, lines);
+        } else {
+          currentStrokeDasharray = "".concat(curLength, "px ").concat(totalLength - curLength, "px");
+        }
+
+        return _this2.renderCurveStatically(points, needClip, clipPathId, {
+          strokeDasharray: currentStrokeDasharray
+        });
+      });
+    }
+  }, {
+    key: "renderCurve",
+    value: function renderCurve(needClip, clipPathId) {
+      var _this$props5 = this.props,
+          points = _this$props5.points,
+          isAnimationActive = _this$props5.isAnimationActive;
+      var _this$state2 = this.state,
+          prevPoints = _this$state2.prevPoints,
+          totalLength = _this$state2.totalLength;
+
+      if (isAnimationActive && points && points.length && (!prevPoints && totalLength > 0 || !lodash_isEqual__WEBPACK_IMPORTED_MODULE_0___default()(prevPoints, points))) {
+        return this.renderCurveWithAnimation(needClip, clipPathId);
+      }
+
+      return this.renderCurveStatically(points, needClip, clipPathId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props6 = this.props,
+          hide = _this$props6.hide,
+          dot = _this$props6.dot,
+          points = _this$props6.points,
+          className = _this$props6.className,
+          xAxis = _this$props6.xAxis,
+          yAxis = _this$props6.yAxis,
+          top = _this$props6.top,
+          left = _this$props6.left,
+          width = _this$props6.width,
+          height = _this$props6.height,
+          isAnimationActive = _this$props6.isAnimationActive,
+          id = _this$props6.id;
+
+      if (hide || !points || !points.length) {
+        return null;
+      }
+
+      var isAnimationFinished = this.state.isAnimationFinished;
+      var hasSinglePoint = points.length === 1;
+      var layerClass = classnames__WEBPACK_IMPORTED_MODULE_5___default()('recharts-line', className);
+      var needClip = xAxis && xAxis.allowDataOverflow || yAxis && yAxis.allowDataOverflow;
+      var clipPathId = lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(id) ? this.id : id;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_11__.Layer, {
+        className: layerClass
+      }, needClip ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("defs", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("clipPath", {
+        id: "clipPath-".concat(clipPathId)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("rect", {
+        x: left,
+        y: top,
+        width: width,
+        height: height
+      }))) : null, !hasSinglePoint && this.renderCurve(needClip, clipPathId), this.renderErrorBar(), (hasSinglePoint || dot) && this.renderDots(needClip, clipPathId), (!isAnimationActive || isAnimationFinished) && _component_LabelList__WEBPACK_IMPORTED_MODULE_13__.LabelList.renderCallByParent(this.props, points));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      if (nextProps.animationId !== prevState.prevAnimationId) {
+        return {
+          prevAnimationId: nextProps.animationId,
+          curPoints: nextProps.points,
+          prevPoints: prevState.curPoints
+        };
+      }
+
+      if (nextProps.points !== prevState.curPoints) {
+        return {
+          curPoints: nextProps.points
+        };
+      }
+
+      return null;
+    }
+  }, {
+    key: "repeat",
+    value: function repeat(lines, count) {
+      var linesUnit = lines.length % 2 !== 0 ? [].concat(_toConsumableArray(lines), [0]) : lines;
+      var result = [];
+
+      for (var i = 0; i < count; ++i) {
+        result = [].concat(_toConsumableArray(result), _toConsumableArray(linesUnit));
+      }
+
+      return result;
+    }
+  }, {
+    key: "renderDotItem",
+    value: function renderDotItem(option, props) {
+      var dotItem;
+
+      if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.isValidElement(option)) {
+        dotItem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(option, props);
+      } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(option)) {
+        dotItem = option(props);
+      } else {
+        var className = classnames__WEBPACK_IMPORTED_MODULE_5___default()('recharts-line-dot', option ? option.className : '');
+        dotItem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_shape_Dot__WEBPACK_IMPORTED_MODULE_14__.Dot, _extends({}, props, {
+          className: className
+        }));
+      }
+
+      return dotItem;
+    }
+  }]);
+
+  return Line;
+}(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent);
+Line.displayName = 'Line';
+Line.defaultProps = {
+  xAxisId: 0,
+  yAxisId: 0,
+  connectNulls: false,
+  activeDot: true,
+  dot: true,
+  legendType: 'line',
+  stroke: '#3182bd',
+  strokeWidth: 1,
+  fill: '#fff',
+  points: [],
+  isAnimationActive: !_util_Global__WEBPACK_IMPORTED_MODULE_15__.Global.isSsr,
+  animateNewValues: true,
+  animationBegin: 0,
+  animationDuration: 1500,
+  animationEasing: 'ease',
+  hide: false
+};
+
+Line.getComposedData = function (_ref2) {
+  var props = _ref2.props,
+      xAxis = _ref2.xAxis,
+      yAxis = _ref2.yAxis,
+      xAxisTicks = _ref2.xAxisTicks,
+      yAxisTicks = _ref2.yAxisTicks,
+      dataKey = _ref2.dataKey,
+      bandSize = _ref2.bandSize,
+      displayedData = _ref2.displayedData,
+      offset = _ref2.offset;
+  var layout = props.layout;
+  var points = displayedData.map(function (entry, index) {
+    var value = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_9__.getValueByDataKey)(entry, dataKey);
+
+    if (layout === 'horizontal') {
+      return {
+        x: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_9__.getCateCoordinateOfLine)({
+          axis: xAxis,
+          ticks: xAxisTicks,
+          bandSize: bandSize,
+          entry: entry,
+          index: index
+        }),
+        y: lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(value) ? null : yAxis.scale(value),
+        value: value,
+        payload: entry
+      };
+    }
+
+    return {
+      x: lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(value) ? null : xAxis.scale(value),
+      y: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_9__.getCateCoordinateOfLine)({
+        axis: yAxis,
+        ticks: yAxisTicks,
+        bandSize: bandSize,
+        entry: entry,
+        index: index
+      }),
+      value: value,
+      payload: entry
+    };
+  });
+  return _objectSpread({
+    points: points,
+    layout: layout
+  }, offset);
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/ReferenceArea.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/ReferenceArea.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ReferenceArea": () => (/* binding */ ReferenceArea)
+/* harmony export */ });
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _component_Label__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../component/Label */ "./node_modules/recharts/es6/component/Label.js");
+/* harmony import */ var _util_CartesianUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/CartesianUtils */ "./node_modules/recharts/es6/util/CartesianUtils.js");
+/* harmony import */ var _util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/IfOverflowMatches */ "./node_modules/recharts/es6/util/IfOverflowMatches.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_LogUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/LogUtils */ "./node_modules/recharts/es6/util/LogUtils.js");
+/* harmony import */ var _shape_Rectangle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../shape/Rectangle */ "./node_modules/recharts/es6/shape/Rectangle.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * @fileOverview Reference Line
+ */
+
+
+
+
+
+
+
+
+
+
+
+var getRect = function getRect(hasX1, hasX2, hasY1, hasY2, props) {
+  var xValue1 = props.x1,
+      xValue2 = props.x2,
+      yValue1 = props.y1,
+      yValue2 = props.y2,
+      xAxis = props.xAxis,
+      yAxis = props.yAxis;
+  if (!xAxis || !yAxis) return null;
+  var scales = (0,_util_CartesianUtils__WEBPACK_IMPORTED_MODULE_3__.createLabeledScales)({
+    x: xAxis.scale,
+    y: yAxis.scale
+  });
+  var p1 = {
+    x: hasX1 ? scales.x.apply(xValue1, {
+      position: 'start'
+    }) : scales.x.rangeMin,
+    y: hasY1 ? scales.y.apply(yValue1, {
+      position: 'start'
+    }) : scales.y.rangeMin
+  };
+  var p2 = {
+    x: hasX2 ? scales.x.apply(xValue2, {
+      position: 'end'
+    }) : scales.x.rangeMax,
+    y: hasY2 ? scales.y.apply(yValue2, {
+      position: 'end'
+    }) : scales.y.rangeMax
+  };
+
+  if ((0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'discard') && (!scales.isInRange(p1) || !scales.isInRange(p2))) {
+    return null;
+  }
+
+  return (0,_util_CartesianUtils__WEBPACK_IMPORTED_MODULE_3__.rectWithPoints)(p1, p2);
+};
+
+function ReferenceArea(props) {
+  var x1 = props.x1,
+      x2 = props.x2,
+      y1 = props.y1,
+      y2 = props.y2,
+      className = props.className,
+      alwaysShow = props.alwaysShow,
+      clipPathId = props.clipPathId;
+  (0,_util_LogUtils__WEBPACK_IMPORTED_MODULE_5__.warn)(alwaysShow === undefined, 'The alwaysShow prop is deprecated. Please use ifOverflow="extendDomain" instead.');
+  var hasX1 = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.isNumOrStr)(x1);
+  var hasX2 = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.isNumOrStr)(x2);
+  var hasY1 = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.isNumOrStr)(y1);
+  var hasY2 = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_6__.isNumOrStr)(y2);
+  var shape = props.shape;
+
+  if (!hasX1 && !hasX2 && !hasY1 && !hasY2 && !shape) {
+    return null;
+  }
+
+  var rect = getRect(hasX1, hasX2, hasY1, hasY2, props);
+
+  if (!rect && !shape) {
+    return null;
+  }
+
+  var clipPath = (0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'hidden') ? "url(#".concat(clipPathId, ")") : undefined;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_7__.Layer, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('recharts-reference-area', className)
+  }, ReferenceArea.renderRect(shape, _objectSpread(_objectSpread({
+    clipPath: clipPath
+  }, (0,_util_types__WEBPACK_IMPORTED_MODULE_8__.filterProps)(props, true)), rect)), _component_Label__WEBPACK_IMPORTED_MODULE_9__.Label.renderCallByParent(props, rect));
+}
+ReferenceArea.displayName = 'ReferenceArea';
+ReferenceArea.defaultProps = {
+  isFront: false,
+  ifOverflow: 'discard',
+  xAxisId: 0,
+  yAxisId: 0,
+  r: 10,
+  fill: '#ccc',
+  fillOpacity: 0.5,
+  stroke: 'none',
+  strokeWidth: 1
+};
+
+ReferenceArea.renderRect = function (option, props) {
+  var rect;
+
+  if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.isValidElement(option)) {
+    rect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.cloneElement(option, props);
+  } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(option)) {
+    rect = option(props);
+  } else {
+    rect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_shape_Rectangle__WEBPACK_IMPORTED_MODULE_10__.Rectangle, _extends({}, props, {
+      className: "recharts-reference-area-rect"
+    }));
+  }
+
+  return rect;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/ReferenceDot.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/ReferenceDot.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ReferenceDot": () => (/* binding */ ReferenceDot)
+/* harmony export */ });
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _shape_Dot__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../shape/Dot */ "./node_modules/recharts/es6/shape/Dot.js");
+/* harmony import */ var _component_Label__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../component/Label */ "./node_modules/recharts/es6/component/Label.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/IfOverflowMatches */ "./node_modules/recharts/es6/util/IfOverflowMatches.js");
+/* harmony import */ var _util_CartesianUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/CartesianUtils */ "./node_modules/recharts/es6/util/CartesianUtils.js");
+/* harmony import */ var _util_LogUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/LogUtils */ "./node_modules/recharts/es6/util/LogUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * @fileOverview Reference Dot
+ */
+
+
+
+
+
+
+
+
+
+
+
+var getCoordinate = function getCoordinate(props) {
+  var x = props.x,
+      y = props.y,
+      xAxis = props.xAxis,
+      yAxis = props.yAxis;
+  var scales = (0,_util_CartesianUtils__WEBPACK_IMPORTED_MODULE_3__.createLabeledScales)({
+    x: xAxis.scale,
+    y: yAxis.scale
+  });
+  var result = scales.apply({
+    x: x,
+    y: y
+  }, {
+    bandAware: true
+  });
+
+  if ((0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'discard') && !scales.isInRange(result)) {
+    return null;
+  }
+
+  return result;
+};
+
+function ReferenceDot(props) {
+  var x = props.x,
+      y = props.y,
+      r = props.r,
+      alwaysShow = props.alwaysShow,
+      clipPathId = props.clipPathId;
+  var isX = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(x);
+  var isY = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(y);
+  (0,_util_LogUtils__WEBPACK_IMPORTED_MODULE_6__.warn)(alwaysShow === undefined, 'The alwaysShow prop is deprecated. Please use ifOverflow="extendDomain" instead.');
+
+  if (!isX || !isY) {
+    return null;
+  }
+
+  var coordinate = getCoordinate(props);
+
+  if (!coordinate) {
+    return null;
+  }
+
+  var cx = coordinate.x,
+      cy = coordinate.y;
+  var shape = props.shape,
+      className = props.className;
+  var clipPath = (0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'hidden') ? "url(#".concat(clipPathId, ")") : undefined;
+
+  var dotProps = _objectSpread(_objectSpread({
+    clipPath: clipPath
+  }, (0,_util_types__WEBPACK_IMPORTED_MODULE_7__.filterProps)(props, true)), {}, {
+    cx: cx,
+    cy: cy
+  });
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_8__.Layer, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('recharts-reference-dot', className)
+  }, ReferenceDot.renderDot(shape, dotProps), _component_Label__WEBPACK_IMPORTED_MODULE_9__.Label.renderCallByParent(props, {
+    x: cx - r,
+    y: cy - r,
+    width: 2 * r,
+    height: 2 * r
+  }));
+}
+ReferenceDot.displayName = 'ReferenceDot';
+ReferenceDot.defaultProps = {
+  isFront: false,
+  ifOverflow: 'discard',
+  xAxisId: 0,
+  yAxisId: 0,
+  r: 10,
+  fill: '#fff',
+  stroke: '#ccc',
+  fillOpacity: 1,
+  strokeWidth: 1
+};
+
+ReferenceDot.renderDot = function (option, props) {
+  var dot;
+
+  if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.isValidElement(option)) {
+    dot = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.cloneElement(option, props);
+  } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(option)) {
+    dot = option(props);
+  } else {
+    dot = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_shape_Dot__WEBPACK_IMPORTED_MODULE_10__.Dot, _extends({}, props, {
+      cx: props.cx,
+      cy: props.cy,
+      className: "recharts-reference-dot-dot"
+    }));
+  }
+
+  return dot;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/ReferenceLine.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/ReferenceLine.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ReferenceLine": () => (/* binding */ ReferenceLine)
+/* harmony export */ });
+/* harmony import */ var lodash_some__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/some */ "./node_modules/lodash/some.js");
+/* harmony import */ var lodash_some__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_some__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _component_Label__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../component/Label */ "./node_modules/recharts/es6/component/Label.js");
+/* harmony import */ var _util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/IfOverflowMatches */ "./node_modules/recharts/es6/util/IfOverflowMatches.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_CartesianUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/CartesianUtils */ "./node_modules/recharts/es6/util/CartesianUtils.js");
+/* harmony import */ var _util_LogUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/LogUtils */ "./node_modules/recharts/es6/util/LogUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+/**
+ * @fileOverview Reference Line
+ */
+
+
+
+
+
+
+
+
+
+
+var renderLine = function renderLine(option, props) {
+  var line;
+
+  if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.isValidElement(option)) {
+    line = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(option, props);
+  } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(option)) {
+    line = option(props);
+  } else {
+    line = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("line", _extends({}, props, {
+      className: "recharts-reference-line-line"
+    }));
+  }
+
+  return line;
+}; // TODO: ScaleHelper
+
+
+var getEndPoints = function getEndPoints(scales, isFixedX, isFixedY, isSegment, props) {
+  var _props$viewBox = props.viewBox,
+      x = _props$viewBox.x,
+      y = _props$viewBox.y,
+      width = _props$viewBox.width,
+      height = _props$viewBox.height,
+      position = props.position;
+
+  if (isFixedY) {
+    var yCoord = props.y,
+        orientation = props.yAxis.orientation;
+    var coord = scales.y.apply(yCoord, {
+      position: position
+    });
+
+    if ((0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'discard') && !scales.y.isInRange(coord)) {
+      return null;
+    }
+
+    var points = [{
+      x: x + width,
+      y: coord
+    }, {
+      x: x,
+      y: coord
+    }];
+    return orientation === 'left' ? points.reverse() : points;
+  }
+
+  if (isFixedX) {
+    var xCoord = props.x,
+        _orientation = props.xAxis.orientation;
+
+    var _coord = scales.x.apply(xCoord, {
+      position: position
+    });
+
+    if ((0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'discard') && !scales.x.isInRange(_coord)) {
+      return null;
+    }
+
+    var _points = [{
+      x: _coord,
+      y: y + height
+    }, {
+      x: _coord,
+      y: y
+    }];
+    return _orientation === 'top' ? _points.reverse() : _points;
+  }
+
+  if (isSegment) {
+    var segment = props.segment;
+
+    var _points2 = segment.map(function (p) {
+      return scales.apply(p, {
+        position: position
+      });
+    });
+
+    if ((0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'discard') && lodash_some__WEBPACK_IMPORTED_MODULE_0___default()(_points2, function (p) {
+      return !scales.isInRange(p);
+    })) {
+      return null;
+    }
+
+    return _points2;
+  }
+
+  return null;
+};
+
+function ReferenceLine(props) {
+  var fixedX = props.x,
+      fixedY = props.y,
+      segment = props.segment,
+      xAxis = props.xAxis,
+      yAxis = props.yAxis,
+      shape = props.shape,
+      className = props.className,
+      alwaysShow = props.alwaysShow,
+      clipPathId = props.clipPathId;
+  (0,_util_LogUtils__WEBPACK_IMPORTED_MODULE_5__.warn)(alwaysShow === undefined, 'The alwaysShow prop is deprecated. Please use ifOverflow="extendDomain" instead.');
+  var scales = (0,_util_CartesianUtils__WEBPACK_IMPORTED_MODULE_6__.createLabeledScales)({
+    x: xAxis.scale,
+    y: yAxis.scale
+  });
+  var isX = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumOrStr)(fixedX);
+  var isY = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumOrStr)(fixedY);
+  var isSegment = segment && segment.length === 2;
+  var endPoints = getEndPoints(scales, isX, isY, isSegment, props);
+
+  if (!endPoints) {
+    return null;
+  }
+
+  var _endPoints = _slicedToArray(endPoints, 2),
+      _endPoints$ = _endPoints[0],
+      x1 = _endPoints$.x,
+      y1 = _endPoints$.y,
+      _endPoints$2 = _endPoints[1],
+      x2 = _endPoints$2.x,
+      y2 = _endPoints$2.y;
+
+  var clipPath = (0,_util_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(props, 'hidden') ? "url(#".concat(clipPathId, ")") : undefined;
+
+  var lineProps = _objectSpread(_objectSpread({
+    clipPath: clipPath
+  }, (0,_util_types__WEBPACK_IMPORTED_MODULE_8__.filterProps)(props, true)), {}, {
+    x1: x1,
+    y1: y1,
+    x2: x2,
+    y2: y2
+  });
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_9__.Layer, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('recharts-reference-line', className)
+  }, renderLine(shape, lineProps), _component_Label__WEBPACK_IMPORTED_MODULE_10__.Label.renderCallByParent(props, (0,_util_CartesianUtils__WEBPACK_IMPORTED_MODULE_6__.rectWithCoords)({
+    x1: x1,
+    y1: y1,
+    x2: x2,
+    y2: y2
+  })));
+}
+ReferenceLine.displayName = 'ReferenceLine';
+ReferenceLine.defaultProps = {
+  isFront: false,
+  ifOverflow: 'discard',
+  xAxisId: 0,
+  yAxisId: 0,
+  fill: 'none',
+  stroke: '#ccc',
+  fillOpacity: 1,
+  strokeWidth: 1,
+  position: 'middle'
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/XAxis.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/XAxis.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "XAxis": () => (/* binding */ XAxis)
+/* harmony export */ });
+/**
+ * @fileOverview X Axis
+ */
+
+/** Define of XAxis props */
+var XAxis = function XAxis() {
+  return null;
+};
+XAxis.displayName = 'XAxis';
+XAxis.defaultProps = {
+  allowDecimals: true,
+  hide: false,
+  orientation: 'bottom',
+  width: 0,
+  height: 30,
+  mirror: false,
+  xAxisId: 0,
+  tickCount: 5,
+  type: 'category',
+  domain: [0, 'auto'],
+  padding: {
+    left: 0,
+    right: 0
+  },
+  allowDataOverflow: false,
+  scale: 'auto',
+  reversed: false,
+  allowDuplicatedCategory: true
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/cartesian/YAxis.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/cartesian/YAxis.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "YAxis": () => (/* binding */ YAxis)
+/* harmony export */ });
+/**
+ * @fileOverview Y Axis
+ */
+var YAxis = function YAxis() {
+  return null;
+};
+YAxis.displayName = 'YAxis';
+YAxis.defaultProps = {
+  allowDuplicatedCategory: true,
+  allowDecimals: true,
+  hide: false,
+  orientation: 'left',
+  width: 60,
+  height: 0,
+  mirror: false,
+  yAxisId: 0,
+  tickCount: 5,
+  type: 'number',
+  domain: [0, 'auto'],
+  padding: {
+    top: 0,
+    bottom: 0
+  },
+  allowDataOverflow: false,
+  scale: 'auto',
+  reversed: false
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/chart/LineChart.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/chart/LineChart.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LineChart": () => (/* binding */ LineChart)
+/* harmony export */ });
+/* harmony import */ var _generateCategoricalChart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generateCategoricalChart */ "./node_modules/recharts/es6/chart/generateCategoricalChart.js");
+/* harmony import */ var _cartesian_Line__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cartesian/Line */ "./node_modules/recharts/es6/cartesian/Line.js");
+/* harmony import */ var _cartesian_XAxis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../cartesian/XAxis */ "./node_modules/recharts/es6/cartesian/XAxis.js");
+/* harmony import */ var _cartesian_YAxis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../cartesian/YAxis */ "./node_modules/recharts/es6/cartesian/YAxis.js");
+/* harmony import */ var _util_CartesianUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/CartesianUtils */ "./node_modules/recharts/es6/util/CartesianUtils.js");
+/**
+ * @fileOverview Line Chart
+ */
+
+
+
+
+
+var LineChart = (0,_generateCategoricalChart__WEBPACK_IMPORTED_MODULE_0__.generateCategoricalChart)({
+  chartName: 'LineChart',
+  GraphicalChild: _cartesian_Line__WEBPACK_IMPORTED_MODULE_1__.Line,
+  axisComponents: [{
+    axisType: 'xAxis',
+    AxisComp: _cartesian_XAxis__WEBPACK_IMPORTED_MODULE_2__.XAxis
+  }, {
+    axisType: 'yAxis',
+    AxisComp: _cartesian_YAxis__WEBPACK_IMPORTED_MODULE_3__.YAxis
+  }],
+  formatAxisMap: _util_CartesianUtils__WEBPACK_IMPORTED_MODULE_4__.formatAxisMap
+});
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/chart/generateCategoricalChart.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/recharts/es6/chart/generateCategoricalChart.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "generateCategoricalChart": () => (/* binding */ generateCategoricalChart)
+/* harmony export */ });
+/* harmony import */ var lodash_every__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/every */ "./node_modules/lodash/every.js");
+/* harmony import */ var lodash_every__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_every__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/find */ "./node_modules/lodash/find.js");
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/throttle */ "./node_modules/lodash/throttle.js");
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_sortBy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/sortBy */ "./node_modules/lodash/sortBy.js");
+/* harmony import */ var lodash_sortBy__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_sortBy__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash_range__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/range */ "./node_modules/lodash/range.js");
+/* harmony import */ var lodash_range__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_range__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lodash_isBoolean__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash/isBoolean */ "./node_modules/lodash/isBoolean.js");
+/* harmony import */ var lodash_isBoolean__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash_isBoolean__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _container_Surface__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../container/Surface */ "./node_modules/recharts/es6/container/Surface.js");
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _component_Tooltip__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../component/Tooltip */ "./node_modules/recharts/es6/component/Tooltip.js");
+/* harmony import */ var _component_Legend__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../component/Legend */ "./node_modules/recharts/es6/component/Legend.js");
+/* harmony import */ var _shape_Curve__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../shape/Curve */ "./node_modules/recharts/es6/shape/Curve.js");
+/* harmony import */ var _shape_Cross__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../shape/Cross */ "./node_modules/recharts/es6/shape/Cross.js");
+/* harmony import */ var _shape_Sector__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../shape/Sector */ "./node_modules/recharts/es6/shape/Sector.js");
+/* harmony import */ var _shape_Dot__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../shape/Dot */ "./node_modules/recharts/es6/shape/Dot.js");
+/* harmony import */ var _shape_Rectangle__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../shape/Rectangle */ "./node_modules/recharts/es6/shape/Rectangle.js");
+/* harmony import */ var _util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../util/ReactUtils */ "./node_modules/recharts/es6/util/ReactUtils.js");
+/* harmony import */ var _cartesian_CartesianAxis__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../cartesian/CartesianAxis */ "./node_modules/recharts/es6/cartesian/CartesianAxis.js");
+/* harmony import */ var _cartesian_Brush__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../cartesian/Brush */ "./node_modules/recharts/es6/cartesian/Brush.js");
+/* harmony import */ var _util_DOMUtils__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../util/DOMUtils */ "./node_modules/recharts/es6/util/DOMUtils.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../util/ChartUtils */ "./node_modules/recharts/es6/util/ChartUtils.js");
+/* harmony import */ var _util_DetectReferenceElementsDomain__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../util/DetectReferenceElementsDomain */ "./node_modules/recharts/es6/util/DetectReferenceElementsDomain.js");
+/* harmony import */ var _util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../util/PolarUtils */ "./node_modules/recharts/es6/util/PolarUtils.js");
+/* harmony import */ var _util_ShallowEqual__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../util/ShallowEqual */ "./node_modules/recharts/es6/util/ShallowEqual.js");
+/* harmony import */ var _util_Events__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../util/Events */ "./node_modules/recharts/es6/util/Events.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+
+
+
+
+
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ORIENT_MAP = {
+  xAxis: ['bottom', 'top'],
+  yAxis: ['left', 'right']
+};
+var originCoordinate = {
+  x: 0,
+  y: 0
+}; // use legacy isFinite only if there is a problem (aka IE)
+// eslint-disable-next-line no-restricted-globals
+
+var isFinit = Number.isFinite ? Number.isFinite : isFinite;
+var defer = // eslint-disable-next-line no-nested-ternary
+typeof requestAnimationFrame === 'function' ? requestAnimationFrame : typeof setImmediate === 'function' ? setImmediate : setTimeout;
+var deferClear = // eslint-disable-next-line no-nested-ternary
+typeof cancelAnimationFrame === 'function' ? cancelAnimationFrame : typeof clearImmediate === 'function' ? clearImmediate : clearTimeout;
+
+var calculateTooltipPos = function calculateTooltipPos(rangeObj, layout) {
+  if (layout === 'horizontal') {
+    return rangeObj.x;
+  }
+
+  if (layout === 'vertical') {
+    return rangeObj.y;
+  }
+
+  if (layout === 'centric') {
+    return rangeObj.angle;
+  }
+
+  return rangeObj.radius;
+};
+
+var getActiveCoordinate = function getActiveCoordinate(layout, tooltipTicks, activeIndex, rangeObj) {
+  var entry = tooltipTicks.find(function (tick) {
+    return tick && tick.index === activeIndex;
+  });
+
+  if (entry) {
+    if (layout === 'horizontal') {
+      return {
+        x: entry.coordinate,
+        y: rangeObj.y
+      };
+    }
+
+    if (layout === 'vertical') {
+      return {
+        x: rangeObj.x,
+        y: entry.coordinate
+      };
+    }
+
+    if (layout === 'centric') {
+      var _angle = entry.coordinate;
+      var _radius = rangeObj.radius;
+      return _objectSpread(_objectSpread(_objectSpread({}, rangeObj), (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.polarToCartesian)(rangeObj.cx, rangeObj.cy, _radius, _angle)), {}, {
+        angle: _angle,
+        radius: _radius
+      });
+    }
+
+    var radius = entry.coordinate;
+    var angle = rangeObj.angle;
+    return _objectSpread(_objectSpread(_objectSpread({}, rangeObj), (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.polarToCartesian)(rangeObj.cx, rangeObj.cy, radius, angle)), {}, {
+      angle: angle,
+      radius: radius
+    });
+  }
+
+  return originCoordinate;
+};
+
+var getDisplayedData = function getDisplayedData(data, _ref, item) {
+  var graphicalItems = _ref.graphicalItems,
+      dataStartIndex = _ref.dataStartIndex,
+      dataEndIndex = _ref.dataEndIndex;
+  var itemsData = (graphicalItems || []).reduce(function (result, child) {
+    var itemData = child.props.data;
+
+    if (itemData && itemData.length) {
+      return [].concat(_toConsumableArray(result), _toConsumableArray(itemData));
+    }
+
+    return result;
+  }, []);
+
+  if (itemsData && itemsData.length > 0) {
+    return itemsData;
+  }
+
+  if (item && item.props && item.props.data && item.props.data.length > 0) {
+    return item.props.data;
+  }
+
+  if (data && data.length && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(dataStartIndex) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(dataEndIndex)) {
+    return data.slice(dataStartIndex, dataEndIndex + 1);
+  }
+
+  return [];
+};
+/**
+ * Get the content to be displayed in the tooltip
+ * @param  {Object} state          Current state
+ * @param  {Array}  chartData      The data defined in chart
+ * @param  {Number} activeIndex    Active index of data
+ * @param  {String} activeLabel    Active label of data
+ * @return {Array}                 The content of tooltip
+ */
+
+
+var getTooltipContent = function getTooltipContent(state, chartData, activeIndex, activeLabel) {
+  var graphicalItems = state.graphicalItems,
+      tooltipAxis = state.tooltipAxis;
+  var displayedData = getDisplayedData(chartData, state);
+
+  if (activeIndex < 0 || !graphicalItems || !graphicalItems.length || activeIndex >= displayedData.length) {
+    return null;
+  } // get data by activeIndex when the axis don't allow duplicated category
+
+
+  return graphicalItems.reduce(function (result, child) {
+    var hide = child.props.hide;
+
+    if (hide) {
+      return result;
+    }
+
+    var data = child.props.data;
+    var payload;
+
+    if (tooltipAxis.dataKey && !tooltipAxis.allowDuplicatedCategory) {
+      // graphic child has data props
+      var entries = data === undefined ? displayedData : data;
+      payload = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.findEntryInArray)(entries, tooltipAxis.dataKey, activeLabel);
+    } else {
+      payload = data && data[activeIndex] || displayedData[activeIndex];
+    }
+
+    if (!payload) {
+      return result;
+    }
+
+    return [].concat(_toConsumableArray(result), [(0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTooltipItem)(child, payload)]);
+  }, []);
+};
+/**
+ * Returns tooltip data based on a mouse position (as a parameter or in state)
+ * @param  {Object} state     current state
+ * @param  {Array}  chartData the data defined in chart
+ * @param  {String} layout     The layout type of chart
+ * @param  {Object} rangeObj  { x, y } coordinates
+ * @return {Object}           Tooltip data data
+ */
+
+
+var getTooltipData = function getTooltipData(state, chartData, layout, rangeObj) {
+  var rangeData = rangeObj || {
+    x: state.chartX,
+    y: state.chartY
+  };
+  var pos = calculateTooltipPos(rangeData, layout);
+  var ticks = state.orderedTooltipTicks,
+      axis = state.tooltipAxis,
+      tooltipTicks = state.tooltipTicks;
+  var activeIndex = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.calculateActiveTickIndex)(pos, ticks, tooltipTicks, axis);
+
+  if (activeIndex >= 0 && tooltipTicks) {
+    var activeLabel = tooltipTicks[activeIndex] && tooltipTicks[activeIndex].value;
+    var activePayload = getTooltipContent(state, chartData, activeIndex, activeLabel);
+    var activeCoordinate = getActiveCoordinate(layout, ticks, activeIndex, rangeData);
+    return {
+      activeTooltipIndex: activeIndex,
+      activeLabel: activeLabel,
+      activePayload: activePayload,
+      activeCoordinate: activeCoordinate
+    };
+  }
+
+  return null;
+};
+/**
+ * Get the configuration of axis by the options of axis instance
+ * @param  {Object} props         Latest props
+ * @param {Array}  axes           The instance of axes
+ * @param  {Array} graphicalItems The instances of item
+ * @param  {String} axisType      The type of axis, xAxis - x-axis, yAxis - y-axis
+ * @param  {String} axisIdKey     The unique id of an axis
+ * @param  {Object} stackGroups   The items grouped by axisId and stackId
+ * @param {Number} dataStartIndex The start index of the data series when a brush is applied
+ * @param {Number} dataEndIndex   The end index of the data series when a brush is applied
+ * @return {Object}      Configuration
+ */
+
+
+var getAxisMapByAxes = function getAxisMapByAxes(props, _ref2) {
+  var axes = _ref2.axes,
+      graphicalItems = _ref2.graphicalItems,
+      axisType = _ref2.axisType,
+      axisIdKey = _ref2.axisIdKey,
+      stackGroups = _ref2.stackGroups,
+      dataStartIndex = _ref2.dataStartIndex,
+      dataEndIndex = _ref2.dataEndIndex;
+  var layout = props.layout,
+      children = props.children,
+      stackOffset = props.stackOffset;
+  var isCategorical = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.isCategoricalAxis)(layout, axisType); // Eliminate duplicated axes
+
+  var axisMap = axes.reduce(function (result, child) {
+    var _child$props = child.props,
+        type = _child$props.type,
+        dataKey = _child$props.dataKey,
+        allowDataOverflow = _child$props.allowDataOverflow,
+        allowDuplicatedCategory = _child$props.allowDuplicatedCategory,
+        scale = _child$props.scale,
+        ticks = _child$props.ticks;
+    var axisId = child.props[axisIdKey];
+    var displayedData = getDisplayedData(props.data, {
+      graphicalItems: graphicalItems.filter(function (item) {
+        return item.props[axisIdKey] === axisId;
+      }),
+      dataStartIndex: dataStartIndex,
+      dataEndIndex: dataEndIndex
+    });
+    var len = displayedData.length;
+
+    if (!result[axisId]) {
+      var domain, duplicateDomain, categoricalDomain;
+
+      if (dataKey) {
+        // has dataKey in <Axis />
+        domain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getDomainOfDataByKey)(displayedData, dataKey, type);
+
+        if (type === 'category' && isCategorical) {
+          // the field type is category data and this axis is catrgorical axis
+          var duplicate = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.hasDuplicate)(domain);
+
+          if (allowDuplicatedCategory && duplicate) {
+            duplicateDomain = domain; // When category axis has duplicated text, serial numbers are used to generate scale
+
+            domain = lodash_range__WEBPACK_IMPORTED_MODULE_6___default()(0, len);
+          } else if (!allowDuplicatedCategory) {
+            // remove duplicated category
+            domain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.parseDomainOfCategoryAxis)(child.props.domain, domain, child).reduce(function (finalDomain, entry) {
+              return finalDomain.indexOf(entry) >= 0 ? finalDomain : [].concat(_toConsumableArray(finalDomain), [entry]);
+            }, []);
+          }
+        } else if (type === 'category') {
+          // the field type is category data and this axis is numerical axis
+          if (!allowDuplicatedCategory) {
+            domain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.parseDomainOfCategoryAxis)(child.props.domain, domain, child).reduce(function (finalDomain, entry) {
+              return finalDomain.indexOf(entry) >= 0 || entry === '' || lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(entry) ? finalDomain : [].concat(_toConsumableArray(finalDomain), [entry]);
+            }, []);
+          } else {
+            // eliminate undefined or null or empty string
+            domain = domain.filter(function (entry) {
+              return entry !== '' && !lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(entry);
+            });
+          }
+        } else if (type === 'number') {
+          // the field type is numerical
+          var errorBarsDomain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.parseErrorBarsOfAxis)(displayedData, graphicalItems.filter(function (item) {
+            return item.props[axisIdKey] === axisId && !item.props.hide;
+          }), dataKey, axisType);
+
+          if (errorBarsDomain) {
+            domain = errorBarsDomain;
+          }
+        }
+
+        if (isCategorical && (type === 'number' || scale !== 'auto')) {
+          categoricalDomain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getDomainOfDataByKey)(displayedData, dataKey, 'category');
+        }
+      } else if (isCategorical) {
+        // the axis is a categorical axis
+        domain = lodash_range__WEBPACK_IMPORTED_MODULE_6___default()(0, len);
+      } else if (stackGroups && stackGroups[axisId] && stackGroups[axisId].hasStack && type === 'number') {
+        // when stackOffset is 'expand', the domain may be calculated as [0, 1.000000000002]
+        domain = stackOffset === 'expand' ? [0, 1] : (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getDomainOfStackGroups)(stackGroups[axisId].stackGroups, dataStartIndex, dataEndIndex);
+      } else {
+        domain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getDomainOfItemsWithSameAxis)(displayedData, graphicalItems.filter(function (item) {
+          return item.props[axisIdKey] === axisId && !item.props.hide;
+        }), type, true);
+      }
+
+      if (type === 'number') {
+        // To detect wether there is any reference lines whose props alwaysShow is true
+        domain = (0,_util_DetectReferenceElementsDomain__WEBPACK_IMPORTED_MODULE_15__.detectReferenceElementsDomain)(children, domain, axisId, axisType, ticks);
+
+        if (child.props.domain) {
+          domain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.parseSpecifiedDomain)(child.props.domain, domain, allowDataOverflow);
+        }
+      } else if (type === 'category' && child.props.domain) {
+        var axisDomain = child.props.domain;
+        var isDomainValidate = domain.every(function (entry) {
+          return axisDomain.indexOf(entry) >= 0;
+        });
+
+        if (isDomainValidate) {
+          domain = axisDomain;
+        }
+      }
+
+      return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, axisId, _objectSpread(_objectSpread({}, child.props), {}, {
+        axisType: axisType,
+        domain: domain,
+        categoricalDomain: categoricalDomain,
+        duplicateDomain: duplicateDomain,
+        originalDomain: child.props.domain,
+        isCategorical: isCategorical,
+        layout: layout
+      })));
+    }
+
+    return result;
+  }, {});
+  return axisMap;
+};
+/**
+ * Get the configuration of axis by the options of item,
+ * this kind of axis does not display in chart
+ * @param  {Object} props         Latest props
+ * @param  {Array} graphicalItems The instances of item
+ * @param  {ReactElement} Axis    Axis Component
+ * @param  {String} axisType      The type of axis, xAxis - x-axis, yAxis - y-axis
+ * @param  {String} axisIdKey     The unique id of an axis
+ * @param  {Object} stackGroups   The items grouped by axisId and stackId
+ * @param {Number} dataStartIndex The start index of the data series when a brush is applied
+ * @param {Number} dataEndIndex   The end index of the data series when a brush is applied
+ * @return {Object}               Configuration
+ */
+
+
+var getAxisMapByItems = function getAxisMapByItems(props, _ref3) {
+  var graphicalItems = _ref3.graphicalItems,
+      Axis = _ref3.Axis,
+      axisType = _ref3.axisType,
+      axisIdKey = _ref3.axisIdKey,
+      stackGroups = _ref3.stackGroups,
+      dataStartIndex = _ref3.dataStartIndex,
+      dataEndIndex = _ref3.dataEndIndex;
+  var layout = props.layout,
+      children = props.children;
+  var displayedData = getDisplayedData(props.data, {
+    graphicalItems: graphicalItems,
+    dataStartIndex: dataStartIndex,
+    dataEndIndex: dataEndIndex
+  });
+  var len = displayedData.length;
+  var isCategorical = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.isCategoricalAxis)(layout, axisType);
+  var index = -1; // The default type of x-axis is category axis,
+  // The default contents of x-axis is the serial numbers of data
+  // The default type of y-axis is number axis
+  // The default contents of y-axis is the domain of data
+
+  var axisMap = graphicalItems.reduce(function (result, child) {
+    var axisId = child.props[axisIdKey];
+
+    if (!result[axisId]) {
+      index++;
+      var domain;
+
+      if (isCategorical) {
+        domain = lodash_range__WEBPACK_IMPORTED_MODULE_6___default()(0, len);
+      } else if (stackGroups && stackGroups[axisId] && stackGroups[axisId].hasStack) {
+        domain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getDomainOfStackGroups)(stackGroups[axisId].stackGroups, dataStartIndex, dataEndIndex);
+        domain = (0,_util_DetectReferenceElementsDomain__WEBPACK_IMPORTED_MODULE_15__.detectReferenceElementsDomain)(children, domain, axisId, axisType);
+      } else {
+        domain = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.parseSpecifiedDomain)(Axis.defaultProps.domain, (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getDomainOfItemsWithSameAxis)(displayedData, graphicalItems.filter(function (item) {
+          return item.props[axisIdKey] === axisId && !item.props.hide;
+        }), 'number'), Axis.defaultProps.allowDataOverflow);
+        domain = (0,_util_DetectReferenceElementsDomain__WEBPACK_IMPORTED_MODULE_15__.detectReferenceElementsDomain)(children, domain, axisId, axisType);
+      }
+
+      return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, axisId, _objectSpread(_objectSpread({
+        axisType: axisType
+      }, Axis.defaultProps), {}, {
+        hide: true,
+        orientation: lodash_get__WEBPACK_IMPORTED_MODULE_5___default()(ORIENT_MAP, "".concat(axisType, ".").concat(index % 2), null),
+        domain: domain,
+        originalDomain: Axis.defaultProps.domain,
+        isCategorical: isCategorical,
+        layout: layout // specify scale when no Axis
+        // scale: isCategorical ? 'band' : 'linear',
+
+      })));
+    }
+
+    return result;
+  }, {});
+  return axisMap;
+};
+/**
+ * Get the configuration of all x-axis or y-axis
+ * @param  {Object} props          Latest props
+ * @param  {String} axisType       The type of axis
+ * @param  {Array}  graphicalItems The instances of item
+ * @param  {Object} stackGroups    The items grouped by axisId and stackId
+ * @param {Number} dataStartIndex  The start index of the data series when a brush is applied
+ * @param {Number} dataEndIndex    The end index of the data series when a brush is applied
+ * @return {Object}          Configuration
+ */
+
+
+var getAxisMap = function getAxisMap(props, _ref4) {
+  var _ref4$axisType = _ref4.axisType,
+      axisType = _ref4$axisType === void 0 ? 'xAxis' : _ref4$axisType,
+      AxisComp = _ref4.AxisComp,
+      graphicalItems = _ref4.graphicalItems,
+      stackGroups = _ref4.stackGroups,
+      dataStartIndex = _ref4.dataStartIndex,
+      dataEndIndex = _ref4.dataEndIndex;
+  var children = props.children;
+  var axisIdKey = "".concat(axisType, "Id"); // Get all the instance of Axis
+
+  var axes = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findAllByType)(children, AxisComp);
+  var axisMap = {};
+
+  if (axes && axes.length) {
+    axisMap = getAxisMapByAxes(props, {
+      axes: axes,
+      graphicalItems: graphicalItems,
+      axisType: axisType,
+      axisIdKey: axisIdKey,
+      stackGroups: stackGroups,
+      dataStartIndex: dataStartIndex,
+      dataEndIndex: dataEndIndex
+    });
+  } else if (graphicalItems && graphicalItems.length) {
+    axisMap = getAxisMapByItems(props, {
+      Axis: AxisComp,
+      graphicalItems: graphicalItems,
+      axisType: axisType,
+      axisIdKey: axisIdKey,
+      stackGroups: stackGroups,
+      dataStartIndex: dataStartIndex,
+      dataEndIndex: dataEndIndex
+    });
+  }
+
+  return axisMap;
+};
+
+var tooltipTicksGenerator = function tooltipTicksGenerator(axisMap) {
+  var axis = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(axisMap);
+  var tooltipTicks = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(axis, false, true);
+  return {
+    tooltipTicks: tooltipTicks,
+    orderedTooltipTicks: lodash_sortBy__WEBPACK_IMPORTED_MODULE_4___default()(tooltipTicks, function (o) {
+      return o.coordinate;
+    }),
+    tooltipAxis: axis,
+    tooltipAxisBandSize: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getBandSizeOfAxis)(axis, tooltipTicks)
+  };
+};
+/**
+ * Returns default, reset state for the categorical chart.
+ * @param {Object} props Props object to use when creating the default state
+ * @return {Object} Whole new state
+ */
+
+
+var createDefaultState = function createDefaultState(props) {
+  var children = props.children,
+      defaultShowTooltip = props.defaultShowTooltip;
+  var brushItem = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findChildByType)(children, _cartesian_Brush__WEBPACK_IMPORTED_MODULE_17__.Brush.displayName);
+  var startIndex = brushItem && brushItem.props && brushItem.props.startIndex || 0;
+  var endIndex = brushItem && brushItem.props && brushItem.props.endIndex || props.data && props.data.length - 1 || 0;
+  return {
+    chartX: 0,
+    chartY: 0,
+    dataStartIndex: startIndex,
+    dataEndIndex: endIndex,
+    activeTooltipIndex: -1,
+    isTooltipActive: !lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(defaultShowTooltip) ? defaultShowTooltip : false
+  };
+};
+
+var hasGraphicalBarItem = function hasGraphicalBarItem(graphicalItems) {
+  if (!graphicalItems || !graphicalItems.length) {
+    return false;
+  }
+
+  return graphicalItems.some(function (item) {
+    var name = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.getDisplayName)(item && item.type);
+    return name && name.indexOf('Bar') >= 0;
+  });
+};
+
+var getAxisNameByLayout = function getAxisNameByLayout(layout) {
+  if (layout === 'horizontal') {
+    return {
+      numericAxisName: 'yAxis',
+      cateAxisName: 'xAxis'
+    };
+  }
+
+  if (layout === 'vertical') {
+    return {
+      numericAxisName: 'xAxis',
+      cateAxisName: 'yAxis'
+    };
+  }
+
+  if (layout === 'centric') {
+    return {
+      numericAxisName: 'radiusAxis',
+      cateAxisName: 'angleAxis'
+    };
+  }
+
+  return {
+    numericAxisName: 'angleAxis',
+    cateAxisName: 'radiusAxis'
+  };
+};
+/**
+ * Calculate the offset of main part in the svg element
+ * @param  {Object} props          Latest props
+ * graphicalItems The instances of item
+ * xAxisMap       The configuration of x-axis
+ * yAxisMap       The configuration of y-axis
+ * @param  {Object} prevLegendBBox          the boundary box of legend
+ * @return {Object} The offset of main part in the svg element
+ */
+
+
+var calculateOffset = function calculateOffset(_ref5, prevLegendBBox) {
+  var props = _ref5.props,
+      graphicalItems = _ref5.graphicalItems,
+      _ref5$xAxisMap = _ref5.xAxisMap,
+      xAxisMap = _ref5$xAxisMap === void 0 ? {} : _ref5$xAxisMap,
+      _ref5$yAxisMap = _ref5.yAxisMap,
+      yAxisMap = _ref5$yAxisMap === void 0 ? {} : _ref5$yAxisMap;
+  var width = props.width,
+      height = props.height,
+      children = props.children;
+  var margin = props.margin || {};
+  var brushItem = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findChildByType)(children, _cartesian_Brush__WEBPACK_IMPORTED_MODULE_17__.Brush.displayName);
+  var legendItem = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findChildByType)(children, _component_Legend__WEBPACK_IMPORTED_MODULE_18__.Legend.displayName);
+  var offsetH = Object.keys(yAxisMap).reduce(function (result, id) {
+    var entry = yAxisMap[id];
+    var orientation = entry.orientation;
+
+    if (!entry.mirror && !entry.hide) {
+      return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, orientation, result[orientation] + entry.width));
+    }
+
+    return result;
+  }, {
+    left: margin.left || 0,
+    right: margin.right || 0
+  });
+  var offsetV = Object.keys(xAxisMap).reduce(function (result, id) {
+    var entry = xAxisMap[id];
+    var orientation = entry.orientation;
+
+    if (!entry.mirror && !entry.hide) {
+      return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, orientation, lodash_get__WEBPACK_IMPORTED_MODULE_5___default()(result, "".concat(orientation)) + entry.height));
+    }
+
+    return result;
+  }, {
+    top: margin.top || 0,
+    bottom: margin.bottom || 0
+  });
+
+  var offset = _objectSpread(_objectSpread({}, offsetV), offsetH);
+
+  var brushBottom = offset.bottom;
+
+  if (brushItem) {
+    offset.bottom += brushItem.props.height || _cartesian_Brush__WEBPACK_IMPORTED_MODULE_17__.Brush.defaultProps.height;
+  }
+
+  if (legendItem && prevLegendBBox) {
+    offset = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.appendOffsetOfLegend)(offset, graphicalItems, props, prevLegendBBox);
+  }
+
+  return _objectSpread(_objectSpread({
+    brushBottom: brushBottom
+  }, offset), {}, {
+    width: width - offset.left - offset.right,
+    height: height - offset.top - offset.bottom
+  });
+};
+
+var generateCategoricalChart = function generateCategoricalChart(_ref6) {
+  var _class, _temp;
+
+  var chartName = _ref6.chartName,
+      GraphicalChild = _ref6.GraphicalChild,
+      _ref6$defaultTooltipE = _ref6.defaultTooltipEventType,
+      defaultTooltipEventType = _ref6$defaultTooltipE === void 0 ? 'axis' : _ref6$defaultTooltipE,
+      _ref6$validateTooltip = _ref6.validateTooltipEventTypes,
+      validateTooltipEventTypes = _ref6$validateTooltip === void 0 ? ['axis'] : _ref6$validateTooltip,
+      axisComponents = _ref6.axisComponents,
+      legendContent = _ref6.legendContent,
+      formatAxisMap = _ref6.formatAxisMap,
+      defaultProps = _ref6.defaultProps;
+
+  var getFormatItems = function getFormatItems(props, currentState) {
+    var graphicalItems = currentState.graphicalItems,
+        stackGroups = currentState.stackGroups,
+        offset = currentState.offset,
+        updateId = currentState.updateId,
+        dataStartIndex = currentState.dataStartIndex,
+        dataEndIndex = currentState.dataEndIndex;
+    var barSize = props.barSize,
+        layout = props.layout,
+        barGap = props.barGap,
+        barCategoryGap = props.barCategoryGap,
+        globalMaxBarSize = props.maxBarSize;
+
+    var _getAxisNameByLayout = getAxisNameByLayout(layout),
+        numericAxisName = _getAxisNameByLayout.numericAxisName,
+        cateAxisName = _getAxisNameByLayout.cateAxisName;
+
+    var hasBar = hasGraphicalBarItem(graphicalItems);
+    var sizeList = hasBar && (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getBarSizeList)({
+      barSize: barSize,
+      stackGroups: stackGroups
+    });
+    var formattedItems = [];
+    graphicalItems.forEach(function (item, index) {
+      var displayedData = getDisplayedData(props.data, {
+        dataStartIndex: dataStartIndex,
+        dataEndIndex: dataEndIndex
+      }, item);
+      var _item$props = item.props,
+          dataKey = _item$props.dataKey,
+          childMaxBarSize = _item$props.maxBarSize;
+      var numericAxisId = item.props["".concat(numericAxisName, "Id")];
+      var cateAxisId = item.props["".concat(cateAxisName, "Id")];
+      var axisObj = axisComponents.reduce(function (result, entry) {
+        var _objectSpread6;
+
+        var axisMap = currentState["".concat(entry.axisType, "Map")];
+        var id = item.props["".concat(entry.axisType, "Id")];
+        var axis = axisMap && axisMap[id];
+        return _objectSpread(_objectSpread({}, result), {}, (_objectSpread6 = {}, _defineProperty(_objectSpread6, entry.axisType, axis), _defineProperty(_objectSpread6, "".concat(entry.axisType, "Ticks"), (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(axis)), _objectSpread6));
+      }, {});
+      var cateAxis = axisObj[cateAxisName];
+      var cateTicks = axisObj["".concat(cateAxisName, "Ticks")];
+      var stackedData = stackGroups && stackGroups[numericAxisId] && stackGroups[numericAxisId].hasStack && (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getStackedDataOfItem)(item, stackGroups[numericAxisId].stackGroups);
+      var itemIsBar = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.getDisplayName)(item.type).indexOf('Bar') >= 0;
+      var bandSize = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getBandSizeOfAxis)(cateAxis, cateTicks);
+      var barPosition = [];
+
+      if (itemIsBar) {
+        var _ref7, _getBandSizeOfAxis;
+
+        // 如果是bar，计算bar的位置
+        var maxBarSize = lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(childMaxBarSize) ? globalMaxBarSize : childMaxBarSize;
+        var barBandSize = (_ref7 = (_getBandSizeOfAxis = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getBandSizeOfAxis)(cateAxis, cateTicks, true)) !== null && _getBandSizeOfAxis !== void 0 ? _getBandSizeOfAxis : maxBarSize) !== null && _ref7 !== void 0 ? _ref7 : 0;
+        barPosition = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getBarPosition)({
+          barGap: barGap,
+          barCategoryGap: barCategoryGap,
+          bandSize: barBandSize !== bandSize ? barBandSize : bandSize,
+          sizeList: sizeList[cateAxisId],
+          maxBarSize: maxBarSize
+        });
+
+        if (barBandSize !== bandSize) {
+          barPosition = barPosition.map(function (pos) {
+            return _objectSpread(_objectSpread({}, pos), {}, {
+              position: _objectSpread(_objectSpread({}, pos.position), {}, {
+                offset: pos.position.offset - barBandSize / 2
+              })
+            });
+          });
+        }
+      }
+
+      var composedFn = item && item.type && item.type.getComposedData;
+
+      if (composedFn) {
+        var _objectSpread7;
+
+        formattedItems.push({
+          props: _objectSpread(_objectSpread({}, composedFn(_objectSpread(_objectSpread({}, axisObj), {}, {
+            displayedData: displayedData,
+            props: props,
+            dataKey: dataKey,
+            item: item,
+            bandSize: bandSize,
+            barPosition: barPosition,
+            offset: offset,
+            stackedData: stackedData,
+            layout: layout,
+            dataStartIndex: dataStartIndex,
+            dataEndIndex: dataEndIndex
+          }))), {}, (_objectSpread7 = {
+            key: item.key || "item-".concat(index)
+          }, _defineProperty(_objectSpread7, numericAxisName, axisObj[numericAxisName]), _defineProperty(_objectSpread7, cateAxisName, axisObj[cateAxisName]), _defineProperty(_objectSpread7, "animationId", updateId), _objectSpread7)),
+          childIndex: (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.parseChildIndex)(item, props.children),
+          item: item
+        });
+      }
+    });
+    return formattedItems;
+  };
+  /**
+   * The AxisMaps are expensive to render on large data sets
+   * so provide the ability to store them in state and only update them when necessary
+   * they are dependent upon the start and end index of
+   * the brush so it's important that this method is called _after_
+   * the state is updated with any new start/end indices
+   *
+   * @param {Object} props          The props object to be used for updating the axismaps
+   * dataStartIndex: The start index of the data series when a brush is applied
+   * dataEndIndex: The end index of the data series when a brush is applied
+   * updateId: The update id
+   * @param {Object} prevState      Prev state
+   * @return {Object} state New state to set
+   */
+
+
+  var updateStateOfAxisMapsOffsetAndStackGroups = function updateStateOfAxisMapsOffsetAndStackGroups(_ref8, prevState) {
+    var props = _ref8.props,
+        dataStartIndex = _ref8.dataStartIndex,
+        dataEndIndex = _ref8.dataEndIndex,
+        updateId = _ref8.updateId;
+
+    if (!(0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.validateWidthHeight)({
+      props: props
+    })) {
+      return null;
+    }
+
+    var children = props.children,
+        layout = props.layout,
+        stackOffset = props.stackOffset,
+        data = props.data,
+        reverseStackOrder = props.reverseStackOrder;
+
+    var _getAxisNameByLayout2 = getAxisNameByLayout(layout),
+        numericAxisName = _getAxisNameByLayout2.numericAxisName,
+        cateAxisName = _getAxisNameByLayout2.cateAxisName;
+
+    var graphicalItems = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findAllByType)(children, GraphicalChild);
+    var stackGroups = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getStackGroupsByAxisId)(data, graphicalItems, "".concat(numericAxisName, "Id"), "".concat(cateAxisName, "Id"), stackOffset, reverseStackOrder);
+    var axisObj = axisComponents.reduce(function (result, entry) {
+      var name = "".concat(entry.axisType, "Map");
+      return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, name, getAxisMap(props, _objectSpread(_objectSpread({}, entry), {}, {
+        graphicalItems: graphicalItems,
+        stackGroups: entry.axisType === numericAxisName && stackGroups,
+        dataStartIndex: dataStartIndex,
+        dataEndIndex: dataEndIndex
+      }))));
+    }, {});
+    var offset = calculateOffset(_objectSpread(_objectSpread({}, axisObj), {}, {
+      props: props,
+      graphicalItems: graphicalItems
+    }), prevState === null || prevState === void 0 ? void 0 : prevState.legendBBox);
+    Object.keys(axisObj).forEach(function (key) {
+      axisObj[key] = formatAxisMap(props, axisObj[key], offset, key.replace('Map', ''), chartName);
+    });
+    var cateAxisMap = axisObj["".concat(cateAxisName, "Map")];
+    var ticksObj = tooltipTicksGenerator(cateAxisMap);
+    var formattedGraphicalItems = getFormatItems(props, _objectSpread(_objectSpread({}, axisObj), {}, {
+      dataStartIndex: dataStartIndex,
+      dataEndIndex: dataEndIndex,
+      updateId: updateId,
+      graphicalItems: graphicalItems,
+      stackGroups: stackGroups,
+      offset: offset
+    }));
+    return _objectSpread(_objectSpread({
+      formattedGraphicalItems: formattedGraphicalItems,
+      graphicalItems: graphicalItems,
+      offset: offset,
+      stackGroups: stackGroups
+    }, ticksObj), axisObj);
+  };
+
+  return _temp = _class = /*#__PURE__*/function (_Component) {
+    _inherits(CategoricalChartWrapper, _Component);
+
+    var _super = _createSuper(CategoricalChartWrapper);
+
+    // todo join specific chart propTypes
+    function CategoricalChartWrapper(_props) {
+      var _this;
+
+      _classCallCheck(this, CategoricalChartWrapper);
+
+      _this = _super.call(this, _props);
+      _this.uniqueChartId = void 0;
+      _this.clipPathId = void 0;
+      _this.legendInstance = void 0;
+      _this.deferId = void 0;
+      _this.container = void 0;
+
+      _this.clearDeferId = function () {
+        if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(_this.deferId) && deferClear) {
+          deferClear(_this.deferId);
+        }
+
+        _this.deferId = null;
+      };
+
+      _this.handleLegendBBoxUpdate = function (box) {
+        if (box) {
+          var _this$state = _this.state,
+              dataStartIndex = _this$state.dataStartIndex,
+              dataEndIndex = _this$state.dataEndIndex,
+              updateId = _this$state.updateId;
+
+          _this.setState(_objectSpread({
+            legendBBox: box
+          }, updateStateOfAxisMapsOffsetAndStackGroups({
+            props: _this.props,
+            dataStartIndex: dataStartIndex,
+            dataEndIndex: dataEndIndex,
+            updateId: updateId
+          }, _objectSpread(_objectSpread({}, _this.state), {}, {
+            legendBBox: box
+          }))));
+        }
+      };
+
+      _this.handleReceiveSyncEvent = function (cId, chartId, data) {
+        var syncId = _this.props.syncId;
+
+        if (syncId === cId && chartId !== _this.uniqueChartId) {
+          _this.clearDeferId();
+
+          _this.deferId = defer && defer(_this.applySyncEvent.bind(_assertThisInitialized(_this), data));
+        }
+      };
+
+      _this.handleBrushChange = function (_ref9) {
+        var startIndex = _ref9.startIndex,
+            endIndex = _ref9.endIndex;
+
+        // Only trigger changes if the extents of the brush have actually changed
+        if (startIndex !== _this.state.dataStartIndex || endIndex !== _this.state.dataEndIndex) {
+          var updateId = _this.state.updateId;
+
+          _this.setState(function () {
+            return _objectSpread({
+              dataStartIndex: startIndex,
+              dataEndIndex: endIndex
+            }, updateStateOfAxisMapsOffsetAndStackGroups({
+              props: _this.props,
+              dataStartIndex: startIndex,
+              dataEndIndex: endIndex,
+              updateId: updateId
+            }, _this.state));
+          });
+
+          _this.triggerSyncEvent({
+            dataStartIndex: startIndex,
+            dataEndIndex: endIndex
+          });
+        }
+      };
+
+      _this.handleMouseEnter = function (e) {
+        var onMouseEnter = _this.props.onMouseEnter;
+
+        var mouse = _this.getMouseInfo(e);
+
+        if (mouse) {
+          var _nextState = _objectSpread(_objectSpread({}, mouse), {}, {
+            isTooltipActive: true
+          });
+
+          _this.setState(_nextState);
+
+          _this.triggerSyncEvent(_nextState);
+
+          if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(onMouseEnter)) {
+            onMouseEnter(_nextState, e);
+          }
+        }
+      };
+
+      _this.triggeredAfterMouseMove = function (e) {
+        var onMouseMove = _this.props.onMouseMove;
+
+        var mouse = _this.getMouseInfo(e);
+
+        var nextState = mouse ? _objectSpread(_objectSpread({}, mouse), {}, {
+          isTooltipActive: true
+        }) : {
+          isTooltipActive: false
+        };
+
+        _this.setState(nextState);
+
+        _this.triggerSyncEvent(nextState);
+
+        if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(onMouseMove)) {
+          onMouseMove(nextState, e);
+        }
+      };
+
+      _this.handleItemMouseEnter = function (el) {
+        _this.setState(function () {
+          return {
+            isTooltipActive: true,
+            activeItem: el,
+            activePayload: el.tooltipPayload,
+            activeCoordinate: el.tooltipPosition || {
+              x: el.cx,
+              y: el.cy
+            }
+          };
+        });
+      };
+
+      _this.handleItemMouseLeave = function () {
+        _this.setState(function () {
+          return {
+            isTooltipActive: false
+          };
+        });
+      };
+
+      _this.handleMouseMove = function (e) {
+        if (e && lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(e.persist)) {
+          e.persist();
+        }
+
+        _this.triggeredAfterMouseMove(e);
+      };
+
+      _this.handleMouseLeave = function (e) {
+        var onMouseLeave = _this.props.onMouseLeave;
+        var nextState = {
+          isTooltipActive: false
+        };
+
+        _this.setState(nextState);
+
+        _this.triggerSyncEvent(nextState);
+
+        if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(onMouseLeave)) {
+          onMouseLeave(nextState, e);
+        }
+
+        _this.cancelThrottledTriggerAfterMouseMove();
+      };
+
+      _this.handleOuterEvent = function (e) {
+        var eventName = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.getReactEventByType)(e);
+
+        var event = lodash_get__WEBPACK_IMPORTED_MODULE_5___default()(_this.props, "".concat(eventName));
+
+        if (eventName && lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(event)) {
+          var mouse;
+
+          if (/.*touch.*/i.test(eventName)) {
+            mouse = _this.getMouseInfo(e.changedTouches[0]);
+          } else {
+            mouse = _this.getMouseInfo(e);
+          }
+
+          var handler = event;
+          handler(mouse, e);
+        }
+      };
+
+      _this.handleClick = function (e) {
+        var onClick = _this.props.onClick;
+
+        var mouse = _this.getMouseInfo(e);
+
+        if (mouse) {
+          var _nextState2 = _objectSpread(_objectSpread({}, mouse), {}, {
+            isTooltipActive: true
+          });
+
+          _this.setState(_nextState2);
+
+          _this.triggerSyncEvent(_nextState2);
+
+          if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(onClick)) {
+            onClick(_nextState2, e);
+          }
+        }
+      };
+
+      _this.handleMouseDown = function (e) {
+        var onMouseDown = _this.props.onMouseDown;
+
+        if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(onMouseDown)) {
+          var _nextState3 = _this.getMouseInfo(e);
+
+          onMouseDown(_nextState3, e);
+        }
+      };
+
+      _this.handleMouseUp = function (e) {
+        var onMouseUp = _this.props.onMouseUp;
+
+        if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(onMouseUp)) {
+          var _nextState4 = _this.getMouseInfo(e);
+
+          onMouseUp(_nextState4, e);
+        }
+      };
+
+      _this.handleTouchMove = function (e) {
+        if (e.changedTouches != null && e.changedTouches.length > 0) {
+          _this.handleMouseMove(e.changedTouches[0]);
+        }
+      };
+
+      _this.handleTouchStart = function (e) {
+        if (e.changedTouches != null && e.changedTouches.length > 0) {
+          _this.handleMouseDown(e.changedTouches[0]);
+        }
+      };
+
+      _this.handleTouchEnd = function (e) {
+        if (e.changedTouches != null && e.changedTouches.length > 0) {
+          _this.handleMouseUp(e.changedTouches[0]);
+        }
+      };
+
+      _this.verticalCoordinatesGenerator = function (_ref10) {
+        var xAxis = _ref10.xAxis,
+            width = _ref10.width,
+            height = _ref10.height,
+            offset = _ref10.offset;
+        return (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getCoordinatesOfGrid)(_cartesian_CartesianAxis__WEBPACK_IMPORTED_MODULE_19__.CartesianAxis.getTicks(_objectSpread(_objectSpread(_objectSpread({}, _cartesian_CartesianAxis__WEBPACK_IMPORTED_MODULE_19__.CartesianAxis.defaultProps), xAxis), {}, {
+          ticks: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(xAxis, true),
+          viewBox: {
+            x: 0,
+            y: 0,
+            width: width,
+            height: height
+          }
+        })), offset.left, offset.left + offset.width);
+      };
+
+      _this.horizontalCoordinatesGenerator = function (_ref11) {
+        var yAxis = _ref11.yAxis,
+            width = _ref11.width,
+            height = _ref11.height,
+            offset = _ref11.offset;
+        return (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getCoordinatesOfGrid)(_cartesian_CartesianAxis__WEBPACK_IMPORTED_MODULE_19__.CartesianAxis.getTicks(_objectSpread(_objectSpread(_objectSpread({}, _cartesian_CartesianAxis__WEBPACK_IMPORTED_MODULE_19__.CartesianAxis.defaultProps), yAxis), {}, {
+          ticks: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(yAxis, true),
+          viewBox: {
+            x: 0,
+            y: 0,
+            width: width,
+            height: height
+          }
+        })), offset.top, offset.top + offset.height);
+      };
+
+      _this.axesTicksGenerator = function (axis) {
+        return (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(axis, true);
+      };
+
+      _this.renderCursor = function (element) {
+        var _this$state2 = _this.state,
+            isTooltipActive = _this$state2.isTooltipActive,
+            activeCoordinate = _this$state2.activeCoordinate,
+            activePayload = _this$state2.activePayload,
+            offset = _this$state2.offset,
+            activeTooltipIndex = _this$state2.activeTooltipIndex;
+
+        var tooltipEventType = _this.getTooltipEventType();
+
+        if (!element || !element.props.cursor || !isTooltipActive || !activeCoordinate || chartName !== 'ScatterChart' && tooltipEventType !== 'axis') {
+          return null;
+        }
+
+        var layout = _this.props.layout;
+        var restProps;
+        var cursorComp = _shape_Curve__WEBPACK_IMPORTED_MODULE_20__.Curve;
+
+        if (chartName === 'ScatterChart') {
+          restProps = activeCoordinate;
+          cursorComp = _shape_Cross__WEBPACK_IMPORTED_MODULE_21__.Cross;
+        } else if (chartName === 'BarChart') {
+          restProps = _this.getCursorRectangle();
+          cursorComp = _shape_Rectangle__WEBPACK_IMPORTED_MODULE_22__.Rectangle;
+        } else if (layout === 'radial') {
+          var _this$getCursorPoints = _this.getCursorPoints(),
+              cx = _this$getCursorPoints.cx,
+              cy = _this$getCursorPoints.cy,
+              radius = _this$getCursorPoints.radius,
+              startAngle = _this$getCursorPoints.startAngle,
+              endAngle = _this$getCursorPoints.endAngle;
+
+          restProps = {
+            cx: cx,
+            cy: cy,
+            startAngle: startAngle,
+            endAngle: endAngle,
+            innerRadius: radius,
+            outerRadius: radius
+          };
+          cursorComp = _shape_Sector__WEBPACK_IMPORTED_MODULE_23__.Sector;
+        } else {
+          restProps = {
+            points: _this.getCursorPoints()
+          };
+          cursorComp = _shape_Curve__WEBPACK_IMPORTED_MODULE_20__.Curve;
+        }
+
+        var key = element.key || '_recharts-cursor';
+
+        var cursorProps = _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+          stroke: '#ccc',
+          pointerEvents: 'none'
+        }, offset), restProps), (0,_util_types__WEBPACK_IMPORTED_MODULE_24__.filterProps)(element.props.cursor)), {}, {
+          payload: activePayload,
+          payloadIndex: activeTooltipIndex,
+          key: key,
+          className: 'recharts-tooltip-cursor'
+        });
+
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.isValidElement)(element.props.cursor) ? /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element.props.cursor, cursorProps) : /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.createElement)(cursorComp, cursorProps);
+      };
+
+      _this.renderPolarAxis = function (element, displayName, index) {
+        var axisType = lodash_get__WEBPACK_IMPORTED_MODULE_5___default()(element, 'type.axisType');
+
+        var axisMap = lodash_get__WEBPACK_IMPORTED_MODULE_5___default()(_this.state, "".concat(axisType, "Map"));
+
+        var axisOption = axisMap[element.props["".concat(axisType, "Id")]];
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element, _objectSpread(_objectSpread({}, axisOption), {}, {
+          className: axisType,
+          key: element.key || "".concat(displayName, "-").concat(index),
+          ticks: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(axisOption, true)
+        }));
+      };
+
+      _this.renderXAxis = function (element, displayName, index) {
+        var xAxisMap = _this.state.xAxisMap;
+        var axisObj = xAxisMap[element.props.xAxisId];
+        return _this.renderAxis(axisObj, element, displayName, index);
+      };
+
+      _this.renderYAxis = function (element, displayName, index) {
+        var yAxisMap = _this.state.yAxisMap;
+        var axisObj = yAxisMap[element.props.yAxisId];
+        return _this.renderAxis(axisObj, element, displayName, index);
+      };
+
+      _this.renderGrid = function (element) {
+        var _this$state3 = _this.state,
+            xAxisMap = _this$state3.xAxisMap,
+            yAxisMap = _this$state3.yAxisMap,
+            offset = _this$state3.offset;
+        var _this$props = _this.props,
+            width = _this$props.width,
+            height = _this$props.height;
+        var xAxis = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(xAxisMap);
+
+        var yAxisWithFiniteDomain = lodash_find__WEBPACK_IMPORTED_MODULE_1___default()(yAxisMap, function (axis) {
+          return lodash_every__WEBPACK_IMPORTED_MODULE_0___default()(axis.domain, isFinit);
+        });
+
+        var yAxis = yAxisWithFiniteDomain || (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(yAxisMap);
+        var props = element.props || {};
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element, {
+          key: element.key || 'grid',
+          x: (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(props.x) ? props.x : offset.left,
+          y: (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(props.y) ? props.y : offset.top,
+          width: (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(props.width) ? props.width : offset.width,
+          height: (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(props.height) ? props.height : offset.height,
+          xAxis: xAxis,
+          yAxis: yAxis,
+          offset: offset,
+          chartWidth: width,
+          chartHeight: height,
+          verticalCoordinatesGenerator: props.verticalCoordinatesGenerator || _this.verticalCoordinatesGenerator,
+          horizontalCoordinatesGenerator: props.horizontalCoordinatesGenerator || _this.horizontalCoordinatesGenerator
+        });
+      };
+
+      _this.renderPolarGrid = function (element) {
+        var _element$props = element.props,
+            radialLines = _element$props.radialLines,
+            polarAngles = _element$props.polarAngles,
+            polarRadius = _element$props.polarRadius;
+        var _this$state4 = _this.state,
+            radiusAxisMap = _this$state4.radiusAxisMap,
+            angleAxisMap = _this$state4.angleAxisMap;
+        var radiusAxis = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(radiusAxisMap);
+        var angleAxis = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(angleAxisMap);
+        var cx = angleAxis.cx,
+            cy = angleAxis.cy,
+            innerRadius = angleAxis.innerRadius,
+            outerRadius = angleAxis.outerRadius;
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element, {
+          polarAngles: lodash_isArray__WEBPACK_IMPORTED_MODULE_9___default()(polarAngles) ? polarAngles : (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(angleAxis, true).map(function (entry) {
+            return entry.coordinate;
+          }),
+          polarRadius: lodash_isArray__WEBPACK_IMPORTED_MODULE_9___default()(polarRadius) ? polarRadius : (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getTicksOfAxis)(radiusAxis, true).map(function (entry) {
+            return entry.coordinate;
+          }),
+          cx: cx,
+          cy: cy,
+          innerRadius: innerRadius,
+          outerRadius: outerRadius,
+          key: element.key || 'polar-grid',
+          radialLines: radialLines
+        });
+      };
+
+      _this.renderLegend = function () {
+        var formattedGraphicalItems = _this.state.formattedGraphicalItems;
+        var _this$props2 = _this.props,
+            children = _this$props2.children,
+            width = _this$props2.width,
+            height = _this$props2.height;
+        var margin = _this.props.margin || {};
+        var legendWidth = width - (margin.left || 0) - (margin.right || 0);
+        var props = (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getLegendProps)({
+          children: children,
+          formattedGraphicalItems: formattedGraphicalItems,
+          legendWidth: legendWidth,
+          legendContent: legendContent
+        });
+
+        if (!props) {
+          return null;
+        }
+
+        var item = props.item,
+            otherProps = _objectWithoutProperties(props, ["item"]);
+
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(item, _objectSpread(_objectSpread({}, otherProps), {}, {
+          chartWidth: width,
+          chartHeight: height,
+          margin: margin,
+          ref: function ref(legend) {
+            _this.legendInstance = legend;
+          },
+          onBBoxUpdate: _this.handleLegendBBoxUpdate
+        }));
+      };
+
+      _this.renderTooltip = function () {
+        var children = _this.props.children;
+        var tooltipItem = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findChildByType)(children, _component_Tooltip__WEBPACK_IMPORTED_MODULE_25__.Tooltip.displayName);
+
+        if (!tooltipItem) {
+          return null;
+        }
+
+        var _this$state5 = _this.state,
+            isTooltipActive = _this$state5.isTooltipActive,
+            activeCoordinate = _this$state5.activeCoordinate,
+            activePayload = _this$state5.activePayload,
+            activeLabel = _this$state5.activeLabel,
+            offset = _this$state5.offset;
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(tooltipItem, {
+          viewBox: _objectSpread(_objectSpread({}, offset), {}, {
+            x: offset.left,
+            y: offset.top
+          }),
+          active: isTooltipActive,
+          label: activeLabel,
+          payload: isTooltipActive ? activePayload : [],
+          coordinate: activeCoordinate
+        });
+      };
+
+      _this.renderBrush = function (element) {
+        var _this$props3 = _this.props,
+            margin = _this$props3.margin,
+            data = _this$props3.data;
+        var _this$state6 = _this.state,
+            offset = _this$state6.offset,
+            dataStartIndex = _this$state6.dataStartIndex,
+            dataEndIndex = _this$state6.dataEndIndex,
+            updateId = _this$state6.updateId; // TODO: update brush when children update
+
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element, {
+          key: element.key || '_recharts-brush',
+          onChange: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.combineEventHandlers)(_this.handleBrushChange, null, element.props.onChange),
+          data: data,
+          x: (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(element.props.x) ? element.props.x : offset.left,
+          y: (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(element.props.y) ? element.props.y : offset.top + offset.height + offset.brushBottom - (margin.bottom || 0),
+          width: (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(element.props.width) ? element.props.width : offset.width,
+          startIndex: dataStartIndex,
+          endIndex: dataEndIndex,
+          updateId: "brush-".concat(updateId)
+        });
+      };
+
+      _this.renderReferenceElement = function (element, displayName, index) {
+        if (!element) {
+          return null;
+        }
+
+        var _assertThisInitialize = _assertThisInitialized(_this),
+            clipPathId = _assertThisInitialize.clipPathId;
+
+        var _this$state7 = _this.state,
+            xAxisMap = _this$state7.xAxisMap,
+            yAxisMap = _this$state7.yAxisMap,
+            offset = _this$state7.offset;
+        var _element$props2 = element.props,
+            xAxisId = _element$props2.xAxisId,
+            yAxisId = _element$props2.yAxisId;
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element, {
+          key: element.key || "".concat(displayName, "-").concat(index),
+          xAxis: xAxisMap[xAxisId],
+          yAxis: yAxisMap[yAxisId],
+          viewBox: {
+            x: offset.left,
+            y: offset.top,
+            width: offset.width,
+            height: offset.height
+          },
+          clipPathId: clipPathId
+        });
+      };
+
+      _this.renderActivePoints = function (_ref12) {
+        var item = _ref12.item,
+            activePoint = _ref12.activePoint,
+            basePoint = _ref12.basePoint,
+            childIndex = _ref12.childIndex,
+            isRange = _ref12.isRange;
+        var result = [];
+        var key = item.props.key;
+        var _item$item$props = item.item.props,
+            activeDot = _item$item$props.activeDot,
+            dataKey = _item$item$props.dataKey;
+
+        var dotProps = _objectSpread(_objectSpread({
+          index: childIndex,
+          dataKey: dataKey,
+          cx: activePoint.x,
+          cy: activePoint.y,
+          r: 4,
+          fill: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.getMainColorOfGraphicItem)(item.item),
+          strokeWidth: 2,
+          stroke: '#fff',
+          payload: activePoint.payload,
+          value: activePoint.value,
+          key: "".concat(key, "-activePoint-").concat(childIndex)
+        }, (0,_util_types__WEBPACK_IMPORTED_MODULE_24__.filterProps)(activeDot)), (0,_util_types__WEBPACK_IMPORTED_MODULE_24__.adaptEventHandlers)(activeDot));
+
+        result.push(CategoricalChartWrapper.renderActiveDot(activeDot, dotProps));
+
+        if (basePoint) {
+          result.push(CategoricalChartWrapper.renderActiveDot(activeDot, _objectSpread(_objectSpread({}, dotProps), {}, {
+            cx: basePoint.x,
+            cy: basePoint.y,
+            key: "".concat(key, "-basePoint-").concat(childIndex)
+          })));
+        } else if (isRange) {
+          result.push(null);
+        }
+
+        return result;
+      };
+
+      _this.renderGraphicChild = function (element, displayName, index) {
+        var item = _this.filterFormatItem(element, displayName, index);
+
+        if (!item) {
+          return null;
+        }
+
+        var tooltipEventType = _this.getTooltipEventType();
+
+        var _this$state8 = _this.state,
+            isTooltipActive = _this$state8.isTooltipActive,
+            tooltipAxis = _this$state8.tooltipAxis,
+            activeTooltipIndex = _this$state8.activeTooltipIndex,
+            activeLabel = _this$state8.activeLabel;
+        var children = _this.props.children;
+        var tooltipItem = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findChildByType)(children, _component_Tooltip__WEBPACK_IMPORTED_MODULE_25__.Tooltip.displayName);
+        var _item$props2 = item.props,
+            points = _item$props2.points,
+            isRange = _item$props2.isRange,
+            baseLine = _item$props2.baseLine;
+        var _item$item$props2 = item.item.props,
+            activeDot = _item$item$props2.activeDot,
+            hide = _item$item$props2.hide;
+        var hasActive = !hide && isTooltipActive && tooltipItem && activeDot && activeTooltipIndex >= 0;
+        var itemEvents = {};
+
+        if (tooltipEventType !== 'axis' && tooltipItem && tooltipItem.props.trigger === 'click') {
+          itemEvents = {
+            onClick: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.combineEventHandlers)(_this.handleItemMouseEnter, null, element.props.onCLick)
+          };
+        } else if (tooltipEventType !== 'axis') {
+          itemEvents = {
+            onMouseLeave: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.combineEventHandlers)(_this.handleItemMouseLeave, null, element.props.onMouseLeave),
+            onMouseEnter: (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_14__.combineEventHandlers)(_this.handleItemMouseEnter, null, element.props.onMouseEnter)
+          };
+        }
+
+        var graphicalItem = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element, _objectSpread(_objectSpread({}, item.props), itemEvents));
+
+        function findWithPayload(entry) {
+          // TODO needs to verify dataKey is Function
+          return typeof tooltipAxis.dataKey === 'function' ? tooltipAxis.dataKey(entry.payload) : null;
+        }
+
+        if (hasActive) {
+          var activePoint, basePoint;
+
+          if (tooltipAxis.dataKey && !tooltipAxis.allowDuplicatedCategory) {
+            // number transform to string
+            var specifiedKey = typeof tooltipAxis.dataKey === 'function' ? findWithPayload : 'payload.'.concat(tooltipAxis.dataKey.toString());
+            activePoint = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.findEntryInArray)(points, specifiedKey, activeLabel);
+            basePoint = isRange && baseLine && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.findEntryInArray)(baseLine, specifiedKey, activeLabel);
+          } else {
+            activePoint = points[activeTooltipIndex];
+            basePoint = isRange && baseLine && baseLine[activeTooltipIndex];
+          }
+
+          if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(activePoint)) {
+            return [graphicalItem].concat(_toConsumableArray(_this.renderActivePoints({
+              item: item,
+              activePoint: activePoint,
+              basePoint: basePoint,
+              childIndex: activeTooltipIndex,
+              isRange: isRange
+            })));
+          }
+        }
+
+        if (isRange) {
+          return [graphicalItem, null, null];
+        }
+
+        return [graphicalItem, null];
+      };
+
+      _this.renderCustomized = function (element, displayName, index) {
+        return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(element, _objectSpread(_objectSpread({
+          key: "recharts-customized-".concat(index)
+        }, _this.props), _this.state));
+      };
+
+      _this.uniqueChartId = lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(_props.id) ? (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.uniqueId)('recharts') : _props.id;
+      _this.clipPathId = "".concat(_this.uniqueChartId, "-clip");
+
+      if (_props.throttleDelay) {
+        _this.triggeredAfterMouseMove = lodash_throttle__WEBPACK_IMPORTED_MODULE_3___default()(_this.triggeredAfterMouseMove, _props.throttleDelay);
+      }
+
+      _this.state = {};
+      return _this;
+    }
+    /* eslint-disable  react/no-did-mount-set-state */
+
+
+    _createClass(CategoricalChartWrapper, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(this.props.syncId)) {
+          this.addListener();
+        }
+      }
+    }, {
+      key: "componentDidUpdate",
+      value: function componentDidUpdate(prevProps) {
+        // add syncId
+        if (lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(prevProps.syncId) && !lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(this.props.syncId)) {
+          this.addListener();
+        } // remove syncId
+
+
+        if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(prevProps.syncId) && lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(this.props.syncId)) {
+          this.removeListener();
+        }
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this.clearDeferId();
+
+        if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(this.props.syncId)) {
+          this.removeListener();
+        }
+
+        this.cancelThrottledTriggerAfterMouseMove();
+      }
+    }, {
+      key: "cancelThrottledTriggerAfterMouseMove",
+      value: function cancelThrottledTriggerAfterMouseMove() {
+        if (typeof this.triggeredAfterMouseMove.cancel === 'function') {
+          this.triggeredAfterMouseMove.cancel();
+        }
+      }
+    }, {
+      key: "getTooltipEventType",
+      value: function getTooltipEventType() {
+        var tooltipItem = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findChildByType)(this.props.children, _component_Tooltip__WEBPACK_IMPORTED_MODULE_25__.Tooltip.displayName);
+
+        if (tooltipItem && lodash_isBoolean__WEBPACK_IMPORTED_MODULE_8___default()(tooltipItem.props.shared)) {
+          var eventType = tooltipItem.props.shared ? 'axis' : 'item';
+          return validateTooltipEventTypes.indexOf(eventType) >= 0 ? eventType : defaultTooltipEventType;
+        }
+
+        return defaultTooltipEventType;
+      }
+      /**
+       * Get the information of mouse in chart, return null when the mouse is not in the chart
+       * @param  {Object} event    The event object
+       * @return {Object}          Mouse data
+       */
+
+    }, {
+      key: "getMouseInfo",
+      value: function getMouseInfo(event) {
+        if (!this.container) {
+          return null;
+        }
+
+        var containerOffset = (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_26__.getOffset)(this.container);
+        var e = (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_26__.calculateChartCoordinate)(event, containerOffset);
+        var rangeObj = this.inRange(e.chartX, e.chartY);
+
+        if (!rangeObj) {
+          return null;
+        }
+
+        var _this$state9 = this.state,
+            xAxisMap = _this$state9.xAxisMap,
+            yAxisMap = _this$state9.yAxisMap;
+        var tooltipEventType = this.getTooltipEventType();
+
+        if (tooltipEventType !== 'axis' && xAxisMap && yAxisMap) {
+          var xScale = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(xAxisMap).scale;
+          var yScale = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(yAxisMap).scale;
+          var xValue = xScale && xScale.invert ? xScale.invert(e.chartX) : null;
+          var yValue = yScale && yScale.invert ? yScale.invert(e.chartY) : null;
+          return _objectSpread(_objectSpread({}, e), {}, {
+            xValue: xValue,
+            yValue: yValue
+          });
+        }
+
+        var toolTipData = getTooltipData(this.state, this.props.data, this.props.layout, rangeObj);
+
+        if (toolTipData) {
+          return _objectSpread(_objectSpread({}, e), toolTipData);
+        }
+
+        return null;
+      }
+    }, {
+      key: "getCursorRectangle",
+      value: function getCursorRectangle() {
+        var layout = this.props.layout;
+        var _this$state10 = this.state,
+            activeCoordinate = _this$state10.activeCoordinate,
+            offset = _this$state10.offset,
+            tooltipAxisBandSize = _this$state10.tooltipAxisBandSize;
+        var halfSize = tooltipAxisBandSize / 2;
+        return {
+          stroke: 'none',
+          fill: '#ccc',
+          x: layout === 'horizontal' ? activeCoordinate.x - halfSize : offset.left + 0.5,
+          y: layout === 'horizontal' ? offset.top + 0.5 : activeCoordinate.y - halfSize,
+          width: layout === 'horizontal' ? tooltipAxisBandSize : offset.width - 1,
+          height: layout === 'horizontal' ? offset.height - 1 : tooltipAxisBandSize
+        };
+      }
+    }, {
+      key: "getCursorPoints",
+      value: function getCursorPoints() {
+        var layout = this.props.layout;
+        var _this$state11 = this.state,
+            activeCoordinate = _this$state11.activeCoordinate,
+            offset = _this$state11.offset;
+        var x1, y1, x2, y2;
+
+        if (layout === 'horizontal') {
+          x1 = activeCoordinate.x;
+          x2 = x1;
+          y1 = offset.top;
+          y2 = offset.top + offset.height;
+        } else if (layout === 'vertical') {
+          y1 = activeCoordinate.y;
+          y2 = y1;
+          x1 = offset.left;
+          x2 = offset.left + offset.width;
+        } else if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(activeCoordinate.cx) || !lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(activeCoordinate.cy)) {
+          if (layout === 'centric') {
+            var cx = activeCoordinate.cx,
+                cy = activeCoordinate.cy,
+                innerRadius = activeCoordinate.innerRadius,
+                outerRadius = activeCoordinate.outerRadius,
+                angle = activeCoordinate.angle;
+            var innerPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.polarToCartesian)(cx, cy, innerRadius, angle);
+            var outerPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.polarToCartesian)(cx, cy, outerRadius, angle);
+            x1 = innerPoint.x;
+            y1 = innerPoint.y;
+            x2 = outerPoint.x;
+            y2 = outerPoint.y;
+          } else {
+            var _cx = activeCoordinate.cx,
+                _cy = activeCoordinate.cy,
+                radius = activeCoordinate.radius,
+                startAngle = activeCoordinate.startAngle,
+                endAngle = activeCoordinate.endAngle;
+            var startPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.polarToCartesian)(_cx, _cy, radius, startAngle);
+            var endPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.polarToCartesian)(_cx, _cy, radius, endAngle);
+            return {
+              points: [startPoint, endPoint],
+              cx: _cx,
+              cy: _cy,
+              radius: radius,
+              startAngle: startAngle,
+              endAngle: endAngle
+            };
+          }
+        }
+
+        return [{
+          x: x1,
+          y: y1
+        }, {
+          x: x2,
+          y: y2
+        }];
+      }
+    }, {
+      key: "inRange",
+      value: function inRange(x, y) {
+        var layout = this.props.layout;
+
+        if (layout === 'horizontal' || layout === 'vertical') {
+          var offset = this.state.offset;
+          var isInRange = x >= offset.left && x <= offset.left + offset.width && y >= offset.top && y <= offset.top + offset.height;
+          return isInRange ? {
+            x: x,
+            y: y
+          } : null;
+        }
+
+        var _this$state12 = this.state,
+            angleAxisMap = _this$state12.angleAxisMap,
+            radiusAxisMap = _this$state12.radiusAxisMap;
+
+        if (angleAxisMap && radiusAxisMap) {
+          var angleAxis = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getAnyElementOfObject)(angleAxisMap);
+          return (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.inRangeOfSector)({
+            x: x,
+            y: y
+          }, angleAxis);
+        }
+
+        return null;
+      }
+    }, {
+      key: "parseEventsOfWrapper",
+      value: function parseEventsOfWrapper() {
+        var children = this.props.children;
+        var tooltipEventType = this.getTooltipEventType();
+        var tooltipItem = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.findChildByType)(children, _component_Tooltip__WEBPACK_IMPORTED_MODULE_25__.Tooltip.displayName);
+        var tooltipEvents = {};
+
+        if (tooltipItem && tooltipEventType === 'axis') {
+          if (tooltipItem.props.trigger === 'click') {
+            tooltipEvents = {
+              onClick: this.handleClick
+            };
+          } else {
+            tooltipEvents = {
+              onMouseEnter: this.handleMouseEnter,
+              onMouseMove: this.handleMouseMove,
+              onMouseLeave: this.handleMouseLeave,
+              onTouchMove: this.handleTouchMove,
+              onTouchStart: this.handleTouchStart,
+              onTouchEnd: this.handleTouchEnd
+            };
+          }
+        }
+
+        var outerEvents = (0,_util_types__WEBPACK_IMPORTED_MODULE_24__.adaptEventHandlers)(this.props, this.handleOuterEvent);
+        return _objectSpread(_objectSpread({}, outerEvents), tooltipEvents);
+      }
+      /* eslint-disable  no-underscore-dangle */
+
+    }, {
+      key: "addListener",
+      value: function addListener() {
+        _util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter.on(_util_Events__WEBPACK_IMPORTED_MODULE_27__.SYNC_EVENT, this.handleReceiveSyncEvent);
+
+        if (_util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter.setMaxListeners && _util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter._maxListeners) {
+          _util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter.setMaxListeners(_util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter._maxListeners + 1);
+        }
+      }
+    }, {
+      key: "removeListener",
+      value: function removeListener() {
+        _util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter.removeListener(_util_Events__WEBPACK_IMPORTED_MODULE_27__.SYNC_EVENT, this.handleReceiveSyncEvent);
+
+        if (_util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter.setMaxListeners && _util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter._maxListeners) {
+          _util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter.setMaxListeners(_util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter._maxListeners - 1);
+        }
+      }
+    }, {
+      key: "triggerSyncEvent",
+      value: function triggerSyncEvent(data) {
+        var syncId = this.props.syncId;
+
+        if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(syncId)) {
+          _util_Events__WEBPACK_IMPORTED_MODULE_27__.eventCenter.emit(_util_Events__WEBPACK_IMPORTED_MODULE_27__.SYNC_EVENT, syncId, this.uniqueChartId, data);
+        }
+      }
+    }, {
+      key: "applySyncEvent",
+      value: function applySyncEvent(data) {
+        var _this$props4 = this.props,
+            layout = _this$props4.layout,
+            syncMethod = _this$props4.syncMethod;
+        var updateId = this.state.updateId;
+        var dataStartIndex = data.dataStartIndex,
+            dataEndIndex = data.dataEndIndex;
+
+        if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(data.dataStartIndex) || !lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(data.dataEndIndex)) {
+          this.setState(_objectSpread({
+            dataStartIndex: dataStartIndex,
+            dataEndIndex: dataEndIndex
+          }, updateStateOfAxisMapsOffsetAndStackGroups({
+            props: this.props,
+            dataStartIndex: dataStartIndex,
+            dataEndIndex: dataEndIndex,
+            updateId: updateId
+          }, this.state)));
+        } else if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(data.activeTooltipIndex)) {
+          var chartX = data.chartX,
+              chartY = data.chartY;
+          var activeTooltipIndex = data.activeTooltipIndex;
+          var _this$state13 = this.state,
+              offset = _this$state13.offset,
+              tooltipTicks = _this$state13.tooltipTicks;
+
+          if (!offset) {
+            return;
+          }
+
+          if (typeof syncMethod === 'function') {
+            // Call a callback function. If there is an application specific algorithm
+            activeTooltipIndex = syncMethod(tooltipTicks, data);
+          } else if (syncMethod === 'value') {
+            // Set activeTooltipIndex to the index with the same value as data.activeLabel
+            // For loop instead of findIndex because the latter is very slow in some browsers
+            activeTooltipIndex = -1; // in case we cannot find the element
+
+            for (var i = 0; i < tooltipTicks.length; i++) {
+              if (tooltipTicks[i].value === data.activeLabel) {
+                activeTooltipIndex = i;
+                break;
+              }
+            }
+          }
+
+          var viewBox = _objectSpread(_objectSpread({}, offset), {}, {
+            x: offset.left,
+            y: offset.top
+          }); // When a categotical chart is combined with another chart, the value of chartX
+          // and chartY may beyond the boundaries.
+
+
+          var validateChartX = Math.min(chartX, viewBox.x + viewBox.width);
+          var validateChartY = Math.min(chartY, viewBox.y + viewBox.height);
+          var activeLabel = tooltipTicks[activeTooltipIndex] && tooltipTicks[activeTooltipIndex].value;
+          var activePayload = getTooltipContent(this.state, this.props.data, activeTooltipIndex);
+          var activeCoordinate = tooltipTicks[activeTooltipIndex] ? {
+            x: layout === 'horizontal' ? tooltipTicks[activeTooltipIndex].coordinate : validateChartX,
+            y: layout === 'horizontal' ? validateChartY : tooltipTicks[activeTooltipIndex].coordinate
+          } : originCoordinate;
+          this.setState(_objectSpread(_objectSpread({}, data), {}, {
+            activeLabel: activeLabel,
+            activeCoordinate: activeCoordinate,
+            activePayload: activePayload,
+            activeTooltipIndex: activeTooltipIndex
+          }));
+        } else {
+          this.setState(data);
+        }
+      }
+    }, {
+      key: "filterFormatItem",
+      value: function filterFormatItem(item, displayName, childIndex) {
+        var formattedGraphicalItems = this.state.formattedGraphicalItems;
+
+        for (var i = 0, len = formattedGraphicalItems.length; i < len; i++) {
+          var entry = formattedGraphicalItems[i];
+
+          if (entry.item === item || entry.props.key === item.key || displayName === (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.getDisplayName)(entry.item.type) && childIndex === entry.childIndex) {
+            return entry;
+          }
+        }
+
+        return null;
+      }
+    }, {
+      key: "renderAxis",
+      value:
+      /**
+       * Draw axis
+       * @param {Object} axisOptions The options of axis
+       * @param {Object} element      The axis element
+       * @param {String} displayName  The display name of axis
+       * @param {Number} index        The index of element
+       * @return {ReactElement}       The instance of x-axes
+       */
+      function renderAxis(axisOptions, element, displayName, index) {
+        var _this$props5 = this.props,
+            width = _this$props5.width,
+            height = _this$props5.height;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement(_cartesian_CartesianAxis__WEBPACK_IMPORTED_MODULE_19__.CartesianAxis, _extends({}, axisOptions, {
+          className: "recharts-".concat(axisOptions.axisType, " ").concat(axisOptions.axisType),
+          key: element.key || "".concat(displayName, "-").concat(index),
+          viewBox: {
+            x: 0,
+            y: 0,
+            width: width,
+            height: height
+          },
+          ticksGenerator: this.axesTicksGenerator
+        }));
+      }
+      /**
+       * Draw grid
+       * @param  {ReactElement} element the grid item
+       * @return {ReactElement} The instance of grid
+       */
+
+    }, {
+      key: "renderClipPath",
+      value: function renderClipPath() {
+        var clipPathId = this.clipPathId;
+        var _this$state$offset = this.state.offset,
+            left = _this$state$offset.left,
+            top = _this$state$offset.top,
+            height = _this$state$offset.height,
+            width = _this$state$offset.width;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement("defs", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement("clipPath", {
+          id: clipPathId
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement("rect", {
+          x: left,
+          y: top,
+          height: height,
+          width: width
+        })));
+      }
+    }, {
+      key: "getXScales",
+      value: function getXScales() {
+        var xAxisMap = this.state.xAxisMap;
+        return xAxisMap ? Object.entries(xAxisMap).reduce(function (res, _ref13) {
+          var _ref14 = _slicedToArray(_ref13, 2),
+              axisId = _ref14[0],
+              axisProps = _ref14[1];
+
+          return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, axisId, axisProps.scale));
+        }, {}) : null;
+      }
+    }, {
+      key: "getYScales",
+      value: function getYScales() {
+        var yAxisMap = this.state.yAxisMap;
+        return yAxisMap ? Object.entries(yAxisMap).reduce(function (res, _ref15) {
+          var _ref16 = _slicedToArray(_ref15, 2),
+              axisId = _ref16[0],
+              axisProps = _ref16[1];
+
+          return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, axisId, axisProps.scale));
+        }, {}) : null;
+      }
+    }, {
+      key: "getXScaleByAxisId",
+      value: function getXScaleByAxisId(axisId) {
+        var _this$state$xAxisMap, _this$state$xAxisMap$;
+
+        return (_this$state$xAxisMap = this.state.xAxisMap) === null || _this$state$xAxisMap === void 0 ? void 0 : (_this$state$xAxisMap$ = _this$state$xAxisMap[axisId]) === null || _this$state$xAxisMap$ === void 0 ? void 0 : _this$state$xAxisMap$.scale;
+      }
+    }, {
+      key: "getYScaleByAxisId",
+      value: function getYScaleByAxisId(axisId) {
+        var _this$state$yAxisMap, _this$state$yAxisMap$;
+
+        return (_this$state$yAxisMap = this.state.yAxisMap) === null || _this$state$yAxisMap === void 0 ? void 0 : (_this$state$yAxisMap$ = _this$state$yAxisMap[axisId]) === null || _this$state$yAxisMap$ === void 0 ? void 0 : _this$state$yAxisMap$.scale;
+      }
+    }, {
+      key: "getItemByXY",
+      value: function getItemByXY(chartXY) {
+        var formattedGraphicalItems = this.state.formattedGraphicalItems;
+
+        if (formattedGraphicalItems && formattedGraphicalItems.length) {
+          for (var i = 0, len = formattedGraphicalItems.length; i < len; i++) {
+            var graphicalItem = formattedGraphicalItems[i];
+            var props = graphicalItem.props,
+                item = graphicalItem.item;
+            var itemDisplayName = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.getDisplayName)(item.type);
+
+            if (itemDisplayName === 'Bar') {
+              var activeBarItem = (props.data || []).find(function (entry) {
+                return (0,_shape_Rectangle__WEBPACK_IMPORTED_MODULE_22__.isInRectangle)(chartXY, entry);
+              });
+
+              if (activeBarItem) {
+                return {
+                  graphicalItem: graphicalItem,
+                  payload: activeBarItem
+                };
+              }
+            } else if (itemDisplayName === 'RadialBar') {
+              var _activeBarItem = (props.data || []).find(function (entry) {
+                return (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_12__.inRangeOfSector)(chartXY, entry);
+              });
+
+              if (_activeBarItem) {
+                return {
+                  graphicalItem: graphicalItem,
+                  payload: _activeBarItem
+                };
+              }
+            }
+          }
+        }
+
+        return null;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        if (!(0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.validateWidthHeight)(this)) {
+          return null;
+        }
+
+        var _this$props6 = this.props,
+            children = _this$props6.children,
+            className = _this$props6.className,
+            width = _this$props6.width,
+            height = _this$props6.height,
+            style = _this$props6.style,
+            compact = _this$props6.compact,
+            others = _objectWithoutProperties(_this$props6, ["children", "className", "width", "height", "style", "compact"]);
+
+        var attrs = (0,_util_types__WEBPACK_IMPORTED_MODULE_24__.filterProps)(others);
+        var map = {
+          CartesianGrid: {
+            handler: this.renderGrid,
+            once: true
+          },
+          ReferenceArea: {
+            handler: this.renderReferenceElement
+          },
+          ReferenceLine: {
+            handler: this.renderReferenceElement
+          },
+          ReferenceDot: {
+            handler: this.renderReferenceElement
+          },
+          XAxis: {
+            handler: this.renderXAxis
+          },
+          YAxis: {
+            handler: this.renderYAxis
+          },
+          Brush: {
+            handler: this.renderBrush,
+            once: true
+          },
+          Bar: {
+            handler: this.renderGraphicChild
+          },
+          Line: {
+            handler: this.renderGraphicChild
+          },
+          Area: {
+            handler: this.renderGraphicChild
+          },
+          Radar: {
+            handler: this.renderGraphicChild
+          },
+          RadialBar: {
+            handler: this.renderGraphicChild
+          },
+          Scatter: {
+            handler: this.renderGraphicChild
+          },
+          Pie: {
+            handler: this.renderGraphicChild
+          },
+          Funnel: {
+            handler: this.renderGraphicChild
+          },
+          Tooltip: {
+            handler: this.renderCursor,
+            once: true
+          },
+          PolarGrid: {
+            handler: this.renderPolarGrid,
+            once: true
+          },
+          PolarAngleAxis: {
+            handler: this.renderPolarAxis
+          },
+          PolarRadiusAxis: {
+            handler: this.renderPolarAxis
+          },
+          Customized: {
+            handler: this.renderCustomized
+          }
+        }; // The "compact" mode is mainly used as the panorama within Brush
+
+        if (compact) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement(_container_Surface__WEBPACK_IMPORTED_MODULE_28__.Surface, _extends({}, attrs, {
+            width: width,
+            height: height
+          }), this.renderClipPath(), (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.renderByOrder)(children, map));
+        }
+
+        var events = this.parseEventsOfWrapper();
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement("div", _extends({
+          className: classnames__WEBPACK_IMPORTED_MODULE_11___default()('recharts-wrapper', className),
+          style: _objectSpread({
+            position: 'relative',
+            cursor: 'default',
+            width: width,
+            height: height
+          }, style)
+        }, events, {
+          ref: function ref(node) {
+            _this2.container = node;
+          }
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement(_container_Surface__WEBPACK_IMPORTED_MODULE_28__.Surface, _extends({}, attrs, {
+          width: width,
+          height: height
+        }), this.renderClipPath(), (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.renderByOrder)(children, map)), this.renderLegend(), this.renderTooltip());
+      }
+    }]);
+
+    return CategoricalChartWrapper;
+  }(react__WEBPACK_IMPORTED_MODULE_10__.Component), _class.displayName = chartName, _class.defaultProps = _objectSpread({
+    layout: 'horizontal',
+    stackOffset: 'none',
+    barCategoryGap: '10%',
+    barGap: 4,
+    margin: {
+      top: 5,
+      right: 5,
+      bottom: 5,
+      left: 5
+    },
+    reverseStackOrder: false,
+    syncMethod: 'index'
+  }, defaultProps), _class.getDerivedStateFromProps = function (nextProps, prevState) {
+    var data = nextProps.data,
+        children = nextProps.children,
+        width = nextProps.width,
+        height = nextProps.height,
+        layout = nextProps.layout,
+        stackOffset = nextProps.stackOffset,
+        margin = nextProps.margin;
+
+    if (lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(prevState.updateId)) {
+      var defaultState = createDefaultState(nextProps);
+      return _objectSpread(_objectSpread(_objectSpread({}, defaultState), {}, {
+        updateId: 0
+      }, updateStateOfAxisMapsOffsetAndStackGroups(_objectSpread(_objectSpread({
+        props: nextProps
+      }, defaultState), {}, {
+        updateId: 0
+      }), prevState)), {}, {
+        prevData: data,
+        prevWidth: width,
+        prevHeight: height,
+        prevLayout: layout,
+        prevStackOffset: stackOffset,
+        prevMargin: margin,
+        prevChildren: children
+      });
+    }
+
+    if (data !== prevState.prevData || width !== prevState.prevWidth || height !== prevState.prevHeight || layout !== prevState.prevLayout || stackOffset !== prevState.prevStackOffset || !(0,_util_ShallowEqual__WEBPACK_IMPORTED_MODULE_29__.shallowEqual)(margin, prevState.prevMargin)) {
+      var _defaultState = createDefaultState(nextProps); // Fixes https://github.com/recharts/recharts/issues/2143
+
+
+      var keepFromPrevState = {
+        // (chartX, chartY) are (0,0) in default state, but we want to keep the last mouse position to avoid
+        // any flickering
+        chartX: prevState.chartX,
+        chartY: prevState.chartY,
+        // The tooltip should stay active when it was active in the previous render. If this is not
+        // the case, the tooltip disappears and immediately re-appears, causing a flickering effect
+        isTooltipActive: prevState.isTooltipActive
+      };
+
+      var updatesToState = _objectSpread(_objectSpread({}, getTooltipData(prevState, data, layout)), {}, {
+        updateId: prevState.updateId + 1
+      });
+
+      var newState = _objectSpread(_objectSpread(_objectSpread({}, _defaultState), keepFromPrevState), updatesToState);
+
+      return _objectSpread(_objectSpread(_objectSpread({}, newState), updateStateOfAxisMapsOffsetAndStackGroups(_objectSpread({
+        props: nextProps
+      }, newState), prevState)), {}, {
+        prevData: data,
+        prevWidth: width,
+        prevHeight: height,
+        prevLayout: layout,
+        prevStackOffset: stackOffset,
+        prevMargin: margin,
+        prevChildren: children
+      });
+    }
+
+    if (!(0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_16__.isChildrenEqual)(children, prevState.prevChildren)) {
+      // update configuration in chilren
+      var hasGlobalData = !lodash_isNil__WEBPACK_IMPORTED_MODULE_7___default()(data);
+      var newUpdateId = hasGlobalData ? prevState.updateId : prevState.updateId + 1;
+      return _objectSpread(_objectSpread({
+        updateId: newUpdateId
+      }, updateStateOfAxisMapsOffsetAndStackGroups(_objectSpread(_objectSpread({
+        props: nextProps
+      }, prevState), {}, {
+        updateId: newUpdateId
+      }), prevState)), {}, {
+        prevChildren: children
+      });
+    }
+
+    return null;
+  }, _class.renderActiveDot = function (option, props) {
+    var dot;
+
+    if ( /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.isValidElement)(option)) {
+      dot = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_10__.cloneElement)(option, props);
+    } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(option)) {
+      dot = option(props);
+    } else {
+      dot = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement(_shape_Dot__WEBPACK_IMPORTED_MODULE_30__.Dot, props);
+    }
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_10__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_31__.Layer, {
+      className: "recharts-active-dot",
+      key: props.key
+    }, dot);
+  }, _temp;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/component/DefaultLegendContent.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/recharts/es6/component/DefaultLegendContent.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DefaultLegendContent": () => (/* binding */ DefaultLegendContent)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _container_Surface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../container/Surface */ "./node_modules/recharts/es6/container/Surface.js");
+/* harmony import */ var _shape_Symbols__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shape/Symbols */ "./node_modules/recharts/es6/shape/Symbols.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Default Legend Content
+ */
+
+
+
+
+
+var SIZE = 32;
+var DefaultLegendContent = /*#__PURE__*/function (_PureComponent) {
+  _inherits(DefaultLegendContent, _PureComponent);
+
+  var _super = _createSuper(DefaultLegendContent);
+
+  function DefaultLegendContent() {
+    _classCallCheck(this, DefaultLegendContent);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(DefaultLegendContent, [{
+    key: "renderIcon",
+    value:
+    /**
+     * Render the path of icon
+     * @param {Object} data Data of each legend item
+     * @return {String} Path element
+     */
+    function renderIcon(data) {
+      var inactiveColor = this.props.inactiveColor;
+      var halfSize = SIZE / 2;
+      var sixthSize = SIZE / 6;
+      var thirdSize = SIZE / 3;
+      var color = data.inactive ? inactiveColor : data.color;
+
+      if (data.type === 'plainline') {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("line", {
+          strokeWidth: 4,
+          fill: "none",
+          stroke: color,
+          strokeDasharray: data.payload.strokeDasharray,
+          x1: 0,
+          y1: halfSize,
+          x2: SIZE,
+          y2: halfSize,
+          className: "recharts-legend-icon"
+        });
+      }
+
+      if (data.type === 'line') {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+          strokeWidth: 4,
+          fill: "none",
+          stroke: color,
+          d: "M0,".concat(halfSize, "h").concat(thirdSize, "\n            A").concat(sixthSize, ",").concat(sixthSize, ",0,1,1,").concat(2 * thirdSize, ",").concat(halfSize, "\n            H").concat(SIZE, "M").concat(2 * thirdSize, ",").concat(halfSize, "\n            A").concat(sixthSize, ",").concat(sixthSize, ",0,1,1,").concat(thirdSize, ",").concat(halfSize),
+          className: "recharts-legend-icon"
+        });
+      }
+
+      if (data.type === 'rect') {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+          stroke: "none",
+          fill: color,
+          d: "M0,".concat(SIZE / 8, "h").concat(SIZE, "v").concat(SIZE * 3 / 4, "h").concat(-SIZE, "z"),
+          className: "recharts-legend-icon"
+        });
+      }
+
+      if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(data.legendIcon)) {
+        var iconProps = _objectSpread({}, data);
+
+        delete iconProps.legendIcon;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(data.legendIcon, iconProps);
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_shape_Symbols__WEBPACK_IMPORTED_MODULE_2__.Symbols, {
+        fill: color,
+        cx: halfSize,
+        cy: halfSize,
+        size: SIZE,
+        sizeType: "diameter",
+        type: data.type
+      });
+    }
+    /**
+     * Draw items of legend
+     * @return {ReactElement} Items
+     */
+
+  }, {
+    key: "renderItems",
+    value: function renderItems() {
+      var _this = this;
+
+      var _this$props = this.props,
+          payload = _this$props.payload,
+          iconSize = _this$props.iconSize,
+          layout = _this$props.layout,
+          formatter = _this$props.formatter,
+          inactiveColor = _this$props.inactiveColor;
+      var viewBox = {
+        x: 0,
+        y: 0,
+        width: SIZE,
+        height: SIZE
+      };
+      var itemStyle = {
+        display: layout === 'horizontal' ? 'inline-block' : 'block',
+        marginRight: 10
+      };
+      var svgStyle = {
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        marginRight: 4
+      };
+      return payload.map(function (entry, i) {
+        var _classNames;
+
+        var finalFormatter = entry.formatter || formatter;
+        var className = classnames__WEBPACK_IMPORTED_MODULE_1___default()((_classNames = {
+          'recharts-legend-item': true
+        }, _defineProperty(_classNames, "legend-item-".concat(i), true), _defineProperty(_classNames, "inactive", entry.inactive), _classNames));
+
+        if (entry.type === 'none') {
+          return null;
+        }
+
+        var color = entry.inactive ? inactiveColor : entry.color;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", _extends({
+          className: className,
+          style: itemStyle,
+          key: "legend-item-".concat(i) // eslint-disable-line react/no-array-index-key
+
+        }, (0,_util_types__WEBPACK_IMPORTED_MODULE_3__.adaptEventsOfChild)(_this.props, entry, i)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_container_Surface__WEBPACK_IMPORTED_MODULE_4__.Surface, {
+          width: iconSize,
+          height: iconSize,
+          viewBox: viewBox,
+          style: svgStyle
+        }, _this.renderIcon(entry)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+          className: "recharts-legend-item-text",
+          style: {
+            color: color
+          }
+        }, finalFormatter ? finalFormatter(entry.value, entry, i) : entry.value));
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          payload = _this$props2.payload,
+          layout = _this$props2.layout,
+          align = _this$props2.align;
+
+      if (!payload || !payload.length) {
+        return null;
+      }
+
+      var finalStyle = {
+        padding: 0,
+        margin: 0,
+        textAlign: layout === 'horizontal' ? align : 'left'
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "recharts-default-legend",
+        style: finalStyle
+      }, this.renderItems());
+    }
+  }]);
+
+  return DefaultLegendContent;
+}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
+DefaultLegendContent.displayName = 'Legend';
+DefaultLegendContent.defaultProps = {
+  iconSize: 14,
+  layout: 'horizontal',
+  align: 'center',
+  verticalAlign: 'middle',
+  inactiveColor: '#ccc'
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/component/DefaultTooltipContent.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/recharts/es6/component/DefaultTooltipContent.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DefaultTooltipContent": () => (/* binding */ DefaultTooltipContent)
+/* harmony export */ });
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_sortBy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/sortBy */ "./node_modules/lodash/sortBy.js");
+/* harmony import */ var lodash_sortBy__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_sortBy__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+function defaultFormatter(value) {
+  return lodash_isArray__WEBPACK_IMPORTED_MODULE_2___default()(value) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(value[0]) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(value[1]) ? value.join(' ~ ') : value;
+}
+
+var DefaultTooltipContent = /*#__PURE__*/function (_PureComponent) {
+  _inherits(DefaultTooltipContent, _PureComponent);
+
+  var _super = _createSuper(DefaultTooltipContent);
+
+  function DefaultTooltipContent() {
+    _classCallCheck(this, DefaultTooltipContent);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(DefaultTooltipContent, [{
+    key: "renderContent",
+    value: function renderContent() {
+      var _this$props = this.props,
+          payload = _this$props.payload,
+          separator = _this$props.separator,
+          formatter = _this$props.formatter,
+          itemStyle = _this$props.itemStyle,
+          itemSorter = _this$props.itemSorter;
+
+      if (payload && payload.length) {
+        var listStyle = {
+          padding: 0,
+          margin: 0
+        };
+        var items = (itemSorter ? lodash_sortBy__WEBPACK_IMPORTED_MODULE_1___default()(payload, itemSorter) : payload).map(function (entry, i) {
+          if (entry.type === 'none') {
+            return null;
+          }
+
+          var finalItemStyle = _objectSpread({
+            display: 'block',
+            paddingTop: 4,
+            paddingBottom: 4,
+            color: entry.color || '#000'
+          }, itemStyle);
+
+          var finalFormatter = entry.formatter || formatter || defaultFormatter;
+          var name = entry.name,
+              value = entry.value;
+
+          if (finalFormatter) {
+            var formatted = finalFormatter(value, name, entry, i, payload);
+
+            if (Array.isArray(formatted)) {
+              var _formatted = _slicedToArray(formatted, 2);
+
+              value = _formatted[0];
+              name = _formatted[1];
+            } else {
+              value = formatted;
+            }
+          }
+
+          return (
+            /*#__PURE__*/
+            // eslint-disable-next-line react/no-array-index-key
+            react__WEBPACK_IMPORTED_MODULE_3__.createElement("li", {
+              className: "recharts-tooltip-item",
+              key: "tooltip-item-".concat(i),
+              style: finalItemStyle
+            }, (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(name) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
+              className: "recharts-tooltip-item-name"
+            }, name) : null, (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(name) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
+              className: "recharts-tooltip-item-separator"
+            }, separator) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
+              className: "recharts-tooltip-item-value"
+            }, value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
+              className: "recharts-tooltip-item-unit"
+            }, entry.unit || ''))
+          );
+        });
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("ul", {
+          className: "recharts-tooltip-item-list",
+          style: listStyle
+        }, items);
+      }
+
+      return null;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          wrapperClassName = _this$props2.wrapperClassName,
+          contentStyle = _this$props2.contentStyle,
+          labelClassName = _this$props2.labelClassName,
+          labelStyle = _this$props2.labelStyle,
+          label = _this$props2.label,
+          labelFormatter = _this$props2.labelFormatter,
+          payload = _this$props2.payload;
+
+      var finalStyle = _objectSpread({
+        margin: 0,
+        padding: 10,
+        backgroundColor: '#fff',
+        border: '1px solid #ccc',
+        whiteSpace: 'nowrap'
+      }, contentStyle);
+
+      var finalLabelStyle = _objectSpread({
+        margin: 0
+      }, labelStyle);
+
+      var hasLabel = !lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default()(label);
+      var finalLabel = hasLabel ? label : '';
+      var wrapperCN = classnames__WEBPACK_IMPORTED_MODULE_4___default()('recharts-default-tooltip', wrapperClassName);
+      var labelCN = classnames__WEBPACK_IMPORTED_MODULE_4___default()('recharts-tooltip-label', labelClassName);
+
+      if (hasLabel && labelFormatter) {
+        finalLabel = labelFormatter(label, payload);
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+        className: wrapperCN,
+        style: finalStyle
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("p", {
+        className: labelCN,
+        style: finalLabelStyle
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.isValidElement(finalLabel) ? finalLabel : "".concat(finalLabel)), this.renderContent());
+    }
+  }]);
+
+  return DefaultTooltipContent;
+}(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent);
+DefaultTooltipContent.displayName = 'DefaultTooltipContent';
+DefaultTooltipContent.defaultProps = {
+  separator: ' : ',
+  contentStyle: {},
+  itemStyle: {},
+  labelStyle: {}
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/component/Label.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/component/Label.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Label": () => (/* binding */ Label)
+/* harmony export */ });
+/* harmony import */ var lodash_isObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isObject */ "./node_modules/lodash/isObject.js");
+/* harmony import */ var lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isObject__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Text__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Text */ "./node_modules/recharts/es6/component/Text.js");
+/* harmony import */ var _util_ReactUtils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/ReactUtils */ "./node_modules/recharts/es6/util/ReactUtils.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_PolarUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/PolarUtils */ "./node_modules/recharts/es6/util/PolarUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+
+
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
+
+
+var getLabel = function getLabel(props) {
+  var value = props.value,
+      formatter = props.formatter;
+  var label = lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(props.children) ? value : props.children;
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(formatter)) {
+    return formatter(label);
+  }
+
+  return label;
+};
+
+var getDeltaAngle = function getDeltaAngle(startAngle, endAngle) {
+  var sign = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.mathSign)(endAngle - startAngle);
+  var deltaAngle = Math.min(Math.abs(endAngle - startAngle), 360);
+  return sign * deltaAngle;
+};
+
+var renderRadialLabel = function renderRadialLabel(labelProps, label, attrs) {
+  var position = labelProps.position,
+      viewBox = labelProps.viewBox,
+      offset = labelProps.offset,
+      className = labelProps.className;
+  var _ref = viewBox,
+      cx = _ref.cx,
+      cy = _ref.cy,
+      innerRadius = _ref.innerRadius,
+      outerRadius = _ref.outerRadius,
+      startAngle = _ref.startAngle,
+      endAngle = _ref.endAngle,
+      clockWise = _ref.clockWise;
+  var radius = (innerRadius + outerRadius) / 2;
+  var deltaAngle = getDeltaAngle(startAngle, endAngle);
+  var sign = deltaAngle >= 0 ? 1 : -1;
+  var labelAngle, direction;
+
+  if (position === 'insideStart') {
+    labelAngle = startAngle + sign * offset;
+    direction = clockWise;
+  } else if (position === 'insideEnd') {
+    labelAngle = endAngle - sign * offset;
+    direction = !clockWise;
+  } else if (position === 'end') {
+    labelAngle = endAngle + sign * offset;
+    direction = clockWise;
+  }
+
+  direction = deltaAngle <= 0 ? direction : !direction;
+  var startPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_6__.polarToCartesian)(cx, cy, radius, labelAngle);
+  var endPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_6__.polarToCartesian)(cx, cy, radius, labelAngle + (direction ? 1 : -1) * 359);
+  var path = "M".concat(startPoint.x, ",").concat(startPoint.y, "\n    A").concat(radius, ",").concat(radius, ",0,1,").concat(direction ? 0 : 1, ",\n    ").concat(endPoint.x, ",").concat(endPoint.y);
+  var id = lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(labelProps.id) ? (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.uniqueId)('recharts-radial-line-') : labelProps.id;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("text", _extends({}, attrs, {
+    dominantBaseline: "central",
+    className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('recharts-radial-bar-label', className)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("defs", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("path", {
+    id: id,
+    d: path
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("textPath", {
+    xlinkHref: "#".concat(id)
+  }, label));
+};
+
+var getAttrsOfPolarLabel = function getAttrsOfPolarLabel(props) {
+  var viewBox = props.viewBox,
+      offset = props.offset,
+      position = props.position;
+  var _ref2 = viewBox,
+      cx = _ref2.cx,
+      cy = _ref2.cy,
+      innerRadius = _ref2.innerRadius,
+      outerRadius = _ref2.outerRadius,
+      startAngle = _ref2.startAngle,
+      endAngle = _ref2.endAngle;
+  var midAngle = (startAngle + endAngle) / 2;
+
+  if (position === 'outside') {
+    var _polarToCartesian = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_6__.polarToCartesian)(cx, cy, outerRadius + offset, midAngle),
+        _x = _polarToCartesian.x,
+        _y = _polarToCartesian.y;
+
+    return {
+      x: _x,
+      y: _y,
+      textAnchor: _x >= cx ? 'start' : 'end',
+      verticalAnchor: 'middle'
+    };
+  }
+
+  if (position === 'center') {
+    return {
+      x: cx,
+      y: cy,
+      textAnchor: 'middle',
+      verticalAnchor: 'middle'
+    };
+  }
+
+  if (position === 'centerTop') {
+    return {
+      x: cx,
+      y: cy,
+      textAnchor: 'middle',
+      verticalAnchor: 'start'
+    };
+  }
+
+  if (position === 'centerBottom') {
+    return {
+      x: cx,
+      y: cy,
+      textAnchor: 'middle',
+      verticalAnchor: 'end'
+    };
+  }
+
+  var r = (innerRadius + outerRadius) / 2;
+
+  var _polarToCartesian2 = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_6__.polarToCartesian)(cx, cy, r, midAngle),
+      x = _polarToCartesian2.x,
+      y = _polarToCartesian2.y;
+
+  return {
+    x: x,
+    y: y,
+    textAnchor: 'middle',
+    verticalAnchor: 'middle'
+  };
+};
+
+var getAttrsOfCartesianLabel = function getAttrsOfCartesianLabel(props) {
+  var viewBox = props.viewBox,
+      parentViewBox = props.parentViewBox,
+      offset = props.offset,
+      position = props.position;
+  var _ref3 = viewBox,
+      x = _ref3.x,
+      y = _ref3.y,
+      width = _ref3.width,
+      height = _ref3.height; // Define vertical offsets and position inverts based on the value being positive or negative
+
+  var verticalSign = height >= 0 ? 1 : -1;
+  var verticalOffset = verticalSign * offset;
+  var verticalEnd = verticalSign > 0 ? 'end' : 'start';
+  var verticalStart = verticalSign > 0 ? 'start' : 'end'; // Define horizontal offsets and position inverts based on the value being positive or negative
+
+  var horizontalSign = width >= 0 ? 1 : -1;
+  var horizontalOffset = horizontalSign * offset;
+  var horizontalEnd = horizontalSign > 0 ? 'end' : 'start';
+  var horizontalStart = horizontalSign > 0 ? 'start' : 'end';
+
+  if (position === 'top') {
+    var attrs = {
+      x: x + width / 2,
+      y: y - verticalSign * offset,
+      textAnchor: 'middle',
+      verticalAnchor: verticalEnd
+    };
+    return _objectSpread(_objectSpread({}, attrs), parentViewBox ? {
+      height: Math.max(y - parentViewBox.y, 0),
+      width: width
+    } : {});
+  }
+
+  if (position === 'bottom') {
+    var _attrs = {
+      x: x + width / 2,
+      y: y + height + verticalOffset,
+      textAnchor: 'middle',
+      verticalAnchor: verticalStart
+    };
+    return _objectSpread(_objectSpread({}, _attrs), parentViewBox ? {
+      height: Math.max(parentViewBox.y + parentViewBox.height - (y + height), 0),
+      width: width
+    } : {});
+  }
+
+  if (position === 'left') {
+    var _attrs2 = {
+      x: x - horizontalOffset,
+      y: y + height / 2,
+      textAnchor: horizontalEnd,
+      verticalAnchor: 'middle'
+    };
+    return _objectSpread(_objectSpread({}, _attrs2), parentViewBox ? {
+      width: Math.max(_attrs2.x - parentViewBox.x, 0),
+      height: height
+    } : {});
+  }
+
+  if (position === 'right') {
+    var _attrs3 = {
+      x: x + width + horizontalOffset,
+      y: y + height / 2,
+      textAnchor: horizontalStart,
+      verticalAnchor: 'middle'
+    };
+    return _objectSpread(_objectSpread({}, _attrs3), parentViewBox ? {
+      width: Math.max(parentViewBox.x + parentViewBox.width - _attrs3.x, 0),
+      height: height
+    } : {});
+  }
+
+  var sizeAttrs = parentViewBox ? {
+    width: width,
+    height: height
+  } : {};
+
+  if (position === 'insideLeft') {
+    return _objectSpread({
+      x: x + horizontalOffset,
+      y: y + height / 2,
+      textAnchor: horizontalStart,
+      verticalAnchor: 'middle'
+    }, sizeAttrs);
+  }
+
+  if (position === 'insideRight') {
+    return _objectSpread({
+      x: x + width - horizontalOffset,
+      y: y + height / 2,
+      textAnchor: horizontalEnd,
+      verticalAnchor: 'middle'
+    }, sizeAttrs);
+  }
+
+  if (position === 'insideTop') {
+    return _objectSpread({
+      x: x + width / 2,
+      y: y + verticalOffset,
+      textAnchor: 'middle',
+      verticalAnchor: verticalStart
+    }, sizeAttrs);
+  }
+
+  if (position === 'insideBottom') {
+    return _objectSpread({
+      x: x + width / 2,
+      y: y + height - verticalOffset,
+      textAnchor: 'middle',
+      verticalAnchor: verticalEnd
+    }, sizeAttrs);
+  }
+
+  if (position === 'insideTopLeft') {
+    return _objectSpread({
+      x: x + horizontalOffset,
+      y: y + verticalOffset,
+      textAnchor: horizontalStart,
+      verticalAnchor: verticalStart
+    }, sizeAttrs);
+  }
+
+  if (position === 'insideTopRight') {
+    return _objectSpread({
+      x: x + width - horizontalOffset,
+      y: y + verticalOffset,
+      textAnchor: horizontalEnd,
+      verticalAnchor: verticalStart
+    }, sizeAttrs);
+  }
+
+  if (position === 'insideBottomLeft') {
+    return _objectSpread({
+      x: x + horizontalOffset,
+      y: y + height - verticalOffset,
+      textAnchor: horizontalStart,
+      verticalAnchor: verticalEnd
+    }, sizeAttrs);
+  }
+
+  if (position === 'insideBottomRight') {
+    return _objectSpread({
+      x: x + width - horizontalOffset,
+      y: y + height - verticalOffset,
+      textAnchor: horizontalEnd,
+      verticalAnchor: verticalEnd
+    }, sizeAttrs);
+  }
+
+  if (lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default()(position) && ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(position.x) || (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isPercent)(position.x)) && ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(position.y) || (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isPercent)(position.y))) {
+    return _objectSpread({
+      x: x + (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.getPercentValue)(position.x, width),
+      y: y + (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.getPercentValue)(position.y, height),
+      textAnchor: 'end',
+      verticalAnchor: 'end'
+    }, sizeAttrs);
+  }
+
+  return _objectSpread({
+    x: x + width / 2,
+    y: y + height / 2,
+    textAnchor: 'middle',
+    verticalAnchor: 'middle'
+  }, sizeAttrs);
+};
+
+var isPolar = function isPolar(viewBox) {
+  return (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(viewBox.cx);
+};
+
+function Label(props) {
+  var viewBox = props.viewBox,
+      position = props.position,
+      value = props.value,
+      children = props.children,
+      content = props.content,
+      _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className,
+      textBreakAll = props.textBreakAll;
+
+  if (!viewBox || lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(value) && lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(children) && ! /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.isValidElement)(content) && !lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(content)) {
+    return null;
+  }
+
+  if ( /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.isValidElement)(content)) {
+    return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.cloneElement)(content, props);
+  }
+
+  var label;
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(content)) {
+    label = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.createElement)(content, props);
+
+    if ( /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.isValidElement)(label)) {
+      return label;
+    }
+  } else {
+    label = getLabel(props);
+  }
+
+  var isPolarLabel = isPolar(viewBox);
+  var attrs = (0,_util_types__WEBPACK_IMPORTED_MODULE_7__.filterProps)(props, true);
+
+  if (isPolarLabel && (position === 'insideStart' || position === 'insideEnd' || position === 'end')) {
+    return renderRadialLabel(props, label, attrs);
+  }
+
+  var positionAttrs = isPolarLabel ? getAttrsOfPolarLabel(props) : getAttrsOfCartesianLabel(props);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Text__WEBPACK_IMPORTED_MODULE_8__.Text, _extends({
+    className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('recharts-label', className)
+  }, attrs, positionAttrs, {
+    breakAll: textBreakAll
+  }), label);
+}
+Label.displayName = 'Label';
+Label.defaultProps = {
+  offset: 5
+};
+
+var parseViewBox = function parseViewBox(props) {
+  var cx = props.cx,
+      cy = props.cy,
+      angle = props.angle,
+      startAngle = props.startAngle,
+      endAngle = props.endAngle,
+      r = props.r,
+      radius = props.radius,
+      innerRadius = props.innerRadius,
+      outerRadius = props.outerRadius,
+      x = props.x,
+      y = props.y,
+      top = props.top,
+      left = props.left,
+      width = props.width,
+      height = props.height,
+      clockWise = props.clockWise,
+      labelViewBox = props.labelViewBox;
+
+  if (labelViewBox) {
+    return labelViewBox;
+  }
+
+  if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(width) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(height)) {
+    if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(x) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(y)) {
+      return {
+        x: x,
+        y: y,
+        width: width,
+        height: height
+      };
+    }
+
+    if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(top) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(left)) {
+      return {
+        x: top,
+        y: left,
+        width: width,
+        height: height
+      };
+    }
+  }
+
+  if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(x) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(y)) {
+    return {
+      x: x,
+      y: y,
+      width: 0,
+      height: 0
+    };
+  }
+
+  if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(cx) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(cy)) {
+    return {
+      cx: cx,
+      cy: cy,
+      startAngle: startAngle || angle || 0,
+      endAngle: endAngle || angle || 0,
+      innerRadius: innerRadius || 0,
+      outerRadius: outerRadius || radius || r || 0,
+      clockWise: clockWise
+    };
+  }
+
+  if (props.viewBox) {
+    return props.viewBox;
+  }
+
+  return {};
+};
+
+var parseLabel = function parseLabel(label, viewBox) {
+  if (!label) {
+    return null;
+  }
+
+  if (label === true) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Label, {
+      key: "label-implicit",
+      viewBox: viewBox
+    });
+  }
+
+  if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(label)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Label, {
+      key: "label-implicit",
+      viewBox: viewBox,
+      value: label
+    });
+  }
+
+  if ( /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.isValidElement)(label)) {
+    if (label.type === Label) {
+      return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.cloneElement)(label, {
+        key: 'label-implicit',
+        viewBox: viewBox
+      });
+    }
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Label, {
+      key: "label-implicit",
+      content: label,
+      viewBox: viewBox
+    });
+  }
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(label)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Label, {
+      key: "label-implicit",
+      content: label,
+      viewBox: viewBox
+    });
+  }
+
+  if (lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default()(label)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Label, _extends({
+      viewBox: viewBox
+    }, label, {
+      key: "label-implicit"
+    }));
+  }
+
+  return null;
+};
+
+var renderCallByParent = function renderCallByParent(parentProps, viewBox) {
+  var checkPropsLabel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (!parentProps || !parentProps.children && checkPropsLabel && !parentProps.label) {
+    return null;
+  }
+
+  var children = parentProps.children;
+  var parentViewBox = parseViewBox(parentProps);
+  var explicitChildren = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_9__.findAllByType)(children, Label.displayName).map(function (child, index) {
+    return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.cloneElement)(child, {
+      viewBox: viewBox || parentViewBox,
+      key: "label-".concat(index)
+    });
+  });
+
+  if (!checkPropsLabel) {
+    return explicitChildren;
+  }
+
+  var implicitLabel = parseLabel(parentProps.label, viewBox || parentViewBox);
+  return [implicitLabel].concat(_toConsumableArray(explicitChildren));
+};
+
+Label.parseViewBox = parseViewBox;
+Label.renderCallByParent = renderCallByParent;
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/component/LabelList.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/recharts/es6/component/LabelList.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LabelList": () => (/* binding */ LabelList)
+/* harmony export */ });
+/* harmony import */ var lodash_isObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isObject */ "./node_modules/lodash/isObject.js");
+/* harmony import */ var lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isObject__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_last__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/last */ "./node_modules/lodash/last.js");
+/* harmony import */ var lodash_last__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_last__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Label__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Label */ "./node_modules/recharts/es6/component/Label.js");
+/* harmony import */ var _container_Layer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../container/Layer */ "./node_modules/recharts/es6/container/Layer.js");
+/* harmony import */ var _util_ReactUtils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/ReactUtils */ "./node_modules/recharts/es6/util/ReactUtils.js");
+/* harmony import */ var _util_ChartUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/ChartUtils */ "./node_modules/recharts/es6/util/ChartUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+
+
+
+
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+var defaultProps = {
+  valueAccessor: function valueAccessor(entry) {
+    return lodash_isArray__WEBPACK_IMPORTED_MODULE_4___default()(entry.value) ? lodash_last__WEBPACK_IMPORTED_MODULE_3___default()(entry.value) : entry.value;
+  }
+};
+function LabelList(props) {
+  var data = props.data,
+      valueAccessor = props.valueAccessor,
+      dataKey = props.dataKey,
+      clockWise = props.clockWise,
+      id = props.id,
+      textBreakAll = props.textBreakAll,
+      others = _objectWithoutProperties(props, ["data", "valueAccessor", "dataKey", "clockWise", "id", "textBreakAll"]);
+
+  if (!data || !data.length) {
+    return null;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_container_Layer__WEBPACK_IMPORTED_MODULE_6__.Layer, {
+    className: "recharts-label-list"
+  }, data.map(function (entry, index) {
+    var value = lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(dataKey) ? valueAccessor(entry, index) : (0,_util_ChartUtils__WEBPACK_IMPORTED_MODULE_7__.getValueByDataKey)(entry && entry.payload, dataKey);
+    var idProps = lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(id) ? {} : {
+      id: "".concat(id, "-").concat(index)
+    };
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Label__WEBPACK_IMPORTED_MODULE_8__.Label, _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_9__.filterProps)(entry, true), others, idProps, {
+      parentViewBox: entry.parentViewBox,
+      index: index,
+      value: value,
+      textBreakAll: textBreakAll,
+      viewBox: _Label__WEBPACK_IMPORTED_MODULE_8__.Label.parseViewBox(lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(clockWise) ? entry : _objectSpread(_objectSpread({}, entry), {}, {
+        clockWise: clockWise
+      })),
+      key: "label-".concat(index) // eslint-disable-line react/no-array-index-key
+
+    }));
+  }));
+}
+LabelList.displayName = 'LabelList';
+
+function parseLabelList(label, data) {
+  if (!label) {
+    return null;
+  }
+
+  if (label === true) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(LabelList, {
+      key: "labelList-implicit",
+      data: data
+    });
+  }
+
+  if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.isValidElement(label) || lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(label)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(LabelList, {
+      key: "labelList-implicit",
+      data: data,
+      content: label
+    });
+  }
+
+  if (lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default()(label)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(LabelList, _extends({
+      data: data
+    }, label, {
+      key: "labelList-implicit"
+    }));
+  }
+
+  return null;
+}
+
+function renderCallByParent(parentProps, data) {
+  var ckeckPropsLabel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (!parentProps || !parentProps.children && ckeckPropsLabel && !parentProps.label) {
+    return null;
+  }
+
+  var children = parentProps.children;
+  var explicitChilren = (0,_util_ReactUtils__WEBPACK_IMPORTED_MODULE_10__.findAllByType)(children, LabelList.displayName).map(function (child, index) {
+    return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_5__.cloneElement)(child, {
+      data: data,
+      key: "labelList-".concat(index)
+    });
+  });
+
+  if (!ckeckPropsLabel) {
+    return explicitChilren;
+  }
+
+  var implicitLabelList = parseLabelList(parentProps.label, data);
+  return [implicitLabelList].concat(_toConsumableArray(explicitChilren));
+}
+
+LabelList.renderCallByParent = renderCallByParent;
+LabelList.defaultProps = defaultProps;
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/component/Legend.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/recharts/es6/component/Legend.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Legend": () => (/* binding */ Legend)
+/* harmony export */ });
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_uniqBy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/uniqBy */ "./node_modules/lodash/uniqBy.js");
+/* harmony import */ var lodash_uniqBy__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_uniqBy__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _DefaultLegendContent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DefaultLegendContent */ "./node_modules/recharts/es6/component/DefaultLegendContent.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/**
+ * @fileOverview Legend
+ */
+
+
+
+
+function defaultUniqBy(entry) {
+  return entry.value;
+}
+
+function getUniqPayload(option, payload) {
+  if (option === true) {
+    return lodash_uniqBy__WEBPACK_IMPORTED_MODULE_1___default()(payload, defaultUniqBy);
+  }
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(option)) {
+    return lodash_uniqBy__WEBPACK_IMPORTED_MODULE_1___default()(payload, option);
+  }
+
+  return payload;
+}
+
+function renderContent(content, props) {
+  if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.isValidElement(content)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(content, props);
+  }
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_0___default()(content)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(content, props);
+  }
+
+  var ref = props.ref,
+      otherProps = _objectWithoutProperties(props, ["ref"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_DefaultLegendContent__WEBPACK_IMPORTED_MODULE_3__.DefaultLegendContent, otherProps);
+}
+
+var EPS = 1;
+var Legend = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Legend, _PureComponent);
+
+  var _super = _createSuper(Legend);
+
+  function Legend() {
+    var _this;
+
+    _classCallCheck(this, Legend);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.wrapperNode = void 0;
+    _this.state = {
+      boxWidth: -1,
+      boxHeight: -1
+    };
+    return _this;
+  }
+
+  _createClass(Legend, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateBBox();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.updateBBox();
+    }
+  }, {
+    key: "getBBox",
+    value: function getBBox() {
+      if (this.wrapperNode && this.wrapperNode.getBoundingClientRect) {
+        return this.wrapperNode.getBoundingClientRect();
+      }
+
+      return null;
+    }
+  }, {
+    key: "getBBoxSnapshot",
+    value: function getBBoxSnapshot() {
+      var _this$state = this.state,
+          boxWidth = _this$state.boxWidth,
+          boxHeight = _this$state.boxHeight;
+
+      if (boxWidth >= 0 && boxHeight >= 0) {
+        return {
+          width: boxWidth,
+          height: boxHeight
+        };
+      }
+
+      return null;
+    }
+  }, {
+    key: "getDefaultPosition",
+    value: function getDefaultPosition(style) {
+      var _this$props = this.props,
+          layout = _this$props.layout,
+          align = _this$props.align,
+          verticalAlign = _this$props.verticalAlign,
+          margin = _this$props.margin,
+          chartWidth = _this$props.chartWidth,
+          chartHeight = _this$props.chartHeight;
+      var hPos, vPos;
+
+      if (!style || (style.left === undefined || style.left === null) && (style.right === undefined || style.right === null)) {
+        if (align === 'center' && layout === 'vertical') {
+          var _box = this.getBBoxSnapshot() || {
+            width: 0
+          };
+
+          hPos = {
+            left: ((chartWidth || 0) - _box.width) / 2
+          };
+        } else {
+          hPos = align === 'right' ? {
+            right: margin && margin.right || 0
+          } : {
+            left: margin && margin.left || 0
+          };
+        }
+      }
+
+      if (!style || (style.top === undefined || style.top === null) && (style.bottom === undefined || style.bottom === null)) {
+        if (verticalAlign === 'middle') {
+          var _box2 = this.getBBoxSnapshot() || {
+            height: 0
+          };
+
+          vPos = {
+            top: ((chartHeight || 0) - _box2.height) / 2
+          };
+        } else {
+          vPos = verticalAlign === 'bottom' ? {
+            bottom: margin && margin.bottom || 0
+          } : {
+            top: margin && margin.top || 0
+          };
+        }
+      }
+
+      return _objectSpread(_objectSpread({}, hPos), vPos);
+    }
+  }, {
+    key: "updateBBox",
+    value: function updateBBox() {
+      var _this$state2 = this.state,
+          boxWidth = _this$state2.boxWidth,
+          boxHeight = _this$state2.boxHeight;
+      var onBBoxUpdate = this.props.onBBoxUpdate;
+
+      if (this.wrapperNode && this.wrapperNode.getBoundingClientRect) {
+        var _box3 = this.wrapperNode.getBoundingClientRect();
+
+        if (Math.abs(_box3.width - boxWidth) > EPS || Math.abs(_box3.height - boxHeight) > EPS) {
+          this.setState({
+            boxWidth: _box3.width,
+            boxHeight: _box3.height
+          }, function () {
+            if (onBBoxUpdate) {
+              onBBoxUpdate(_box3);
+            }
+          });
+        }
+      } else if (boxWidth !== -1 || boxHeight !== -1) {
+        this.setState({
+          boxWidth: -1,
+          boxHeight: -1
+        }, function () {
+          if (onBBoxUpdate) {
+            onBBoxUpdate(null);
+          }
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          content = _this$props2.content,
+          width = _this$props2.width,
+          height = _this$props2.height,
+          wrapperStyle = _this$props2.wrapperStyle,
+          payloadUniqBy = _this$props2.payloadUniqBy,
+          payload = _this$props2.payload;
+
+      var outerStyle = _objectSpread(_objectSpread({
+        position: 'absolute',
+        width: width || 'auto',
+        height: height || 'auto'
+      }, this.getDefaultPosition(wrapperStyle)), wrapperStyle);
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+        className: "recharts-legend-wrapper",
+        style: outerStyle,
+        ref: function ref(node) {
+          _this2.wrapperNode = node;
+        }
+      }, renderContent(content, _objectSpread(_objectSpread({}, this.props), {}, {
+        payload: getUniqPayload(payloadUniqBy, payload)
+      })));
+    }
+  }], [{
+    key: "getWithHeight",
+    value: function getWithHeight(item, chartWidth) {
+      var layout = item.props.layout;
+
+      if (layout === 'vertical' && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_4__.isNumber)(item.props.height)) {
+        return {
+          height: item.props.height
+        };
+      }
+
+      if (layout === 'horizontal') {
+        return {
+          width: item.props.width || chartWidth
+        };
+      }
+
+      return null;
+    }
+  }]);
+
+  return Legend;
+}(react__WEBPACK_IMPORTED_MODULE_2__.PureComponent);
+Legend.displayName = 'Legend';
+Legend.defaultProps = {
+  iconSize: 14,
+  layout: 'horizontal',
+  align: 'center',
+  verticalAlign: 'bottom'
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/component/Text.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/recharts/es6/component/Text.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Text": () => (/* binding */ Text)
+/* harmony export */ });
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var reduce_css_calc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reduce-css-calc */ "./node_modules/reduce-css-calc/dist/index.js");
+/* harmony import */ var reduce_css_calc__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reduce_css_calc__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_Global__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/Global */ "./node_modules/recharts/es6/util/Global.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+/* harmony import */ var _util_DOMUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/DOMUtils */ "./node_modules/recharts/es6/util/DOMUtils.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var BREAKING_SPACES = /[ \f\n\r\t\v\u2028\u2029]+/;
+
+var calculateWordWidths = function calculateWordWidths(props) {
+  try {
+    var words = [];
+
+    if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default()(props.children)) {
+      if (props.breakAll) {
+        words = props.children.toString().split('');
+      } else {
+        words = props.children.toString().split(BREAKING_SPACES);
+      }
+    }
+
+    var wordsWithComputedWidth = words.map(function (word) {
+      return {
+        word: word,
+        width: (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_4__.getStringSize)(word, props.style).width
+      };
+    });
+    var spaceWidth = props.breakAll ? 0 : (0,_util_DOMUtils__WEBPACK_IMPORTED_MODULE_4__.getStringSize)("\xA0", props.style).width;
+    return {
+      wordsWithComputedWidth: wordsWithComputedWidth,
+      spaceWidth: spaceWidth
+    };
+  } catch (e) {
+    return null;
+  }
+};
+
+var calculateWordsByLines = function calculateWordsByLines(props, initialWordsWithComputedWith, spaceWidth, lineWidth, scaleToFit) {
+  var shouldLimitLines = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(props.maxLines);
+  var text = props.children;
+
+  var calculate = function calculate() {
+    var words = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    return words.reduce(function (result, _ref) {
+      var word = _ref.word,
+          width = _ref.width;
+      var currentLine = result[result.length - 1];
+
+      if (currentLine && (lineWidth == null || scaleToFit || currentLine.width + width + spaceWidth < lineWidth)) {
+        // Word can be added to an existing line
+        currentLine.words.push(word);
+        currentLine.width += width + spaceWidth;
+      } else {
+        // Add first word to line or word is too long to scaleToFit on existing line
+        var newLine = {
+          words: [word],
+          width: width
+        };
+        result.push(newLine);
+      }
+
+      return result;
+    }, []);
+  };
+
+  var originalResult = calculate(initialWordsWithComputedWith);
+
+  var findLongestLine = function findLongestLine(words) {
+    return words.reduce(function (a, b) {
+      return a.width > b.width ? a : b;
+    });
+  };
+
+  if (!shouldLimitLines) {
+    return originalResult;
+  }
+
+  var suffix = '…';
+
+  var checkOverflow = function checkOverflow(index) {
+    var tempText = text.slice(0, index);
+    var words = calculateWordWidths(_objectSpread(_objectSpread({}, props), {}, {
+      children: tempText + suffix
+    })).wordsWithComputedWidth;
+    var result = calculate(words);
+    var doesOverflow = result.length > props.maxLines || findLongestLine(result).width > lineWidth;
+    return [doesOverflow, result];
+  };
+
+  var start = 0;
+  var end = text.length - 1;
+  var iterations = 0;
+  var trimmedResult;
+
+  while (start <= end && iterations <= text.length - 1) {
+    var middle = Math.floor((start + end) / 2);
+    var prev = middle - 1;
+
+    var _checkOverflow = checkOverflow(prev),
+        _checkOverflow2 = _slicedToArray(_checkOverflow, 2),
+        doesPrevOverflow = _checkOverflow2[0],
+        result = _checkOverflow2[1];
+
+    var _checkOverflow3 = checkOverflow(middle),
+        _checkOverflow4 = _slicedToArray(_checkOverflow3, 1),
+        doesMiddleOverflow = _checkOverflow4[0];
+
+    if (!doesPrevOverflow && !doesMiddleOverflow) {
+      start = middle + 1;
+    }
+
+    if (doesPrevOverflow && doesMiddleOverflow) {
+      end = middle - 1;
+    }
+
+    if (!doesPrevOverflow && doesMiddleOverflow) {
+      trimmedResult = result;
+      break;
+    }
+
+    iterations++;
+  } // Fallback to originalResult (result without trimming) if we cannot find the
+  // where to trim.  This should not happen :tm:
+
+
+  return trimmedResult || originalResult;
+};
+
+var getWordsWithoutCalculate = function getWordsWithoutCalculate(children) {
+  var words = !lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default()(children) ? children.toString().split(BREAKING_SPACES) : [];
+  return [{
+    words: words
+  }];
+};
+
+var getWordsByLines = function getWordsByLines(props, needCalculate) {
+  // Only perform calculations if using features that require them (multiline, scaleToFit)
+  if ((props.width || props.scaleToFit) && !_util_Global__WEBPACK_IMPORTED_MODULE_6__.Global.isSsr) {
+    var wordsWithComputedWidth, spaceWidth;
+
+    if (needCalculate) {
+      var wordWidths = calculateWordWidths(props);
+
+      if (wordWidths) {
+        var wcw = wordWidths.wordsWithComputedWidth,
+            sw = wordWidths.spaceWidth;
+        wordsWithComputedWidth = wcw;
+        spaceWidth = sw;
+      } else {
+        return getWordsWithoutCalculate(props.children);
+      }
+
+      return calculateWordsByLines(props, wordsWithComputedWidth, spaceWidth, props.width, props.scaleToFit);
+    }
+  }
+
+  return getWordsWithoutCalculate(props.children);
+};
+
+var Text = /*#__PURE__*/function (_Component) {
+  _inherits(Text, _Component);
+
+  var _super = _createSuper(Text);
+
+  function Text() {
+    var _this;
+
+    _classCallCheck(this, Text);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Text, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          dx = _this$props.dx,
+          dy = _this$props.dy,
+          textAnchor = _this$props.textAnchor,
+          verticalAnchor = _this$props.verticalAnchor,
+          scaleToFit = _this$props.scaleToFit,
+          angle = _this$props.angle,
+          lineHeight = _this$props.lineHeight,
+          capHeight = _this$props.capHeight,
+          className = _this$props.className,
+          breakAll = _this$props.breakAll,
+          textProps = _objectWithoutProperties(_this$props, ["dx", "dy", "textAnchor", "verticalAnchor", "scaleToFit", "angle", "lineHeight", "capHeight", "className", "breakAll"]);
+
+      var wordsByLines = this.state.wordsByLines;
+
+      if (!(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(textProps.x) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumOrStr)(textProps.y)) {
+        return null;
+      }
+
+      var x = textProps.x + ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(dx) ? dx : 0);
+      var y = textProps.y + ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(dy) ? dy : 0);
+      var startDy;
+
+      switch (verticalAnchor) {
+        case 'start':
+          startDy = reduce_css_calc__WEBPACK_IMPORTED_MODULE_2___default()("calc(".concat(capHeight, ")"));
+          break;
+
+        case 'middle':
+          startDy = reduce_css_calc__WEBPACK_IMPORTED_MODULE_2___default()("calc(".concat((wordsByLines.length - 1) / 2, " * -").concat(lineHeight, " + (").concat(capHeight, " / 2))"));
+          break;
+
+        default:
+          startDy = reduce_css_calc__WEBPACK_IMPORTED_MODULE_2___default()("calc(".concat(wordsByLines.length - 1, " * -").concat(lineHeight, ")"));
+          break;
+      }
+
+      var transforms = [];
+
+      if (scaleToFit) {
+        var lineWidth = wordsByLines[0].width;
+        var width = this.props.width;
+        transforms.push("scale(".concat(((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(width) ? width / lineWidth : 1) / lineWidth, ")"));
+      }
+
+      if (angle) {
+        transforms.push("rotate(".concat(angle, ", ").concat(x, ", ").concat(y, ")"));
+      }
+
+      if (transforms.length) {
+        textProps.transform = transforms.join(' ');
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("text", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_7__.filterProps)(textProps, true), {
+        x: x,
+        y: y,
+        className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('recharts-text', className),
+        textAnchor: textAnchor
+      }), wordsByLines.map(function (line, index) {
+        return (
+          /*#__PURE__*/
+          // eslint-disable-next-line react/no-array-index-key
+          react__WEBPACK_IMPORTED_MODULE_1__.createElement("tspan", {
+            x: x,
+            dy: index === 0 ? startDy : lineHeight,
+            key: index
+          }, line.words.join(breakAll ? '' : ' '))
+        );
+      }));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      if (nextProps.width !== prevState.prevWidth || nextProps.scaleToFit !== prevState.prevScaleToFit || nextProps.children !== prevState.prevChildren || nextProps.style !== prevState.prevStyle || nextProps.breakAll !== prevState.prevBreakAll) {
+        var needCalculate = nextProps.children !== prevState.prevChildren || nextProps.style !== prevState.prevStyle || nextProps.breakAll !== prevState.prevBreakAll;
+        return {
+          prevWidth: nextProps.width,
+          prevScaleToFit: nextProps.scaleToFit,
+          prevChildren: nextProps.children,
+          prevStyle: nextProps.style,
+          wordsByLines: getWordsByLines(nextProps, needCalculate)
+        };
+      }
+
+      return null;
+    }
+  }]);
+
+  return Text;
+}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+Text.defaultProps = {
+  x: 0,
+  y: 0,
+  lineHeight: '1em',
+  capHeight: '0.71em',
+  // Magic number from d3
+  scaleToFit: false,
+  textAnchor: 'start',
+  verticalAnchor: 'end' // Maintain compat with existing charts / default SVG behavior
+
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/component/Tooltip.js":
+/*!********************************************************!*\
+  !*** ./node_modules/recharts/es6/component/Tooltip.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Tooltip": () => (/* binding */ Tooltip)
+/* harmony export */ });
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_uniqBy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/uniqBy */ "./node_modules/lodash/uniqBy.js");
+/* harmony import */ var lodash_uniqBy__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_uniqBy__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_smooth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-smooth */ "./node_modules/react-smooth/es6/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _DefaultTooltipContent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DefaultTooltipContent */ "./node_modules/recharts/es6/component/DefaultTooltipContent.js");
+/* harmony import */ var _util_Global__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/Global */ "./node_modules/recharts/es6/util/Global.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Tooltip
+ */
+
+
+
+
+
+
+var CLS_PREFIX = 'recharts-tooltip-wrapper';
+var EPS = 1;
+
+function defaultUniqBy(entry) {
+  return entry.dataKey;
+}
+
+function getUniqPayload(option, payload) {
+  if (option === true) {
+    return lodash_uniqBy__WEBPACK_IMPORTED_MODULE_2___default()(payload, defaultUniqBy);
+  }
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(option)) {
+    return lodash_uniqBy__WEBPACK_IMPORTED_MODULE_2___default()(payload, option);
+  }
+
+  return payload;
+}
+
+function renderContent(content, props) {
+  if ( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.isValidElement(content)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(content, props);
+  }
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_1___default()(content)) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(content, props);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_DefaultTooltipContent__WEBPACK_IMPORTED_MODULE_6__.DefaultTooltipContent, props);
+}
+
+var Tooltip = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Tooltip, _PureComponent);
+
+  var _super = _createSuper(Tooltip);
+
+  function Tooltip() {
+    var _this;
+
+    _classCallCheck(this, Tooltip);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.state = {
+      boxWidth: -1,
+      boxHeight: -1
+    };
+    _this.wrapperNode = void 0;
+
+    _this.getTranslate = function (_ref) {
+      var key = _ref.key,
+          tooltipDimension = _ref.tooltipDimension,
+          viewBoxDimension = _ref.viewBoxDimension;
+      var _this$props = _this.props,
+          allowEscapeViewBox = _this$props.allowEscapeViewBox,
+          coordinate = _this$props.coordinate,
+          offset = _this$props.offset,
+          position = _this$props.position,
+          viewBox = _this$props.viewBox;
+
+      if (position && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(position[key])) {
+        return position[key];
+      }
+
+      var restricted = coordinate[key] - tooltipDimension - offset;
+      var unrestricted = coordinate[key] + offset;
+
+      if (allowEscapeViewBox[key]) {
+        return unrestricted;
+      }
+
+      var tooltipBoundary = coordinate[key] + tooltipDimension + offset;
+      var viewBoxBoundary = viewBox[key] + viewBoxDimension;
+
+      if (tooltipBoundary > viewBoxBoundary) {
+        return Math.max(restricted, viewBox[key]);
+      }
+
+      return Math.max(unrestricted, viewBox[key]);
+    };
+
+    return _this;
+  }
+
+  _createClass(Tooltip, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateBBox();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.updateBBox();
+    }
+  }, {
+    key: "updateBBox",
+    value: function updateBBox() {
+      var _this$state = this.state,
+          boxWidth = _this$state.boxWidth,
+          boxHeight = _this$state.boxHeight;
+
+      if (this.wrapperNode && this.wrapperNode.getBoundingClientRect) {
+        var box = this.wrapperNode.getBoundingClientRect();
+
+        if (Math.abs(box.width - boxWidth) > EPS || Math.abs(box.height - boxHeight) > EPS) {
+          this.setState({
+            boxWidth: box.width,
+            boxHeight: box.height
+          });
+        }
+      } else if (boxWidth !== -1 || boxHeight !== -1) {
+        this.setState({
+          boxWidth: -1,
+          boxHeight: -1
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames,
+          _this2 = this;
+
+      var _this$props2 = this.props,
+          payload = _this$props2.payload,
+          isAnimationActive = _this$props2.isAnimationActive,
+          animationDuration = _this$props2.animationDuration,
+          animationEasing = _this$props2.animationEasing,
+          filterNull = _this$props2.filterNull,
+          payloadUniqBy = _this$props2.payloadUniqBy;
+      var finalPayload = getUniqPayload(payloadUniqBy, filterNull && payload && payload.length ? payload.filter(function (entry) {
+        return !lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default()(entry.value);
+      }) : payload);
+      var hasPayload = finalPayload && finalPayload.length;
+      var _this$props3 = this.props,
+          content = _this$props3.content,
+          viewBox = _this$props3.viewBox,
+          coordinate = _this$props3.coordinate,
+          position = _this$props3.position,
+          active = _this$props3.active,
+          wrapperStyle = _this$props3.wrapperStyle;
+
+      var outerStyle = _objectSpread({
+        pointerEvents: 'none',
+        visibility: active && hasPayload ? 'visible' : 'hidden',
+        position: 'absolute',
+        top: 0,
+        left: 0
+      }, wrapperStyle);
+
+      var translateX, translateY;
+
+      if (position && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(position.x) && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(position.y)) {
+        translateX = position.x;
+        translateY = position.y;
+      } else {
+        var _this$state2 = this.state,
+            boxWidth = _this$state2.boxWidth,
+            boxHeight = _this$state2.boxHeight;
+
+        if (boxWidth > 0 && boxHeight > 0 && coordinate) {
+          translateX = this.getTranslate({
+            key: 'x',
+            tooltipDimension: boxWidth,
+            viewBoxDimension: viewBox.width
+          });
+          translateY = this.getTranslate({
+            key: 'y',
+            tooltipDimension: boxHeight,
+            viewBoxDimension: viewBox.height
+          });
+        } else {
+          outerStyle.visibility = 'hidden';
+        }
+      }
+
+      outerStyle = _objectSpread(_objectSpread({}, (0,react_smooth__WEBPACK_IMPORTED_MODULE_4__.translateStyle)({
+        transform: this.props.useTranslate3d ? "translate3d(".concat(translateX, "px, ").concat(translateY, "px, 0)") : "translate(".concat(translateX, "px, ").concat(translateY, "px)")
+      })), outerStyle);
+
+      if (isAnimationActive && active) {
+        outerStyle = _objectSpread(_objectSpread({}, (0,react_smooth__WEBPACK_IMPORTED_MODULE_4__.translateStyle)({
+          transition: "transform ".concat(animationDuration, "ms ").concat(animationEasing)
+        })), outerStyle);
+      }
+
+      var cls = classnames__WEBPACK_IMPORTED_MODULE_5___default()(CLS_PREFIX, (_classNames = {}, _defineProperty(_classNames, "".concat(CLS_PREFIX, "-right"), (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(translateX) && coordinate && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(coordinate.x) && translateX >= coordinate.x), _defineProperty(_classNames, "".concat(CLS_PREFIX, "-left"), (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(translateX) && coordinate && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(coordinate.x) && translateX < coordinate.x), _defineProperty(_classNames, "".concat(CLS_PREFIX, "-bottom"), (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(translateY) && coordinate && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(coordinate.y) && translateY >= coordinate.y), _defineProperty(_classNames, "".concat(CLS_PREFIX, "-top"), (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(translateY) && coordinate && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_7__.isNumber)(coordinate.y) && translateY < coordinate.y), _classNames));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+        className: cls,
+        style: outerStyle,
+        ref: function ref(node) {
+          _this2.wrapperNode = node;
+        }
+      }, renderContent(content, _objectSpread(_objectSpread({}, this.props), {}, {
+        payload: finalPayload
+      })));
+    }
+  }]);
+
+  return Tooltip;
+}(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent);
+Tooltip.displayName = 'Tooltip';
+Tooltip.defaultProps = {
+  active: false,
+  allowEscapeViewBox: {
+    x: false,
+    y: false
+  },
+  offset: 10,
+  viewBox: {
+    x1: 0,
+    x2: 0,
+    y1: 0,
+    y2: 0
+  },
+  coordinate: {
+    x: 0,
+    y: 0
+  },
+  cursorStyle: {},
+  separator: ' : ',
+  wrapperStyle: {},
+  contentStyle: {},
+  itemStyle: {},
+  labelStyle: {},
+  cursor: true,
+  trigger: 'hover',
+  isAnimationActive: !_util_Global__WEBPACK_IMPORTED_MODULE_8__.Global.isSsr,
+  animationEasing: 'ease',
+  animationDuration: 400,
+  filterNull: true,
+  useTranslate3d: false
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/container/Layer.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/container/Layer.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Layer": () => (/* binding */ Layer)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/**
+ * @fileOverview Layer
+ */
+
+
+
+function Layer(props) {
+  var children = props.children,
+      className = props.className,
+      others = _objectWithoutProperties(props, ["children", "className"]);
+
+  var layerClass = classnames__WEBPACK_IMPORTED_MODULE_1___default()('recharts-layer', className);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("g", _extends({
+    className: layerClass
+  }, (0,_util_types__WEBPACK_IMPORTED_MODULE_2__.filterProps)(others, true)), children);
+}
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/container/Surface.js":
+/*!********************************************************!*\
+  !*** ./node_modules/recharts/es6/container/Surface.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Surface": () => (/* binding */ Surface)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/**
+ * @fileOverview Surface
+ */
+
+
+
+function Surface(props) {
+  var children = props.children,
+      width = props.width,
+      height = props.height,
+      viewBox = props.viewBox,
+      className = props.className,
+      style = props.style,
+      others = _objectWithoutProperties(props, ["children", "width", "height", "viewBox", "className", "style"]);
+
+  var svgView = viewBox || {
+    width: width,
+    height: height,
+    x: 0,
+    y: 0
+  };
+  var layerClass = classnames__WEBPACK_IMPORTED_MODULE_1___default()('recharts-surface', className);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_2__.filterProps)(others, true, true), {
+    className: layerClass,
+    width: width,
+    height: height,
+    style: style,
+    viewBox: "".concat(svgView.x, " ").concat(svgView.y, " ").concat(svgView.width, " ").concat(svgView.height),
+    version: "1.1"
+  }), children);
+}
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/shape/Cross.js":
+/*!**************************************************!*\
+  !*** ./node_modules/recharts/es6/shape/Cross.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Cross": () => (/* binding */ Cross)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Cross
+ */
+
+
+
+
+var Cross = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Cross, _PureComponent);
+
+  var _super = _createSuper(Cross);
+
+  function Cross() {
+    _classCallCheck(this, Cross);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Cross, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          x = _this$props.x,
+          y = _this$props.y,
+          width = _this$props.width,
+          height = _this$props.height,
+          top = _this$props.top,
+          left = _this$props.left,
+          className = _this$props.className;
+
+      if (!(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(x) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(y) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(width) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(height) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(top) || !(0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.isNumber)(left)) {
+        return null;
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_3__.filterProps)(this.props, true), {
+        className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('recharts-cross', className),
+        d: Cross.getPath(x, y, width, height, top, left)
+      }));
+    }
+  }], [{
+    key: "getPath",
+    value: function getPath(x, y, width, height, top, left) {
+      return "M".concat(x, ",").concat(top, "v").concat(height, "M").concat(left, ",").concat(y, "h").concat(width);
+    }
+  }]);
+
+  return Cross;
+}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
+Cross.defaultProps = {
+  x: 0,
+  y: 0,
+  top: 0,
+  left: 0,
+  width: 0,
+  height: 0
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/shape/Curve.js":
+/*!**************************************************!*\
+  !*** ./node_modules/recharts/es6/shape/Curve.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Curve": () => (/* binding */ Curve)
+/* harmony export */ });
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_upperFirst__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/upperFirst */ "./node_modules/lodash/upperFirst.js");
+/* harmony import */ var lodash_upperFirst__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_upperFirst__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/basisClosed.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/basisOpen.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/basis.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/linearClosed.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/linear.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/monotone.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/natural.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/curve/step.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/area.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/line.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Curve
+ */
+
+
+
+
+
+var CURVE_FACTORIES = {
+  curveBasisClosed: d3_shape__WEBPACK_IMPORTED_MODULE_5__["default"],
+  curveBasisOpen: d3_shape__WEBPACK_IMPORTED_MODULE_6__["default"],
+  curveBasis: d3_shape__WEBPACK_IMPORTED_MODULE_7__["default"],
+  curveLinearClosed: d3_shape__WEBPACK_IMPORTED_MODULE_8__["default"],
+  curveLinear: d3_shape__WEBPACK_IMPORTED_MODULE_9__["default"],
+  curveMonotoneX: d3_shape__WEBPACK_IMPORTED_MODULE_10__.monotoneX,
+  curveMonotoneY: d3_shape__WEBPACK_IMPORTED_MODULE_10__.monotoneY,
+  curveNatural: d3_shape__WEBPACK_IMPORTED_MODULE_11__["default"],
+  curveStep: d3_shape__WEBPACK_IMPORTED_MODULE_12__["default"],
+  curveStepAfter: d3_shape__WEBPACK_IMPORTED_MODULE_12__.stepAfter,
+  curveStepBefore: d3_shape__WEBPACK_IMPORTED_MODULE_12__.stepBefore
+};
+
+var defined = function defined(p) {
+  return p.x === +p.x && p.y === +p.y;
+};
+
+var getX = function getX(p) {
+  return p.x;
+};
+
+var getY = function getY(p) {
+  return p.y;
+};
+
+var getCurveFactory = function getCurveFactory(type, layout) {
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_2___default()(type)) {
+    return type;
+  }
+
+  var name = "curve".concat(lodash_upperFirst__WEBPACK_IMPORTED_MODULE_1___default()(type));
+
+  if (name === 'curveMonotone' && layout) {
+    return CURVE_FACTORIES["".concat(name).concat(layout === 'vertical' ? 'Y' : 'X')];
+  }
+
+  return CURVE_FACTORIES[name] || d3_shape__WEBPACK_IMPORTED_MODULE_9__["default"];
+};
+
+var Curve = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Curve, _PureComponent);
+
+  var _super = _createSuper(Curve);
+
+  function Curve() {
+    _classCallCheck(this, Curve);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Curve, [{
+    key: "getPath",
+    value:
+    /**
+     * Calculate the path of curve
+     * @return {String} path
+     */
+    function getPath() {
+      var _this$props = this.props,
+          type = _this$props.type,
+          points = _this$props.points,
+          baseLine = _this$props.baseLine,
+          layout = _this$props.layout,
+          connectNulls = _this$props.connectNulls;
+      var curveFactory = getCurveFactory(type, layout);
+      var formatPoints = connectNulls ? points.filter(function (entry) {
+        return defined(entry);
+      }) : points;
+      var lineFunction;
+
+      if (lodash_isArray__WEBPACK_IMPORTED_MODULE_0___default()(baseLine)) {
+        var formatBaseLine = connectNulls ? baseLine.filter(function (base) {
+          return defined(base);
+        }) : baseLine;
+        var areaPoints = formatPoints.map(function (entry, index) {
+          return _objectSpread(_objectSpread({}, entry), {}, {
+            base: formatBaseLine[index]
+          });
+        });
+
+        if (layout === 'vertical') {
+          lineFunction = (0,d3_shape__WEBPACK_IMPORTED_MODULE_13__["default"])().y(getY).x1(getX).x0(function (d) {
+            return d.base.x;
+          });
+        } else {
+          lineFunction = (0,d3_shape__WEBPACK_IMPORTED_MODULE_13__["default"])().x(getX).y1(getY).y0(function (d) {
+            return d.base.y;
+          });
+        }
+
+        lineFunction.defined(defined).curve(curveFactory);
+        return lineFunction(areaPoints);
+      }
+
+      if (layout === 'vertical' && (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_14__.isNumber)(baseLine)) {
+        lineFunction = (0,d3_shape__WEBPACK_IMPORTED_MODULE_13__["default"])().y(getY).x1(getX).x0(baseLine);
+      } else if ((0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_14__.isNumber)(baseLine)) {
+        lineFunction = (0,d3_shape__WEBPACK_IMPORTED_MODULE_13__["default"])().x(getX).y1(getY).y0(baseLine);
+      } else {
+        lineFunction = (0,d3_shape__WEBPACK_IMPORTED_MODULE_15__["default"])().x(getX).y(getY);
+      }
+
+      lineFunction.defined(defined).curve(curveFactory);
+      return lineFunction(formatPoints);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          className = _this$props2.className,
+          points = _this$props2.points,
+          path = _this$props2.path,
+          pathRef = _this$props2.pathRef;
+
+      if ((!points || !points.length) && !path) {
+        return null;
+      }
+
+      var realPath = points && points.length ? this.getPath() : path;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("path", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_16__.filterProps)(this.props), (0,_util_types__WEBPACK_IMPORTED_MODULE_16__.adaptEventHandlers)(this.props), {
+        className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('recharts-curve', className),
+        d: realPath,
+        ref: pathRef
+      }));
+    }
+  }]);
+
+  return Curve;
+}(react__WEBPACK_IMPORTED_MODULE_3__.PureComponent);
+Curve.defaultProps = {
+  type: 'linear',
+  points: [],
+  connectNulls: false
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/shape/Dot.js":
+/*!************************************************!*\
+  !*** ./node_modules/recharts/es6/shape/Dot.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Dot": () => (/* binding */ Dot)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Dot
+ */
+
+
+
+var Dot = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Dot, _PureComponent);
+
+  var _super = _createSuper(Dot);
+
+  function Dot() {
+    _classCallCheck(this, Dot);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Dot, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          cx = _this$props.cx,
+          cy = _this$props.cy,
+          r = _this$props.r,
+          className = _this$props.className;
+      var layerClass = classnames__WEBPACK_IMPORTED_MODULE_1___default()('recharts-dot', className);
+
+      if (cx === +cx && cy === +cy && r === +r) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_2__.filterProps)(this.props), (0,_util_types__WEBPACK_IMPORTED_MODULE_2__.adaptEventHandlers)(this.props), {
+          className: layerClass,
+          cx: cx,
+          cy: cy,
+          r: r
+        }));
+      }
+
+      return null;
+    }
+  }]);
+
+  return Dot;
+}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/shape/Rectangle.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/shape/Rectangle.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Rectangle": () => (/* binding */ Rectangle),
+/* harmony export */   "isInRectangle": () => (/* binding */ isInRectangle)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_smooth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-smooth */ "./node_modules/react-smooth/es6/index.js");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Rectangle
+ */
+
+
+
+
+
+var getRectanglePath = function getRectanglePath(x, y, width, height, radius) {
+  var maxRadius = Math.min(Math.abs(width) / 2, Math.abs(height) / 2);
+  var ySign = height >= 0 ? 1 : -1;
+  var xSign = width >= 0 ? 1 : -1;
+  var clockWise = height >= 0 && width >= 0 || height < 0 && width < 0 ? 1 : 0;
+  var path;
+
+  if (maxRadius > 0 && radius instanceof Array) {
+    var newRadius = [0, 0, 0, 0];
+
+    for (var i = 0, len = 4; i < len; i++) {
+      newRadius[i] = radius[i] > maxRadius ? maxRadius : radius[i];
+    }
+
+    path = "M".concat(x, ",").concat(y + ySign * newRadius[0]);
+
+    if (newRadius[0] > 0) {
+      path += "A ".concat(newRadius[0], ",").concat(newRadius[0], ",0,0,").concat(clockWise, ",").concat(x + xSign * newRadius[0], ",").concat(y);
+    }
+
+    path += "L ".concat(x + width - xSign * newRadius[1], ",").concat(y);
+
+    if (newRadius[1] > 0) {
+      path += "A ".concat(newRadius[1], ",").concat(newRadius[1], ",0,0,").concat(clockWise, ",\n        ").concat(x + width, ",").concat(y + ySign * newRadius[1]);
+    }
+
+    path += "L ".concat(x + width, ",").concat(y + height - ySign * newRadius[2]);
+
+    if (newRadius[2] > 0) {
+      path += "A ".concat(newRadius[2], ",").concat(newRadius[2], ",0,0,").concat(clockWise, ",\n        ").concat(x + width - xSign * newRadius[2], ",").concat(y + height);
+    }
+
+    path += "L ".concat(x + xSign * newRadius[3], ",").concat(y + height);
+
+    if (newRadius[3] > 0) {
+      path += "A ".concat(newRadius[3], ",").concat(newRadius[3], ",0,0,").concat(clockWise, ",\n        ").concat(x, ",").concat(y + height - ySign * newRadius[3]);
+    }
+
+    path += 'Z';
+  } else if (maxRadius > 0 && radius === +radius && radius > 0) {
+    var _newRadius = Math.min(maxRadius, radius);
+
+    path = "M ".concat(x, ",").concat(y + ySign * _newRadius, "\n            A ").concat(_newRadius, ",").concat(_newRadius, ",0,0,").concat(clockWise, ",").concat(x + xSign * _newRadius, ",").concat(y, "\n            L ").concat(x + width - xSign * _newRadius, ",").concat(y, "\n            A ").concat(_newRadius, ",").concat(_newRadius, ",0,0,").concat(clockWise, ",").concat(x + width, ",").concat(y + ySign * _newRadius, "\n            L ").concat(x + width, ",").concat(y + height - ySign * _newRadius, "\n            A ").concat(_newRadius, ",").concat(_newRadius, ",0,0,").concat(clockWise, ",").concat(x + width - xSign * _newRadius, ",").concat(y + height, "\n            L ").concat(x + xSign * _newRadius, ",").concat(y + height, "\n            A ").concat(_newRadius, ",").concat(_newRadius, ",0,0,").concat(clockWise, ",").concat(x, ",").concat(y + height - ySign * _newRadius, " Z");
+  } else {
+    path = "M ".concat(x, ",").concat(y, " h ").concat(width, " v ").concat(height, " h ").concat(-width, " Z");
+  }
+
+  return path;
+};
+
+var isInRectangle = function isInRectangle(point, rect) {
+  if (!point || !rect) {
+    return false;
+  }
+
+  var px = point.x,
+      py = point.y;
+  var x = rect.x,
+      y = rect.y,
+      width = rect.width,
+      height = rect.height;
+
+  if (Math.abs(width) > 0 && Math.abs(height) > 0) {
+    var minX = Math.min(x, x + width);
+    var maxX = Math.max(x, x + width);
+    var minY = Math.min(y, y + height);
+    var maxY = Math.max(y, y + height);
+    return px >= minX && px <= maxX && py >= minY && py <= maxY;
+  }
+
+  return false;
+};
+var Rectangle = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Rectangle, _PureComponent);
+
+  var _super = _createSuper(Rectangle);
+
+  function Rectangle() {
+    var _this;
+
+    _classCallCheck(this, Rectangle);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.state = {
+      totalLength: -1
+    };
+    _this.node = void 0;
+    return _this;
+  }
+
+  _createClass(Rectangle, [{
+    key: "componentDidMount",
+    value:
+    /* eslint-disable  react/no-did-mount-set-state */
+    function componentDidMount() {
+      if (this.node && this.node.getTotalLength) {
+        try {
+          var totalLength = this.node.getTotalLength();
+
+          if (totalLength) {
+            this.setState({
+              totalLength: totalLength
+            });
+          }
+        } catch (err) {// calculate total length error
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          x = _this$props.x,
+          y = _this$props.y,
+          width = _this$props.width,
+          height = _this$props.height,
+          radius = _this$props.radius,
+          className = _this$props.className;
+      var totalLength = this.state.totalLength;
+      var _this$props2 = this.props,
+          animationEasing = _this$props2.animationEasing,
+          animationDuration = _this$props2.animationDuration,
+          animationBegin = _this$props2.animationBegin,
+          isAnimationActive = _this$props2.isAnimationActive,
+          isUpdateAnimationActive = _this$props2.isUpdateAnimationActive;
+
+      if (x !== +x || y !== +y || width !== +width || height !== +height || width === 0 || height === 0) {
+        return null;
+      }
+
+      var layerClass = classnames__WEBPACK_IMPORTED_MODULE_1___default()('recharts-rectangle', className);
+
+      if (!isUpdateAnimationActive) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_3__.filterProps)(this.props, true), {
+          className: layerClass,
+          d: getRectanglePath(x, y, width, height, radius)
+        }));
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_smooth__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        canBegin: totalLength > 0,
+        from: {
+          width: width,
+          height: height,
+          x: x,
+          y: y
+        },
+        to: {
+          width: width,
+          height: height,
+          x: x,
+          y: y
+        },
+        duration: animationDuration,
+        animationEasing: animationEasing,
+        isActive: isUpdateAnimationActive
+      }, function (_ref) {
+        var currWidth = _ref.width,
+            currHeight = _ref.height,
+            currX = _ref.x,
+            currY = _ref.y;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_smooth__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          canBegin: totalLength > 0,
+          from: "0px ".concat(totalLength === -1 ? 1 : totalLength, "px"),
+          to: "".concat(totalLength, "px 0px"),
+          attributeName: "strokeDasharray",
+          begin: animationBegin,
+          duration: animationDuration,
+          isActive: isAnimationActive,
+          easing: animationEasing
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_3__.filterProps)(_this2.props, true), {
+          className: layerClass,
+          d: getRectanglePath(currX, currY, currWidth, currHeight, radius),
+          ref: function ref(node) {
+            _this2.node = node;
+          }
+        })));
+      });
+    }
+  }]);
+
+  return Rectangle;
+}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
+Rectangle.defaultProps = {
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
+  // The radius of border
+  // The radius of four corners when radius is a number
+  // The radius of left-top, right-top, right-bottom, left-bottom when radius is an array
+  radius: 0,
+  isAnimationActive: false,
+  isUpdateAnimationActive: false,
+  animationBegin: 0,
+  animationDuration: 1500,
+  animationEasing: 'ease'
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/shape/Sector.js":
+/*!***************************************************!*\
+  !*** ./node_modules/recharts/es6/shape/Sector.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Sector": () => (/* binding */ Sector)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+/* harmony import */ var _util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/PolarUtils */ "./node_modules/recharts/es6/util/PolarUtils.js");
+/* harmony import */ var _util_DataUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Sector
+ */
+
+
+
+
+
+
+var getDeltaAngle = function getDeltaAngle(startAngle, endAngle) {
+  var sign = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.mathSign)(endAngle - startAngle);
+  var deltaAngle = Math.min(Math.abs(endAngle - startAngle), 359.999);
+  return sign * deltaAngle;
+};
+
+var getTangentCircle = function getTangentCircle(_ref) {
+  var cx = _ref.cx,
+      cy = _ref.cy,
+      radius = _ref.radius,
+      angle = _ref.angle,
+      sign = _ref.sign,
+      isExternal = _ref.isExternal,
+      cornerRadius = _ref.cornerRadius,
+      cornerIsExternal = _ref.cornerIsExternal;
+  var centerRadius = cornerRadius * (isExternal ? 1 : -1) + radius;
+  var theta = Math.asin(cornerRadius / centerRadius) / _util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.RADIAN;
+  var centerAngle = cornerIsExternal ? angle : angle + sign * theta;
+  var center = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.polarToCartesian)(cx, cy, centerRadius, centerAngle); // The coordinate of point which is tangent to the circle
+
+  var circleTangency = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.polarToCartesian)(cx, cy, radius, centerAngle); // The coordinate of point which is tangent to the radius line
+
+  var lineTangencyAngle = cornerIsExternal ? angle - sign * theta : angle;
+  var lineTangency = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.polarToCartesian)(cx, cy, centerRadius * Math.cos(theta * _util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.RADIAN), lineTangencyAngle);
+  return {
+    center: center,
+    circleTangency: circleTangency,
+    lineTangency: lineTangency,
+    theta: theta
+  };
+};
+
+var getSectorPath = function getSectorPath(_ref2) {
+  var cx = _ref2.cx,
+      cy = _ref2.cy,
+      innerRadius = _ref2.innerRadius,
+      outerRadius = _ref2.outerRadius,
+      startAngle = _ref2.startAngle,
+      endAngle = _ref2.endAngle;
+  var angle = getDeltaAngle(startAngle, endAngle); // When the angle of sector equals to 360, star point and end point coincide
+
+  var tempEndAngle = startAngle + angle;
+  var outerStartPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.polarToCartesian)(cx, cy, outerRadius, startAngle);
+  var outerEndPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.polarToCartesian)(cx, cy, outerRadius, tempEndAngle);
+  var path = "M ".concat(outerStartPoint.x, ",").concat(outerStartPoint.y, "\n    A ").concat(outerRadius, ",").concat(outerRadius, ",0,\n    ").concat(+(Math.abs(angle) > 180), ",").concat(+(startAngle > tempEndAngle), ",\n    ").concat(outerEndPoint.x, ",").concat(outerEndPoint.y, "\n  ");
+
+  if (innerRadius > 0) {
+    var innerStartPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.polarToCartesian)(cx, cy, innerRadius, startAngle);
+    var innerEndPoint = (0,_util_PolarUtils__WEBPACK_IMPORTED_MODULE_3__.polarToCartesian)(cx, cy, innerRadius, tempEndAngle);
+    path += "L ".concat(innerEndPoint.x, ",").concat(innerEndPoint.y, "\n            A ").concat(innerRadius, ",").concat(innerRadius, ",0,\n            ").concat(+(Math.abs(angle) > 180), ",").concat(+(startAngle <= tempEndAngle), ",\n            ").concat(innerStartPoint.x, ",").concat(innerStartPoint.y, " Z");
+  } else {
+    path += "L ".concat(cx, ",").concat(cy, " Z");
+  }
+
+  return path;
+};
+
+var getSectorWithCorner = function getSectorWithCorner(_ref3) {
+  var cx = _ref3.cx,
+      cy = _ref3.cy,
+      innerRadius = _ref3.innerRadius,
+      outerRadius = _ref3.outerRadius,
+      cornerRadius = _ref3.cornerRadius,
+      forceCornerRadius = _ref3.forceCornerRadius,
+      cornerIsExternal = _ref3.cornerIsExternal,
+      startAngle = _ref3.startAngle,
+      endAngle = _ref3.endAngle;
+  var sign = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.mathSign)(endAngle - startAngle);
+
+  var _getTangentCircle = getTangentCircle({
+    cx: cx,
+    cy: cy,
+    radius: outerRadius,
+    angle: startAngle,
+    sign: sign,
+    cornerRadius: cornerRadius,
+    cornerIsExternal: cornerIsExternal
+  }),
+      soct = _getTangentCircle.circleTangency,
+      solt = _getTangentCircle.lineTangency,
+      sot = _getTangentCircle.theta;
+
+  var _getTangentCircle2 = getTangentCircle({
+    cx: cx,
+    cy: cy,
+    radius: outerRadius,
+    angle: endAngle,
+    sign: -sign,
+    cornerRadius: cornerRadius,
+    cornerIsExternal: cornerIsExternal
+  }),
+      eoct = _getTangentCircle2.circleTangency,
+      eolt = _getTangentCircle2.lineTangency,
+      eot = _getTangentCircle2.theta;
+
+  var outerArcAngle = cornerIsExternal ? Math.abs(startAngle - endAngle) : Math.abs(startAngle - endAngle) - sot - eot;
+
+  if (outerArcAngle < 0) {
+    if (forceCornerRadius) {
+      return "M ".concat(solt.x, ",").concat(solt.y, "\n        a").concat(cornerRadius, ",").concat(cornerRadius, ",0,0,1,").concat(cornerRadius * 2, ",0\n        a").concat(cornerRadius, ",").concat(cornerRadius, ",0,0,1,").concat(-cornerRadius * 2, ",0\n      ");
+    }
+
+    return getSectorPath({
+      cx: cx,
+      cy: cy,
+      innerRadius: innerRadius,
+      outerRadius: outerRadius,
+      startAngle: startAngle,
+      endAngle: endAngle
+    });
+  }
+
+  var path = "M ".concat(solt.x, ",").concat(solt.y, "\n    A").concat(cornerRadius, ",").concat(cornerRadius, ",0,0,").concat(+(sign < 0), ",").concat(soct.x, ",").concat(soct.y, "\n    A").concat(outerRadius, ",").concat(outerRadius, ",0,").concat(+(outerArcAngle > 180), ",").concat(+(sign < 0), ",").concat(eoct.x, ",").concat(eoct.y, "\n    A").concat(cornerRadius, ",").concat(cornerRadius, ",0,0,").concat(+(sign < 0), ",").concat(eolt.x, ",").concat(eolt.y, "\n  ");
+
+  if (innerRadius > 0) {
+    var _getTangentCircle3 = getTangentCircle({
+      cx: cx,
+      cy: cy,
+      radius: innerRadius,
+      angle: startAngle,
+      sign: sign,
+      isExternal: true,
+      cornerRadius: cornerRadius,
+      cornerIsExternal: cornerIsExternal
+    }),
+        sict = _getTangentCircle3.circleTangency,
+        silt = _getTangentCircle3.lineTangency,
+        sit = _getTangentCircle3.theta;
+
+    var _getTangentCircle4 = getTangentCircle({
+      cx: cx,
+      cy: cy,
+      radius: innerRadius,
+      angle: endAngle,
+      sign: -sign,
+      isExternal: true,
+      cornerRadius: cornerRadius,
+      cornerIsExternal: cornerIsExternal
+    }),
+        eict = _getTangentCircle4.circleTangency,
+        eilt = _getTangentCircle4.lineTangency,
+        eit = _getTangentCircle4.theta;
+
+    var innerArcAngle = cornerIsExternal ? Math.abs(startAngle - endAngle) : Math.abs(startAngle - endAngle) - sit - eit;
+
+    if (innerArcAngle < 0 && cornerRadius === 0) {
+      return "".concat(path, "L").concat(cx, ",").concat(cy, "Z");
+    }
+
+    path += "L".concat(eilt.x, ",").concat(eilt.y, "\n      A").concat(cornerRadius, ",").concat(cornerRadius, ",0,0,").concat(+(sign < 0), ",").concat(eict.x, ",").concat(eict.y, "\n      A").concat(innerRadius, ",").concat(innerRadius, ",0,").concat(+(innerArcAngle > 180), ",").concat(+(sign > 0), ",").concat(sict.x, ",").concat(sict.y, "\n      A").concat(cornerRadius, ",").concat(cornerRadius, ",0,0,").concat(+(sign < 0), ",").concat(silt.x, ",").concat(silt.y, "Z");
+  } else {
+    path += "L".concat(cx, ",").concat(cy, "Z");
+  }
+
+  return path;
+};
+
+var Sector = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Sector, _PureComponent);
+
+  var _super = _createSuper(Sector);
+
+  function Sector() {
+    _classCallCheck(this, Sector);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Sector, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          cx = _this$props.cx,
+          cy = _this$props.cy,
+          innerRadius = _this$props.innerRadius,
+          outerRadius = _this$props.outerRadius,
+          cornerRadius = _this$props.cornerRadius,
+          forceCornerRadius = _this$props.forceCornerRadius,
+          cornerIsExternal = _this$props.cornerIsExternal,
+          startAngle = _this$props.startAngle,
+          endAngle = _this$props.endAngle,
+          className = _this$props.className;
+
+      if (outerRadius < innerRadius || startAngle === endAngle) {
+        return null;
+      }
+
+      var layerClass = classnames__WEBPACK_IMPORTED_MODULE_1___default()('recharts-sector', className);
+      var deltaRadius = outerRadius - innerRadius;
+      var cr = (0,_util_DataUtils__WEBPACK_IMPORTED_MODULE_2__.getPercentValue)(cornerRadius, deltaRadius, 0, true);
+      var path;
+
+      if (cr > 0 && Math.abs(startAngle - endAngle) < 360) {
+        path = getSectorWithCorner({
+          cx: cx,
+          cy: cy,
+          innerRadius: innerRadius,
+          outerRadius: outerRadius,
+          cornerRadius: Math.min(cr, deltaRadius / 2),
+          forceCornerRadius: forceCornerRadius,
+          cornerIsExternal: cornerIsExternal,
+          startAngle: startAngle,
+          endAngle: endAngle
+        });
+      } else {
+        path = getSectorPath({
+          cx: cx,
+          cy: cy,
+          innerRadius: innerRadius,
+          outerRadius: outerRadius,
+          startAngle: startAngle,
+          endAngle: endAngle
+        });
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_4__.filterProps)(this.props, true), {
+        className: layerClass,
+        d: path
+      }));
+    }
+  }]);
+
+  return Sector;
+}(react__WEBPACK_IMPORTED_MODULE_0__.PureComponent);
+Sector.defaultProps = {
+  cx: 0,
+  cy: 0,
+  innerRadius: 0,
+  outerRadius: 0,
+  startAngle: 0,
+  endAngle: 0,
+  cornerRadius: 0,
+  forceCornerRadius: false,
+  cornerIsExternal: false
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/shape/Symbols.js":
+/*!****************************************************!*\
+  !*** ./node_modules/recharts/es6/shape/Symbols.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Symbols": () => (/* binding */ Symbols)
+/* harmony export */ });
+/* harmony import */ var lodash_upperFirst__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/upperFirst */ "./node_modules/lodash/upperFirst.js");
+/* harmony import */ var lodash_upperFirst__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_upperFirst__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol/circle.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol/cross.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol/diamond.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol/square.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol/star.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol/triangle.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol/wye.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/symbol.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../util/types */ "./node_modules/recharts/es6/util/types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/**
+ * @fileOverview Curve
+ */
+
+
+
+
+var symbolFactories = {
+  symbolCircle: d3_shape__WEBPACK_IMPORTED_MODULE_3__["default"],
+  symbolCross: d3_shape__WEBPACK_IMPORTED_MODULE_4__["default"],
+  symbolDiamond: d3_shape__WEBPACK_IMPORTED_MODULE_5__["default"],
+  symbolSquare: d3_shape__WEBPACK_IMPORTED_MODULE_6__["default"],
+  symbolStar: d3_shape__WEBPACK_IMPORTED_MODULE_7__["default"],
+  symbolTriangle: d3_shape__WEBPACK_IMPORTED_MODULE_8__["default"],
+  symbolWye: d3_shape__WEBPACK_IMPORTED_MODULE_9__["default"]
+};
+var RADIAN = Math.PI / 180;
+
+var getSymbolFactory = function getSymbolFactory(type) {
+  var name = "symbol".concat(lodash_upperFirst__WEBPACK_IMPORTED_MODULE_0___default()(type));
+  return symbolFactories[name] || d3_shape__WEBPACK_IMPORTED_MODULE_3__["default"];
+};
+
+var calculateAreaSize = function calculateAreaSize(size, sizeType, type) {
+  if (sizeType === 'area') {
+    return size;
+  }
+
+  switch (type) {
+    case 'cross':
+      return 5 * size * size / 9;
+
+    case 'diamond':
+      return 0.5 * size * size / Math.sqrt(3);
+
+    case 'square':
+      return size * size;
+
+    case 'star':
+      {
+        var angle = 18 * RADIAN;
+        return 1.25 * size * size * (Math.tan(angle) - Math.tan(angle * 2) * Math.pow(Math.tan(angle), 2));
+      }
+
+    case 'triangle':
+      return Math.sqrt(3) * size * size / 4;
+
+    case 'wye':
+      return (21 - 10 * Math.sqrt(3)) * size * size / 8;
+
+    default:
+      return Math.PI * size * size / 4;
+  }
+};
+
+var Symbols = /*#__PURE__*/function (_PureComponent) {
+  _inherits(Symbols, _PureComponent);
+
+  var _super = _createSuper(Symbols);
+
+  function Symbols() {
+    _classCallCheck(this, Symbols);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Symbols, [{
+    key: "getPath",
+    value:
+    /**
+     * Calculate the path of curve
+     * @return {String} path
+     */
+    function getPath() {
+      var _this$props = this.props,
+          size = _this$props.size,
+          sizeType = _this$props.sizeType,
+          type = _this$props.type;
+      var symbolFactory = getSymbolFactory(type);
+      var symbol = (0,d3_shape__WEBPACK_IMPORTED_MODULE_10__["default"])().type(symbolFactory).size(calculateAreaSize(size, sizeType, type));
+      return symbol();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          className = _this$props2.className,
+          cx = _this$props2.cx,
+          cy = _this$props2.cy,
+          size = _this$props2.size;
+
+      if (cx === +cx && cy === +cy && size === +size) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("path", _extends({}, (0,_util_types__WEBPACK_IMPORTED_MODULE_11__.filterProps)(this.props, true), {
+          className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('recharts-symbols', className),
+          transform: "translate(".concat(cx, ", ").concat(cy, ")"),
+          d: this.getPath()
+        }));
+      }
+
+      return null;
+    }
+  }]);
+
+  return Symbols;
+}(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+Symbols.defaultProps = {
+  type: 'circle',
+  size: 64,
+  sizeType: 'area'
+};
+
+Symbols.registerSymbol = function (key, factory) {
+  symbolFactories["symbol".concat(lodash_upperFirst__WEBPACK_IMPORTED_MODULE_0___default()(key))] = factory;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/CartesianUtils.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/recharts/es6/util/CartesianUtils.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ScaleHelper": () => (/* binding */ ScaleHelper),
+/* harmony export */   "createLabeledScales": () => (/* binding */ createLabeledScales),
+/* harmony export */   "formatAxisMap": () => (/* binding */ formatAxisMap),
+/* harmony export */   "rectWithCoords": () => (/* binding */ rectWithCoords),
+/* harmony export */   "rectWithPoints": () => (/* binding */ rectWithPoints)
+/* harmony export */ });
+/* harmony import */ var lodash_every__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/every */ "./node_modules/lodash/every.js");
+/* harmony import */ var lodash_every__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_every__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_mapValues__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/mapValues */ "./node_modules/lodash/mapValues.js");
+/* harmony import */ var lodash_mapValues__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_mapValues__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ChartUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ChartUtils */ "./node_modules/recharts/es6/util/ChartUtils.js");
+/* harmony import */ var _ReactUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReactUtils */ "./node_modules/recharts/es6/util/ReactUtils.js");
+/* harmony import */ var _DataUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+/**
+ * Calculate the scale function, position, width, height of axes
+ * @param  {Object} props     Latest props
+ * @param  {Object} axisMap   The configuration of axes
+ * @param  {Object} offset    The offset of main part in the svg element
+ * @param  {String} axisType  The type of axes, x-axis or y-axis
+ * @param  {String} chartName The name of chart
+ * @return {Object} Configuration
+ */
+
+var formatAxisMap = function formatAxisMap(props, axisMap, offset, axisType, chartName) {
+  var width = props.width,
+      height = props.height,
+      layout = props.layout,
+      children = props.children;
+  var ids = Object.keys(axisMap);
+  var steps = {
+    left: offset.left,
+    leftMirror: offset.left,
+    right: width - offset.right,
+    rightMirror: width - offset.right,
+    top: offset.top,
+    topMirror: offset.top,
+    bottom: height - offset.bottom,
+    bottomMirror: height - offset.bottom
+  };
+  var hasBar = !!(0,_ReactUtils__WEBPACK_IMPORTED_MODULE_2__.findChildByType)(children, 'Bar');
+  return ids.reduce(function (result, id) {
+    var axis = axisMap[id];
+    var orientation = axis.orientation,
+        domain = axis.domain,
+        _axis$padding = axis.padding,
+        padding = _axis$padding === void 0 ? {} : _axis$padding,
+        mirror = axis.mirror,
+        reversed = axis.reversed;
+    var offsetKey = "".concat(orientation).concat(mirror ? 'Mirror' : '');
+    var calculatedPadding, range, x, y, needSpace;
+
+    if (axis.type === 'number' && (axis.padding === 'gap' || axis.padding === 'no-gap')) {
+      var diff = domain[1] - domain[0];
+      var smallestDistanceBetweenValues = Infinity;
+      var sortedValues = axis.categoricalDomain.sort();
+      sortedValues.forEach(function (value, index) {
+        if (index > 0) {
+          smallestDistanceBetweenValues = Math.min((value || 0) - (sortedValues[index - 1] || 0), smallestDistanceBetweenValues);
+        }
+      });
+      var smallestDistanceInPercent = smallestDistanceBetweenValues / diff;
+      var rangeWidth = axis.layout === 'vertical' ? offset.height : offset.width;
+
+      if (axis.padding === 'gap') {
+        calculatedPadding = smallestDistanceInPercent * rangeWidth / 2;
+      }
+
+      if (axis.padding === 'no-gap') {
+        var gap = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_3__.getPercentValue)(props.barCategoryGap, smallestDistanceInPercent * rangeWidth);
+        var halfBand = smallestDistanceInPercent * rangeWidth / 2;
+        calculatedPadding = halfBand - gap - (halfBand - gap) / rangeWidth * gap;
+      }
+    }
+
+    if (axisType === 'xAxis') {
+      range = [offset.left + (padding.left || 0) + (calculatedPadding || 0), offset.left + offset.width - (padding.right || 0) - (calculatedPadding || 0)];
+    } else if (axisType === 'yAxis') {
+      range = layout === 'horizontal' ? [offset.top + offset.height - (padding.bottom || 0), offset.top + (padding.top || 0)] : [offset.top + (padding.top || 0) + (calculatedPadding || 0), offset.top + offset.height - (padding.bottom || 0) - (calculatedPadding || 0)];
+    } else {
+      range = axis.range;
+    }
+
+    if (reversed) {
+      range = [range[1], range[0]];
+    }
+
+    var _parseScale = (0,_ChartUtils__WEBPACK_IMPORTED_MODULE_4__.parseScale)(axis, chartName, hasBar),
+        scale = _parseScale.scale,
+        realScaleType = _parseScale.realScaleType;
+
+    scale.domain(domain).range(range);
+    (0,_ChartUtils__WEBPACK_IMPORTED_MODULE_4__.checkDomainOfScale)(scale);
+    var ticks = (0,_ChartUtils__WEBPACK_IMPORTED_MODULE_4__.getTicksOfScale)(scale, _objectSpread(_objectSpread({}, axis), {}, {
+      realScaleType: realScaleType
+    }));
+
+    if (axisType === 'xAxis') {
+      needSpace = orientation === 'top' && !mirror || orientation === 'bottom' && mirror;
+      x = offset.left;
+      y = steps[offsetKey] - needSpace * axis.height;
+    } else if (axisType === 'yAxis') {
+      needSpace = orientation === 'left' && !mirror || orientation === 'right' && mirror;
+      x = steps[offsetKey] - needSpace * axis.width;
+      y = offset.top;
+    }
+
+    var finalAxis = _objectSpread(_objectSpread(_objectSpread({}, axis), ticks), {}, {
+      realScaleType: realScaleType,
+      x: x,
+      y: y,
+      scale: scale,
+      width: axisType === 'xAxis' ? offset.width : axis.width,
+      height: axisType === 'yAxis' ? offset.height : axis.height
+    });
+
+    finalAxis.bandSize = (0,_ChartUtils__WEBPACK_IMPORTED_MODULE_4__.getBandSizeOfAxis)(finalAxis, ticks);
+
+    if (!axis.hide && axisType === 'xAxis') {
+      steps[offsetKey] += (needSpace ? -1 : 1) * finalAxis.height;
+    } else if (!axis.hide) {
+      steps[offsetKey] += (needSpace ? -1 : 1) * finalAxis.width;
+    }
+
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, id, finalAxis));
+  }, {});
+};
+var rectWithPoints = function rectWithPoints(_ref, _ref2) {
+  var x1 = _ref.x,
+      y1 = _ref.y;
+  var x2 = _ref2.x,
+      y2 = _ref2.y;
+  return {
+    x: Math.min(x1, x2),
+    y: Math.min(y1, y2),
+    width: Math.abs(x2 - x1),
+    height: Math.abs(y2 - y1)
+  };
+};
+/**
+ * Compute the x, y, width, and height of a box from two reference points.
+ * @param  {Object} coords     x1, x2, y1, and y2
+ * @return {Object} object
+ */
+
+var rectWithCoords = function rectWithCoords(_ref3) {
+  var x1 = _ref3.x1,
+      y1 = _ref3.y1,
+      x2 = _ref3.x2,
+      y2 = _ref3.y2;
+  return rectWithPoints({
+    x: x1,
+    y: y1
+  }, {
+    x: x2,
+    y: y2
+  });
+};
+var ScaleHelper = /*#__PURE__*/function () {
+  function ScaleHelper(scale) {
+    _classCallCheck(this, ScaleHelper);
+
+    this.scale = void 0;
+    this.scale = scale;
+  }
+
+  _createClass(ScaleHelper, [{
+    key: "domain",
+    get: function get() {
+      return this.scale.domain;
+    }
+  }, {
+    key: "range",
+    get: function get() {
+      return this.scale.range;
+    }
+  }, {
+    key: "rangeMin",
+    get: function get() {
+      return this.range()[0];
+    }
+  }, {
+    key: "rangeMax",
+    get: function get() {
+      return this.range()[1];
+    }
+  }, {
+    key: "bandwidth",
+    get: function get() {
+      return this.scale.bandwidth;
+    }
+  }, {
+    key: "apply",
+    value: function apply(value) {
+      var _ref4 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          bandAware = _ref4.bandAware,
+          position = _ref4.position;
+
+      if (value === undefined) {
+        return undefined;
+      }
+
+      if (position) {
+        switch (position) {
+          case 'start':
+            {
+              return this.scale(value);
+            }
+
+          case 'middle':
+            {
+              var offset = this.bandwidth ? this.bandwidth() / 2 : 0;
+              return this.scale(value) + offset;
+            }
+
+          case 'end':
+            {
+              var _offset = this.bandwidth ? this.bandwidth() : 0;
+
+              return this.scale(value) + _offset;
+            }
+
+          default:
+            {
+              return this.scale(value);
+            }
+        }
+      }
+
+      if (bandAware) {
+        var _offset2 = this.bandwidth ? this.bandwidth() / 2 : 0;
+
+        return this.scale(value) + _offset2;
+      }
+
+      return this.scale(value);
+    }
+  }, {
+    key: "isInRange",
+    value: function isInRange(value) {
+      var range = this.range();
+      var first = range[0];
+      var last = range[range.length - 1];
+      return first <= last ? value >= first && value <= last : value >= last && value <= first;
+    }
+  }], [{
+    key: "create",
+    value: function create(obj) {
+      return new ScaleHelper(obj);
+    }
+  }]);
+
+  return ScaleHelper;
+}();
+ScaleHelper.EPS = 1e-4;
+var createLabeledScales = function createLabeledScales(options) {
+  var scales = Object.keys(options).reduce(function (res, key) {
+    return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, key, ScaleHelper.create(options[key])));
+  }, {});
+  return _objectSpread(_objectSpread({}, scales), {}, {
+    apply: function apply(coord) {
+      var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          bandAware = _ref5.bandAware,
+          position = _ref5.position;
+
+      return lodash_mapValues__WEBPACK_IMPORTED_MODULE_1___default()(coord, function (value, label) {
+        return scales[label].apply(value, {
+          bandAware: bandAware,
+          position: position
+        });
+      });
+    },
+    isInRange: function isInRange(coord) {
+      return lodash_every__WEBPACK_IMPORTED_MODULE_0___default()(coord, function (value, label) {
+        return scales[label].isInRange(value);
+      });
+    }
+  });
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/ChartUtils.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/util/ChartUtils.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MAX_VALUE_REG": () => (/* binding */ MAX_VALUE_REG),
+/* harmony export */   "MIN_VALUE_REG": () => (/* binding */ MIN_VALUE_REG),
+/* harmony export */   "appendOffsetOfLegend": () => (/* binding */ appendOffsetOfLegend),
+/* harmony export */   "calculateActiveTickIndex": () => (/* binding */ calculateActiveTickIndex),
+/* harmony export */   "calculateDomainOfTicks": () => (/* binding */ calculateDomainOfTicks),
+/* harmony export */   "checkDomainOfScale": () => (/* binding */ checkDomainOfScale),
+/* harmony export */   "combineEventHandlers": () => (/* binding */ combineEventHandlers),
+/* harmony export */   "findPositionOfBar": () => (/* binding */ findPositionOfBar),
+/* harmony export */   "getBandSizeOfAxis": () => (/* binding */ getBandSizeOfAxis),
+/* harmony export */   "getBarPosition": () => (/* binding */ getBarPosition),
+/* harmony export */   "getBarSizeList": () => (/* binding */ getBarSizeList),
+/* harmony export */   "getBaseValueOfBar": () => (/* binding */ getBaseValueOfBar),
+/* harmony export */   "getCateCoordinateOfBar": () => (/* binding */ getCateCoordinateOfBar),
+/* harmony export */   "getCateCoordinateOfLine": () => (/* binding */ getCateCoordinateOfLine),
+/* harmony export */   "getCoordinatesOfGrid": () => (/* binding */ getCoordinatesOfGrid),
+/* harmony export */   "getDomainOfDataByKey": () => (/* binding */ getDomainOfDataByKey),
+/* harmony export */   "getDomainOfErrorBars": () => (/* binding */ getDomainOfErrorBars),
+/* harmony export */   "getDomainOfItemsWithSameAxis": () => (/* binding */ getDomainOfItemsWithSameAxis),
+/* harmony export */   "getDomainOfStackGroups": () => (/* binding */ getDomainOfStackGroups),
+/* harmony export */   "getLegendProps": () => (/* binding */ getLegendProps),
+/* harmony export */   "getMainColorOfGraphicItem": () => (/* binding */ getMainColorOfGraphicItem),
+/* harmony export */   "getStackGroupsByAxisId": () => (/* binding */ getStackGroupsByAxisId),
+/* harmony export */   "getStackedData": () => (/* binding */ getStackedData),
+/* harmony export */   "getStackedDataOfItem": () => (/* binding */ getStackedDataOfItem),
+/* harmony export */   "getTicksOfAxis": () => (/* binding */ getTicksOfAxis),
+/* harmony export */   "getTicksOfScale": () => (/* binding */ getTicksOfScale),
+/* harmony export */   "getTooltipItem": () => (/* binding */ getTooltipItem),
+/* harmony export */   "getValueByDataKey": () => (/* binding */ getValueByDataKey),
+/* harmony export */   "isCategoricalAxis": () => (/* binding */ isCategoricalAxis),
+/* harmony export */   "offsetPositive": () => (/* binding */ offsetPositive),
+/* harmony export */   "offsetSign": () => (/* binding */ offsetSign),
+/* harmony export */   "parseDomainOfCategoryAxis": () => (/* binding */ parseDomainOfCategoryAxis),
+/* harmony export */   "parseErrorBarsOfAxis": () => (/* binding */ parseErrorBarsOfAxis),
+/* harmony export */   "parseScale": () => (/* binding */ parseScale),
+/* harmony export */   "parseSpecifiedDomain": () => (/* binding */ parseSpecifiedDomain),
+/* harmony export */   "truncateByDomain": () => (/* binding */ truncateByDomain)
+/* harmony export */ });
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js");
+/* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_sortBy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/sortBy */ "./node_modules/lodash/sortBy.js");
+/* harmony import */ var lodash_sortBy__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_sortBy__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isNaN__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isNaN */ "./node_modules/lodash/isNaN.js");
+/* harmony import */ var lodash_isNaN__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isNaN__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_upperFirst__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/upperFirst */ "./node_modules/lodash/upperFirst.js");
+/* harmony import */ var lodash_upperFirst__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_upperFirst__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_isString__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/isString */ "./node_modules/lodash/isString.js");
+/* harmony import */ var lodash_isString__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_isString__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash_max__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/max */ "./node_modules/lodash/max.js");
+/* harmony import */ var lodash_max__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_max__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash_min__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash/min */ "./node_modules/lodash/min.js");
+/* harmony import */ var lodash_min__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash_min__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lodash_flatMap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash/flatMap */ "./node_modules/lodash/flatMap.js");
+/* harmony import */ var lodash_flatMap__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash_flatMap__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash/isFunction */ "./node_modules/lodash/isFunction.js");
+/* harmony import */ var lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash_isFunction__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var recharts_scale__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! recharts-scale */ "./node_modules/recharts-scale/es6/index.js");
+/* harmony import */ var d3_scale__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/band.js");
+/* harmony import */ var d3_scale__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/linear.js");
+/* harmony import */ var d3_scale__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! d3-scale */ "./node_modules/d3-scale/src/index.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/offset/expand.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/offset/none.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/offset/silhouette.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/offset/wiggle.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/stack.js");
+/* harmony import */ var d3_shape__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! d3-shape */ "./node_modules/d3-shape/src/order/none.js");
+/* harmony import */ var _DataUtils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _component_Legend__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../component/Legend */ "./node_modules/recharts/es6/component/Legend.js");
+/* harmony import */ var _ReactUtils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ReactUtils */ "./node_modules/recharts/es6/util/ReactUtils.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./types */ "./node_modules/recharts/es6/util/types.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+ // TODO: Cause of circular dependency. Needs refactor.
+// import { RadiusAxisProps, AngleAxisProps } from '../polar/types';
+
+
+function getValueByDataKey(obj, dataKey, defaultValue) {
+  if (lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(obj) || lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(dataKey)) {
+    return defaultValue;
+  }
+
+  if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumOrStr)(dataKey)) {
+    return lodash_get__WEBPACK_IMPORTED_MODULE_10___default()(obj, dataKey, defaultValue);
+  }
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(dataKey)) {
+    return dataKey(obj);
+  }
+
+  return defaultValue;
+}
+/**
+ * Get domain of data by key
+ * @param  {Array}   data      The data displayed in the chart
+ * @param  {String}  key       The unique key of a group of data
+ * @param  {String}  type      The type of axis
+ * @param  {Boolean} filterNil Whether or not filter nil values
+ * @return {Array} Domain of data
+ */
+
+function getDomainOfDataByKey(data, key, type, filterNil) {
+  var flattenData = lodash_flatMap__WEBPACK_IMPORTED_MODULE_8___default()(data, function (entry) {
+    return getValueByDataKey(entry, key);
+  });
+
+  if (type === 'number') {
+    var domain = flattenData.filter(function (entry) {
+      return (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(entry) || parseFloat(entry);
+    });
+    return domain.length ? [lodash_min__WEBPACK_IMPORTED_MODULE_7___default()(domain), lodash_max__WEBPACK_IMPORTED_MODULE_6___default()(domain)] : [Infinity, -Infinity];
+  }
+
+  var validateData = filterNil ? flattenData.filter(function (entry) {
+    return !lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(entry);
+  }) : flattenData; // 支持Date类型的x轴
+
+  return validateData.map(function (entry) {
+    return (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumOrStr)(entry) || entry instanceof Date ? entry : '';
+  });
+}
+var calculateActiveTickIndex = function calculateActiveTickIndex(coordinate) {
+  var _ticks$length;
+
+  var ticks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var unsortedTicks = arguments.length > 2 ? arguments[2] : undefined;
+  var axis = arguments.length > 3 ? arguments[3] : undefined;
+  var index = -1;
+  var len = (_ticks$length = ticks === null || ticks === void 0 ? void 0 : ticks.length) !== null && _ticks$length !== void 0 ? _ticks$length : 0;
+
+  if (len > 1) {
+    if (axis && axis.axisType === 'angleAxis' && Math.abs(Math.abs(axis.range[1] - axis.range[0]) - 360) <= 1e-6) {
+      var range = axis.range; // ticks are distributed in a circle
+
+      for (var i = 0; i < len; i++) {
+        var before = i > 0 ? unsortedTicks[i - 1].coordinate : unsortedTicks[len - 1].coordinate;
+        var cur = unsortedTicks[i].coordinate;
+        var after = i >= len - 1 ? unsortedTicks[0].coordinate : unsortedTicks[i + 1].coordinate;
+        var sameDirectionCoord = void 0;
+
+        if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.mathSign)(cur - before) !== (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.mathSign)(after - cur)) {
+          var diffInterval = [];
+
+          if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.mathSign)(after - cur) === (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.mathSign)(range[1] - range[0])) {
+            sameDirectionCoord = after;
+            var curInRange = cur + range[1] - range[0];
+            diffInterval[0] = Math.min(curInRange, (curInRange + before) / 2);
+            diffInterval[1] = Math.max(curInRange, (curInRange + before) / 2);
+          } else {
+            sameDirectionCoord = before;
+            var afterInRange = after + range[1] - range[0];
+            diffInterval[0] = Math.min(cur, (afterInRange + cur) / 2);
+            diffInterval[1] = Math.max(cur, (afterInRange + cur) / 2);
+          }
+
+          var sameInterval = [Math.min(cur, (sameDirectionCoord + cur) / 2), Math.max(cur, (sameDirectionCoord + cur) / 2)];
+
+          if (coordinate > sameInterval[0] && coordinate <= sameInterval[1] || coordinate >= diffInterval[0] && coordinate <= diffInterval[1]) {
+            index = unsortedTicks[i].index;
+            break;
+          }
+        } else {
+          var min = Math.min(before, after);
+          var max = Math.max(before, after);
+
+          if (coordinate > (min + cur) / 2 && coordinate <= (max + cur) / 2) {
+            index = unsortedTicks[i].index;
+            break;
+          }
+        }
+      }
+    } else {
+      // ticks are distributed in a single direction
+      for (var _i = 0; _i < len; _i++) {
+        if (_i === 0 && coordinate <= (ticks[_i].coordinate + ticks[_i + 1].coordinate) / 2 || _i > 0 && _i < len - 1 && coordinate > (ticks[_i].coordinate + ticks[_i - 1].coordinate) / 2 && coordinate <= (ticks[_i].coordinate + ticks[_i + 1].coordinate) / 2 || _i === len - 1 && coordinate > (ticks[_i].coordinate + ticks[_i - 1].coordinate) / 2) {
+          index = ticks[_i].index;
+          break;
+        }
+      }
+    }
+  } else {
+    index = 0;
+  }
+
+  return index;
+};
+/**
+ * Get the main color of each graphic item
+ * @param  {ReactElement} item A graphic item
+ * @return {String}            Color
+ */
+
+var getMainColorOfGraphicItem = function getMainColorOfGraphicItem(item) {
+  var _ref = item,
+      displayName = _ref.type.displayName; // TODO: check if displayName is valid.
+
+  var _item$props = item.props,
+      stroke = _item$props.stroke,
+      fill = _item$props.fill;
+  var result;
+
+  switch (displayName) {
+    case 'Line':
+      result = stroke;
+      break;
+
+    case 'Area':
+    case 'Radar':
+      result = stroke && stroke !== 'none' ? stroke : fill;
+      break;
+
+    default:
+      result = fill;
+      break;
+  }
+
+  return result;
+};
+var getLegendProps = function getLegendProps(_ref2) {
+  var children = _ref2.children,
+      formattedGraphicalItems = _ref2.formattedGraphicalItems,
+      legendWidth = _ref2.legendWidth,
+      legendContent = _ref2.legendContent;
+  var legendItem = (0,_ReactUtils__WEBPACK_IMPORTED_MODULE_14__.findChildByType)(children, _component_Legend__WEBPACK_IMPORTED_MODULE_15__.Legend.displayName);
+
+  if (!legendItem) {
+    return null;
+  }
+
+  var legendData;
+
+  if (legendItem.props && legendItem.props.payload) {
+    legendData = legendItem.props && legendItem.props.payload;
+  } else if (legendContent === 'children') {
+    legendData = (formattedGraphicalItems || []).reduce(function (result, _ref3) {
+      var item = _ref3.item,
+          props = _ref3.props;
+      var data = props.sectors || props.data || [];
+      return result.concat(data.map(function (entry) {
+        return {
+          type: legendItem.props.iconType || item.props.legendType,
+          value: entry.name,
+          color: entry.fill,
+          payload: entry
+        };
+      }));
+    }, []);
+  } else {
+    legendData = (formattedGraphicalItems || []).map(function (_ref4) {
+      var item = _ref4.item;
+      var _item$props2 = item.props,
+          dataKey = _item$props2.dataKey,
+          name = _item$props2.name,
+          legendType = _item$props2.legendType,
+          hide = _item$props2.hide;
+      return {
+        inactive: hide,
+        dataKey: dataKey,
+        type: legendItem.props.iconType || legendType || 'square',
+        color: getMainColorOfGraphicItem(item),
+        value: name || dataKey,
+        payload: item.props
+      };
+    });
+  }
+
+  return _objectSpread(_objectSpread(_objectSpread({}, legendItem.props), _component_Legend__WEBPACK_IMPORTED_MODULE_15__.Legend.getWithHeight(legendItem, legendWidth)), {}, {
+    payload: legendData,
+    item: legendItem
+  });
+};
+/**
+ * Calculate the size of all groups for stacked bar graph
+ * @param  {Object} stackGroups The items grouped by axisId and stackId
+ * @return {Object} The size of all groups
+ */
+
+var getBarSizeList = function getBarSizeList(_ref5) {
+  var globalSize = _ref5.barSize,
+      _ref5$stackGroups = _ref5.stackGroups,
+      stackGroups = _ref5$stackGroups === void 0 ? {} : _ref5$stackGroups;
+
+  if (!stackGroups) {
+    return {};
+  }
+
+  var result = {};
+  var numericAxisIds = Object.keys(stackGroups);
+
+  for (var i = 0, len = numericAxisIds.length; i < len; i++) {
+    var sgs = stackGroups[numericAxisIds[i]].stackGroups;
+    var stackIds = Object.keys(sgs);
+
+    for (var j = 0, sLen = stackIds.length; j < sLen; j++) {
+      var _sgs$stackIds$j = sgs[stackIds[j]],
+          items = _sgs$stackIds$j.items,
+          cateAxisId = _sgs$stackIds$j.cateAxisId;
+      var barItems = items.filter(function (item) {
+        return (0,_ReactUtils__WEBPACK_IMPORTED_MODULE_14__.getDisplayName)(item.type).indexOf('Bar') >= 0;
+      });
+
+      if (barItems && barItems.length) {
+        var selfSize = barItems[0].props.barSize;
+        var cateId = barItems[0].props[cateAxisId];
+
+        if (!result[cateId]) {
+          result[cateId] = [];
+        }
+
+        result[cateId].push({
+          item: barItems[0],
+          stackList: barItems.slice(1),
+          barSize: lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(selfSize) ? globalSize : selfSize
+        });
+      }
+    }
+  }
+
+  return result;
+};
+/**
+ * Calculate the size of each bar and the gap between two bars
+ * @param  {Number} bandSize  The size of each category
+ * @param  {sizeList} sizeList  The size of all groups
+ * @param  {maxBarSize} maxBarSize The maximum size of bar
+ * @return {Number} The size of each bar and the gap between two bars
+ */
+
+var getBarPosition = function getBarPosition(_ref6) {
+  var barGap = _ref6.barGap,
+      barCategoryGap = _ref6.barCategoryGap,
+      bandSize = _ref6.bandSize,
+      _ref6$sizeList = _ref6.sizeList,
+      sizeList = _ref6$sizeList === void 0 ? [] : _ref6$sizeList,
+      maxBarSize = _ref6.maxBarSize;
+  var len = sizeList.length;
+  if (len < 1) return null;
+  var realBarGap = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getPercentValue)(barGap, bandSize, 0, true);
+  var result; // whether or not is barSize setted by user
+
+  if (sizeList[0].barSize === +sizeList[0].barSize) {
+    var useFull = false;
+    var fullBarSize = bandSize / len;
+    var sum = sizeList.reduce(function (res, entry) {
+      return res + entry.barSize || 0;
+    }, 0);
+    sum += (len - 1) * realBarGap;
+
+    if (sum >= bandSize) {
+      sum -= (len - 1) * realBarGap;
+      realBarGap = 0;
+    }
+
+    if (sum >= bandSize && fullBarSize > 0) {
+      useFull = true;
+      fullBarSize *= 0.9;
+      sum = len * fullBarSize;
+    }
+
+    var offset = (bandSize - sum) / 2 >> 0;
+    var prev = {
+      offset: offset - realBarGap,
+      size: 0
+    };
+    result = sizeList.reduce(function (res, entry) {
+      var newRes = [].concat(_toConsumableArray(res), [{
+        item: entry.item,
+        position: {
+          offset: prev.offset + prev.size + realBarGap,
+          size: useFull ? fullBarSize : entry.barSize
+        }
+      }]);
+      prev = newRes[newRes.length - 1].position;
+
+      if (entry.stackList && entry.stackList.length) {
+        entry.stackList.forEach(function (item) {
+          newRes.push({
+            item: item,
+            position: prev
+          });
+        });
+      }
+
+      return newRes;
+    }, []);
+  } else {
+    var _offset = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.getPercentValue)(barCategoryGap, bandSize, 0, true);
+
+    if (bandSize - 2 * _offset - (len - 1) * realBarGap <= 0) {
+      realBarGap = 0;
+    }
+
+    var originalSize = (bandSize - 2 * _offset - (len - 1) * realBarGap) / len;
+
+    if (originalSize > 1) {
+      originalSize >>= 0;
+    }
+
+    var size = maxBarSize === +maxBarSize ? Math.min(originalSize, maxBarSize) : originalSize;
+    result = sizeList.reduce(function (res, entry, i) {
+      var newRes = [].concat(_toConsumableArray(res), [{
+        item: entry.item,
+        position: {
+          offset: _offset + (originalSize + realBarGap) * i + (originalSize - size) / 2,
+          size: size
+        }
+      }]);
+
+      if (entry.stackList && entry.stackList.length) {
+        entry.stackList.forEach(function (item) {
+          newRes.push({
+            item: item,
+            position: newRes[newRes.length - 1].position
+          });
+        });
+      }
+
+      return newRes;
+    }, []);
+  }
+
+  return result;
+};
+var appendOffsetOfLegend = function appendOffsetOfLegend(offset, items, props, legendBox) {
+  var children = props.children,
+      width = props.width,
+      margin = props.margin;
+  var legendWidth = width - (margin.left || 0) - (margin.right || 0); // const legendHeight = height - (margin.top || 0) - (margin.bottom || 0);
+
+  var legendProps = getLegendProps({
+    children: children,
+    legendWidth: legendWidth
+  });
+  var newOffset = offset;
+
+  if (legendProps) {
+    var box = legendBox || {};
+    var align = legendProps.align,
+        verticalAlign = legendProps.verticalAlign,
+        layout = legendProps.layout;
+
+    if ((layout === 'vertical' || layout === 'horizontal' && verticalAlign === 'center') && (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(offset[align])) {
+      newOffset = _objectSpread(_objectSpread({}, offset), {}, _defineProperty({}, align, newOffset[align] + (box.width || 0)));
+    }
+
+    if ((layout === 'horizontal' || layout === 'vertical' && align === 'center') && (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(offset[verticalAlign])) {
+      newOffset = _objectSpread(_objectSpread({}, offset), {}, _defineProperty({}, verticalAlign, newOffset[verticalAlign] + (box.height || 0)));
+    }
+  }
+
+  return newOffset;
+};
+var getDomainOfErrorBars = function getDomainOfErrorBars(data, item, dataKey, axisType) {
+  var children = item.props.children;
+  var errorBars = (0,_ReactUtils__WEBPACK_IMPORTED_MODULE_14__.findAllByType)(children, 'ErrorBar').filter(function (errorBarChild) {
+    var direction = errorBarChild.props.direction;
+    return lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(direction) || lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(axisType) ? true : axisType.indexOf(direction) >= 0;
+  });
+
+  if (errorBars && errorBars.length) {
+    var keys = errorBars.map(function (errorBarChild) {
+      return errorBarChild.props.dataKey;
+    });
+    return data.reduce(function (result, entry) {
+      var entryValue = getValueByDataKey(entry, dataKey, 0);
+      var mainValue = lodash_isArray__WEBPACK_IMPORTED_MODULE_5___default()(entryValue) ? [lodash_min__WEBPACK_IMPORTED_MODULE_7___default()(entryValue), lodash_max__WEBPACK_IMPORTED_MODULE_6___default()(entryValue)] : [entryValue, entryValue];
+      var errorDomain = keys.reduce(function (prevErrorArr, k) {
+        var errorValue = getValueByDataKey(entry, k, 0);
+        var lowerValue = mainValue[0] - Math.abs(lodash_isArray__WEBPACK_IMPORTED_MODULE_5___default()(errorValue) ? errorValue[0] : errorValue);
+        var upperValue = mainValue[1] + Math.abs(lodash_isArray__WEBPACK_IMPORTED_MODULE_5___default()(errorValue) ? errorValue[1] : errorValue);
+        return [Math.min(lowerValue, prevErrorArr[0]), Math.max(upperValue, prevErrorArr[1])];
+      }, [Infinity, -Infinity]);
+      return [Math.min(errorDomain[0], result[0]), Math.max(errorDomain[1], result[1])];
+    }, [Infinity, -Infinity]);
+  }
+
+  return null;
+};
+var parseErrorBarsOfAxis = function parseErrorBarsOfAxis(data, items, dataKey, axisType) {
+  var domains = items.map(function (item) {
+    return getDomainOfErrorBars(data, item, dataKey, axisType);
+  }).filter(function (entry) {
+    return !lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(entry);
+  });
+
+  if (domains && domains.length) {
+    return domains.reduce(function (result, entry) {
+      return [Math.min(result[0], entry[0]), Math.max(result[1], entry[1])];
+    }, [Infinity, -Infinity]);
+  }
+
+  return null;
+};
+/**
+ * Get domain of data by the configuration of item element
+ * @param  {Array}   data      The data displayed in the chart
+ * @param  {Array}   items     The instances of item
+ * @param  {String}  type      The type of axis, number - Number Axis, category - Category Axis
+ * @param  {Boolean} filterNil Whether or not filter nil values
+ * @return {Array}        Domain
+ */
+
+var getDomainOfItemsWithSameAxis = function getDomainOfItemsWithSameAxis(data, items, type, filterNil) {
+  var domains = items.map(function (item) {
+    var dataKey = item.props.dataKey;
+
+    if (type === 'number' && dataKey) {
+      return getDomainOfErrorBars(data, item, dataKey) || getDomainOfDataByKey(data, dataKey, type, filterNil);
+    }
+
+    return getDomainOfDataByKey(data, dataKey, type, filterNil);
+  });
+
+  if (type === 'number') {
+    // Calculate the domain of number axis
+    return domains.reduce(function (result, entry) {
+      return [Math.min(result[0], entry[0]), Math.max(result[1], entry[1])];
+    }, [Infinity, -Infinity]);
+  }
+
+  var tag = {}; // Get the union set of category axis
+
+  return domains.reduce(function (result, entry) {
+    for (var i = 0, len = entry.length; i < len; i++) {
+      if (!tag[entry[i]]) {
+        tag[entry[i]] = true;
+        result.push(entry[i]);
+      }
+    }
+
+    return result;
+  }, []);
+};
+var isCategoricalAxis = function isCategoricalAxis(layout, axisType) {
+  return layout === 'horizontal' && axisType === 'xAxis' || layout === 'vertical' && axisType === 'yAxis' || layout === 'centric' && axisType === 'angleAxis' || layout === 'radial' && axisType === 'radiusAxis';
+};
+/**
+ * Calculate the Coordinates of grid
+ * @param  {Array} ticks The ticks in axis
+ * @param {Number} min   The minimun value of axis
+ * @param {Number} max   The maximun value of axis
+ * @return {Array}       Coordinates
+ */
+
+var getCoordinatesOfGrid = function getCoordinatesOfGrid(ticks, min, max) {
+  var hasMin, hasMax;
+  var values = ticks.map(function (entry) {
+    if (entry.coordinate === min) {
+      hasMin = true;
+    }
+
+    if (entry.coordinate === max) {
+      hasMax = true;
+    }
+
+    return entry.coordinate;
+  });
+
+  if (!hasMin) {
+    values.push(min);
+  }
+
+  if (!hasMax) {
+    values.push(max);
+  }
+
+  return values;
+};
+/**
+ * Get the ticks of an axis
+ * @param  {Object}  axis The configuration of an axis
+ * @param {Boolean} isGrid Whether or not are the ticks in grid
+ * @param {Boolean} isAll Return the ticks of all the points or not
+ * @return {Array}  Ticks
+ */
+
+var getTicksOfAxis = function getTicksOfAxis(axis, isGrid, isAll) {
+  if (!axis) return null;
+  var scale = axis.scale;
+  var duplicateDomain = axis.duplicateDomain,
+      type = axis.type,
+      range = axis.range;
+  var offset = (isGrid || isAll) && type === 'category' && scale.bandwidth ? scale.bandwidth() / 2 : 0;
+  offset = axis.axisType === 'angleAxis' ? (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.mathSign)(range[0] - range[1]) * 2 * offset : offset; // The ticks setted by user should only affect the ticks adjacent to axis line
+
+  if (isGrid && (axis.ticks || axis.niceTicks)) {
+    return (axis.ticks || axis.niceTicks).map(function (entry) {
+      var scaleContent = duplicateDomain ? duplicateDomain.indexOf(entry) : entry;
+      return {
+        coordinate: scale(scaleContent) + offset,
+        value: entry,
+        offset: offset
+      };
+    });
+  } // When axis is a categorial axis, but the type of axis is number or the scale of axis is not "auto"
+
+
+  if (axis.isCategorical && axis.categoricalDomain) {
+    return axis.categoricalDomain.map(function (entry, index) {
+      return {
+        coordinate: scale(entry) + offset,
+        value: entry,
+        index: index,
+        offset: offset
+      };
+    });
+  }
+
+  if (scale.ticks && !isAll) {
+    return scale.ticks(axis.tickCount).map(function (entry) {
+      return {
+        coordinate: scale(entry) + offset,
+        value: entry,
+        offset: offset
+      };
+    });
+  } // When axis has duplicated text, serial numbers are used to generate scale
+
+
+  return scale.domain().map(function (entry, index) {
+    return {
+      coordinate: scale(entry) + offset,
+      value: duplicateDomain ? duplicateDomain[entry] : entry,
+      index: index,
+      offset: offset
+    };
+  });
+};
+/**
+ * combine the handlers
+ * @param  {Function} defaultHandler Internal private handler
+ * @param  {Function} parentHandler  Handler function specified in parent component
+ * @param  {Function} childHandler   Handler function specified in child component
+ * @return {Function}                The combined handler
+ */
+
+var combineEventHandlers = function combineEventHandlers(defaultHandler, parentHandler, childHandler) {
+  var customizedHandler;
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(childHandler)) {
+    customizedHandler = childHandler;
+  } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(parentHandler)) {
+    customizedHandler = parentHandler;
+  }
+
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(defaultHandler) || customizedHandler) {
+    return function (arg1, arg2, arg3, arg4) {
+      if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(defaultHandler)) {
+        defaultHandler(arg1, arg2, arg3, arg4);
+      }
+
+      if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(customizedHandler)) {
+        customizedHandler(arg1, arg2, arg3, arg4);
+      }
+    };
+  }
+
+  return null;
+};
+/**
+ * Parse the scale function of axis
+ * @param  {Object}   axis          The option of axis
+ * @param  {String}   chartType     The displayName of chart
+ * @param  {Boolean}  hasBar        if it has a bar
+ * @return {Function}               The scale function
+ */
+
+var parseScale = function parseScale(axis, chartType, hasBar) {
+  var scale = axis.scale,
+      type = axis.type,
+      layout = axis.layout,
+      axisType = axis.axisType;
+
+  if (scale === 'auto') {
+    if (layout === 'radial' && axisType === 'radiusAxis') {
+      return {
+        scale: d3_scale__WEBPACK_IMPORTED_MODULE_16__["default"](),
+        realScaleType: 'band'
+      };
+    }
+
+    if (layout === 'radial' && axisType === 'angleAxis') {
+      return {
+        scale: d3_scale__WEBPACK_IMPORTED_MODULE_17__["default"](),
+        realScaleType: 'linear'
+      };
+    }
+
+    if (type === 'category' && chartType && (chartType.indexOf('LineChart') >= 0 || chartType.indexOf('AreaChart') >= 0 || chartType.indexOf('ComposedChart') >= 0 && !hasBar)) {
+      return {
+        scale: d3_scale__WEBPACK_IMPORTED_MODULE_16__.point(),
+        realScaleType: 'point'
+      };
+    }
+
+    if (type === 'category') {
+      return {
+        scale: d3_scale__WEBPACK_IMPORTED_MODULE_16__["default"](),
+        realScaleType: 'band'
+      };
+    }
+
+    return {
+      scale: d3_scale__WEBPACK_IMPORTED_MODULE_17__["default"](),
+      realScaleType: 'linear'
+    };
+  }
+
+  if (lodash_isString__WEBPACK_IMPORTED_MODULE_4___default()(scale)) {
+    var name = "scale".concat(lodash_upperFirst__WEBPACK_IMPORTED_MODULE_3___default()(scale));
+    return {
+      scale: (d3_scale__WEBPACK_IMPORTED_MODULE_18__[name] || d3_scale__WEBPACK_IMPORTED_MODULE_16__.point)(),
+      realScaleType: d3_scale__WEBPACK_IMPORTED_MODULE_18__[name] ? name : 'point'
+    };
+  }
+
+  return lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(scale) ? {
+    scale: scale
+  } : {
+    scale: d3_scale__WEBPACK_IMPORTED_MODULE_16__.point(),
+    realScaleType: 'point'
+  };
+};
+var EPS = 1e-4;
+var checkDomainOfScale = function checkDomainOfScale(scale) {
+  var domain = scale.domain();
+
+  if (!domain || domain.length <= 2) {
+    return;
+  }
+
+  var len = domain.length;
+  var range = scale.range();
+  var min = Math.min(range[0], range[1]) - EPS;
+  var max = Math.max(range[0], range[1]) + EPS;
+  var first = scale(domain[0]);
+  var last = scale(domain[len - 1]);
+
+  if (first < min || first > max || last < min || last > max) {
+    scale.domain([domain[0], domain[len - 1]]);
+  }
+};
+var findPositionOfBar = function findPositionOfBar(barPosition, child) {
+  if (!barPosition) {
+    return null;
+  }
+
+  for (var i = 0, len = barPosition.length; i < len; i++) {
+    if (barPosition[i].item === child) {
+      return barPosition[i].position;
+    }
+  }
+
+  return null;
+};
+var truncateByDomain = function truncateByDomain(value, domain) {
+  if (!domain || domain.length !== 2 || !(0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(domain[0]) || !(0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(domain[1])) {
+    return value;
+  }
+
+  var min = Math.min(domain[0], domain[1]);
+  var max = Math.max(domain[0], domain[1]);
+  var result = [value[0], value[1]];
+
+  if (!(0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(value[0]) || value[0] < min) {
+    result[0] = min;
+  }
+
+  if (!(0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(value[1]) || value[1] > max) {
+    result[1] = max;
+  }
+
+  if (result[0] > max) {
+    result[0] = max;
+  }
+
+  if (result[1] < min) {
+    result[1] = min;
+  }
+
+  return result;
+};
+/* eslint no-param-reassign: 0 */
+
+var offsetSign = function offsetSign(series) {
+  var n = series.length;
+
+  if (n <= 0) {
+    return;
+  }
+
+  for (var j = 0, m = series[0].length; j < m; ++j) {
+    var positive = 0;
+    var negative = 0;
+
+    for (var i = 0; i < n; ++i) {
+      var value = lodash_isNaN__WEBPACK_IMPORTED_MODULE_2___default()(series[i][j][1]) ? series[i][j][0] : series[i][j][1];
+      /* eslint-disable prefer-destructuring */
+
+      if (value >= 0) {
+        series[i][j][0] = positive;
+        series[i][j][1] = positive + value;
+        positive = series[i][j][1];
+      } else {
+        series[i][j][0] = negative;
+        series[i][j][1] = negative + value;
+        negative = series[i][j][1];
+      }
+      /* eslint-enable prefer-destructuring */
+
+    }
+  }
+};
+/* eslint no-param-reassign: 0 */
+
+var offsetPositive = function offsetPositive(series) {
+  var n = series.length;
+
+  if (n <= 0) {
+    return;
+  }
+
+  for (var j = 0, m = series[0].length; j < m; ++j) {
+    var positive = 0;
+
+    for (var i = 0; i < n; ++i) {
+      var value = lodash_isNaN__WEBPACK_IMPORTED_MODULE_2___default()(series[i][j][1]) ? series[i][j][0] : series[i][j][1];
+      /* eslint-disable prefer-destructuring */
+
+      if (value >= 0) {
+        series[i][j][0] = positive;
+        series[i][j][1] = positive + value;
+        positive = series[i][j][1];
+      } else {
+        series[i][j][0] = 0;
+        series[i][j][1] = 0;
+      }
+      /* eslint-enable prefer-destructuring */
+
+    }
+  }
+};
+var STACK_OFFSET_MAP = {
+  sign: offsetSign,
+  expand: d3_shape__WEBPACK_IMPORTED_MODULE_19__["default"],
+  none: d3_shape__WEBPACK_IMPORTED_MODULE_20__["default"],
+  silhouette: d3_shape__WEBPACK_IMPORTED_MODULE_21__["default"],
+  wiggle: d3_shape__WEBPACK_IMPORTED_MODULE_22__["default"],
+  positive: offsetPositive
+};
+var getStackedData = function getStackedData(data, stackItems, offsetType) {
+  var dataKeys = stackItems.map(function (item) {
+    return item.props.dataKey;
+  });
+  var stack = (0,d3_shape__WEBPACK_IMPORTED_MODULE_23__["default"])().keys(dataKeys).value(function (d, key) {
+    return +getValueByDataKey(d, key, 0);
+  }).order(d3_shape__WEBPACK_IMPORTED_MODULE_24__["default"]).offset(STACK_OFFSET_MAP[offsetType]);
+  return stack(data);
+};
+var getStackGroupsByAxisId = function getStackGroupsByAxisId(data, _items, numericAxisId, cateAxisId, offsetType, reverseStackOrder) {
+  if (!data) {
+    return null;
+  } // reversing items to affect render order (for layering)
+
+
+  var items = reverseStackOrder ? _items.reverse() : _items;
+  var stackGroups = items.reduce(function (result, item) {
+    var _item$props3 = item.props,
+        stackId = _item$props3.stackId,
+        hide = _item$props3.hide;
+
+    if (hide) {
+      return result;
+    }
+
+    var axisId = item.props[numericAxisId];
+    var parentGroup = result[axisId] || {
+      hasStack: false,
+      stackGroups: {}
+    };
+
+    if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumOrStr)(stackId)) {
+      var childGroup = parentGroup.stackGroups[stackId] || {
+        numericAxisId: numericAxisId,
+        cateAxisId: cateAxisId,
+        items: []
+      };
+      childGroup.items.push(item);
+      parentGroup.hasStack = true;
+      parentGroup.stackGroups[stackId] = childGroup;
+    } else {
+      parentGroup.stackGroups[(0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.uniqueId)('_stackId_')] = {
+        numericAxisId: numericAxisId,
+        cateAxisId: cateAxisId,
+        items: [item]
+      };
+    }
+
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, axisId, parentGroup));
+  }, {});
+  return Object.keys(stackGroups).reduce(function (result, axisId) {
+    var group = stackGroups[axisId];
+
+    if (group.hasStack) {
+      group.stackGroups = Object.keys(group.stackGroups).reduce(function (res, stackId) {
+        var g = group.stackGroups[stackId];
+        return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, stackId, {
+          numericAxisId: numericAxisId,
+          cateAxisId: cateAxisId,
+          items: g.items,
+          stackedData: getStackedData(data, g.items, offsetType)
+        }));
+      }, {});
+    }
+
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, axisId, group));
+  }, {});
+};
+/**
+ * get domain of ticks
+ * @param  {Array} ticks Ticks of axis
+ * @param  {String} type  The type of axis
+ * @return {Array} domain
+ */
+
+var calculateDomainOfTicks = function calculateDomainOfTicks(ticks, type) {
+  if (type === 'number') {
+    return [lodash_min__WEBPACK_IMPORTED_MODULE_7___default()(ticks), lodash_max__WEBPACK_IMPORTED_MODULE_6___default()(ticks)];
+  }
+
+  return ticks;
+};
+/**
+ * Configure the scale function of axis
+ * @param {Object} scale The scale function
+ * @param {Object} opts  The configuration of axis
+ * @return {Object}      null
+ */
+
+var getTicksOfScale = function getTicksOfScale(scale, opts) {
+  var realScaleType = opts.realScaleType,
+      type = opts.type,
+      tickCount = opts.tickCount,
+      originalDomain = opts.originalDomain,
+      allowDecimals = opts.allowDecimals;
+  var scaleType = realScaleType || opts.scale;
+
+  if (scaleType !== 'auto' && scaleType !== 'linear') {
+    return null;
+  }
+
+  if (tickCount && type === 'number' && originalDomain && (originalDomain[0] === 'auto' || originalDomain[1] === 'auto')) {
+    // Calculate the ticks by the number of grid when the axis is a number axis
+    var domain = scale.domain();
+
+    if (!domain.length) {
+      return null;
+    }
+
+    var tickValues = (0,recharts_scale__WEBPACK_IMPORTED_MODULE_12__.getNiceTickValues)(domain, tickCount, allowDecimals);
+    scale.domain(calculateDomainOfTicks(tickValues, type));
+    return {
+      niceTicks: tickValues
+    };
+  }
+
+  if (tickCount && type === 'number') {
+    var _domain = scale.domain();
+
+    var _tickValues = (0,recharts_scale__WEBPACK_IMPORTED_MODULE_12__.getTickValuesFixedDomain)(_domain, tickCount, allowDecimals);
+
+    return {
+      niceTicks: _tickValues
+    };
+  }
+
+  return null;
+};
+var getCateCoordinateOfLine = function getCateCoordinateOfLine(_ref7) {
+  var axis = _ref7.axis,
+      ticks = _ref7.ticks,
+      bandSize = _ref7.bandSize,
+      entry = _ref7.entry,
+      index = _ref7.index,
+      dataKey = _ref7.dataKey;
+
+  if (axis.type === 'category') {
+    // find coordinate of category axis by the value of category
+    if (!axis.allowDuplicatedCategory && axis.dataKey && !lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(entry[axis.dataKey])) {
+      var matchedTick = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.findEntryInArray)(ticks, 'value', entry[axis.dataKey]);
+
+      if (matchedTick) {
+        return matchedTick.coordinate + bandSize / 2;
+      }
+    }
+
+    return ticks[index] ? ticks[index].coordinate + bandSize / 2 : null;
+  }
+
+  var value = getValueByDataKey(entry, !lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(dataKey) ? dataKey : axis.dataKey);
+  return !lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(value) ? axis.scale(value) : null;
+};
+var getCateCoordinateOfBar = function getCateCoordinateOfBar(_ref8) {
+  var axis = _ref8.axis,
+      ticks = _ref8.ticks,
+      offset = _ref8.offset,
+      bandSize = _ref8.bandSize,
+      entry = _ref8.entry,
+      index = _ref8.index;
+
+  if (axis.type === 'category') {
+    return ticks[index] ? ticks[index].coordinate + offset : null;
+  }
+
+  var value = getValueByDataKey(entry, axis.dataKey, axis.domain[index]);
+  return !lodash_isNil__WEBPACK_IMPORTED_MODULE_11___default()(value) ? axis.scale(value) - bandSize / 2 + offset : null;
+};
+var getBaseValueOfBar = function getBaseValueOfBar(_ref9) {
+  var numericAxis = _ref9.numericAxis;
+  var domain = numericAxis.scale.domain();
+
+  if (numericAxis.type === 'number') {
+    var min = Math.min(domain[0], domain[1]);
+    var max = Math.max(domain[0], domain[1]);
+
+    if (min <= 0 && max >= 0) {
+      return 0;
+    }
+
+    if (max < 0) {
+      return max;
+    }
+
+    return min;
+  }
+
+  return domain[0];
+};
+var getStackedDataOfItem = function getStackedDataOfItem(item, stackGroups) {
+  var stackId = item.props.stackId;
+
+  if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumOrStr)(stackId)) {
+    var group = stackGroups[stackId];
+
+    if (group && group.items.length) {
+      var itemIndex = -1;
+
+      for (var i = 0, len = group.items.length; i < len; i++) {
+        if (group.items[i] === item) {
+          itemIndex = i;
+          break;
+        }
+      }
+
+      return itemIndex >= 0 ? group.stackedData[itemIndex] : null;
+    }
+  }
+
+  return null;
+};
+
+var getDomainOfSingle = function getDomainOfSingle(data) {
+  return data.reduce(function (result, entry) {
+    return [lodash_min__WEBPACK_IMPORTED_MODULE_7___default()(entry.concat([result[0]]).filter(_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)), lodash_max__WEBPACK_IMPORTED_MODULE_6___default()(entry.concat([result[1]]).filter(_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber))];
+  }, [Infinity, -Infinity]);
+};
+
+var getDomainOfStackGroups = function getDomainOfStackGroups(stackGroups, startIndex, endIndex) {
+  return Object.keys(stackGroups).reduce(function (result, stackId) {
+    var group = stackGroups[stackId];
+    var stackedData = group.stackedData;
+    var domain = stackedData.reduce(function (res, entry) {
+      var s = getDomainOfSingle(entry.slice(startIndex, endIndex + 1));
+      return [Math.min(res[0], s[0]), Math.max(res[1], s[1])];
+    }, [Infinity, -Infinity]);
+    return [Math.min(domain[0], result[0]), Math.max(domain[1], result[1])];
+  }, [Infinity, -Infinity]).map(function (result) {
+    return result === Infinity || result === -Infinity ? 0 : result;
+  });
+};
+var MIN_VALUE_REG = /^dataMin[\s]*-[\s]*([0-9]+([.]{1}[0-9]+){0,1})$/;
+var MAX_VALUE_REG = /^dataMax[\s]*\+[\s]*([0-9]+([.]{1}[0-9]+){0,1})$/;
+var parseSpecifiedDomain = function parseSpecifiedDomain(specifiedDomain, dataDomain, allowDataOverflow) {
+  if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(specifiedDomain)) {
+    return specifiedDomain(dataDomain, allowDataOverflow);
+  }
+
+  if (!lodash_isArray__WEBPACK_IMPORTED_MODULE_5___default()(specifiedDomain)) {
+    return dataDomain;
+  }
+
+  var domain = [];
+  /* eslint-disable prefer-destructuring */
+
+  if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(specifiedDomain[0])) {
+    domain[0] = allowDataOverflow ? specifiedDomain[0] : Math.min(specifiedDomain[0], dataDomain[0]);
+  } else if (MIN_VALUE_REG.test(specifiedDomain[0])) {
+    var value = +MIN_VALUE_REG.exec(specifiedDomain[0])[1];
+    domain[0] = dataDomain[0] - value;
+  } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(specifiedDomain[0])) {
+    domain[0] = specifiedDomain[0](dataDomain[0]);
+  } else {
+    domain[0] = dataDomain[0];
+  }
+
+  if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_13__.isNumber)(specifiedDomain[1])) {
+    domain[1] = allowDataOverflow ? specifiedDomain[1] : Math.max(specifiedDomain[1], dataDomain[1]);
+  } else if (MAX_VALUE_REG.test(specifiedDomain[1])) {
+    var _value = +MAX_VALUE_REG.exec(specifiedDomain[1])[1];
+
+    domain[1] = dataDomain[1] + _value;
+  } else if (lodash_isFunction__WEBPACK_IMPORTED_MODULE_9___default()(specifiedDomain[1])) {
+    domain[1] = specifiedDomain[1](dataDomain[1]);
+  } else {
+    domain[1] = dataDomain[1];
+  }
+  /* eslint-enable prefer-destructuring */
+
+
+  return domain;
+};
+/**
+ * Calculate the size between two category
+ * @param  {Object} axis  The options of axis
+ * @param  {Array}  ticks The ticks of axis
+ * @param  {Boolean} isBar if items in axis are bars
+ * @return {Number} Size
+ */
+
+var getBandSizeOfAxis = function getBandSizeOfAxis(axis, ticks, isBar) {
+  if (axis && axis.scale && axis.scale.bandwidth) {
+    var bandWidth = axis.scale.bandwidth();
+
+    if (!isBar || bandWidth > 0) {
+      return bandWidth;
+    }
+  }
+
+  if (axis && ticks && ticks.length >= 2) {
+    var orderedTicks = lodash_sortBy__WEBPACK_IMPORTED_MODULE_1___default()(ticks, function (o) {
+      return o.coordinate;
+    });
+
+    var bandSize = Infinity;
+
+    for (var i = 1, len = orderedTicks.length; i < len; i++) {
+      var cur = orderedTicks[i];
+      var prev = orderedTicks[i - 1];
+      bandSize = Math.min((cur.coordinate || 0) - (prev.coordinate || 0), bandSize);
+    }
+
+    return bandSize === Infinity ? 0 : bandSize;
+  }
+
+  return isBar ? undefined : 0;
+};
+/**
+ * parse the domain of a category axis when a domain is specified
+ * @param   {Array}        specifiedDomain  The domain specified by users
+ * @param   {Array}        calculatedDomain The domain calculated by dateKey
+ * @param   {ReactElement} axisChild        The axis element
+ * @returns {Array}        domains
+ */
+
+var parseDomainOfCategoryAxis = function parseDomainOfCategoryAxis(specifiedDomain, calculatedDomain, axisChild) {
+  if (!specifiedDomain || !specifiedDomain.length) {
+    return calculatedDomain;
+  }
+
+  if (lodash_isEqual__WEBPACK_IMPORTED_MODULE_0___default()(specifiedDomain, lodash_get__WEBPACK_IMPORTED_MODULE_10___default()(axisChild, 'type.defaultProps.domain'))) {
+    return calculatedDomain;
+  }
+
+  return specifiedDomain;
+};
+var getTooltipItem = function getTooltipItem(graphicalItem, payload) {
+  var _graphicalItem$props = graphicalItem.props,
+      dataKey = _graphicalItem$props.dataKey,
+      name = _graphicalItem$props.name,
+      unit = _graphicalItem$props.unit,
+      formatter = _graphicalItem$props.formatter,
+      tooltipType = _graphicalItem$props.tooltipType,
+      chartType = _graphicalItem$props.chartType;
+  return _objectSpread(_objectSpread({}, (0,_types__WEBPACK_IMPORTED_MODULE_25__.filterProps)(graphicalItem)), {}, {
+    dataKey: dataKey,
+    unit: unit,
+    formatter: formatter,
+    name: name || dataKey,
+    color: getMainColorOfGraphicItem(graphicalItem),
+    value: getValueByDataKey(payload, dataKey),
+    type: tooltipType,
+    payload: payload,
+    chartType: chartType
+  });
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/CssPrefixUtils.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/recharts/es6/util/CssPrefixUtils.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "generatePrefixStyle": () => (/* binding */ generatePrefixStyle)
+/* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var PREFIX_LIST = ['Webkit', 'Moz', 'O', 'ms'];
+var generatePrefixStyle = function generatePrefixStyle(name, value) {
+  if (!name) {
+    return null;
+  }
+
+  var camelName = name.replace(/(\w)/, function (v) {
+    return v.toUpperCase();
+  });
+  var result = PREFIX_LIST.reduce(function (res, entry) {
+    return _objectSpread(_objectSpread({}, res), {}, _defineProperty({}, entry + camelName, value));
+  }, {});
+  result[name] = value;
+  return result;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/DOMUtils.js":
+/*!****************************************************!*\
+  !*** ./node_modules/recharts/es6/util/DOMUtils.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "calculateChartCoordinate": () => (/* binding */ calculateChartCoordinate),
+/* harmony export */   "getOffset": () => (/* binding */ getOffset),
+/* harmony export */   "getStringSize": () => (/* binding */ getStringSize),
+/* harmony export */   "getStyleString": () => (/* binding */ getStyleString)
+/* harmony export */ });
+/* harmony import */ var _Global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Global */ "./node_modules/recharts/es6/util/Global.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+var stringCache = {
+  widthCache: {},
+  cacheCount: 0
+};
+var MAX_CACHE_NUM = 2000;
+var SPAN_STYLE = {
+  position: 'absolute',
+  top: '-20000px',
+  left: 0,
+  padding: 0,
+  margin: 0,
+  border: 'none',
+  whiteSpace: 'pre'
+};
+var STYLE_LIST = ['minWidth', 'maxWidth', 'width', 'minHeight', 'maxHeight', 'height', 'top', 'left', 'fontSize', 'lineHeight', 'padding', 'margin', 'paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom', 'marginLeft', 'marginRight', 'marginTop', 'marginBottom'];
+var MEASUREMENT_SPAN_ID = 'recharts_measurement_span';
+
+function autoCompleteStyle(name, value) {
+  if (STYLE_LIST.indexOf(name) >= 0 && value === +value) {
+    return "".concat(value, "px");
+  }
+
+  return value;
+}
+
+function camelToMiddleLine(text) {
+  var strs = text.split('');
+  var formatStrs = strs.reduce(function (result, entry) {
+    if (entry === entry.toUpperCase()) {
+      return [].concat(_toConsumableArray(result), ['-', entry.toLowerCase()]);
+    }
+
+    return [].concat(_toConsumableArray(result), [entry]);
+  }, []);
+  return formatStrs.join('');
+}
+
+var getStyleString = function getStyleString(style) {
+  return Object.keys(style).reduce(function (result, s) {
+    return "".concat(result).concat(camelToMiddleLine(s), ":").concat(autoCompleteStyle(s, style[s]), ";");
+  }, '');
+};
+var getStringSize = function getStringSize(text) {
+  var style = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  if (text === undefined || text === null || _Global__WEBPACK_IMPORTED_MODULE_0__.Global.isSsr) {
+    return {
+      width: 0,
+      height: 0
+    };
+  }
+
+  var str = "".concat(text);
+  var styleString = getStyleString(style);
+  var cacheKey = "".concat(str, "-").concat(styleString);
+
+  if (stringCache.widthCache[cacheKey]) {
+    return stringCache.widthCache[cacheKey];
+  }
+
+  try {
+    var measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
+
+    if (!measurementSpan) {
+      measurementSpan = document.createElement('span');
+      measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
+      measurementSpan.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(measurementSpan);
+    } // Need to use CSS Object Model (CSSOM) to be able to comply with Content Security Policy (CSP)
+    // https://en.wikipedia.org/wiki/Content_Security_Policy
+
+
+    var measurementSpanStyle = _objectSpread(_objectSpread({}, SPAN_STYLE), style);
+
+    Object.keys(measurementSpanStyle).map(function (styleKey) {
+      measurementSpan.style[styleKey] = measurementSpanStyle[styleKey];
+      return styleKey;
+    });
+    measurementSpan.textContent = str;
+    var rect = measurementSpan.getBoundingClientRect();
+    var result = {
+      width: rect.width,
+      height: rect.height
+    };
+    stringCache.widthCache[cacheKey] = result;
+
+    if (++stringCache.cacheCount > MAX_CACHE_NUM) {
+      stringCache.cacheCount = 0;
+      stringCache.widthCache = {};
+    }
+
+    return result;
+  } catch (e) {
+    return {
+      width: 0,
+      height: 0
+    };
+  }
+};
+var getOffset = function getOffset(el) {
+  var html = el.ownerDocument.documentElement;
+  var box = {
+    top: 0,
+    left: 0
+  }; // If we don't have gBCR, just use 0,0 rather than error
+  // BlackBerry 5, iOS 3 (original iPhone)
+
+  if (typeof el.getBoundingClientRect !== 'undefined') {
+    box = el.getBoundingClientRect();
+  }
+
+  return {
+    top: box.top + window.pageYOffset - html.clientTop,
+    left: box.left + window.pageXOffset - html.clientLeft
+  };
+};
+/**
+ * Calculate coordinate of cursor in chart
+ * @param  {Object} event  Event object
+ * @param  {Object} offset The offset of main part in the svg element
+ * @return {Object}        {chartX, chartY}
+ */
+
+var calculateChartCoordinate = function calculateChartCoordinate(event, offset) {
+  return {
+    chartX: Math.round(event.pageX - offset.left),
+    chartY: Math.round(event.pageY - offset.top)
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/DataUtils.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/recharts/es6/util/DataUtils.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "findEntryInArray": () => (/* binding */ findEntryInArray),
+/* harmony export */   "getAnyElementOfObject": () => (/* binding */ getAnyElementOfObject),
+/* harmony export */   "getLinearRegression": () => (/* binding */ getLinearRegression),
+/* harmony export */   "getPercentValue": () => (/* binding */ getPercentValue),
+/* harmony export */   "hasDuplicate": () => (/* binding */ hasDuplicate),
+/* harmony export */   "interpolateNumber": () => (/* binding */ interpolateNumber),
+/* harmony export */   "isNumOrStr": () => (/* binding */ isNumOrStr),
+/* harmony export */   "isNumber": () => (/* binding */ isNumber),
+/* harmony export */   "isPercent": () => (/* binding */ isPercent),
+/* harmony export */   "mathSign": () => (/* binding */ mathSign),
+/* harmony export */   "uniqueId": () => (/* binding */ uniqueId)
+/* harmony export */ });
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isNaN__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isNaN */ "./node_modules/lodash/isNaN.js");
+/* harmony import */ var lodash_isNaN__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isNaN__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_isNumber__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/isNumber */ "./node_modules/lodash/isNumber.js");
+/* harmony import */ var lodash_isNumber__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_isNumber__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_isString__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/isString */ "./node_modules/lodash/isString.js");
+/* harmony import */ var lodash_isString__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_isString__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+var mathSign = function mathSign(value) {
+  if (value === 0) {
+    return 0;
+  }
+
+  if (value > 0) {
+    return 1;
+  }
+
+  return -1;
+};
+var isPercent = function isPercent(value) {
+  return lodash_isString__WEBPACK_IMPORTED_MODULE_4___default()(value) && value.indexOf('%') === value.length - 1;
+};
+var isNumber = function isNumber(value) {
+  return lodash_isNumber__WEBPACK_IMPORTED_MODULE_3___default()(value) && !lodash_isNaN__WEBPACK_IMPORTED_MODULE_2___default()(value);
+};
+var isNumOrStr = function isNumOrStr(value) {
+  return isNumber(value) || lodash_isString__WEBPACK_IMPORTED_MODULE_4___default()(value);
+};
+var idCounter = 0;
+var uniqueId = function uniqueId(prefix) {
+  var id = ++idCounter;
+  return "".concat(prefix || '').concat(id);
+};
+/**
+ * Get percent value of a total value
+ * @param {Number|String} percent A percent
+ * @param {Number} totalValue     Total value
+ * @param {NUmber} defaultValue   The value returned when percent is undefined or invalid
+ * @param {Boolean} validate      If set to be true, the result will be validated
+ * @return {Number} value
+ */
+
+var getPercentValue = function getPercentValue(percent, totalValue) {
+  var defaultValue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var validate = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+  if (!isNumber(percent) && !lodash_isString__WEBPACK_IMPORTED_MODULE_4___default()(percent)) {
+    return defaultValue;
+  }
+
+  var value;
+
+  if (isPercent(percent)) {
+    var index = percent.indexOf('%');
+    value = totalValue * parseFloat(percent.slice(0, index)) / 100;
+  } else {
+    value = +percent;
+  }
+
+  if (lodash_isNaN__WEBPACK_IMPORTED_MODULE_2___default()(value)) {
+    value = defaultValue;
+  }
+
+  if (validate && value > totalValue) {
+    value = totalValue;
+  }
+
+  return value;
+};
+var getAnyElementOfObject = function getAnyElementOfObject(obj) {
+  if (!obj) {
+    return null;
+  }
+
+  var keys = Object.keys(obj);
+
+  if (keys && keys.length) {
+    return obj[keys[0]];
+  }
+
+  return null;
+};
+var hasDuplicate = function hasDuplicate(ary) {
+  if (!lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default()(ary)) {
+    return false;
+  }
+
+  var len = ary.length;
+  var cache = {};
+
+  for (var i = 0; i < len; i++) {
+    if (!cache[ary[i]]) {
+      cache[ary[i]] = true;
+    } else {
+      return true;
+    }
+  }
+
+  return false;
+};
+var interpolateNumber = function interpolateNumber(numberA, numberB) {
+  if (isNumber(numberA) && isNumber(numberB)) {
+    return function (t) {
+      return numberA + t * (numberB - numberA);
+    };
+  }
+
+  return function () {
+    return numberB;
+  };
+};
+function findEntryInArray(ary, specifiedKey, specifiedValue) {
+  if (!ary || !ary.length) {
+    return null;
+  }
+
+  return ary.find(function (entry) {
+    return entry && (typeof specifiedKey === 'function' ? specifiedKey(entry) : lodash_get__WEBPACK_IMPORTED_MODULE_0___default()(entry, specifiedKey)) === specifiedValue;
+  });
+}
+/**
+ * The least square linear regression
+ * @param {Array} data The array of points
+ * @returns {Object} The domain of x, and the parameter of linear function
+ */
+
+var getLinearRegression = function getLinearRegression(data) {
+  if (!data || !data.length) {
+    return null;
+  }
+
+  var len = data.length;
+  var xsum = 0;
+  var ysum = 0;
+  var xysum = 0;
+  var xxsum = 0;
+  var xmin = Infinity;
+  var xmax = -Infinity;
+
+  for (var i = 0; i < len; i++) {
+    xsum += data[i].cx;
+    ysum += data[i].cy;
+    xysum += data[i].cx * data[i].cy;
+    xxsum += data[i].cx * data[i].cx;
+    xmin = Math.min(xmin, data[i].cx);
+    xmax = Math.max(xmax, data[i].cx);
+  }
+
+  var a = len * xxsum !== xsum * xsum ? (len * xysum - xsum * ysum) / (len * xxsum - xsum * xsum) : 0;
+  return {
+    xmin: xmin,
+    xmax: xmax,
+    a: a,
+    b: (ysum - a * xsum) / len
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/DetectReferenceElementsDomain.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/recharts/es6/util/DetectReferenceElementsDomain.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "detectReferenceElementsDomain": () => (/* binding */ detectReferenceElementsDomain)
+/* harmony export */ });
+/* harmony import */ var _cartesian_ReferenceDot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../cartesian/ReferenceDot */ "./node_modules/recharts/es6/cartesian/ReferenceDot.js");
+/* harmony import */ var _cartesian_ReferenceLine__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cartesian/ReferenceLine */ "./node_modules/recharts/es6/cartesian/ReferenceLine.js");
+/* harmony import */ var _cartesian_ReferenceArea__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../cartesian/ReferenceArea */ "./node_modules/recharts/es6/cartesian/ReferenceArea.js");
+/* harmony import */ var _IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./IfOverflowMatches */ "./node_modules/recharts/es6/util/IfOverflowMatches.js");
+/* harmony import */ var _ReactUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReactUtils */ "./node_modules/recharts/es6/util/ReactUtils.js");
+/* harmony import */ var _DataUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+
+
+
+
+
+
+var detectReferenceElementsDomain = function detectReferenceElementsDomain(children, domain, axisId, axisType, specifiedTicks) {
+  var lines = (0,_ReactUtils__WEBPACK_IMPORTED_MODULE_0__.findAllByType)(children, _cartesian_ReferenceLine__WEBPACK_IMPORTED_MODULE_1__.ReferenceLine.displayName);
+  var dots = (0,_ReactUtils__WEBPACK_IMPORTED_MODULE_0__.findAllByType)(children, _cartesian_ReferenceDot__WEBPACK_IMPORTED_MODULE_2__.ReferenceDot.displayName);
+  var elements = lines.concat(dots);
+  var areas = (0,_ReactUtils__WEBPACK_IMPORTED_MODULE_0__.findAllByType)(children, _cartesian_ReferenceArea__WEBPACK_IMPORTED_MODULE_3__.ReferenceArea.displayName);
+  var idKey = "".concat(axisType, "Id");
+  var valueKey = axisType[0];
+  var finalDomain = domain;
+
+  if (elements.length) {
+    finalDomain = elements.reduce(function (result, el) {
+      if (el.props[idKey] === axisId && (0,_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(el.props, 'extendDomain') && (0,_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(el.props[valueKey])) {
+        var value = el.props[valueKey];
+        return [Math.min(result[0], value), Math.max(result[1], value)];
+      }
+
+      return result;
+    }, finalDomain);
+  }
+
+  if (areas.length) {
+    var key1 = "".concat(valueKey, "1");
+    var key2 = "".concat(valueKey, "2");
+    finalDomain = areas.reduce(function (result, el) {
+      if (el.props[idKey] === axisId && (0,_IfOverflowMatches__WEBPACK_IMPORTED_MODULE_4__.ifOverflowMatches)(el.props, 'extendDomain') && (0,_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(el.props[key1]) && (0,_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(el.props[key2])) {
+        var value1 = el.props[key1];
+        var value2 = el.props[key2];
+        return [Math.min(result[0], value1, value2), Math.max(result[1], value1, value2)];
+      }
+
+      return result;
+    }, finalDomain);
+  }
+
+  if (specifiedTicks && specifiedTicks.length) {
+    finalDomain = specifiedTicks.reduce(function (result, tick) {
+      if ((0,_DataUtils__WEBPACK_IMPORTED_MODULE_5__.isNumber)(tick)) {
+        return [Math.min(result[0], tick), Math.max(result[1], tick)];
+      }
+
+      return result;
+    }, finalDomain);
+  }
+
+  return finalDomain;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/Events.js":
+/*!**************************************************!*\
+  !*** ./node_modules/recharts/es6/util/Events.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SYNC_EVENT": () => (/* binding */ SYNC_EVENT),
+/* harmony export */   "eventCenter": () => (/* binding */ eventCenter)
+/* harmony export */ });
+/* harmony import */ var eventemitter3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! eventemitter3 */ "./node_modules/eventemitter3/index.js");
+/* harmony import */ var eventemitter3__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(eventemitter3__WEBPACK_IMPORTED_MODULE_0__);
+
+var eventCenter = new (eventemitter3__WEBPACK_IMPORTED_MODULE_0___default())();
+
+if (eventCenter.setMaxListeners) {
+  eventCenter.setMaxListeners(10);
+}
+
+
+var SYNC_EVENT = 'recharts.syncMouseEvents'; // eslint-disable-next-line no-redeclare
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/Global.js":
+/*!**************************************************!*\
+  !*** ./node_modules/recharts/es6/util/Global.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Global": () => (/* binding */ Global)
+/* harmony export */ });
+var parseIsSsrByDefault = function parseIsSsrByDefault() {
+  return !(typeof window !== 'undefined' && window.document && window.document.createElement && window.setTimeout);
+};
+
+var Global = {
+  isSsr: parseIsSsrByDefault(),
+  get: function get(key) {
+    return Global[key];
+  },
+  set: function set(key, value) {
+    if (typeof key === 'string') {
+      Global[key] = value;
+    } else {
+      var keys = Object.keys(key);
+
+      if (keys && keys.length) {
+        keys.forEach(function (k) {
+          Global[k] = key[k];
+        });
+      }
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/IfOverflowMatches.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/recharts/es6/util/IfOverflowMatches.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ifOverflowMatches": () => (/* binding */ ifOverflowMatches)
+/* harmony export */ });
+var ifOverflowMatches = function ifOverflowMatches(props, value) {
+  var alwaysShow = props.alwaysShow;
+  var ifOverflow = props.ifOverflow;
+
+  if (alwaysShow) {
+    ifOverflow = 'extendDomain';
+  }
+
+  return ifOverflow === value;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/LogUtils.js":
+/*!****************************************************!*\
+  !*** ./node_modules/recharts/es6/util/LogUtils.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "warn": () => (/* binding */ warn)
+/* harmony export */ });
+/* eslint no-console: 0 */
+var isDev = "development" !== 'production';
+var warn = function warn(condition, format) {
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  if (isDev && typeof console !== 'undefined' && console.warn) {
+    if (format === undefined) {
+      console.warn('LogUtils requires an error message argument');
+    }
+
+    if (!condition) {
+      if (format === undefined) {
+        console.warn('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+      } else {
+        var argIndex = 0;
+        console.warn(format.replace(/%s/g, function () {
+          return args[argIndex++];
+        }));
+      }
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/PolarUtils.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/util/PolarUtils.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RADIAN": () => (/* binding */ RADIAN),
+/* harmony export */   "degreeToRadian": () => (/* binding */ degreeToRadian),
+/* harmony export */   "distanceBetweenPoints": () => (/* binding */ distanceBetweenPoints),
+/* harmony export */   "formatAngleOfSector": () => (/* binding */ formatAngleOfSector),
+/* harmony export */   "formatAxisMap": () => (/* binding */ formatAxisMap),
+/* harmony export */   "getAngleOfPoint": () => (/* binding */ getAngleOfPoint),
+/* harmony export */   "getMaxRadius": () => (/* binding */ getMaxRadius),
+/* harmony export */   "inRangeOfSector": () => (/* binding */ inRangeOfSector),
+/* harmony export */   "polarToCartesian": () => (/* binding */ polarToCartesian),
+/* harmony export */   "radianToDegree": () => (/* binding */ radianToDegree)
+/* harmony export */ });
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _DataUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _ChartUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChartUtils */ "./node_modules/recharts/es6/util/ChartUtils.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var RADIAN = Math.PI / 180;
+var degreeToRadian = function degreeToRadian(angle) {
+  return angle * Math.PI / 180;
+};
+var radianToDegree = function radianToDegree(angleInRadian) {
+  return angleInRadian * 180 / Math.PI;
+};
+var polarToCartesian = function polarToCartesian(cx, cy, radius, angle) {
+  return {
+    x: cx + Math.cos(-RADIAN * angle) * radius,
+    y: cy + Math.sin(-RADIAN * angle) * radius
+  };
+};
+var getMaxRadius = function getMaxRadius(width, height) {
+  var offset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  };
+  return Math.min(Math.abs(width - (offset.left || 0) - (offset.right || 0)), Math.abs(height - (offset.top || 0) - (offset.bottom || 0))) / 2;
+};
+/**
+ * Calculate the scale function, position, width, height of axes
+ * @param  {Object} props     Latest props
+ * @param  {Object} axisMap   The configuration of axes
+ * @param  {Object} offset    The offset of main part in the svg element
+ * @param  {Object} axisType  The type of axes, radius-axis or angle-axis
+ * @param  {String} chartName The name of chart
+ * @return {Object} Configuration
+ */
+
+var formatAxisMap = function formatAxisMap(props, axisMap, offset, axisType, chartName) {
+  var width = props.width,
+      height = props.height;
+  var startAngle = props.startAngle,
+      endAngle = props.endAngle;
+  var cx = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_1__.getPercentValue)(props.cx, width, width / 2);
+  var cy = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_1__.getPercentValue)(props.cy, height, height / 2);
+  var maxRadius = getMaxRadius(width, height, offset);
+  var innerRadius = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_1__.getPercentValue)(props.innerRadius, maxRadius, 0);
+  var outerRadius = (0,_DataUtils__WEBPACK_IMPORTED_MODULE_1__.getPercentValue)(props.outerRadius, maxRadius, maxRadius * 0.8);
+  var ids = Object.keys(axisMap);
+  return ids.reduce(function (result, id) {
+    var axis = axisMap[id];
+    var domain = axis.domain,
+        reversed = axis.reversed;
+    var range;
+
+    if (lodash_isNil__WEBPACK_IMPORTED_MODULE_0___default()(axis.range)) {
+      if (axisType === 'angleAxis') {
+        range = [startAngle, endAngle];
+      } else if (axisType === 'radiusAxis') {
+        range = [innerRadius, outerRadius];
+      }
+
+      if (reversed) {
+        range = [range[1], range[0]];
+      }
+    } else {
+      range = axis.range;
+      var _range = range;
+
+      var _range2 = _slicedToArray(_range, 2);
+
+      startAngle = _range2[0];
+      endAngle = _range2[1];
+    }
+
+    var _parseScale = (0,_ChartUtils__WEBPACK_IMPORTED_MODULE_2__.parseScale)(axis, chartName),
+        realScaleType = _parseScale.realScaleType,
+        scale = _parseScale.scale;
+
+    scale.domain(domain).range(range);
+    (0,_ChartUtils__WEBPACK_IMPORTED_MODULE_2__.checkDomainOfScale)(scale);
+    var ticks = (0,_ChartUtils__WEBPACK_IMPORTED_MODULE_2__.getTicksOfScale)(scale, _objectSpread(_objectSpread({}, axis), {}, {
+      realScaleType: realScaleType
+    }));
+
+    var finalAxis = _objectSpread(_objectSpread(_objectSpread({}, axis), ticks), {}, {
+      range: range,
+      radius: outerRadius,
+      realScaleType: realScaleType,
+      scale: scale,
+      cx: cx,
+      cy: cy,
+      innerRadius: innerRadius,
+      outerRadius: outerRadius,
+      startAngle: startAngle,
+      endAngle: endAngle
+    });
+
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, id, finalAxis));
+  }, {});
+};
+var distanceBetweenPoints = function distanceBetweenPoints(point, anotherPoint) {
+  var x1 = point.x,
+      y1 = point.y;
+  var x2 = anotherPoint.x,
+      y2 = anotherPoint.y;
+  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+var getAngleOfPoint = function getAngleOfPoint(_ref, _ref2) {
+  var x = _ref.x,
+      y = _ref.y;
+  var cx = _ref2.cx,
+      cy = _ref2.cy;
+  var radius = distanceBetweenPoints({
+    x: x,
+    y: y
+  }, {
+    x: cx,
+    y: cy
+  });
+
+  if (radius <= 0) {
+    return {
+      radius: radius
+    };
+  }
+
+  var cos = (x - cx) / radius;
+  var angleInRadian = Math.acos(cos);
+
+  if (y > cy) {
+    angleInRadian = 2 * Math.PI - angleInRadian;
+  }
+
+  return {
+    radius: radius,
+    angle: radianToDegree(angleInRadian),
+    angleInRadian: angleInRadian
+  };
+};
+var formatAngleOfSector = function formatAngleOfSector(_ref3) {
+  var startAngle = _ref3.startAngle,
+      endAngle = _ref3.endAngle;
+  var startCnt = Math.floor(startAngle / 360);
+  var endCnt = Math.floor(endAngle / 360);
+  var min = Math.min(startCnt, endCnt);
+  return {
+    startAngle: startAngle - min * 360,
+    endAngle: endAngle - min * 360
+  };
+};
+
+var reverseFormatAngleOfSetor = function reverseFormatAngleOfSetor(angle, _ref4) {
+  var startAngle = _ref4.startAngle,
+      endAngle = _ref4.endAngle;
+  var startCnt = Math.floor(startAngle / 360);
+  var endCnt = Math.floor(endAngle / 360);
+  var min = Math.min(startCnt, endCnt);
+  return angle + min * 360;
+};
+
+var inRangeOfSector = function inRangeOfSector(_ref5, sector) {
+  var x = _ref5.x,
+      y = _ref5.y;
+
+  var _getAngleOfPoint = getAngleOfPoint({
+    x: x,
+    y: y
+  }, sector),
+      radius = _getAngleOfPoint.radius,
+      angle = _getAngleOfPoint.angle;
+
+  var innerRadius = sector.innerRadius,
+      outerRadius = sector.outerRadius;
+
+  if (radius < innerRadius || radius > outerRadius) {
+    return false;
+  }
+
+  if (radius === 0) {
+    return true;
+  }
+
+  var _formatAngleOfSector = formatAngleOfSector(sector),
+      startAngle = _formatAngleOfSector.startAngle,
+      endAngle = _formatAngleOfSector.endAngle;
+
+  var formatAngle = angle;
+  var inRange;
+
+  if (startAngle <= endAngle) {
+    while (formatAngle > endAngle) {
+      formatAngle -= 360;
+    }
+
+    while (formatAngle < startAngle) {
+      formatAngle += 360;
+    }
+
+    inRange = formatAngle >= startAngle && formatAngle <= endAngle;
+  } else {
+    while (formatAngle > startAngle) {
+      formatAngle -= 360;
+    }
+
+    while (formatAngle < endAngle) {
+      formatAngle += 360;
+    }
+
+    inRange = formatAngle >= endAngle && formatAngle <= startAngle;
+  }
+
+  if (inRange) {
+    return _objectSpread(_objectSpread({}, sector), {}, {
+      radius: radius,
+      angle: reverseFormatAngleOfSetor(formatAngle, sector)
+    });
+  }
+
+  return null;
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/ReactUtils.js":
+/*!******************************************************!*\
+  !*** ./node_modules/recharts/es6/util/ReactUtils.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LEGEND_TYPES": () => (/* binding */ LEGEND_TYPES),
+/* harmony export */   "SCALE_TYPES": () => (/* binding */ SCALE_TYPES),
+/* harmony export */   "TOOLTIP_TYPES": () => (/* binding */ TOOLTIP_TYPES),
+/* harmony export */   "filterSvgElements": () => (/* binding */ filterSvgElements),
+/* harmony export */   "findAllByType": () => (/* binding */ findAllByType),
+/* harmony export */   "findChildByType": () => (/* binding */ findChildByType),
+/* harmony export */   "getDisplayName": () => (/* binding */ getDisplayName),
+/* harmony export */   "getReactEventByType": () => (/* binding */ getReactEventByType),
+/* harmony export */   "isChildrenEqual": () => (/* binding */ isChildrenEqual),
+/* harmony export */   "isSingleChildEqual": () => (/* binding */ isSingleChildEqual),
+/* harmony export */   "parseChildIndex": () => (/* binding */ parseChildIndex),
+/* harmony export */   "renderByOrder": () => (/* binding */ renderByOrder),
+/* harmony export */   "toArray": () => (/* binding */ toArray),
+/* harmony export */   "validateWidthHeight": () => (/* binding */ validateWidthHeight),
+/* harmony export */   "withoutType": () => (/* binding */ withoutType)
+/* harmony export */ });
+/* harmony import */ var lodash_isString__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isString */ "./node_modules/lodash/isString.js");
+/* harmony import */ var lodash_isString__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isString__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/get */ "./node_modules/lodash/get.js");
+/* harmony import */ var lodash_get__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_get__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/isNil */ "./node_modules/lodash/isNil.js");
+/* harmony import */ var lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_isNil__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+/* harmony import */ var _DataUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DataUtils */ "./node_modules/recharts/es6/util/DataUtils.js");
+/* harmony import */ var _ShallowEqual__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ShallowEqual */ "./node_modules/recharts/es6/util/ShallowEqual.js");
+
+
+
+
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var REACT_BROWSER_EVENT_MAP = {
+  click: 'onClick',
+  mousedown: 'onMouseDown',
+  mouseup: 'onMouseUp',
+  mouseover: 'onMouseOver',
+  mousemove: 'onMouseMove',
+  mouseout: 'onMouseOut',
+  mouseenter: 'onMouseEnter',
+  mouseleave: 'onMouseLeave',
+  touchcancel: 'onTouchCancel',
+  touchend: 'onTouchEnd',
+  touchmove: 'onTouchMove',
+  touchstart: 'onTouchStart'
+};
+var SCALE_TYPES = ['auto', 'linear', 'pow', 'sqrt', 'log', 'identity', 'time', 'band', 'point', 'ordinal', 'quantile', 'quantize', 'utc', 'sequential', 'threshold'];
+var LEGEND_TYPES = ['plainline', 'line', 'square', 'rect', 'circle', 'cross', 'diamond', 'star', 'triangle', 'wye', 'none'];
+var TOOLTIP_TYPES = ['none'];
+/**
+ * Get the display name of a component
+ * @param  {Object} Comp Specified Component
+ * @return {String}      Display name of Component
+ */
+
+var getDisplayName = function getDisplayName(Comp) {
+  if (typeof Comp === 'string') {
+    return Comp;
+  }
+
+  if (!Comp) {
+    return '';
+  }
+
+  return Comp.displayName || Comp.name || 'Component';
+}; // `toArray` gets called multiple times during the render
+// so we can memoize last invocation (since reference to `children` is the same)
+
+var lastChildren = null;
+var lastResult = null;
+var toArray = function toArray(children) {
+  if (children === lastChildren && lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default()(lastResult)) {
+    return lastResult;
+  }
+
+  var result = [];
+  react__WEBPACK_IMPORTED_MODULE_4__.Children.forEach(children, function (child) {
+    if (lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(child)) return;
+
+    if ((0,react_is__WEBPACK_IMPORTED_MODULE_5__.isFragment)(child)) {
+      result = result.concat(toArray(child.props.children));
+    } else {
+      result.push(child);
+    }
+  });
+  lastResult = result;
+  lastChildren = children;
+  return result;
+};
+/*
+ * Find and return all matched children by type. `type` can be a React element class or
+ * string
+ */
+
+var findAllByType = function findAllByType(children, type) {
+  var result = [];
+  var types = [];
+
+  if (lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default()(type)) {
+    types = type.map(function (t) {
+      return getDisplayName(t);
+    });
+  } else {
+    types = [getDisplayName(type)];
+  }
+
+  toArray(children).forEach(function (child) {
+    var childType = lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(child, 'type.displayName') || lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(child, 'type.name');
+
+    if (types.indexOf(childType) !== -1) {
+      result.push(child);
+    }
+  });
+  return result;
+};
+/*
+ * Return the first matched child by type, return null otherwise.
+ * `type` can be a React element class or string.
+ */
+
+var findChildByType = function findChildByType(children, type) {
+  var result = findAllByType(children, type);
+  return result && result[0];
+};
+/*
+ * Create a new array of children excluding the ones matched the type
+ */
+
+var withoutType = function withoutType(children, type) {
+  var newChildren = [];
+  var types;
+
+  if (lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default()(type)) {
+    types = type.map(function (t) {
+      return getDisplayName(t);
+    });
+  } else {
+    types = [getDisplayName(type)];
+  }
+
+  toArray(children).forEach(function (child) {
+    var displayName = lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(child, 'type.displayName');
+
+    if (displayName && types.indexOf(displayName) !== -1) {
+      return;
+    }
+
+    newChildren.push(child);
+  });
+  return newChildren;
+};
+/**
+ * validate the width and height props of a chart element
+ * @param  {Object} el A chart element
+ * @return {Boolean}   true If the props width and height are number, and greater than 0
+ */
+
+var validateWidthHeight = function validateWidthHeight(el) {
+  if (!el || !el.props) {
+    return false;
+  }
+
+  var _el$props = el.props,
+      width = _el$props.width,
+      height = _el$props.height;
+
+  if (!(0,_DataUtils__WEBPACK_IMPORTED_MODULE_6__.isNumber)(width) || width <= 0 || !(0,_DataUtils__WEBPACK_IMPORTED_MODULE_6__.isNumber)(height) || height <= 0) {
+    return false;
+  }
+
+  return true;
+};
+var SVG_TAGS = ['a', 'altGlyph', 'altGlyphDef', 'altGlyphItem', 'animate', 'animateColor', 'animateMotion', 'animateTransform', 'circle', 'clipPath', 'color-profile', 'cursor', 'defs', 'desc', 'ellipse', 'feBlend', 'feColormatrix', 'feComponentTransfer', 'feComposite', 'feConvolveMatrix', 'feDiffuseLighting', 'feDisplacementMap', 'feDistantLight', 'feFlood', 'feFuncA', 'feFuncB', 'feFuncG', 'feFuncR', 'feGaussianBlur', 'feImage', 'feMerge', 'feMergeNode', 'feMorphology', 'feOffset', 'fePointLight', 'feSpecularLighting', 'feSpotLight', 'feTile', 'feTurbulence', 'filter', 'font', 'font-face', 'font-face-format', 'font-face-name', 'font-face-url', 'foreignObject', 'g', 'glyph', 'glyphRef', 'hkern', 'image', 'line', 'lineGradient', 'marker', 'mask', 'metadata', 'missing-glyph', 'mpath', 'path', 'pattern', 'polygon', 'polyline', 'radialGradient', 'rect', 'script', 'set', 'stop', 'style', 'svg', 'switch', 'symbol', 'text', 'textPath', 'title', 'tref', 'tspan', 'use', 'view', 'vkern'];
+
+var isSvgElement = function isSvgElement(child) {
+  return child && child.type && lodash_isString__WEBPACK_IMPORTED_MODULE_0___default()(child.type) && SVG_TAGS.indexOf(child.type) >= 0;
+};
+/**
+ * Filter all the svg elements of children
+ * @param  {Array} children The children of a react element
+ * @return {Array}          All the svg elements
+ */
+
+
+var filterSvgElements = function filterSvgElements(children) {
+  var svgElements = [];
+  toArray(children).forEach(function (entry) {
+    if (isSvgElement(entry)) {
+      svgElements.push(entry);
+    }
+  });
+  return svgElements;
+};
+/**
+ * Wether props of children changed
+ * @param  {Object} nextChildren The latest children
+ * @param  {Object} prevChildren The prev children
+ * @return {Boolean}             equal or not
+ */
+
+var isChildrenEqual = function isChildrenEqual(nextChildren, prevChildren) {
+  if (nextChildren === prevChildren) {
+    return true;
+  }
+
+  var count = react__WEBPACK_IMPORTED_MODULE_4__.Children.count(nextChildren);
+
+  if (count !== react__WEBPACK_IMPORTED_MODULE_4__.Children.count(prevChildren)) {
+    return false;
+  }
+
+  if (count === 0) {
+    return true;
+  }
+
+  if (count === 1) {
+    // eslint-disable-next-line no-use-before-define,@typescript-eslint/no-use-before-define
+    return isSingleChildEqual(lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default()(nextChildren) ? nextChildren[0] : nextChildren, lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default()(prevChildren) ? prevChildren[0] : prevChildren);
+  }
+
+  for (var i = 0; i < count; i++) {
+    var nextChild = nextChildren[i];
+    var prevChild = prevChildren[i];
+
+    if (lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default()(nextChild) || lodash_isArray__WEBPACK_IMPORTED_MODULE_3___default()(prevChild)) {
+      if (!isChildrenEqual(nextChild, prevChild)) {
+        return false;
+      } // eslint-disable-next-line no-use-before-define,@typescript-eslint/no-use-before-define
+
+    } else if (!isSingleChildEqual(nextChild, prevChild)) {
+      return false;
+    }
+  }
+
+  return true;
+};
+var isSingleChildEqual = function isSingleChildEqual(nextChild, prevChild) {
+  if (lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(nextChild) && lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(prevChild)) {
+    return true;
+  }
+
+  if (!lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(nextChild) && !lodash_isNil__WEBPACK_IMPORTED_MODULE_2___default()(prevChild)) {
+    var _ref = nextChild.props || {},
+        nextChildren = _ref.children,
+        nextProps = _objectWithoutProperties(_ref, ["children"]);
+
+    var _ref2 = prevChild.props || {},
+        prevChildren = _ref2.children,
+        prevProps = _objectWithoutProperties(_ref2, ["children"]);
+
+    if (nextChildren && prevChildren) {
+      // eslint-disable-next-line no-use-before-define
+      return (0,_ShallowEqual__WEBPACK_IMPORTED_MODULE_7__.shallowEqual)(nextProps, prevProps) && isChildrenEqual(nextChildren, prevChildren);
+    }
+
+    if (!nextChildren && !prevChildren) {
+      return (0,_ShallowEqual__WEBPACK_IMPORTED_MODULE_7__.shallowEqual)(nextProps, prevProps);
+    }
+
+    return false;
+  }
+
+  return false;
+};
+var renderByOrder = function renderByOrder(children, renderMap) {
+  var elements = [];
+  var record = {};
+  toArray(children).forEach(function (child, index) {
+    if (isSvgElement(child)) {
+      elements.push(child);
+    } else if (child) {
+      var displayName = getDisplayName(child.type);
+
+      var _ref3 = renderMap[displayName] || {},
+          handler = _ref3.handler,
+          once = _ref3.once;
+
+      if (handler && (!once || !record[displayName])) {
+        var results = handler(child, displayName, index);
+        elements.push(results);
+        record[displayName] = true;
+      }
+    }
+  });
+  return elements;
+};
+var getReactEventByType = function getReactEventByType(e) {
+  var type = e && e.type;
+
+  if (type && REACT_BROWSER_EVENT_MAP[type]) {
+    return REACT_BROWSER_EVENT_MAP[type];
+  }
+
+  return null;
+};
+var parseChildIndex = function parseChildIndex(child, children) {
+  return toArray(children).indexOf(child);
+};
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/ShallowEqual.js":
+/*!********************************************************!*\
+  !*** ./node_modules/recharts/es6/util/ShallowEqual.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "shallowEqual": () => (/* binding */ shallowEqual)
+/* harmony export */ });
+function shallowEqual(a, b) {
+  /* eslint-disable no-restricted-syntax */
+  for (var key in a) {
+    if ({}.hasOwnProperty.call(a, key) && (!{}.hasOwnProperty.call(b, key) || a[key] !== b[key])) {
+      return false;
+    }
+  }
+
+  for (var _key in b) {
+    if ({}.hasOwnProperty.call(b, _key) && !{}.hasOwnProperty.call(a, _key)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/***/ }),
+
+/***/ "./node_modules/recharts/es6/util/types.js":
+/*!*************************************************!*\
+  !*** ./node_modules/recharts/es6/util/types.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "adaptEventHandlers": () => (/* binding */ adaptEventHandlers),
+/* harmony export */   "adaptEventsOfChild": () => (/* binding */ adaptEventsOfChild),
+/* harmony export */   "filterProps": () => (/* binding */ filterProps)
+/* harmony export */ });
+/* harmony import */ var lodash_isObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/isObject */ "./node_modules/lodash/isObject.js");
+/* harmony import */ var lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_isObject__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+var SVGContainerPropKeys = ['viewBox', 'children'];
+var SVGElementPropKeys = ['className', 'color', 'height', 'id', 'lang', 'max', 'media', 'method', 'min', 'name', 'style', 'target', 'type', 'width', 'role', 'tabIndex', 'accentHeight', 'accumulate', 'additive', 'alignmentBaseline', 'allowReorder', 'alphabetic', 'amplitude', 'arabicForm', 'ascent', 'attributeName', 'attributeType', 'autoReverse', 'azimuth', 'baseFrequency', 'baselineShift', 'baseProfile', 'bbox', 'begin', 'bias', 'by', 'calcMode', 'capHeight', 'clip', 'clipPath', 'clipPathUnits', 'clipRule', 'colorInterpolation', 'colorInterpolationFilters', 'colorProfile', 'colorRendering', 'contentScriptType', 'contentStyleType', 'cursor', 'cx', 'cy', 'd', 'decelerate', 'descent', 'diffuseConstant', 'direction', 'display', 'divisor', 'dominantBaseline', 'dur', 'dx', 'dy', 'edgeMode', 'elevation', 'enableBackground', 'end', 'exponent', 'externalResourcesRequired', 'fill', 'fillOpacity', 'fillRule', 'filter', 'filterRes', 'filterUnits', 'floodColor', 'floodOpacity', 'focusable', 'fontFamily', 'fontSize', 'fontSizeAdjust', 'fontStretch', 'fontStyle', 'fontVariant', 'fontWeight', 'format', 'from', 'fx', 'fy', 'g1', 'g2', 'glyphName', 'glyphOrientationHorizontal', 'glyphOrientationVertical', 'glyphRef', 'gradientTransform', 'gradientUnits', 'hanging', 'horizAdvX', 'horizOriginX', 'href', 'ideographic', 'imageRendering', 'in2', 'in', 'intercept', 'k1', 'k2', 'k3', 'k4', 'k', 'kernelMatrix', 'kernelUnitLength', 'kerning', 'keyPoints', 'keySplines', 'keyTimes', 'lengthAdjust', 'letterSpacing', 'lightingColor', 'limitingConeAngle', 'local', 'markerEnd', 'markerHeight', 'markerMid', 'markerStart', 'markerUnits', 'markerWidth', 'mask', 'maskContentUnits', 'maskUnits', 'mathematical', 'mode', 'numOctaves', 'offset', 'opacity', 'operator', 'order', 'orient', 'orientation', 'origin', 'overflow', 'overlinePosition', 'overlineThickness', 'paintOrder', 'panose1', 'pathLength', 'patternContentUnits', 'patternTransform', 'patternUnits', 'pointerEvents', 'points', 'pointsAtX', 'pointsAtY', 'pointsAtZ', 'preserveAlpha', 'preserveAspectRatio', 'primitiveUnits', 'r', 'radius', 'refX', 'refY', 'renderingIntent', 'repeatCount', 'repeatDur', 'requiredExtensions', 'requiredFeatures', 'restart', 'result', 'rotate', 'rx', 'ry', 'seed', 'shapeRendering', 'slope', 'spacing', 'specularConstant', 'specularExponent', 'speed', 'spreadMethod', 'startOffset', 'stdDeviation', 'stemh', 'stemv', 'stitchTiles', 'stopColor', 'stopOpacity', 'strikethroughPosition', 'strikethroughThickness', 'string', 'stroke', 'strokeDasharray', 'strokeDashoffset', 'strokeLinecap', 'strokeLinejoin', 'strokeMiterlimit', 'strokeOpacity', 'strokeWidth', 'surfaceScale', 'systemLanguage', 'tableValues', 'targetX', 'targetY', 'textAnchor', 'textDecoration', 'textLength', 'textRendering', 'to', 'transform', 'u1', 'u2', 'underlinePosition', 'underlineThickness', 'unicode', 'unicodeBidi', 'unicodeRange', 'unitsPerEm', 'vAlphabetic', 'values', 'vectorEffect', 'version', 'vertAdvY', 'vertOriginX', 'vertOriginY', 'vHanging', 'vIdeographic', 'viewTarget', 'visibility', 'vMathematical', 'widths', 'wordSpacing', 'writingMode', 'x1', 'x2', 'x', 'xChannelSelector', 'xHeight', 'xlinkActuate', 'xlinkArcrole', 'xlinkHref', 'xlinkRole', 'xlinkShow', 'xlinkTitle', 'xlinkType', 'xmlBase', 'xmlLang', 'xmlns', 'xmlnsXlink', 'xmlSpace', 'y1', 'y2', 'y', 'yChannelSelector', 'z', 'zoomAndPan', 'ref', 'key', 'angle'];
+var EventKeys = ['dangerouslySetInnerHTML', 'onCopy', 'onCopyCapture', 'onCut', 'onCutCapture', 'onPaste', 'onPasteCapture', 'onCompositionEnd', 'onCompositionEndCapture', 'onCompositionStart', 'onCompositionStartCapture', 'onCompositionUpdate', 'onCompositionUpdateCapture', 'onFocus', 'onFocusCapture', 'onBlur', 'onBlurCapture', 'onChange', 'onChangeCapture', 'onBeforeInput', 'onBeforeInputCapture', 'onInput', 'onInputCapture', 'onReset', 'onResetCapture', 'onSubmit', 'onSubmitCapture', 'onInvalid', 'onInvalidCapture', 'onLoad', 'onLoadCapture', 'onError', 'onErrorCapture', 'onKeyDown', 'onKeyDownCapture', 'onKeyPress', 'onKeyPressCapture', 'onKeyUp', 'onKeyUpCapture', 'onAbort', 'onAbortCapture', 'onCanPlay', 'onCanPlayCapture', 'onCanPlayThrough', 'onCanPlayThroughCapture', 'onDurationChange', 'onDurationChangeCapture', 'onEmptied', 'onEmptiedCapture', 'onEncrypted', 'onEncryptedCapture', 'onEnded', 'onEndedCapture', 'onLoadedData', 'onLoadedDataCapture', 'onLoadedMetadata', 'onLoadedMetadataCapture', 'onLoadStart', 'onLoadStartCapture', 'onPause', 'onPauseCapture', 'onPlay', 'onPlayCapture', 'onPlaying', 'onPlayingCapture', 'onProgress', 'onProgressCapture', 'onRateChange', 'onRateChangeCapture', 'onSeeked', 'onSeekedCapture', 'onSeeking', 'onSeekingCapture', 'onStalled', 'onStalledCapture', 'onSuspend', 'onSuspendCapture', 'onTimeUpdate', 'onTimeUpdateCapture', 'onVolumeChange', 'onVolumeChangeCapture', 'onWaiting', 'onWaitingCapture', 'onAuxClick', 'onAuxClickCapture', 'onClick', 'onClickCapture', 'onContextMenu', 'onContextMenuCapture', 'onDoubleClick', 'onDoubleClickCapture', 'onDrag', 'onDragCapture', 'onDragEnd', 'onDragEndCapture', 'onDragEnter', 'onDragEnterCapture', 'onDragExit', 'onDragExitCapture', 'onDragLeave', 'onDragLeaveCapture', 'onDragOver', 'onDragOverCapture', 'onDragStart', 'onDragStartCapture', 'onDrop', 'onDropCapture', 'onMouseDown', 'onMouseDownCapture', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseMoveCapture', 'onMouseOut', 'onMouseOutCapture', 'onMouseOver', 'onMouseOverCapture', 'onMouseUp', 'onMouseUpCapture', 'onSelect', 'onSelectCapture', 'onTouchCancel', 'onTouchCancelCapture', 'onTouchEnd', 'onTouchEndCapture', 'onTouchMove', 'onTouchMoveCapture', 'onTouchStart', 'onTouchStartCapture', 'onPointerDown', 'onPointerDownCapture', 'onPointerMove', 'onPointerMoveCapture', 'onPointerUp', 'onPointerUpCapture', 'onPointerCancel', 'onPointerCancelCapture', 'onPointerEnter', 'onPointerEnterCapture', 'onPointerLeave', 'onPointerLeaveCapture', 'onPointerOver', 'onPointerOverCapture', 'onPointerOut', 'onPointerOutCapture', 'onGotPointerCapture', 'onGotPointerCaptureCapture', 'onLostPointerCapture', 'onLostPointerCaptureCapture', 'onScroll', 'onScrollCapture', 'onWheel', 'onWheelCapture', 'onAnimationStart', 'onAnimationStartCapture', 'onAnimationEnd', 'onAnimationEndCapture', 'onAnimationIteration', 'onAnimationIterationCapture', 'onTransitionEnd', 'onTransitionEndCapture']; // Animation Types => TODO: Should be moved when react-smooth is typescriptified.
+
+var filterProps = function filterProps(props, includeEvents, isSvg) {
+  if (!props || typeof props === 'function' || typeof props === 'boolean') {
+    return null;
+  }
+
+  var inputProps = props;
+
+  if ( /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.isValidElement)(props)) {
+    inputProps = props.props;
+  }
+
+  if (!lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default()(inputProps)) {
+    return null;
+  }
+
+  var out = {};
+  Object.keys(inputProps).forEach(function (key) {
+    // viewBox only exist in <svg />
+    if (SVGElementPropKeys.includes(key) || isSvg && SVGContainerPropKeys.includes(key) || includeEvents && EventKeys.includes(key)) {
+      out[key] = inputProps[key];
+    }
+  });
+  return out;
+};
+var adaptEventHandlers = function adaptEventHandlers(props, newHandler) {
+  if (!props || typeof props === 'function' || typeof props === 'boolean') {
+    return null;
+  }
+
+  var inputProps = props;
+
+  if ( /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.isValidElement)(props)) {
+    inputProps = props.props;
+  }
+
+  if (!lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default()(inputProps)) {
+    return null;
+  }
+
+  var out = {};
+  Object.keys(inputProps).forEach(function (key) {
+    if (EventKeys.includes(key)) {
+      out[key] = newHandler || function (e) {
+        return inputProps[key](inputProps, e);
+      };
+    }
+  });
+  return out;
+};
+
+var getEventHandlerOfChild = function getEventHandlerOfChild(originalHandler, data, index) {
+  return function (e) {
+    originalHandler(data, index, e);
+    return null;
+  };
+};
+
+var adaptEventsOfChild = function adaptEventsOfChild(props, data, index) {
+  if (!lodash_isObject__WEBPACK_IMPORTED_MODULE_0___default()(props) || _typeof(props) !== 'object') {
+    return null;
+  }
+
+  var out = null;
+  Object.keys(props).forEach(function (key) {
+    var item = props[key];
+
+    if (EventKeys.includes(key) && typeof item === 'function') {
+      if (!out) out = {};
+      out[key] = getEventHandlerOfChild(item, data, index);
+    }
+  });
+  return out;
+};
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/dist/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/reduce-css-calc/dist/index.js ***!
+  \****************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var _postcssValueParser = __webpack_require__(/*! postcss-value-parser */ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/index.js");
+
+var _postcssValueParser2 = _interopRequireDefault(_postcssValueParser);
+
+var _parser = __webpack_require__(/*! ./parser */ "./node_modules/reduce-css-calc/dist/parser.js");
+
+var _reducer = __webpack_require__(/*! ./lib/reducer */ "./node_modules/reduce-css-calc/dist/lib/reducer.js");
+
+var _reducer2 = _interopRequireDefault(_reducer);
+
+var _stringifier = __webpack_require__(/*! ./lib/stringifier */ "./node_modules/reduce-css-calc/dist/lib/stringifier.js");
+
+var _stringifier2 = _interopRequireDefault(_stringifier);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// eslint-disable-line
+var MATCH_CALC = /((?:\-[a-z]+\-)?calc)/;
+
+exports["default"] = function (value) {
+  var precision = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
+
+  return (0, _postcssValueParser2.default)(value).walk(function (node) {
+    // skip anything which isn't a calc() function
+    if (node.type !== 'function' || !MATCH_CALC.test(node.value)) return;
+
+    // stringify calc expression and produce an AST
+    var contents = _postcssValueParser2.default.stringify(node.nodes);
+
+    // skip constant() and env()
+    if (contents.indexOf('constant') >= 0 || contents.indexOf('env') >= 0) return;
+
+    var ast = _parser.parser.parse(contents);
+
+    // reduce AST to its simplest form, that is, either to a single value
+    // or a simplified calc expression
+    var reducedAst = (0, _reducer2.default)(ast, precision);
+
+    // stringify AST and write it back
+    node.type = 'word';
+    node.value = (0, _stringifier2.default)(node.value, reducedAst, precision);
+  }, true).toString();
+};
+
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/dist/lib/convert.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/reduce-css-calc/dist/lib/convert.js ***!
+  \**********************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var _cssUnitConverter = __webpack_require__(/*! css-unit-converter */ "./node_modules/css-unit-converter/index.js");
+
+var _cssUnitConverter2 = _interopRequireDefault(_cssUnitConverter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function convertNodes(left, right, precision) {
+  switch (left.type) {
+    case 'LengthValue':
+    case 'AngleValue':
+    case 'TimeValue':
+    case 'FrequencyValue':
+    case 'ResolutionValue':
+      return convertAbsoluteLength(left, right, precision);
+    default:
+      return { left: left, right: right };
+  }
+}
+
+function convertAbsoluteLength(left, right, precision) {
+  if (right.type === left.type) {
+    right = {
+      type: left.type,
+      value: (0, _cssUnitConverter2.default)(right.value, right.unit, left.unit, precision),
+      unit: left.unit
+    };
+  }
+  return { left: left, right: right };
+}
+
+exports["default"] = convertNodes;
+module.exports = exports['default'];
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/dist/lib/reducer.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/reduce-css-calc/dist/lib/reducer.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.flip = flip;
+
+var _convert = __webpack_require__(/*! ./convert */ "./node_modules/reduce-css-calc/dist/lib/convert.js");
+
+var _convert2 = _interopRequireDefault(_convert);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function reduce(node, precision) {
+  if (node.type === "MathExpression") return reduceMathExpression(node, precision);
+  if (node.type === "Calc") return reduce(node.value, precision);
+
+  return node;
+}
+
+function isEqual(left, right) {
+  return left.type === right.type && left.value === right.value;
+}
+
+function isValueType(type) {
+  switch (type) {
+    case 'LengthValue':
+    case 'AngleValue':
+    case 'TimeValue':
+    case 'FrequencyValue':
+    case 'ResolutionValue':
+    case 'EmValue':
+    case 'ExValue':
+    case 'ChValue':
+    case 'RemValue':
+    case 'VhValue':
+    case 'VwValue':
+    case 'VminValue':
+    case 'VmaxValue':
+    case 'PercentageValue':
+    case 'Value':
+      return true;
+  }
+  return false;
+}
+
+function convertMathExpression(node, precision) {
+  var nodes = (0, _convert2.default)(node.left, node.right, precision);
+  var left = reduce(nodes.left, precision);
+  var right = reduce(nodes.right, precision);
+
+  if (left.type === "MathExpression" && right.type === "MathExpression") {
+
+    if (left.operator === '/' && right.operator === '*' || left.operator === '-' && right.operator === '+' || left.operator === '*' && right.operator === '/' || left.operator === '+' && right.operator === '-') {
+
+      if (isEqual(left.right, right.right)) nodes = (0, _convert2.default)(left.left, right.left, precision);else if (isEqual(left.right, right.left)) nodes = (0, _convert2.default)(left.left, right.right, precision);
+
+      left = reduce(nodes.left, precision);
+      right = reduce(nodes.right, precision);
+    }
+  }
+
+  node.left = left;
+  node.right = right;
+  return node;
+}
+
+function flip(operator) {
+  return operator === '+' ? '-' : '+';
+}
+
+function flipValue(node) {
+  if (isValueType(node.type)) node.value = -node.value;else if (node.type == 'MathExpression') {
+    node.left = flipValue(node.left);
+    node.right = flipValue(node.right);
+  }
+  return node;
+}
+
+function reduceAddSubExpression(node, precision) {
+  var _node = node,
+      left = _node.left,
+      right = _node.right,
+      op = _node.operator;
+
+
+  if (left.type === 'CssVariable' || right.type === 'CssVariable') return node;
+
+  // something + 0 => something
+  // something - 0 => something
+  if (right.value === 0) return left;
+
+  // 0 + something => something
+  if (left.value === 0 && op === "+") return right;
+
+  // 0 - something => -something
+  if (left.value === 0 && op === "-") return flipValue(right);
+
+  // value + value
+  // value - value
+  if (left.type === right.type && isValueType(left.type)) {
+    node = Object.assign({}, left);
+    if (op === "+") node.value = left.value + right.value;else node.value = left.value - right.value;
+  }
+
+  // value <op> (expr)
+  if (isValueType(left.type) && (right.operator === '+' || right.operator === '-') && right.type === 'MathExpression') {
+    // value + (value + something) => (value + value) + something
+    // value + (value - something) => (value + value) - something
+    // value - (value + something) => (value - value) - something
+    // value - (value - something) => (value - value) + something
+    if (left.type === right.left.type) {
+      node = Object.assign({}, node);
+      node.left = reduce({
+        type: 'MathExpression',
+        operator: op,
+        left: left,
+        right: right.left
+      }, precision);
+      node.right = right.right;
+      node.operator = op === '-' ? flip(right.operator) : right.operator;
+      return reduce(node, precision);
+    }
+    // value + (something + value) => (value + value) + something
+    // value + (something - value) => (value - value) + something
+    // value - (something + value) => (value - value) - something
+    // value - (something - value) => (value + value) - something
+    else if (left.type === right.right.type) {
+        node = Object.assign({}, node);
+        node.left = reduce({
+          type: 'MathExpression',
+          operator: op === '-' ? flip(right.operator) : right.operator,
+          left: left,
+          right: right.right
+        }, precision);
+        node.right = right.left;
+        return reduce(node, precision);
+      }
+  }
+
+  // (expr) <op> value
+  if (left.type === 'MathExpression' && (left.operator === '+' || left.operator === '-') && isValueType(right.type)) {
+    // (value + something) + value => (value + value) + something
+    // (value - something) + value => (value + value) - something
+    // (value + something) - value => (value - value) + something
+    // (value - something) - value => (value - value) - something
+    if (right.type === left.left.type) {
+      node = Object.assign({}, left);
+      node.left = reduce({
+        type: 'MathExpression',
+        operator: op,
+        left: left.left,
+        right: right
+      }, precision);
+      return reduce(node, precision);
+    }
+    // (something + value) + value => something + (value + value)
+    // (something - value1) + value2 => something - (value2 - value1)
+    // (something + value) - value => something + (value - value)
+    // (something - value) - value => something - (value + value)
+    else if (right.type === left.right.type) {
+        node = Object.assign({}, left);
+        if (left.operator === '-') {
+          node.right = reduce({
+            type: 'MathExpression',
+            operator: op === '-' ? '+' : '-',
+            left: right,
+            right: left.right
+          }, precision);
+          node.operator = op === '-' ? '-' : '+';
+        } else {
+          node.right = reduce({
+            type: 'MathExpression',
+            operator: op,
+            left: left.right,
+            right: right
+          }, precision);
+        }
+        if (node.right.value < 0) {
+          node.right.value *= -1;
+          node.operator = node.operator === '-' ? '+' : '-';
+        }
+        return reduce(node, precision);
+      }
+  }
+  return node;
+}
+
+function reduceDivisionExpression(node, precision) {
+  if (!isValueType(node.right.type)) return node;
+
+  if (node.right.type !== 'Value') throw new Error("Cannot divide by \"" + node.right.unit + "\", number expected");
+
+  if (node.right.value === 0) throw new Error('Cannot divide by zero');
+
+  // (expr) / value
+  if (node.left.type === 'MathExpression') {
+    if (isValueType(node.left.left.type) && isValueType(node.left.right.type)) {
+      node.left.left.value /= node.right.value;
+      node.left.right.value /= node.right.value;
+      return reduce(node.left, precision);
+    }
+    return node;
+  }
+  // something / value
+  else if (isValueType(node.left.type)) {
+      node.left.value /= node.right.value;
+      return node.left;
+    }
+  return node;
+}
+
+function reduceMultiplicationExpression(node) {
+  // (expr) * value
+  if (node.left.type === 'MathExpression' && node.right.type === 'Value') {
+    if (isValueType(node.left.left.type) && isValueType(node.left.right.type)) {
+      node.left.left.value *= node.right.value;
+      node.left.right.value *= node.right.value;
+      return node.left;
+    }
+  }
+  // something * value
+  else if (isValueType(node.left.type) && node.right.type === 'Value') {
+      node.left.value *= node.right.value;
+      return node.left;
+    }
+    // value * (expr)
+    else if (node.left.type === 'Value' && node.right.type === 'MathExpression') {
+        if (isValueType(node.right.left.type) && isValueType(node.right.right.type)) {
+          node.right.left.value *= node.left.value;
+          node.right.right.value *= node.left.value;
+          return node.right;
+        }
+      }
+      // value * something
+      else if (node.left.type === 'Value' && isValueType(node.right.type)) {
+          node.right.value *= node.left.value;
+          return node.right;
+        }
+  return node;
+}
+
+function reduceMathExpression(node, precision) {
+  node = convertMathExpression(node, precision);
+
+  switch (node.operator) {
+    case "+":
+    case "-":
+      return reduceAddSubExpression(node, precision);
+    case "/":
+      return reduceDivisionExpression(node, precision);
+    case "*":
+      return reduceMultiplicationExpression(node);
+  }
+  return node;
+}
+
+exports["default"] = reduce;
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/dist/lib/stringifier.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/reduce-css-calc/dist/lib/stringifier.js ***!
+  \**************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+exports["default"] = function (calc, node, precision) {
+  var str = stringify(node, precision);
+
+  if (node.type === "MathExpression") {
+    // if calc expression couldn't be resolved to a single value, re-wrap it as
+    // a calc()
+    str = calc + "(" + str + ")";
+  }
+  return str;
+};
+
+var _reducer = __webpack_require__(/*! ./reducer */ "./node_modules/reduce-css-calc/dist/lib/reducer.js");
+
+var order = {
+  "*": 0,
+  "/": 0,
+  "+": 1,
+  "-": 1
+};
+
+function round(value, prec) {
+  if (prec !== false) {
+    var precision = Math.pow(10, prec);
+    return Math.round(value * precision) / precision;
+  }
+  return value;
+}
+
+function stringify(node, prec) {
+  switch (node.type) {
+    case "MathExpression":
+      {
+        var left = node.left,
+            right = node.right,
+            op = node.operator;
+
+        var str = "";
+
+        if (left.type === 'MathExpression' && order[op] < order[left.operator]) str += "(" + stringify(left, prec) + ")";else str += stringify(left, prec);
+
+        str += " " + node.operator + " ";
+
+        if (right.type === 'MathExpression' && order[op] < order[right.operator]) {
+          str += "(" + stringify(right, prec) + ")";
+        } else if (right.type === 'MathExpression' && op === "-" && ["+", "-"].includes(right.operator)) {
+          // fix #52 : a-(b+c) = a-b-c
+          right.operator = (0, _reducer.flip)(right.operator);
+          str += stringify(right, prec);
+        } else {
+          str += stringify(right, prec);
+        }
+
+        return str;
+      }
+    case "Value":
+      return round(node.value, prec);
+    case 'CssVariable':
+      if (node.fallback) {
+        return "var(" + node.value + ", " + stringify(node.fallback, prec, true) + ")";
+      }
+      return "var(" + node.value + ")";
+    case 'Calc':
+      if (node.prefix) {
+        return "-" + node.prefix + "-calc(" + stringify(node.value, prec) + ")";
+      }
+      return "calc(" + stringify(node.value, prec) + ")";
+    default:
+      return round(node.value, prec) + node.unit;
+  }
+}
+
+module.exports = exports["default"];
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/dist/parser.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/reduce-css-calc/dist/parser.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/* parser generated by jison 0.6.1-215 */
+
+/*
+ * Returns a Parser object of the following structure:
+ *
+ *  Parser: {
+ *    yy: {}     The so-called "shared state" or rather the *source* of it;
+ *               the real "shared state" `yy` passed around to
+ *               the rule actions, etc. is a derivative/copy of this one,
+ *               not a direct reference!
+ *  }
+ *
+ *  Parser.prototype: {
+ *    yy: {},
+ *    EOF: 1,
+ *    TERROR: 2,
+ *
+ *    trace: function(errorMessage, ...),
+ *
+ *    JisonParserError: function(msg, hash),
+ *
+ *    quoteName: function(name),
+ *               Helper function which can be overridden by user code later on: put suitable
+ *               quotes around literal IDs in a description string.
+ *
+ *    originalQuoteName: function(name),
+ *               The basic quoteName handler provided by JISON.
+ *               `cleanupAfterParse()` will clean up and reset `quoteName()` to reference this function
+ *               at the end of the `parse()`.
+ *
+ *    describeSymbol: function(symbol),
+ *               Return a more-or-less human-readable description of the given symbol, when
+ *               available, or the symbol itself, serving as its own 'description' for lack
+ *               of something better to serve up.
+ *
+ *               Return NULL when the symbol is unknown to the parser.
+ *
+ *    symbols_: {associative list: name ==> number},
+ *    terminals_: {associative list: number ==> name},
+ *    nonterminals: {associative list: rule-name ==> {associative list: number ==> rule-alt}},
+ *    terminal_descriptions_: (if there are any) {associative list: number ==> description},
+ *    productions_: [...],
+ *
+ *    performAction: function parser__performAction(yytext, yyleng, yylineno, yyloc, yystate, yysp, yyvstack, yylstack, yystack, yysstack),
+ *
+ *               The function parameters and `this` have the following value/meaning:
+ *               - `this`    : reference to the `yyval` internal object, which has members (`$` and `_$`)
+ *                             to store/reference the rule value `$$` and location info `@$`.
+ *
+ *                 One important thing to note about `this` a.k.a. `yyval`: every *reduce* action gets
+ *                 to see the same object via the `this` reference, i.e. if you wish to carry custom
+ *                 data from one reduce action through to the next within a single parse run, then you
+ *                 may get nasty and use `yyval` a.k.a. `this` for storing you own semi-permanent data.
+ *
+ *                 `this.yy` is a direct reference to the `yy` shared state object.
+ *
+ *                 `%parse-param`-specified additional `parse()` arguments have been added to this `yy`
+ *                 object at `parse()` start and are therefore available to the action code via the
+ *                 same named `yy.xxxx` attributes (where `xxxx` represents a identifier name from
+ *                 the %parse-param` list.
+ *
+ *               - `yytext`  : reference to the lexer value which belongs to the last lexer token used
+ *                             to match this rule. This is *not* the look-ahead token, but the last token
+ *                             that's actually part of this rule.
+ *
+ *                 Formulated another way, `yytext` is the value of the token immediately preceeding
+ *                 the current look-ahead token.
+ *                 Caveats apply for rules which don't require look-ahead, such as epsilon rules.
+ *
+ *               - `yyleng`  : ditto as `yytext`, only now for the lexer.yyleng value.
+ *
+ *               - `yylineno`: ditto as `yytext`, only now for the lexer.yylineno value.
+ *
+ *               - `yyloc`   : ditto as `yytext`, only now for the lexer.yylloc lexer token location info.
+ *
+ *                               WARNING: since jison 0.4.18-186 this entry may be NULL/UNDEFINED instead
+ *                               of an empty object when no suitable location info can be provided.
+ *
+ *               - `yystate` : the current parser state number, used internally for dispatching and
+ *                               executing the action code chunk matching the rule currently being reduced.
+ *
+ *               - `yysp`    : the current state stack position (a.k.a. 'stack pointer')
+ *
+ *                 This one comes in handy when you are going to do advanced things to the parser
+ *                 stacks, all of which are accessible from your action code (see the next entries below).
+ *
+ *                 Also note that you can access this and other stack index values using the new double-hash
+ *                 syntax, i.e. `##$ === ##0 === yysp`, while `##1` is the stack index for all things
+ *                 related to the first rule term, just like you have `$1`, `@1` and `#1`.
+ *                 This is made available to write very advanced grammar action rules, e.g. when you want
+ *                 to investigate the parse state stack in your action code, which would, for example,
+ *                 be relevant when you wish to implement error diagnostics and reporting schemes similar
+ *                 to the work described here:
+ *
+ *                 + Pottier, F., 2016. Reachability and error diagnosis in LR(1) automata.
+ *                   In Journées Francophones des Languages Applicatifs.
+ *
+ *                 + Jeffery, C.L., 2003. Generating LR syntax error messages from examples.
+ *                   ACM Transactions on Programming Languages and Systems (TOPLAS), 25(5), pp.631–640.
+ *
+ *               - `yyrulelength`: the current rule's term count, i.e. the number of entries occupied on the stack.
+ *
+ *                 This one comes in handy when you are going to do advanced things to the parser
+ *                 stacks, all of which are accessible from your action code (see the next entries below).
+ *
+ *               - `yyvstack`: reference to the parser value stack. Also accessed via the `$1` etc.
+ *                             constructs.
+ *
+ *               - `yylstack`: reference to the parser token location stack. Also accessed via
+ *                             the `@1` etc. constructs.
+ *
+ *                             WARNING: since jison 0.4.18-186 this array MAY contain slots which are
+ *                             UNDEFINED rather than an empty (location) object, when the lexer/parser
+ *                             action code did not provide a suitable location info object when such a
+ *                             slot was filled!
+ *
+ *               - `yystack` : reference to the parser token id stack. Also accessed via the
+ *                             `#1` etc. constructs.
+ *
+ *                 Note: this is a bit of a **white lie** as we can statically decode any `#n` reference to
+ *                 its numeric token id value, hence that code wouldn't need the `yystack` but *you* might
+ *                 want access this array for your own purposes, such as error analysis as mentioned above!
+ *
+ *                 Note that this stack stores the current stack of *tokens*, that is the sequence of
+ *                 already parsed=reduced *nonterminals* (tokens representing rules) and *terminals*
+ *                 (lexer tokens *shifted* onto the stack until the rule they belong to is found and
+ *                 *reduced*.
+ *
+ *               - `yysstack`: reference to the parser state stack. This one carries the internal parser
+ *                             *states* such as the one in `yystate`, which are used to represent
+ *                             the parser state machine in the *parse table*. *Very* *internal* stuff,
+ *                             what can I say? If you access this one, you're clearly doing wicked things
+ *
+ *               - `...`     : the extra arguments you specified in the `%parse-param` statement in your
+ *                             grammar definition file.
+ *
+ *    table: [...],
+ *               State transition table
+ *               ----------------------
+ *
+ *               index levels are:
+ *               - `state`  --> hash table
+ *               - `symbol` --> action (number or array)
+ *
+ *                 If the `action` is an array, these are the elements' meaning:
+ *                 - index [0]: 1 = shift, 2 = reduce, 3 = accept
+ *                 - index [1]: GOTO `state`
+ *
+ *                 If the `action` is a number, it is the GOTO `state`
+ *
+ *    defaultActions: {...},
+ *
+ *    parseError: function(str, hash, ExceptionClass),
+ *    yyError: function(str, ...),
+ *    yyRecovering: function(),
+ *    yyErrOk: function(),
+ *    yyClearIn: function(),
+ *
+ *    constructParseErrorInfo: function(error_message, exception_object, expected_token_set, is_recoverable),
+ *               Helper function **which will be set up during the first invocation of the `parse()` method**.
+ *               Produces a new errorInfo 'hash object' which can be passed into `parseError()`.
+ *               See it's use in this parser kernel in many places; example usage:
+ *
+ *                   var infoObj = parser.constructParseErrorInfo('fail!', null,
+ *                                     parser.collect_expected_token_set(state), true);
+ *                   var retVal = parser.parseError(infoObj.errStr, infoObj, parser.JisonParserError);
+ *
+ *    originalParseError: function(str, hash, ExceptionClass),
+ *               The basic `parseError` handler provided by JISON.
+ *               `cleanupAfterParse()` will clean up and reset `parseError()` to reference this function
+ *               at the end of the `parse()`.
+ *
+ *    options: { ... parser %options ... },
+ *
+ *    parse: function(input[, args...]),
+ *               Parse the given `input` and return the parsed value (or `true` when none was provided by
+ *               the root action, in which case the parser is acting as a *matcher*).
+ *               You MAY use the additional `args...` parameters as per `%parse-param` spec of this grammar:
+ *               these extra `args...` are added verbatim to the `yy` object reference as member variables.
+ *
+ *               WARNING:
+ *               Parser's additional `args...` parameters (via `%parse-param`) MAY conflict with
+ *               any attributes already added to `yy` by the jison run-time;
+ *               when such a collision is detected an exception is thrown to prevent the generated run-time
+ *               from silently accepting this confusing and potentially hazardous situation!
+ *
+ *               The lexer MAY add its own set of additional parameters (via the `%parse-param` line in
+ *               the lexer section of the grammar spec): these will be inserted in the `yy` shared state
+ *               object and any collision with those will be reported by the lexer via a thrown exception.
+ *
+ *    cleanupAfterParse: function(resultValue, invoke_post_methods, do_not_nuke_errorinfos),
+ *               Helper function **which will be set up during the first invocation of the `parse()` method**.
+ *               This helper API is invoked at the end of the `parse()` call, unless an exception was thrown
+ *               and `%options no-try-catch` has been defined for this grammar: in that case this helper MAY
+ *               be invoked by calling user code to ensure the `post_parse` callbacks are invoked and
+ *               the internal parser gets properly garbage collected under these particular circumstances.
+ *
+ *    yyMergeLocationInfo: function(first_index, last_index, first_yylloc, last_yylloc, dont_look_back),
+ *               Helper function **which will be set up during the first invocation of the `parse()` method**.
+ *               This helper API can be invoked to calculate a spanning `yylloc` location info object.
+ *
+ *               Note: %epsilon rules MAY specify no `first_index` and `first_yylloc`, in which case
+ *               this function will attempt to obtain a suitable location marker by inspecting the location stack
+ *               backwards.
+ *
+ *               For more info see the documentation comment further below, immediately above this function's
+ *               implementation.
+ *
+ *    lexer: {
+ *        yy: {...},           A reference to the so-called "shared state" `yy` once
+ *                             received via a call to the `.setInput(input, yy)` lexer API.
+ *        EOF: 1,
+ *        ERROR: 2,
+ *        JisonLexerError: function(msg, hash),
+ *        parseError: function(str, hash, ExceptionClass),
+ *        setInput: function(input, [yy]),
+ *        input: function(),
+ *        unput: function(str),
+ *        more: function(),
+ *        reject: function(),
+ *        less: function(n),
+ *        pastInput: function(n),
+ *        upcomingInput: function(n),
+ *        showPosition: function(),
+ *        test_match: function(regex_match_array, rule_index, ...),
+ *        next: function(...),
+ *        lex: function(...),
+ *        begin: function(condition),
+ *        pushState: function(condition),
+ *        popState: function(),
+ *        topState: function(),
+ *        _currentRules: function(),
+ *        stateStackSize: function(),
+ *        cleanupAfterLex: function()
+ *
+ *        options: { ... lexer %options ... },
+ *
+ *        performAction: function(yy, yy_, $avoiding_name_collisions, YY_START, ...),
+ *        rules: [...],
+ *        conditions: {associative list: name ==> set},
+ *    }
+ *  }
+ *
+ *
+ *  token location info (@$, _$, etc.): {
+ *    first_line: n,
+ *    last_line: n,
+ *    first_column: n,
+ *    last_column: n,
+ *    range: [start_number, end_number]
+ *               (where the numbers are indexes into the input string, zero-based)
+ *  }
+ *
+ * ---
+ *
+ * The `parseError` function receives a 'hash' object with these members for lexer and
+ * parser errors:
+ *
+ *  {
+ *    text:        (matched text)
+ *    token:       (the produced terminal token, if any)
+ *    token_id:    (the produced terminal token numeric ID, if any)
+ *    line:        (yylineno)
+ *    loc:         (yylloc)
+ *  }
+ *
+ * parser (grammar) errors will also provide these additional members:
+ *
+ *  {
+ *    expected:    (array describing the set of expected tokens;
+ *                  may be UNDEFINED when we cannot easily produce such a set)
+ *    state:       (integer (or array when the table includes grammar collisions);
+ *                  represents the current internal state of the parser kernel.
+ *                  can, for example, be used to pass to the `collect_expected_token_set()`
+ *                  API to obtain the expected token set)
+ *    action:      (integer; represents the current internal action which will be executed)
+ *    new_state:   (integer; represents the next/planned internal state, once the current
+ *                  action has executed)
+ *    recoverable: (boolean: TRUE when the parser MAY have an error recovery rule
+ *                  available for this particular error)
+ *    state_stack: (array: the current parser LALR/LR internal state stack; this can be used,
+ *                  for instance, for advanced error analysis and reporting)
+ *    value_stack: (array: the current parser LALR/LR internal `$$` value stack; this can be used,
+ *                  for instance, for advanced error analysis and reporting)
+ *    location_stack: (array: the current parser LALR/LR internal location stack; this can be used,
+ *                  for instance, for advanced error analysis and reporting)
+ *    yy:          (object: the current parser internal "shared state" `yy`
+ *                  as is also available in the rule actions; this can be used,
+ *                  for instance, for advanced error analysis and reporting)
+ *    lexer:       (reference to the current lexer instance used by the parser)
+ *    parser:      (reference to the current parser instance)
+ *  }
+ *
+ * while `this` will reference the current parser instance.
+ *
+ * When `parseError` is invoked by the lexer, `this` will still reference the related *parser*
+ * instance, while these additional `hash` fields will also be provided:
+ *
+ *  {
+ *    lexer:       (reference to the current lexer instance which reported the error)
+ *  }
+ *
+ * When `parseError` is invoked by the parser due to a **JavaScript exception** being fired
+ * from either the parser or lexer, `this` will still reference the related *parser*
+ * instance, while these additional `hash` fields will also be provided:
+ *
+ *  {
+ *    exception:   (reference to the exception thrown)
+ *  }
+ *
+ * Please do note that in the latter situation, the `expected` field will be omitted as
+ * this type of failure is assumed not to be due to *parse errors* but rather due to user
+ * action code in either parser or lexer failing unexpectedly.
+ *
+ * ---
+ *
+ * You can specify parser options by setting / modifying the `.yy` object of your Parser instance.
+ * These options are available:
+ *
+ * ### options which are global for all parser instances
+ *
+ *  Parser.pre_parse: function(yy)
+ *                 optional: you can specify a pre_parse() function in the chunk following
+ *                 the grammar, i.e. after the last `%%`.
+ *  Parser.post_parse: function(yy, retval, parseInfo) { return retval; }
+ *                 optional: you can specify a post_parse() function in the chunk following
+ *                 the grammar, i.e. after the last `%%`. When it does not return any value,
+ *                 the parser will return the original `retval`.
+ *
+ * ### options which can be set up per parser instance
+ *
+ *  yy: {
+ *      pre_parse:  function(yy)
+ *                 optional: is invoked before the parse cycle starts (and before the first
+ *                 invocation of `lex()`) but immediately after the invocation of
+ *                 `parser.pre_parse()`).
+ *      post_parse: function(yy, retval, parseInfo) { return retval; }
+ *                 optional: is invoked when the parse terminates due to success ('accept')
+ *                 or failure (even when exceptions are thrown).
+ *                 `retval` contains the return value to be produced by `Parser.parse()`;
+ *                 this function can override the return value by returning another.
+ *                 When it does not return any value, the parser will return the original
+ *                 `retval`.
+ *                 This function is invoked immediately before `parser.post_parse()`.
+ *
+ *      parseError: function(str, hash, ExceptionClass)
+ *                 optional: overrides the default `parseError` function.
+ *      quoteName: function(name),
+ *                 optional: overrides the default `quoteName` function.
+ *  }
+ *
+ *  parser.lexer.options: {
+ *      pre_lex:  function()
+ *                 optional: is invoked before the lexer is invoked to produce another token.
+ *                 `this` refers to the Lexer object.
+ *      post_lex: function(token) { return token; }
+ *                 optional: is invoked when the lexer has produced a token `token`;
+ *                 this function can override the returned token value by returning another.
+ *                 When it does not return any (truthy) value, the lexer will return
+ *                 the original `token`.
+ *                 `this` refers to the Lexer object.
+ *
+ *      ranges: boolean
+ *                 optional: `true` ==> token location info will include a .range[] member.
+ *      flex: boolean
+ *                 optional: `true` ==> flex-like lexing behaviour where the rules are tested
+ *                 exhaustively to find the longest match.
+ *      backtrack_lexer: boolean
+ *                 optional: `true` ==> lexer regexes are tested in order and for invoked;
+ *                 the lexer terminates the scan when a token is returned by the action code.
+ *      xregexp: boolean
+ *                 optional: `true` ==> lexer rule regexes are "extended regex format" requiring the
+ *                 `XRegExp` library. When this `%option` has not been specified at compile time, all lexer
+ *                 rule regexes have been written as standard JavaScript RegExp expressions.
+ *  }
+ */
+
+        
+    
+            var parser = (function () {
+
+
+// See also:
+// http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript/#35881508
+// but we keep the prototype.constructor and prototype.name assignment lines too for compatibility
+// with userland code which might access the derived class in a 'classic' way.
+function JisonParserError(msg, hash) {
+    Object.defineProperty(this, 'name', {
+        enumerable: false,
+        writable: false,
+        value: 'JisonParserError'
+    });
+
+    if (msg == null) msg = '???';
+
+    Object.defineProperty(this, 'message', {
+        enumerable: false,
+        writable: true,
+        value: msg
+    });
+
+    this.hash = hash;
+
+    var stacktrace;
+    if (hash && hash.exception instanceof Error) {
+        var ex2 = hash.exception;
+        this.message = ex2.message || msg;
+        stacktrace = ex2.stack;
+    }
+    if (!stacktrace) {
+        if (Error.hasOwnProperty('captureStackTrace')) {        // V8/Chrome engine
+            Error.captureStackTrace(this, this.constructor);
+        } else {
+            stacktrace = (new Error(msg)).stack;
+        }
+    }
+    if (stacktrace) {
+        Object.defineProperty(this, 'stack', {
+            enumerable: false,
+            writable: false,
+            value: stacktrace
+        });
+    }
+}
+
+if (typeof Object.setPrototypeOf === 'function') {
+    Object.setPrototypeOf(JisonParserError.prototype, Error.prototype);
+} else {
+    JisonParserError.prototype = Object.create(Error.prototype);
+}
+JisonParserError.prototype.constructor = JisonParserError;
+JisonParserError.prototype.name = 'JisonParserError';
+
+
+
+
+        // helper: reconstruct the productions[] table
+        function bp(s) {
+            var rv = [];
+            var p = s.pop;
+            var r = s.rule;
+            for (var i = 0, l = p.length; i < l; i++) {
+                rv.push([
+                    p[i],
+                    r[i]
+                ]);
+            }
+            return rv;
+        }
+    
+
+
+        // helper: reconstruct the defaultActions[] table
+        function bda(s) {
+            var rv = {};
+            var d = s.idx;
+            var g = s.goto;
+            for (var i = 0, l = d.length; i < l; i++) {
+                var j = d[i];
+                rv[j] = g[i];
+            }
+            return rv;
+        }
+    
+
+
+        // helper: reconstruct the 'goto' table
+        function bt(s) {
+            var rv = [];
+            var d = s.len;
+            var y = s.symbol;
+            var t = s.type;
+            var a = s.state;
+            var m = s.mode;
+            var g = s.goto;
+            for (var i = 0, l = d.length; i < l; i++) {
+                var n = d[i];
+                var q = {};
+                for (var j = 0; j < n; j++) {
+                    var z = y.shift();
+                    switch (t.shift()) {
+                    case 2:
+                        q[z] = [
+                            m.shift(),
+                            g.shift()
+                        ];
+                        break;
+
+                    case 0:
+                        q[z] = a.shift();
+                        break;
+
+                    default:
+                        // type === 1: accept
+                        q[z] = [
+                            3
+                        ];
+                    }
+                }
+                rv.push(q);
+            }
+            return rv;
+        }
+    
+
+
+        // helper: runlength encoding with increment step: code, length: step (default step = 0)
+        // `this` references an array
+        function s(c, l, a) {
+            a = a || 0;
+            for (var i = 0; i < l; i++) {
+                this.push(c);
+                c += a;
+            }
+        }
+
+        // helper: duplicate sequence from *relative* offset and length.
+        // `this` references an array
+        function c(i, l) {
+            i = this.length - i;
+            for (l += i; i < l; i++) {
+                this.push(this[i]);
+            }
+        }
+
+        // helper: unpack an array using helpers and data, all passed in an array argument 'a'.
+        function u(a) {
+            var rv = [];
+            for (var i = 0, l = a.length; i < l; i++) {
+                var e = a[i];
+                // Is this entry a helper function?
+                if (typeof e === 'function') {
+                    i++;
+                    e.apply(rv, a[i]);
+                } else {
+                    rv.push(e);
+                }
+            }
+            return rv;
+        }
+    
+
+var parser = {
+    // Code Generator Information Report
+    // ---------------------------------
+    //
+    // Options:
+    //
+    //   default action mode: ............. ["classic","merge"]
+    //   test-compile action mode: ........ "parser:*,lexer:*"
+    //   try..catch: ...................... true
+    //   default resolve on conflict: ..... true
+    //   on-demand look-ahead: ............ false
+    //   error recovery token skip maximum: 3
+    //   yyerror in parse actions is: ..... NOT recoverable,
+    //   yyerror in lexer actions and other non-fatal lexer are:
+    //   .................................. NOT recoverable,
+    //   debug grammar/output: ............ false
+    //   has partial LR conflict upgrade:   true
+    //   rudimentary token-stack support:   false
+    //   parser table compression mode: ... 2
+    //   export debug tables: ............. false
+    //   export *all* tables: ............. false
+    //   module type: ..................... commonjs
+    //   parser engine type: .............. lalr
+    //   output main() in the module: ..... true
+    //   has user-specified main(): ....... false
+    //   has user-specified require()/import modules for main():
+    //   .................................. false
+    //   number of expected conflicts: .... 0
+    //
+    //
+    // Parser Analysis flags:
+    //
+    //   no significant actions (parser is a language matcher only):
+    //   .................................. false
+    //   uses yyleng: ..................... false
+    //   uses yylineno: ................... false
+    //   uses yytext: ..................... false
+    //   uses yylloc: ..................... false
+    //   uses ParseError API: ............. false
+    //   uses YYERROR: .................... false
+    //   uses YYRECOVERING: ............... false
+    //   uses YYERROK: .................... false
+    //   uses YYCLEARIN: .................. false
+    //   tracks rule values: .............. true
+    //   assigns rule values: ............. true
+    //   uses location tracking: .......... false
+    //   assigns location: ................ false
+    //   uses yystack: .................... false
+    //   uses yysstack: ................... false
+    //   uses yysp: ....................... true
+    //   uses yyrulelength: ............... false
+    //   uses yyMergeLocationInfo API: .... false
+    //   has error recovery: .............. false
+    //   has error reporting: ............. false
+    //
+    // --------- END OF REPORT -----------
+
+trace: function no_op_trace() { },
+JisonParserError: JisonParserError,
+yy: {},
+options: {
+  type: "lalr",
+  hasPartialLrUpgradeOnConflict: true,
+  errorRecoveryTokenDiscardCount: 3
+},
+symbols_: {
+  "$accept": 0,
+  "$end": 1,
+  "ADD": 3,
+  "ANGLE": 16,
+  "CHS": 22,
+  "COMMA": 14,
+  "CSS_CPROP": 13,
+  "CSS_VAR": 12,
+  "DIV": 6,
+  "EMS": 20,
+  "EOF": 1,
+  "EXS": 21,
+  "FREQ": 18,
+  "LENGTH": 15,
+  "LPAREN": 7,
+  "MUL": 5,
+  "NESTED_CALC": 9,
+  "NUMBER": 11,
+  "PERCENTAGE": 28,
+  "PREFIX": 10,
+  "REMS": 23,
+  "RES": 19,
+  "RPAREN": 8,
+  "SUB": 4,
+  "TIME": 17,
+  "VHS": 24,
+  "VMAXS": 27,
+  "VMINS": 26,
+  "VWS": 25,
+  "css_value": 33,
+  "css_variable": 32,
+  "error": 2,
+  "expression": 29,
+  "math_expression": 30,
+  "value": 31
+},
+terminals_: {
+  1: "EOF",
+  2: "error",
+  3: "ADD",
+  4: "SUB",
+  5: "MUL",
+  6: "DIV",
+  7: "LPAREN",
+  8: "RPAREN",
+  9: "NESTED_CALC",
+  10: "PREFIX",
+  11: "NUMBER",
+  12: "CSS_VAR",
+  13: "CSS_CPROP",
+  14: "COMMA",
+  15: "LENGTH",
+  16: "ANGLE",
+  17: "TIME",
+  18: "FREQ",
+  19: "RES",
+  20: "EMS",
+  21: "EXS",
+  22: "CHS",
+  23: "REMS",
+  24: "VHS",
+  25: "VWS",
+  26: "VMINS",
+  27: "VMAXS",
+  28: "PERCENTAGE"
+},
+TERROR: 2,
+    EOF: 1,
+
+    // internals: defined here so the object *structure* doesn't get modified by parse() et al,
+    // thus helping JIT compilers like Chrome V8.
+    originalQuoteName: null,
+    originalParseError: null,
+    cleanupAfterParse: null,
+    constructParseErrorInfo: null,
+    yyMergeLocationInfo: null,
+
+    __reentrant_call_depth: 0,      // INTERNAL USE ONLY
+    __error_infos: [],              // INTERNAL USE ONLY: the set of parseErrorInfo objects created since the last cleanup
+    __error_recovery_infos: [],     // INTERNAL USE ONLY: the set of parseErrorInfo objects created since the last cleanup
+
+    // APIs which will be set up depending on user action code analysis:
+    //yyRecovering: 0,
+    //yyErrOk: 0,
+    //yyClearIn: 0,
+
+    // Helper APIs
+    // -----------
+
+    // Helper function which can be overridden by user code later on: put suitable quotes around
+    // literal IDs in a description string.
+    quoteName: function parser_quoteName(id_str) {
+        return '"' + id_str + '"';
+    },
+
+    // Return the name of the given symbol (terminal or non-terminal) as a string, when available.
+    //
+    // Return NULL when the symbol is unknown to the parser.
+    getSymbolName: function parser_getSymbolName(symbol) {
+        if (this.terminals_[symbol]) {
+            return this.terminals_[symbol];
+        }
+
+        // Otherwise... this might refer to a RULE token i.e. a non-terminal: see if we can dig that one up.
+        //
+        // An example of this may be where a rule's action code contains a call like this:
+        //
+        //      parser.getSymbolName(#$)
+        //
+        // to obtain a human-readable name of the current grammar rule.
+        var s = this.symbols_;
+        for (var key in s) {
+            if (s[key] === symbol) {
+                return key;
+            }
+        }
+        return null;
+    },
+
+    // Return a more-or-less human-readable description of the given symbol, when available,
+    // or the symbol itself, serving as its own 'description' for lack of something better to serve up.
+    //
+    // Return NULL when the symbol is unknown to the parser.
+    describeSymbol: function parser_describeSymbol(symbol) {
+        if (symbol !== this.EOF && this.terminal_descriptions_ && this.terminal_descriptions_[symbol]) {
+            return this.terminal_descriptions_[symbol];
+        }
+        else if (symbol === this.EOF) {
+            return 'end of input';
+        }
+        var id = this.getSymbolName(symbol);
+        if (id) {
+            return this.quoteName(id);
+        }
+        return null;
+    },
+
+    // Produce a (more or less) human-readable list of expected tokens at the point of failure.
+    //
+    // The produced list may contain token or token set descriptions instead of the tokens
+    // themselves to help turning this output into something that easier to read by humans
+    // unless `do_not_describe` parameter is set, in which case a list of the raw, *numeric*,
+    // expected terminals and nonterminals is produced.
+    //
+    // The returned list (array) will not contain any duplicate entries.
+    collect_expected_token_set: function parser_collect_expected_token_set(state, do_not_describe) {
+        var TERROR = this.TERROR;
+        var tokenset = [];
+        var check = {};
+        // Has this (error?) state been outfitted with a custom expectations description text for human consumption?
+        // If so, use that one instead of the less palatable token set.
+        if (!do_not_describe && this.state_descriptions_ && this.state_descriptions_[state]) {
+            return [
+                this.state_descriptions_[state]
+            ];
+        }
+        for (var p in this.table[state]) {
+            p = +p;
+            if (p !== TERROR) {
+                var d = do_not_describe ? p : this.describeSymbol(p);
+                if (d && !check[d]) {
+                    tokenset.push(d);
+                    check[d] = true;        // Mark this token description as already mentioned to prevent outputting duplicate entries.
+                }
+            }
+        }
+        return tokenset;
+    },
+productions_: bp({
+  pop: u([
+  29,
+  s,
+  [30, 10],
+  31,
+  31,
+  32,
+  32,
+  s,
+  [33, 15]
+]),
+  rule: u([
+  2,
+  s,
+  [3, 5],
+  4,
+  7,
+  s,
+  [1, 4],
+  2,
+  4,
+  6,
+  s,
+  [1, 14],
+  2
+])
+}),
+performAction: function parser__PerformAction(yystate /* action[1] */, yysp, yyvstack) {
+
+          /* this == yyval */
+
+          // the JS engine itself can go and remove these statements when `yy` turns out to be unused in any action code!
+          var yy = this.yy;
+          var yyparser = yy.parser;
+          var yylexer = yy.lexer;
+
+          
+
+          switch (yystate) {
+case 0:
+    /*! Production::    $accept : expression $end */
+
+    // default action (generated by JISON mode classic/merge :: 1,VT,VA,-,-,-,-,-,-):
+    this.$ = yyvstack[yysp - 1];
+    // END of default action (generated by JISON mode classic/merge :: 1,VT,VA,-,-,-,-,-,-)
+    break;
+
+case 1:
+    /*! Production::    expression : math_expression EOF */
+
+    // default action (generated by JISON mode classic/merge :: 2,VT,VA,-,-,-,-,-,-):
+    this.$ = yyvstack[yysp - 1];
+    // END of default action (generated by JISON mode classic/merge :: 2,VT,VA,-,-,-,-,-,-)
+    
+    
+    return yyvstack[yysp - 1];
+    break;
+
+case 2:
+    /*! Production::    math_expression : math_expression ADD math_expression */
+case 3:
+    /*! Production::    math_expression : math_expression SUB math_expression */
+case 4:
+    /*! Production::    math_expression : math_expression MUL math_expression */
+case 5:
+    /*! Production::    math_expression : math_expression DIV math_expression */
+
+    this.$ = { type: 'MathExpression', operator: yyvstack[yysp - 1], left: yyvstack[yysp - 2], right: yyvstack[yysp] };
+    break;
+
+case 6:
+    /*! Production::    math_expression : LPAREN math_expression RPAREN */
+
+    this.$ = yyvstack[yysp - 1];
+    break;
+
+case 7:
+    /*! Production::    math_expression : NESTED_CALC LPAREN math_expression RPAREN */
+
+    this.$ = { type: 'Calc', value: yyvstack[yysp - 1] };
+    break;
+
+case 8:
+    /*! Production::    math_expression : SUB PREFIX SUB NESTED_CALC LPAREN math_expression RPAREN */
+
+    this.$ = { type: 'Calc', value: yyvstack[yysp - 1], prefix: yyvstack[yysp - 5] };
+    break;
+
+case 9:
+    /*! Production::    math_expression : css_variable */
+case 10:
+    /*! Production::    math_expression : css_value */
+case 11:
+    /*! Production::    math_expression : value */
+
+    this.$ = yyvstack[yysp];
+    break;
+
+case 12:
+    /*! Production::    value : NUMBER */
+
+    this.$ = { type: 'Value', value: parseFloat(yyvstack[yysp]) };
+    break;
+
+case 13:
+    /*! Production::    value : SUB NUMBER */
+
+    this.$ = { type: 'Value', value: parseFloat(yyvstack[yysp]) * -1 };
+    break;
+
+case 14:
+    /*! Production::    css_variable : CSS_VAR LPAREN CSS_CPROP RPAREN */
+
+    this.$ = { type: 'CssVariable', value: yyvstack[yysp - 1] };
+    break;
+
+case 15:
+    /*! Production::    css_variable : CSS_VAR LPAREN CSS_CPROP COMMA math_expression RPAREN */
+
+    this.$ = { type: 'CssVariable', value: yyvstack[yysp - 3], fallback: yyvstack[yysp - 1] };
+    break;
+
+case 16:
+    /*! Production::    css_value : LENGTH */
+
+    this.$ = { type: 'LengthValue', value: parseFloat(yyvstack[yysp]), unit: /[a-z]+/.exec(yyvstack[yysp])[0] };
+    break;
+
+case 17:
+    /*! Production::    css_value : ANGLE */
+
+    this.$ = { type: 'AngleValue', value: parseFloat(yyvstack[yysp]), unit: /[a-z]+/.exec(yyvstack[yysp])[0] };
+    break;
+
+case 18:
+    /*! Production::    css_value : TIME */
+
+    this.$ = { type: 'TimeValue', value: parseFloat(yyvstack[yysp]), unit: /[a-z]+/.exec(yyvstack[yysp])[0] };
+    break;
+
+case 19:
+    /*! Production::    css_value : FREQ */
+
+    this.$ = { type: 'FrequencyValue', value: parseFloat(yyvstack[yysp]), unit: /[a-z]+/.exec(yyvstack[yysp])[0] };
+    break;
+
+case 20:
+    /*! Production::    css_value : RES */
+
+    this.$ = { type: 'ResolutionValue', value: parseFloat(yyvstack[yysp]), unit: /[a-z]+/.exec(yyvstack[yysp])[0] };
+    break;
+
+case 21:
+    /*! Production::    css_value : EMS */
+
+    this.$ = { type: 'EmValue', value: parseFloat(yyvstack[yysp]), unit: 'em' };
+    break;
+
+case 22:
+    /*! Production::    css_value : EXS */
+
+    this.$ = { type: 'ExValue', value: parseFloat(yyvstack[yysp]), unit: 'ex' };
+    break;
+
+case 23:
+    /*! Production::    css_value : CHS */
+
+    this.$ = { type: 'ChValue', value: parseFloat(yyvstack[yysp]), unit: 'ch' };
+    break;
+
+case 24:
+    /*! Production::    css_value : REMS */
+
+    this.$ = { type: 'RemValue', value: parseFloat(yyvstack[yysp]), unit: 'rem' };
+    break;
+
+case 25:
+    /*! Production::    css_value : VHS */
+
+    this.$ = { type: 'VhValue', value: parseFloat(yyvstack[yysp]), unit: 'vh' };
+    break;
+
+case 26:
+    /*! Production::    css_value : VWS */
+
+    this.$ = { type: 'VwValue', value: parseFloat(yyvstack[yysp]), unit: 'vw' };
+    break;
+
+case 27:
+    /*! Production::    css_value : VMINS */
+
+    this.$ = { type: 'VminValue', value: parseFloat(yyvstack[yysp]), unit: 'vmin' };
+    break;
+
+case 28:
+    /*! Production::    css_value : VMAXS */
+
+    this.$ = { type: 'VmaxValue', value: parseFloat(yyvstack[yysp]), unit: 'vmax' };
+    break;
+
+case 29:
+    /*! Production::    css_value : PERCENTAGE */
+
+    this.$ = { type: 'PercentageValue', value: parseFloat(yyvstack[yysp]), unit: '%' };
+    break;
+
+case 30:
+    /*! Production::    css_value : SUB css_value */
+
+    var prev = yyvstack[yysp]; prev.value *= -1; this.$ = prev;
+    break;
+
+}
+},
+table: bt({
+  len: u([
+  24,
+  1,
+  5,
+  23,
+  1,
+  18,
+  s,
+  [0, 3],
+  1,
+  s,
+  [0, 16],
+  s,
+  [23, 4],
+  c,
+  [28, 3],
+  0,
+  0,
+  16,
+  1,
+  6,
+  6,
+  s,
+  [0, 3],
+  5,
+  1,
+  2,
+  c,
+  [37, 3],
+  c,
+  [20, 3],
+  5,
+  0,
+  0
+]),
+  symbol: u([
+  4,
+  7,
+  9,
+  11,
+  12,
+  s,
+  [15, 19, 1],
+  1,
+  1,
+  s,
+  [3, 4, 1],
+  c,
+  [30, 19],
+  c,
+  [29, 4],
+  7,
+  4,
+  10,
+  11,
+  c,
+  [22, 14],
+  c,
+  [19, 3],
+  c,
+  [43, 22],
+  c,
+  [23, 69],
+  c,
+  [139, 4],
+  8,
+  c,
+  [51, 24],
+  4,
+  c,
+  [138, 15],
+  13,
+  c,
+  [186, 5],
+  8,
+  c,
+  [6, 6],
+  c,
+  [5, 5],
+  9,
+  8,
+  14,
+  c,
+  [159, 47],
+  c,
+  [60, 10]
+]),
+  type: u([
+  s,
+  [2, 19],
+  s,
+  [0, 5],
+  1,
+  s,
+  [2, 24],
+  s,
+  [0, 4],
+  c,
+  [22, 19],
+  c,
+  [43, 42],
+  c,
+  [23, 70],
+  c,
+  [28, 25],
+  c,
+  [45, 25],
+  c,
+  [113, 54]
+]),
+  state: u([
+  1,
+  2,
+  8,
+  6,
+  7,
+  30,
+  c,
+  [4, 3],
+  33,
+  37,
+  c,
+  [5, 3],
+  38,
+  c,
+  [4, 3],
+  39,
+  c,
+  [4, 3],
+  40,
+  c,
+  [4, 3],
+  42,
+  c,
+  [21, 4],
+  50,
+  c,
+  [5, 3],
+  51,
+  c,
+  [4, 3]
+]),
+  mode: u([
+  s,
+  [1, 179],
+  s,
+  [2, 3],
+  c,
+  [5, 5],
+  c,
+  [6, 4],
+  s,
+  [1, 57]
+]),
+  goto: u([
+  5,
+  3,
+  4,
+  24,
+  s,
+  [9, 15, 1],
+  s,
+  [25, 5, 1],
+  c,
+  [24, 19],
+  31,
+  35,
+  32,
+  34,
+  c,
+  [18, 14],
+  36,
+  c,
+  [38, 19],
+  c,
+  [19, 57],
+  c,
+  [118, 4],
+  41,
+  c,
+  [24, 19],
+  43,
+  35,
+  c,
+  [16, 14],
+  44,
+  s,
+  [2, 3],
+  28,
+  29,
+  2,
+  s,
+  [3, 3],
+  28,
+  29,
+  3,
+  c,
+  [53, 4],
+  s,
+  [45, 5, 1],
+  c,
+  [100, 42],
+  52,
+  c,
+  [5, 4],
+  53
+])
+}),
+defaultActions: bda({
+  idx: u([
+  6,
+  7,
+  8,
+  s,
+  [10, 16, 1],
+  33,
+  34,
+  39,
+  40,
+  41,
+  45,
+  47,
+  52,
+  53
+]),
+  goto: u([
+  9,
+  10,
+  11,
+  s,
+  [16, 14, 1],
+  12,
+  1,
+  30,
+  13,
+  s,
+  [4, 4, 1],
+  14,
+  15,
+  8
+])
+}),
+parseError: function parseError(str, hash, ExceptionClass) {
+    if (hash.recoverable) {
+        if (typeof this.trace === 'function') {
+            this.trace(str);
+        }
+        hash.destroy();             // destroy... well, *almost*!
+    } else {
+        if (typeof this.trace === 'function') {
+            this.trace(str);
+        }
+        if (!ExceptionClass) {
+            ExceptionClass = this.JisonParserError;
+        }
+        throw new ExceptionClass(str, hash);
+    }
+},
+parse: function parse(input) {
+    var self = this;
+    var stack = new Array(128);         // token stack: stores token which leads to state at the same index (column storage)
+    var sstack = new Array(128);        // state stack: stores states (column storage)
+
+    var vstack = new Array(128);        // semantic value stack
+
+    var table = this.table;
+    var sp = 0;                         // 'stack pointer': index into the stacks
+
+
+    
+
+
+    var symbol = 0;
+
+
+
+    var TERROR = this.TERROR;
+    var EOF = this.EOF;
+    var ERROR_RECOVERY_TOKEN_DISCARD_COUNT = (this.options.errorRecoveryTokenDiscardCount | 0) || 3;
+    var NO_ACTION = [0, 54 /* === table.length :: ensures that anyone using this new state will fail dramatically! */];
+
+    var lexer;
+    if (this.__lexer__) {
+        lexer = this.__lexer__;
+    } else {
+        lexer = this.__lexer__ = Object.create(this.lexer);
+    }
+
+    var sharedState_yy = {
+        parseError: undefined,
+        quoteName: undefined,
+        lexer: undefined,
+        parser: undefined,
+        pre_parse: undefined,
+        post_parse: undefined,
+        pre_lex: undefined,
+        post_lex: undefined      // WARNING: must be written this way for the code expanders to work correctly in both ES5 and ES6 modes!
+    };
+
+    var ASSERT;
+    if (typeof assert !== 'function') {
+        ASSERT = function JisonAssert(cond, msg) {
+            if (!cond) {
+                throw new Error('assertion failed: ' + (msg || '***'));
+            }
+        };
+    } else {
+        ASSERT = assert;
+    }
+
+    this.yyGetSharedState = function yyGetSharedState() {
+        return sharedState_yy;
+    };
+
+
+
+
+
+
+
+
+    function shallow_copy_noclobber(dst, src) {
+        for (var k in src) {
+            if (typeof dst[k] === 'undefined' && Object.prototype.hasOwnProperty.call(src, k)) {
+                dst[k] = src[k];
+            }
+        }
+    }
+
+    // copy state
+    shallow_copy_noclobber(sharedState_yy, this.yy);
+
+    sharedState_yy.lexer = lexer;
+    sharedState_yy.parser = this;
+
+
+
+
+
+
+    // Does the shared state override the default `parseError` that already comes with this instance?
+    if (typeof sharedState_yy.parseError === 'function') {
+        this.parseError = function parseErrorAlt(str, hash, ExceptionClass) {
+            if (!ExceptionClass) {
+                ExceptionClass = this.JisonParserError;
+            }
+            return sharedState_yy.parseError.call(this, str, hash, ExceptionClass);
+        };
+    } else {
+        this.parseError = this.originalParseError;
+    }
+
+    // Does the shared state override the default `quoteName` that already comes with this instance?
+    if (typeof sharedState_yy.quoteName === 'function') {
+        this.quoteName = function quoteNameAlt(id_str) {
+            return sharedState_yy.quoteName.call(this, id_str);
+        };
+    } else {
+        this.quoteName = this.originalQuoteName;
+    }
+
+    // set up the cleanup function; make it an API so that external code can re-use this one in case of
+    // calamities or when the `%options no-try-catch` option has been specified for the grammar, in which
+    // case this parse() API method doesn't come with a `finally { ... }` block any more!
+    //
+    // NOTE: as this API uses parse() as a closure, it MUST be set again on every parse() invocation,
+    //       or else your `sharedState`, etc. references will be *wrong*!
+    this.cleanupAfterParse = function parser_cleanupAfterParse(resultValue, invoke_post_methods, do_not_nuke_errorinfos) {
+        var rv;
+
+        if (invoke_post_methods) {
+            var hash;
+
+            if (sharedState_yy.post_parse || this.post_parse) {
+                // create an error hash info instance: we re-use this API in a **non-error situation**
+                // as this one delivers all parser internals ready for access by userland code.
+                hash = this.constructParseErrorInfo(null /* no error! */, null /* no exception! */, null, false);
+            }
+
+            if (sharedState_yy.post_parse) {
+                rv = sharedState_yy.post_parse.call(this, sharedState_yy, resultValue, hash);
+                if (typeof rv !== 'undefined') resultValue = rv;
+            }
+            if (this.post_parse) {
+                rv = this.post_parse.call(this, sharedState_yy, resultValue, hash);
+                if (typeof rv !== 'undefined') resultValue = rv;
+            }
+
+            // cleanup:
+            if (hash && hash.destroy) {
+                hash.destroy();
+            }
+        }
+
+        if (this.__reentrant_call_depth > 1) return resultValue;        // do not (yet) kill the sharedState when this is a reentrant run.
+
+        // clean up the lingering lexer structures as well:
+        if (lexer.cleanupAfterLex) {
+            lexer.cleanupAfterLex(do_not_nuke_errorinfos);
+        }
+
+        // prevent lingering circular references from causing memory leaks:
+        if (sharedState_yy) {
+            sharedState_yy.lexer = undefined;
+            sharedState_yy.parser = undefined;
+            if (lexer.yy === sharedState_yy) {
+                lexer.yy = undefined;
+            }
+        }
+        sharedState_yy = undefined;
+        this.parseError = this.originalParseError;
+        this.quoteName = this.originalQuoteName;
+
+        // nuke the vstack[] array at least as that one will still reference obsoleted user values.
+        // To be safe, we nuke the other internal stack columns as well...
+        stack.length = 0;               // fastest way to nuke an array without overly bothering the GC
+        sstack.length = 0;
+
+        vstack.length = 0;
+        sp = 0;
+
+        // nuke the error hash info instances created during this run.
+        // Userland code must COPY any data/references
+        // in the error hash instance(s) it is more permanently interested in.
+        if (!do_not_nuke_errorinfos) {
+            for (var i = this.__error_infos.length - 1; i >= 0; i--) {
+                var el = this.__error_infos[i];
+                if (el && typeof el.destroy === 'function') {
+                    el.destroy();
+                }
+            }
+            this.__error_infos.length = 0;
+
+
+        }
+
+        return resultValue;
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // NOTE: as this API uses parse() as a closure, it MUST be set again on every parse() invocation,
+    //       or else your `lexer`, `sharedState`, etc. references will be *wrong*!
+    this.constructParseErrorInfo = function parser_constructParseErrorInfo(msg, ex, expected, recoverable) {
+        var pei = {
+            errStr: msg,
+            exception: ex,
+            text: lexer.match,
+            value: lexer.yytext,
+            token: this.describeSymbol(symbol) || symbol,
+            token_id: symbol,
+            line: lexer.yylineno,
+
+            expected: expected,
+            recoverable: recoverable,
+            state: state,
+            action: action,
+            new_state: newState,
+            symbol_stack: stack,
+            state_stack: sstack,
+            value_stack: vstack,
+
+            stack_pointer: sp,
+            yy: sharedState_yy,
+            lexer: lexer,
+            parser: this,
+
+            // and make sure the error info doesn't stay due to potential
+            // ref cycle via userland code manipulations.
+            // These would otherwise all be memory leak opportunities!
+            //
+            // Note that only array and object references are nuked as those
+            // constitute the set of elements which can produce a cyclic ref.
+            // The rest of the members is kept intact as they are harmless.
+            destroy: function destructParseErrorInfo() {
+                // remove cyclic references added to error info:
+                // info.yy = null;
+                // info.lexer = null;
+                // info.value = null;
+                // info.value_stack = null;
+                // ...
+                var rec = !!this.recoverable;
+                for (var key in this) {
+                    if (this.hasOwnProperty(key) && typeof key === 'object') {
+                        this[key] = undefined;
+                    }
+                }
+                this.recoverable = rec;
+            }
+        };
+        // track this instance so we can `destroy()` it once we deem it superfluous and ready for garbage collection!
+        this.__error_infos.push(pei);
+        return pei;
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function getNonTerminalFromCode(symbol) {
+        var tokenName = self.getSymbolName(symbol);
+        if (!tokenName) {
+            tokenName = symbol;
+        }
+        return tokenName;
+    }
+
+
+    function stdLex() {
+        var token = lexer.lex();
+        // if token isn't its numeric value, convert
+        if (typeof token !== 'number') {
+            token = self.symbols_[token] || token;
+        }
+
+        return token || EOF;
+    }
+
+    function fastLex() {
+        var token = lexer.fastLex();
+        // if token isn't its numeric value, convert
+        if (typeof token !== 'number') {
+            token = self.symbols_[token] || token;
+        }
+
+        return token || EOF;
+    }
+
+    var lex = stdLex;
+
+
+    var state, action, r, t;
+    var yyval = {
+        $: true,
+        _$: undefined,
+        yy: sharedState_yy
+    };
+    var p;
+    var yyrulelen;
+    var this_production;
+    var newState;
+    var retval = false;
+
+
+    try {
+        this.__reentrant_call_depth++;
+
+        lexer.setInput(input, sharedState_yy);
+
+        // NOTE: we *assume* no lexer pre/post handlers are set up *after* 
+        // this initial `setInput()` call: hence we can now check and decide
+        // whether we'll go with the standard, slower, lex() API or the
+        // `fast_lex()` one:
+        if (typeof lexer.canIUse === 'function') {
+            var lexerInfo = lexer.canIUse();
+            if (lexerInfo.fastLex && typeof fastLex === 'function') {
+                lex = fastLex;
+            }
+        } 
+
+
+
+        vstack[sp] = null;
+        sstack[sp] = 0;
+        stack[sp] = 0;
+        ++sp;
+
+
+
+
+
+        if (this.pre_parse) {
+            this.pre_parse.call(this, sharedState_yy);
+        }
+        if (sharedState_yy.pre_parse) {
+            sharedState_yy.pre_parse.call(this, sharedState_yy);
+        }
+
+        newState = sstack[sp - 1];
+        for (;;) {
+            // retrieve state number from top of stack
+            state = newState;               // sstack[sp - 1];
+
+            // use default actions if available
+            if (this.defaultActions[state]) {
+                action = 2;
+                newState = this.defaultActions[state];
+            } else {
+                // The single `==` condition below covers both these `===` comparisons in a single
+                // operation:
+                //
+                //     if (symbol === null || typeof symbol === 'undefined') ...
+                if (!symbol) {
+                    symbol = lex();
+                }
+                // read action for current state and first input
+                t = (table[state] && table[state][symbol]) || NO_ACTION;
+                newState = t[1];
+                action = t[0];
+
+
+
+
+
+
+
+
+
+
+
+                // handle parse error
+                if (!action) {
+                    var errStr;
+                    var errSymbolDescr = (this.describeSymbol(symbol) || symbol);
+                    var expected = this.collect_expected_token_set(state);
+
+                    // Report error
+                    if (typeof lexer.yylineno === 'number') {
+                        errStr = 'Parse error on line ' + (lexer.yylineno + 1) + ': ';
+                    } else {
+                        errStr = 'Parse error: ';
+                    }
+                    if (typeof lexer.showPosition === 'function') {
+                        errStr += '\n' + lexer.showPosition(79 - 10, 10) + '\n';
+                    }
+                    if (expected.length) {
+                        errStr += 'Expecting ' + expected.join(', ') + ', got unexpected ' + errSymbolDescr;
+                    } else {
+                        errStr += 'Unexpected ' + errSymbolDescr;
+                    }
+                    // we cannot recover from the error!
+                    p = this.constructParseErrorInfo(errStr, null, expected, false);
+                    r = this.parseError(p.errStr, p, this.JisonParserError);
+                    if (typeof r !== 'undefined') {
+                        retval = r;
+                    }
+                    break;
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+            switch (action) {
+            // catch misc. parse failures:
+            default:
+                // this shouldn't happen, unless resolve defaults are off
+                if (action instanceof Array) {
+                    p = this.constructParseErrorInfo('Parse Error: multiple actions possible at state: ' + state + ', token: ' + symbol, null, null, false);
+                    r = this.parseError(p.errStr, p, this.JisonParserError);
+                    if (typeof r !== 'undefined') {
+                        retval = r;
+                    }
+                    break;
+                }
+                // Another case of better safe than sorry: in case state transitions come out of another error recovery process
+                // or a buggy LUT (LookUp Table):
+                p = this.constructParseErrorInfo('Parsing halted. No viable error recovery approach available due to internal system failure.', null, null, false);
+                r = this.parseError(p.errStr, p, this.JisonParserError);
+                if (typeof r !== 'undefined') {
+                    retval = r;
+                }
+                break;
+
+            // shift:
+            case 1:
+                stack[sp] = symbol;
+                vstack[sp] = lexer.yytext;
+
+                sstack[sp] = newState; // push state
+
+                ++sp;
+                symbol = 0;
+
+
+
+
+                // Pick up the lexer details for the current symbol as that one is not 'look-ahead' any more:
+
+
+
+
+                continue;
+
+            // reduce:
+            case 2:
+
+
+
+                this_production = this.productions_[newState - 1];  // `this.productions_[]` is zero-based indexed while states start from 1 upwards...
+                yyrulelen = this_production[1];
+
+
+
+
+
+
+
+
+
+
+                r = this.performAction.call(yyval, newState, sp - 1, vstack);
+
+                if (typeof r !== 'undefined') {
+                    retval = r;
+                    break;
+                }
+
+                // pop off stack
+                sp -= yyrulelen;
+
+                // don't overwrite the `symbol` variable: use a local var to speed things up:
+                var ntsymbol = this_production[0];    // push nonterminal (reduce)
+                stack[sp] = ntsymbol;
+                vstack[sp] = yyval.$;
+
+                // goto new state = table[STATE][NONTERMINAL]
+                newState = table[sstack[sp - 1]][ntsymbol];
+                sstack[sp] = newState;
+                ++sp;
+
+
+
+
+
+
+
+
+
+                continue;
+
+            // accept:
+            case 3:
+                if (sp !== -2) {
+                    retval = true;
+                    // Return the `$accept` rule's `$$` result, if available.
+                    //
+                    // Also note that JISON always adds this top-most `$accept` rule (with implicit,
+                    // default, action):
+                    //
+                    //     $accept: <startSymbol> $end
+                    //                  %{ $$ = $1; @$ = @1; %}
+                    //
+                    // which, combined with the parse kernel's `$accept` state behaviour coded below,
+                    // will produce the `$$` value output of the <startSymbol> rule as the parse result,
+                    // IFF that result is *not* `undefined`. (See also the parser kernel code.)
+                    //
+                    // In code:
+                    //
+                    //                  %{
+                    //                      @$ = @1;            // if location tracking support is included
+                    //                      if (typeof $1 !== 'undefined')
+                    //                          return $1;
+                    //                      else
+                    //                          return true;           // the default parse result if the rule actions don't produce anything
+                    //                  %}
+                    sp--;
+                    if (typeof vstack[sp] !== 'undefined') {
+                        retval = vstack[sp];
+                    }
+                }
+                break;
+            }
+
+            // break out of loop: we accept or fail with error
+            break;
+        }
+    } catch (ex) {
+        // report exceptions through the parseError callback too, but keep the exception intact
+        // if it is a known parser or lexer error which has been thrown by parseError() already:
+        if (ex instanceof this.JisonParserError) {
+            throw ex;
+        }
+        else if (lexer && typeof lexer.JisonLexerError === 'function' && ex instanceof lexer.JisonLexerError) {
+            throw ex;
+        }
+
+        p = this.constructParseErrorInfo('Parsing aborted due to exception.', ex, null, false);
+        retval = false;
+        r = this.parseError(p.errStr, p, this.JisonParserError);
+        if (typeof r !== 'undefined') {
+            retval = r;
+        }
+    } finally {
+        retval = this.cleanupAfterParse(retval, true, true);
+        this.__reentrant_call_depth--;
+    }   // /finally
+
+    return retval;
+}
+};
+parser.originalParseError = parser.parseError;
+parser.originalQuoteName = parser.quoteName;
+/* lexer generated by jison-lex 0.6.1-215 */
+
+/*
+ * Returns a Lexer object of the following structure:
+ *
+ *  Lexer: {
+ *    yy: {}     The so-called "shared state" or rather the *source* of it;
+ *               the real "shared state" `yy` passed around to
+ *               the rule actions, etc. is a direct reference!
+ *
+ *               This "shared context" object was passed to the lexer by way of 
+ *               the `lexer.setInput(str, yy)` API before you may use it.
+ *
+ *               This "shared context" object is passed to the lexer action code in `performAction()`
+ *               so userland code in the lexer actions may communicate with the outside world 
+ *               and/or other lexer rules' actions in more or less complex ways.
+ *
+ *  }
+ *
+ *  Lexer.prototype: {
+ *    EOF: 1,
+ *    ERROR: 2,
+ *
+ *    yy:        The overall "shared context" object reference.
+ *
+ *    JisonLexerError: function(msg, hash),
+ *
+ *    performAction: function lexer__performAction(yy, yyrulenumber, YY_START),
+ *
+ *               The function parameters and `this` have the following value/meaning:
+ *               - `this`    : reference to the `lexer` instance. 
+ *                               `yy_` is an alias for `this` lexer instance reference used internally.
+ *
+ *               - `yy`      : a reference to the `yy` "shared state" object which was passed to the lexer
+ *                             by way of the `lexer.setInput(str, yy)` API before.
+ *
+ *                             Note:
+ *                             The extra arguments you specified in the `%parse-param` statement in your
+ *                             **parser** grammar definition file are passed to the lexer via this object
+ *                             reference as member variables.
+ *
+ *               - `yyrulenumber`   : index of the matched lexer rule (regex), used internally.
+ *
+ *               - `YY_START`: the current lexer "start condition" state.
+ *
+ *    parseError: function(str, hash, ExceptionClass),
+ *
+ *    constructLexErrorInfo: function(error_message, is_recoverable),
+ *               Helper function.
+ *               Produces a new errorInfo 'hash object' which can be passed into `parseError()`.
+ *               See it's use in this lexer kernel in many places; example usage:
+ *
+ *                   var infoObj = lexer.constructParseErrorInfo('fail!', true);
+ *                   var retVal = lexer.parseError(infoObj.errStr, infoObj, lexer.JisonLexerError);
+ *
+ *    options: { ... lexer %options ... },
+ *
+ *    lex: function(),
+ *               Produce one token of lexed input, which was passed in earlier via the `lexer.setInput()` API.
+ *               You MAY use the additional `args...` parameters as per `%parse-param` spec of the **lexer** grammar:
+ *               these extra `args...` are added verbatim to the `yy` object reference as member variables.
+ *
+ *               WARNING:
+ *               Lexer's additional `args...` parameters (via lexer's `%parse-param`) MAY conflict with
+ *               any attributes already added to `yy` by the **parser** or the jison run-time; 
+ *               when such a collision is detected an exception is thrown to prevent the generated run-time 
+ *               from silently accepting this confusing and potentially hazardous situation! 
+ *
+ *    cleanupAfterLex: function(do_not_nuke_errorinfos),
+ *               Helper function.
+ *
+ *               This helper API is invoked when the **parse process** has completed: it is the responsibility
+ *               of the **parser** (or the calling userland code) to invoke this method once cleanup is desired. 
+ *
+ *               This helper may be invoked by user code to ensure the internal lexer gets properly garbage collected.
+ *
+ *    setInput: function(input, [yy]),
+ *
+ *
+ *    input: function(),
+ *
+ *
+ *    unput: function(str),
+ *
+ *
+ *    more: function(),
+ *
+ *
+ *    reject: function(),
+ *
+ *
+ *    less: function(n),
+ *
+ *
+ *    pastInput: function(n),
+ *
+ *
+ *    upcomingInput: function(n),
+ *
+ *
+ *    showPosition: function(),
+ *
+ *
+ *    test_match: function(regex_match_array, rule_index),
+ *
+ *
+ *    next: function(),
+ *
+ *
+ *    begin: function(condition),
+ *
+ *
+ *    pushState: function(condition),
+ *
+ *
+ *    popState: function(),
+ *
+ *
+ *    topState: function(),
+ *
+ *
+ *    _currentRules: function(),
+ *
+ *
+ *    stateStackSize: function(),
+ *
+ *
+ *    performAction: function(yy, yy_, yyrulenumber, YY_START),
+ *
+ *
+ *    rules: [...],
+ *
+ *
+ *    conditions: {associative list: name ==> set},
+ *  }
+ *
+ *
+ *  token location info (`yylloc`): {
+ *    first_line: n,
+ *    last_line: n,
+ *    first_column: n,
+ *    last_column: n,
+ *    range: [start_number, end_number]
+ *               (where the numbers are indexes into the input string, zero-based)
+ *  }
+ *
+ * ---
+ *
+ * The `parseError` function receives a 'hash' object with these members for lexer errors:
+ *
+ *  {
+ *    text:        (matched text)
+ *    token:       (the produced terminal token, if any)
+ *    token_id:    (the produced terminal token numeric ID, if any)
+ *    line:        (yylineno)
+ *    loc:         (yylloc)
+ *    recoverable: (boolean: TRUE when the parser MAY have an error recovery rule
+ *                  available for this particular error)
+ *    yy:          (object: the current parser internal "shared state" `yy`
+ *                  as is also available in the rule actions; this can be used,
+ *                  for instance, for advanced error analysis and reporting)
+ *    lexer:       (reference to the current lexer instance used by the parser)
+ *  }
+ *
+ * while `this` will reference the current lexer instance.
+ *
+ * When `parseError` is invoked by the lexer, the default implementation will
+ * attempt to invoke `yy.parser.parseError()`; when this callback is not provided
+ * it will try to invoke `yy.parseError()` instead. When that callback is also not
+ * provided, a `JisonLexerError` exception will be thrown containing the error
+ * message and `hash`, as constructed by the `constructLexErrorInfo()` API.
+ *
+ * Note that the lexer's `JisonLexerError` error class is passed via the
+ * `ExceptionClass` argument, which is invoked to construct the exception
+ * instance to be thrown, so technically `parseError` will throw the object
+ * produced by the `new ExceptionClass(str, hash)` JavaScript expression.
+ *
+ * ---
+ *
+ * You can specify lexer options by setting / modifying the `.options` object of your Lexer instance.
+ * These options are available:
+ *
+ * (Options are permanent.)
+ *  
+ *  yy: {
+ *      parseError: function(str, hash, ExceptionClass)
+ *                 optional: overrides the default `parseError` function.
+ *  }
+ *
+ *  lexer.options: {
+ *      pre_lex:  function()
+ *                 optional: is invoked before the lexer is invoked to produce another token.
+ *                 `this` refers to the Lexer object.
+ *      post_lex: function(token) { return token; }
+ *                 optional: is invoked when the lexer has produced a token `token`;
+ *                 this function can override the returned token value by returning another.
+ *                 When it does not return any (truthy) value, the lexer will return
+ *                 the original `token`.
+ *                 `this` refers to the Lexer object.
+ *
+ * WARNING: the next set of options are not meant to be changed. They echo the abilities of
+ * the lexer as per when it was compiled!
+ *
+ *      ranges: boolean
+ *                 optional: `true` ==> token location info will include a .range[] member.
+ *      flex: boolean
+ *                 optional: `true` ==> flex-like lexing behaviour where the rules are tested
+ *                 exhaustively to find the longest match.
+ *      backtrack_lexer: boolean
+ *                 optional: `true` ==> lexer regexes are tested in order and for invoked;
+ *                 the lexer terminates the scan when a token is returned by the action code.
+ *      xregexp: boolean
+ *                 optional: `true` ==> lexer rule regexes are "extended regex format" requiring the
+ *                 `XRegExp` library. When this %option has not been specified at compile time, all lexer
+ *                 rule regexes have been written as standard JavaScript RegExp expressions.
+ *  }
+ */
+
+
+var lexer = function() {
+  /**
+   * See also:
+   * http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript/#35881508
+   * but we keep the prototype.constructor and prototype.name assignment lines too for compatibility
+   * with userland code which might access the derived class in a 'classic' way.
+   *
+   * @public
+   * @constructor
+   * @nocollapse
+   */
+  function JisonLexerError(msg, hash) {
+    Object.defineProperty(this, 'name', {
+      enumerable: false,
+      writable: false,
+      value: 'JisonLexerError'
+    });
+
+    if (msg == null)
+      msg = '???';
+
+    Object.defineProperty(this, 'message', {
+      enumerable: false,
+      writable: true,
+      value: msg
+    });
+
+    this.hash = hash;
+    var stacktrace;
+
+    if (hash && hash.exception instanceof Error) {
+      var ex2 = hash.exception;
+      this.message = ex2.message || msg;
+      stacktrace = ex2.stack;
+    }
+
+    if (!stacktrace) {
+      if (Error.hasOwnProperty('captureStackTrace')) {
+        // V8
+        Error.captureStackTrace(this, this.constructor);
+      } else {
+        stacktrace = new Error(msg).stack;
+      }
+    }
+
+    if (stacktrace) {
+      Object.defineProperty(this, 'stack', {
+        enumerable: false,
+        writable: false,
+        value: stacktrace
+      });
+    }
+  }
+
+  if (typeof Object.setPrototypeOf === 'function') {
+    Object.setPrototypeOf(JisonLexerError.prototype, Error.prototype);
+  } else {
+    JisonLexerError.prototype = Object.create(Error.prototype);
+  }
+
+  JisonLexerError.prototype.constructor = JisonLexerError;
+  JisonLexerError.prototype.name = 'JisonLexerError';
+
+  var lexer = {
+    
+// Code Generator Information Report
+// ---------------------------------
+//
+// Options:
+//
+//   backtracking: .................... false
+//   location.ranges: ................. false
+//   location line+column tracking: ... true
+//
+//
+// Forwarded Parser Analysis flags:
+//
+//   uses yyleng: ..................... false
+//   uses yylineno: ................... false
+//   uses yytext: ..................... false
+//   uses yylloc: ..................... false
+//   uses lexer values: ............... true / true
+//   location tracking: ............... false
+//   location assignment: ............. false
+//
+//
+// Lexer Analysis flags:
+//
+//   uses yyleng: ..................... ???
+//   uses yylineno: ................... ???
+//   uses yytext: ..................... ???
+//   uses yylloc: ..................... ???
+//   uses ParseError API: ............. ???
+//   uses yyerror: .................... ???
+//   uses location tracking & editing:  ???
+//   uses more() API: ................. ???
+//   uses unput() API: ................ ???
+//   uses reject() API: ............... ???
+//   uses less() API: ................. ???
+//   uses display APIs pastInput(), upcomingInput(), showPosition():
+//        ............................. ???
+//   uses describeYYLLOC() API: ....... ???
+//
+// --------- END OF REPORT -----------
+
+EOF: 1,
+    ERROR: 2,
+
+    // JisonLexerError: JisonLexerError,        /// <-- injected by the code generator
+
+    // options: {},                             /// <-- injected by the code generator
+
+    // yy: ...,                                 /// <-- injected by setInput()
+
+    __currentRuleSet__: null,                   /// INTERNAL USE ONLY: internal rule set cache for the current lexer state  
+
+    __error_infos: [],                          /// INTERNAL USE ONLY: the set of lexErrorInfo objects created since the last cleanup  
+    __decompressed: false,                      /// INTERNAL USE ONLY: mark whether the lexer instance has been 'unfolded' completely and is now ready for use  
+    done: false,                                /// INTERNAL USE ONLY  
+    _backtrack: false,                          /// INTERNAL USE ONLY  
+    _input: '',                                 /// INTERNAL USE ONLY  
+    _more: false,                               /// INTERNAL USE ONLY  
+    _signaled_error_token: false,               /// INTERNAL USE ONLY  
+    conditionStack: [],                         /// INTERNAL USE ONLY; managed via `pushState()`, `popState()`, `topState()` and `stateStackSize()`  
+    match: '',                                  /// READ-ONLY EXTERNAL ACCESS - ADVANCED USE ONLY: tracks input which has been matched so far for the lexer token under construction. `match` is identical to `yytext` except that this one still contains the matched input string after `lexer.performAction()` has been invoked, where userland code MAY have changed/replaced the `yytext` value entirely!  
+    matched: '',                                /// READ-ONLY EXTERNAL ACCESS - ADVANCED USE ONLY: tracks entire input which has been matched so far  
+    matches: false,                             /// READ-ONLY EXTERNAL ACCESS - ADVANCED USE ONLY: tracks RE match result for last (successful) match attempt  
+    yytext: '',                                 /// ADVANCED USE ONLY: tracks input which has been matched so far for the lexer token under construction; this value is transferred to the parser as the 'token value' when the parser consumes the lexer token produced through a call to the `lex()` API.  
+    offset: 0,                                  /// READ-ONLY EXTERNAL ACCESS - ADVANCED USE ONLY: tracks the 'cursor position' in the input string, i.e. the number of characters matched so far  
+    yyleng: 0,                                  /// READ-ONLY EXTERNAL ACCESS - ADVANCED USE ONLY: length of matched input for the token under construction (`yytext`)  
+    yylineno: 0,                                /// READ-ONLY EXTERNAL ACCESS - ADVANCED USE ONLY: 'line number' at which the token under construction is located  
+    yylloc: null,                               /// READ-ONLY EXTERNAL ACCESS - ADVANCED USE ONLY: tracks location info (lines + columns) for the token under construction  
+
+    /**
+     * INTERNAL USE: construct a suitable error info hash object instance for `parseError`.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    constructLexErrorInfo: function lexer_constructLexErrorInfo(msg, recoverable, show_input_position) {
+      msg = '' + msg;
+
+      // heuristic to determine if the error message already contains a (partial) source code dump
+      // as produced by either `showPosition()` or `prettyPrintRange()`:
+      if (show_input_position == undefined) {
+        show_input_position = !(msg.indexOf('\n') > 0 && msg.indexOf('^') > 0);
+      }
+
+      if (this.yylloc && show_input_position) {
+        if (typeof this.prettyPrintRange === 'function') {
+          var pretty_src = this.prettyPrintRange(this.yylloc);
+
+          if (!/\n\s*$/.test(msg)) {
+            msg += '\n';
+          }
+
+          msg += '\n  Erroneous area:\n' + this.prettyPrintRange(this.yylloc);
+        } else if (typeof this.showPosition === 'function') {
+          var pos_str = this.showPosition();
+
+          if (pos_str) {
+            if (msg.length && msg[msg.length - 1] !== '\n' && pos_str[0] !== '\n') {
+              msg += '\n' + pos_str;
+            } else {
+              msg += pos_str;
+            }
+          }
+        }
+      }
+
+      /** @constructor */
+      var pei = {
+        errStr: msg,
+        recoverable: !!recoverable,
+        text: this.match,           // This one MAY be empty; userland code should use the `upcomingInput` API to obtain more text which follows the 'lexer cursor position'...  
+        token: null,
+        line: this.yylineno,
+        loc: this.yylloc,
+        yy: this.yy,
+        lexer: this,
+
+        /**
+         * and make sure the error info doesn't stay due to potential
+         * ref cycle via userland code manipulations.
+         * These would otherwise all be memory leak opportunities!
+         * 
+         * Note that only array and object references are nuked as those
+         * constitute the set of elements which can produce a cyclic ref.
+         * The rest of the members is kept intact as they are harmless.
+         * 
+         * @public
+         * @this {LexErrorInfo}
+         */
+        destroy: function destructLexErrorInfo() {
+          // remove cyclic references added to error info:
+          // info.yy = null;
+          // info.lexer = null;
+          // ...
+          var rec = !!this.recoverable;
+
+          for (var key in this) {
+            if (this.hasOwnProperty(key) && typeof key === 'object') {
+              this[key] = undefined;
+            }
+          }
+
+          this.recoverable = rec;
+        }
+      };
+
+      // track this instance so we can `destroy()` it once we deem it superfluous and ready for garbage collection!
+      this.__error_infos.push(pei);
+
+      return pei;
+    },
+
+    /**
+     * handler which is invoked when a lexer error occurs.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    parseError: function lexer_parseError(str, hash, ExceptionClass) {
+      if (!ExceptionClass) {
+        ExceptionClass = this.JisonLexerError;
+      }
+
+      if (this.yy) {
+        if (this.yy.parser && typeof this.yy.parser.parseError === 'function') {
+          return this.yy.parser.parseError.call(this, str, hash, ExceptionClass) || this.ERROR;
+        } else if (typeof this.yy.parseError === 'function') {
+          return this.yy.parseError.call(this, str, hash, ExceptionClass) || this.ERROR;
+        }
+      }
+
+      throw new ExceptionClass(str, hash);
+    },
+
+    /**
+     * method which implements `yyerror(str, ...args)` functionality for use inside lexer actions.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    yyerror: function yyError(str /*, ...args */) {
+      var lineno_msg = '';
+
+      if (this.yylloc) {
+        lineno_msg = ' on line ' + (this.yylineno + 1);
+      }
+
+      var p = this.constructLexErrorInfo(
+        'Lexical error' + lineno_msg + ': ' + str,
+        this.options.lexerErrorsAreRecoverable
+      );
+
+      // Add any extra args to the hash under the name `extra_error_attributes`:
+      var args = Array.prototype.slice.call(arguments, 1);
+
+      if (args.length) {
+        p.extra_error_attributes = args;
+      }
+
+      return this.parseError(p.errStr, p, this.JisonLexerError) || this.ERROR;
+    },
+
+    /**
+     * final cleanup function for when we have completed lexing the input;
+     * make it an API so that external code can use this one once userland
+     * code has decided it's time to destroy any lingering lexer error
+     * hash object instances and the like: this function helps to clean
+     * up these constructs, which *may* carry cyclic references which would
+     * otherwise prevent the instances from being properly and timely
+     * garbage-collected, i.e. this function helps prevent memory leaks!
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    cleanupAfterLex: function lexer_cleanupAfterLex(do_not_nuke_errorinfos) {
+      // prevent lingering circular references from causing memory leaks:
+      this.setInput('', {});
+
+      // nuke the error hash info instances created during this run.
+      // Userland code must COPY any data/references
+      // in the error hash instance(s) it is more permanently interested in.
+      if (!do_not_nuke_errorinfos) {
+        for (var i = this.__error_infos.length - 1; i >= 0; i--) {
+          var el = this.__error_infos[i];
+
+          if (el && typeof el.destroy === 'function') {
+            el.destroy();
+          }
+        }
+
+        this.__error_infos.length = 0;
+      }
+
+      return this;
+    },
+
+    /**
+     * clear the lexer token context; intended for internal use only
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    clear: function lexer_clear() {
+      this.yytext = '';
+      this.yyleng = 0;
+      this.match = '';
+
+      // - DO NOT reset `this.matched`
+      this.matches = false;
+
+      this._more = false;
+      this._backtrack = false;
+      var col = (this.yylloc ? this.yylloc.last_column : 0);
+
+      this.yylloc = {
+        first_line: this.yylineno + 1,
+        first_column: col,
+        last_line: this.yylineno + 1,
+        last_column: col,
+        range: [this.offset, this.offset]
+      };
+    },
+
+    /**
+     * resets the lexer, sets new input
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    setInput: function lexer_setInput(input, yy) {
+      this.yy = yy || this.yy || {};
+
+      // also check if we've fully initialized the lexer instance,
+      // including expansion work to be done to go from a loaded
+      // lexer to a usable lexer:
+      if (!this.__decompressed) {
+        // step 1: decompress the regex list:
+        var rules = this.rules;
+
+        for (var i = 0, len = rules.length; i < len; i++) {
+          var rule_re = rules[i];
+
+          // compression: is the RE an xref to another RE slot in the rules[] table?
+          if (typeof rule_re === 'number') {
+            rules[i] = rules[rule_re];
+          }
+        }
+
+        // step 2: unfold the conditions[] set to make these ready for use:
+        var conditions = this.conditions;
+
+        for (var k in conditions) {
+          var spec = conditions[k];
+          var rule_ids = spec.rules;
+          var len = rule_ids.length;
+          var rule_regexes = new Array(len + 1);             // slot 0 is unused; we use a 1-based index approach here to keep the hottest code in `lexer_next()` fast and simple! 
+          var rule_new_ids = new Array(len + 1);
+
+          for (var i = 0; i < len; i++) {
+            var idx = rule_ids[i];
+            var rule_re = rules[idx];
+            rule_regexes[i + 1] = rule_re;
+            rule_new_ids[i + 1] = idx;
+          }
+
+          spec.rules = rule_new_ids;
+          spec.__rule_regexes = rule_regexes;
+          spec.__rule_count = len;
+        }
+
+        this.__decompressed = true;
+      }
+
+      this._input = input || '';
+      this.clear();
+      this._signaled_error_token = false;
+      this.done = false;
+      this.yylineno = 0;
+      this.matched = '';
+      this.conditionStack = ['INITIAL'];
+      this.__currentRuleSet__ = null;
+
+      this.yylloc = {
+        first_line: 1,
+        first_column: 0,
+        last_line: 1,
+        last_column: 0,
+        range: [0, 0]
+      };
+
+      this.offset = 0;
+      return this;
+    },
+
+    /**
+     * edit the remaining input via user-specified callback.
+     * This can be used to forward-adjust the input-to-parse, 
+     * e.g. inserting macro expansions and alike in the
+     * input which has yet to be lexed.
+     * The behaviour of this API contrasts the `unput()` et al
+     * APIs as those act on the *consumed* input, while this
+     * one allows one to manipulate the future, without impacting
+     * the current `yyloc` cursor location or any history. 
+     * 
+     * Use this API to help implement C-preprocessor-like
+     * `#include` statements, etc.
+     * 
+     * The provided callback must be synchronous and is
+     * expected to return the edited input (string).
+     *
+     * The `cpsArg` argument value is passed to the callback
+     * as-is.
+     *
+     * `callback` interface: 
+     * `function callback(input, cpsArg)`
+     * 
+     * - `input` will carry the remaining-input-to-lex string
+     *   from the lexer.
+     * - `cpsArg` is `cpsArg` passed into this API.
+     * 
+     * The `this` reference for the callback will be set to
+     * reference this lexer instance so that userland code
+     * in the callback can easily and quickly access any lexer
+     * API. 
+     *
+     * When the callback returns a non-string-type falsey value,
+     * we assume the callback did not edit the input and we
+     * will using the input as-is.
+     *
+     * When the callback returns a non-string-type value, it
+     * is converted to a string for lexing via the `"" + retval`
+     * operation. (See also why: http://2ality.com/2012/03/converting-to-string.html 
+     * -- that way any returned object's `toValue()` and `toString()`
+     * methods will be invoked in a proper/desirable order.)
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    editRemainingInput: function lexer_editRemainingInput(callback, cpsArg) {
+      var rv = callback.call(this, this._input, cpsArg);
+
+      if (typeof rv !== 'string') {
+        if (rv) {
+          this._input = '' + rv;
+        } 
+        // else: keep `this._input` as is.  
+      } else {
+        this._input = rv;
+      }
+
+      return this;
+    },
+
+    /**
+     * consumes and returns one char from the input
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    input: function lexer_input() {
+      if (!this._input) {
+        //this.done = true;    -- don't set `done` as we want the lex()/next() API to be able to produce one custom EOF token match after this anyhow. (lexer can match special <<EOF>> tokens and perform user action code for a <<EOF>> match, but only does so *once*)
+        return null;
+      }
+
+      var ch = this._input[0];
+      this.yytext += ch;
+      this.yyleng++;
+      this.offset++;
+      this.match += ch;
+      this.matched += ch;
+
+      // Count the linenumber up when we hit the LF (or a stand-alone CR).
+      // On CRLF, the linenumber is incremented when you fetch the CR or the CRLF combo
+      // and we advance immediately past the LF as well, returning both together as if
+      // it was all a single 'character' only.
+      var slice_len = 1;
+
+      var lines = false;
+
+      if (ch === '\n') {
+        lines = true;
+      } else if (ch === '\r') {
+        lines = true;
+        var ch2 = this._input[1];
+
+        if (ch2 === '\n') {
+          slice_len++;
+          ch += ch2;
+          this.yytext += ch2;
+          this.yyleng++;
+          this.offset++;
+          this.match += ch2;
+          this.matched += ch2;
+          this.yylloc.range[1]++;
+        }
+      }
+
+      if (lines) {
+        this.yylineno++;
+        this.yylloc.last_line++;
+        this.yylloc.last_column = 0;
+      } else {
+        this.yylloc.last_column++;
+      }
+
+      this.yylloc.range[1]++;
+      this._input = this._input.slice(slice_len);
+      return ch;
+    },
+
+    /**
+     * unshifts one char (or an entire string) into the input
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    unput: function lexer_unput(ch) {
+      var len = ch.length;
+      var lines = ch.split(/(?:\r\n?|\n)/g);
+      this._input = ch + this._input;
+      this.yytext = this.yytext.substr(0, this.yytext.length - len);
+      this.yyleng = this.yytext.length;
+      this.offset -= len;
+      this.match = this.match.substr(0, this.match.length - len);
+      this.matched = this.matched.substr(0, this.matched.length - len);
+
+      if (lines.length > 1) {
+        this.yylineno -= lines.length - 1;
+        this.yylloc.last_line = this.yylineno + 1;
+
+        // Get last entirely matched line into the `pre_lines[]` array's
+        // last index slot; we don't mind when other previously 
+        // matched lines end up in the array too. 
+        var pre = this.match;
+
+        var pre_lines = pre.split(/(?:\r\n?|\n)/g);
+
+        if (pre_lines.length === 1) {
+          pre = this.matched;
+          pre_lines = pre.split(/(?:\r\n?|\n)/g);
+        }
+
+        this.yylloc.last_column = pre_lines[pre_lines.length - 1].length;
+      } else {
+        this.yylloc.last_column -= len;
+      }
+
+      this.yylloc.range[1] = this.yylloc.range[0] + this.yyleng;
+      this.done = false;
+      return this;
+    },
+
+    /**
+     * cache matched text and append it on next action
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    more: function lexer_more() {
+      this._more = true;
+      return this;
+    },
+
+    /**
+     * signal the lexer that this rule fails to match the input, so the
+     * next matching rule (regex) should be tested instead.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    reject: function lexer_reject() {
+      if (this.options.backtrack_lexer) {
+        this._backtrack = true;
+      } else {
+        // when the `parseError()` call returns, we MUST ensure that the error is registered.
+        // We accomplish this by signaling an 'error' token to be produced for the current
+        // `.lex()` run.
+        var lineno_msg = '';
+
+        if (this.yylloc) {
+          lineno_msg = ' on line ' + (this.yylineno + 1);
+        }
+
+        var p = this.constructLexErrorInfo(
+          'Lexical error' + lineno_msg + ': You can only invoke reject() in the lexer when the lexer is of the backtracking persuasion (options.backtrack_lexer = true).',
+          false
+        );
+
+        this._signaled_error_token = this.parseError(p.errStr, p, this.JisonLexerError) || this.ERROR;
+      }
+
+      return this;
+    },
+
+    /**
+     * retain first n characters of the match
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    less: function lexer_less(n) {
+      return this.unput(this.match.slice(n));
+    },
+
+    /**
+     * return (part of the) already matched input, i.e. for error
+     * messages.
+     * 
+     * Limit the returned string length to `maxSize` (default: 20).
+     * 
+     * Limit the returned string to the `maxLines` number of lines of
+     * input (default: 1).
+     * 
+     * Negative limit values equal *unlimited*.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    pastInput: function lexer_pastInput(maxSize, maxLines) {
+      var past = this.matched.substring(0, this.matched.length - this.match.length);
+
+      if (maxSize < 0)
+        maxSize = past.length;
+      else if (!maxSize)
+        maxSize = 20;
+
+      if (maxLines < 0)
+        maxLines = past.length;          // can't ever have more input lines than this! 
+      else if (!maxLines)
+        maxLines = 1;
+
+      // `substr` anticipation: treat \r\n as a single character and take a little
+      // more than necessary so that we can still properly check against maxSize
+      // after we've transformed and limited the newLines in here:
+      past = past.substr(-maxSize * 2 - 2);
+
+      // now that we have a significantly reduced string to process, transform the newlines
+      // and chop them, then limit them:
+      var a = past.replace(/\r\n|\r/g, '\n').split('\n');
+
+      a = a.slice(-maxLines);
+      past = a.join('\n');
+
+      // When, after limiting to maxLines, we still have too much to return,
+      // do add an ellipsis prefix...
+      if (past.length > maxSize) {
+        past = '...' + past.substr(-maxSize);
+      }
+
+      return past;
+    },
+
+    /**
+     * return (part of the) upcoming input, i.e. for error messages.
+     * 
+     * Limit the returned string length to `maxSize` (default: 20).
+     * 
+     * Limit the returned string to the `maxLines` number of lines of input (default: 1).
+     * 
+     * Negative limit values equal *unlimited*.
+     *
+     * > ### NOTE ###
+     * >
+     * > *"upcoming input"* is defined as the whole of the both
+     * > the *currently lexed* input, together with any remaining input
+     * > following that. *"currently lexed"* input is the input 
+     * > already recognized by the lexer but not yet returned with
+     * > the lexer token. This happens when you are invoking this API
+     * > from inside any lexer rule action code block. 
+     * >
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    upcomingInput: function lexer_upcomingInput(maxSize, maxLines) {
+      var next = this.match;
+
+      if (maxSize < 0)
+        maxSize = next.length + this._input.length;
+      else if (!maxSize)
+        maxSize = 20;
+
+      if (maxLines < 0)
+        maxLines = maxSize;          // can't ever have more input lines than this! 
+      else if (!maxLines)
+        maxLines = 1;
+
+      // `substring` anticipation: treat \r\n as a single character and take a little
+      // more than necessary so that we can still properly check against maxSize
+      // after we've transformed and limited the newLines in here:
+      if (next.length < maxSize * 2 + 2) {
+        next += this._input.substring(0, maxSize * 2 + 2);   // substring is faster on Chrome/V8 
+      }
+
+      // now that we have a significantly reduced string to process, transform the newlines
+      // and chop them, then limit them:
+      var a = next.replace(/\r\n|\r/g, '\n').split('\n');
+
+      a = a.slice(0, maxLines);
+      next = a.join('\n');
+
+      // When, after limiting to maxLines, we still have too much to return,
+      // do add an ellipsis postfix...
+      if (next.length > maxSize) {
+        next = next.substring(0, maxSize) + '...';
+      }
+
+      return next;
+    },
+
+    /**
+     * return a string which displays the character position where the
+     * lexing error occurred, i.e. for error messages
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    showPosition: function lexer_showPosition(maxPrefix, maxPostfix) {
+      var pre = this.pastInput(maxPrefix).replace(/\s/g, ' ');
+      var c = new Array(pre.length + 1).join('-');
+      return pre + this.upcomingInput(maxPostfix).replace(/\s/g, ' ') + '\n' + c + '^';
+    },
+
+    /**
+     * return an YYLLOC info object derived off the given context (actual, preceding, following, current).
+     * Use this method when the given `actual` location is not guaranteed to exist (i.e. when
+     * it MAY be NULL) and you MUST have a valid location info object anyway:
+     * then we take the given context of the `preceding` and `following` locations, IFF those are available,
+     * and reconstruct the `actual` location info from those.
+     * If this fails, the heuristic is to take the `current` location, IFF available.
+     * If this fails as well, we assume the sought location is at/around the current lexer position
+     * and then produce that one as a response. DO NOTE that these heuristic/derived location info
+     * values MAY be inaccurate!
+     *
+     * NOTE: `deriveLocationInfo()` ALWAYS produces a location info object *copy* of `actual`, not just
+     * a *reference* hence all input location objects can be assumed to be 'constant' (function has no side-effects).
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    deriveLocationInfo: function lexer_deriveYYLLOC(actual, preceding, following, current) {
+      var loc = {
+        first_line: 1,
+        first_column: 0,
+        last_line: 1,
+        last_column: 0,
+        range: [0, 0]
+      };
+
+      if (actual) {
+        loc.first_line = actual.first_line | 0;
+        loc.last_line = actual.last_line | 0;
+        loc.first_column = actual.first_column | 0;
+        loc.last_column = actual.last_column | 0;
+
+        if (actual.range) {
+          loc.range[0] = actual.range[0] | 0;
+          loc.range[1] = actual.range[1] | 0;
+        }
+      }
+
+      if (loc.first_line <= 0 || loc.last_line < loc.first_line) {
+        // plan B: heuristic using preceding and following:
+        if (loc.first_line <= 0 && preceding) {
+          loc.first_line = preceding.last_line | 0;
+          loc.first_column = preceding.last_column | 0;
+
+          if (preceding.range) {
+            loc.range[0] = actual.range[1] | 0;
+          }
+        }
+
+        if ((loc.last_line <= 0 || loc.last_line < loc.first_line) && following) {
+          loc.last_line = following.first_line | 0;
+          loc.last_column = following.first_column | 0;
+
+          if (following.range) {
+            loc.range[1] = actual.range[0] | 0;
+          }
+        }
+
+        // plan C?: see if the 'current' location is useful/sane too:
+        if (loc.first_line <= 0 && current && (loc.last_line <= 0 || current.last_line <= loc.last_line)) {
+          loc.first_line = current.first_line | 0;
+          loc.first_column = current.first_column | 0;
+
+          if (current.range) {
+            loc.range[0] = current.range[0] | 0;
+          }
+        }
+
+        if (loc.last_line <= 0 && current && (loc.first_line <= 0 || current.first_line >= loc.first_line)) {
+          loc.last_line = current.last_line | 0;
+          loc.last_column = current.last_column | 0;
+
+          if (current.range) {
+            loc.range[1] = current.range[1] | 0;
+          }
+        }
+      }
+
+      // sanitize: fix last_line BEFORE we fix first_line as we use the 'raw' value of the latter
+      // or plan D heuristics to produce a 'sensible' last_line value:
+      if (loc.last_line <= 0) {
+        if (loc.first_line <= 0) {
+          loc.first_line = this.yylloc.first_line;
+          loc.last_line = this.yylloc.last_line;
+          loc.first_column = this.yylloc.first_column;
+          loc.last_column = this.yylloc.last_column;
+          loc.range[0] = this.yylloc.range[0];
+          loc.range[1] = this.yylloc.range[1];
+        } else {
+          loc.last_line = this.yylloc.last_line;
+          loc.last_column = this.yylloc.last_column;
+          loc.range[1] = this.yylloc.range[1];
+        }
+      }
+
+      if (loc.first_line <= 0) {
+        loc.first_line = loc.last_line;
+        loc.first_column = 0;  // loc.last_column; 
+        loc.range[1] = loc.range[0];
+      }
+
+      if (loc.first_column < 0) {
+        loc.first_column = 0;
+      }
+
+      if (loc.last_column < 0) {
+        loc.last_column = (loc.first_column > 0 ? loc.first_column : 80);
+      }
+
+      return loc;
+    },
+
+    /**
+     * return a string which displays the lines & columns of input which are referenced 
+     * by the given location info range, plus a few lines of context.
+     * 
+     * This function pretty-prints the indicated section of the input, with line numbers 
+     * and everything!
+     * 
+     * This function is very useful to provide highly readable error reports, while
+     * the location range may be specified in various flexible ways:
+     * 
+     * - `loc` is the location info object which references the area which should be
+     *   displayed and 'marked up': these lines & columns of text are marked up by `^`
+     *   characters below each character in the entire input range.
+     * 
+     * - `context_loc` is the *optional* location info object which instructs this
+     *   pretty-printer how much *leading* context should be displayed alongside
+     *   the area referenced by `loc`. This can help provide context for the displayed
+     *   error, etc.
+     * 
+     *   When this location info is not provided, a default context of 3 lines is
+     *   used.
+     * 
+     * - `context_loc2` is another *optional* location info object, which serves
+     *   a similar purpose to `context_loc`: it specifies the amount of *trailing*
+     *   context lines to display in the pretty-print output.
+     * 
+     *   When this location info is not provided, a default context of 1 line only is
+     *   used.
+     * 
+     * Special Notes:
+     * 
+     * - when the `loc`-indicated range is very large (about 5 lines or more), then
+     *   only the first and last few lines of this block are printed while a
+     *   `...continued...` message will be printed between them.
+     * 
+     *   This serves the purpose of not printing a huge amount of text when the `loc`
+     *   range happens to be huge: this way a manageable & readable output results
+     *   for arbitrary large ranges.
+     * 
+     * - this function can display lines of input which whave not yet been lexed.
+     *   `prettyPrintRange()` can access the entire input!
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    prettyPrintRange: function lexer_prettyPrintRange(loc, context_loc, context_loc2) {
+      loc = this.deriveLocationInfo(loc, context_loc, context_loc2);
+      const CONTEXT = 3;
+      const CONTEXT_TAIL = 1;
+      const MINIMUM_VISIBLE_NONEMPTY_LINE_COUNT = 2;
+      var input = this.matched + this._input;
+      var lines = input.split('\n');
+      var l0 = Math.max(1, (context_loc ? context_loc.first_line : loc.first_line - CONTEXT));
+      var l1 = Math.max(1, (context_loc2 ? context_loc2.last_line : loc.last_line + CONTEXT_TAIL));
+      var lineno_display_width = 1 + Math.log10(l1 | 1) | 0;
+      var ws_prefix = new Array(lineno_display_width).join(' ');
+      var nonempty_line_indexes = [];
+
+      var rv = lines.slice(l0 - 1, l1 + 1).map(function injectLineNumber(line, index) {
+        var lno = index + l0;
+        var lno_pfx = (ws_prefix + lno).substr(-lineno_display_width);
+        var rv = lno_pfx + ': ' + line;
+        var errpfx = new Array(lineno_display_width + 1).join('^');
+        var offset = 2 + 1;
+        var len = 0;
+
+        if (lno === loc.first_line) {
+          offset += loc.first_column;
+
+          len = Math.max(
+            2,
+            ((lno === loc.last_line ? loc.last_column : line.length)) - loc.first_column + 1
+          );
+        } else if (lno === loc.last_line) {
+          len = Math.max(2, loc.last_column + 1);
+        } else if (lno > loc.first_line && lno < loc.last_line) {
+          len = Math.max(2, line.length + 1);
+        }
+
+        if (len) {
+          var lead = new Array(offset).join('.');
+          var mark = new Array(len).join('^');
+          rv += '\n' + errpfx + lead + mark;
+
+          if (line.trim().length > 0) {
+            nonempty_line_indexes.push(index);
+          }
+        }
+
+        rv = rv.replace(/\t/g, ' ');
+        return rv;
+      });
+
+      // now make sure we don't print an overly large amount of error area: limit it 
+      // to the top and bottom line count:
+      if (nonempty_line_indexes.length > 2 * MINIMUM_VISIBLE_NONEMPTY_LINE_COUNT) {
+        var clip_start = nonempty_line_indexes[MINIMUM_VISIBLE_NONEMPTY_LINE_COUNT - 1] + 1;
+        var clip_end = nonempty_line_indexes[nonempty_line_indexes.length - MINIMUM_VISIBLE_NONEMPTY_LINE_COUNT] - 1;
+        var intermediate_line = new Array(lineno_display_width + 1).join(' ') + '  (...continued...)';
+        intermediate_line += '\n' + new Array(lineno_display_width + 1).join('-') + '  (---------------)';
+        rv.splice(clip_start, clip_end - clip_start + 1, intermediate_line);
+      }
+
+      return rv.join('\n');
+    },
+
+    /**
+     * helper function, used to produce a human readable description as a string, given
+     * the input `yylloc` location object.
+     * 
+     * Set `display_range_too` to TRUE to include the string character index position(s)
+     * in the description if the `yylloc.range` is available.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    describeYYLLOC: function lexer_describe_yylloc(yylloc, display_range_too) {
+      var l1 = yylloc.first_line;
+      var l2 = yylloc.last_line;
+      var c1 = yylloc.first_column;
+      var c2 = yylloc.last_column;
+      var dl = l2 - l1;
+      var dc = c2 - c1;
+      var rv;
+
+      if (dl === 0) {
+        rv = 'line ' + l1 + ', ';
+
+        if (dc <= 1) {
+          rv += 'column ' + c1;
+        } else {
+          rv += 'columns ' + c1 + ' .. ' + c2;
+        }
+      } else {
+        rv = 'lines ' + l1 + '(column ' + c1 + ') .. ' + l2 + '(column ' + c2 + ')';
+      }
+
+      if (yylloc.range && display_range_too) {
+        var r1 = yylloc.range[0];
+        var r2 = yylloc.range[1] - 1;
+
+        if (r2 <= r1) {
+          rv += ' {String Offset: ' + r1 + '}';
+        } else {
+          rv += ' {String Offset range: ' + r1 + ' .. ' + r2 + '}';
+        }
+      }
+
+      return rv;
+    },
+
+    /**
+     * test the lexed token: return FALSE when not a match, otherwise return token.
+     * 
+     * `match` is supposed to be an array coming out of a regex match, i.e. `match[0]`
+     * contains the actually matched text string.
+     * 
+     * Also move the input cursor forward and update the match collectors:
+     * 
+     * - `yytext`
+     * - `yyleng`
+     * - `match`
+     * - `matches`
+     * - `yylloc`
+     * - `offset`
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    test_match: function lexer_test_match(match, indexed_rule) {
+      var token, lines, backup, match_str, match_str_len;
+
+      if (this.options.backtrack_lexer) {
+        // save context
+        backup = {
+          yylineno: this.yylineno,
+
+          yylloc: {
+            first_line: this.yylloc.first_line,
+            last_line: this.yylloc.last_line,
+            first_column: this.yylloc.first_column,
+            last_column: this.yylloc.last_column,
+            range: this.yylloc.range.slice(0)
+          },
+
+          yytext: this.yytext,
+          match: this.match,
+          matches: this.matches,
+          matched: this.matched,
+          yyleng: this.yyleng,
+          offset: this.offset,
+          _more: this._more,
+          _input: this._input,
+
+          //_signaled_error_token: this._signaled_error_token,
+          yy: this.yy,
+
+          conditionStack: this.conditionStack.slice(0),
+          done: this.done
+        };
+      }
+
+      match_str = match[0];
+      match_str_len = match_str.length;
+
+      // if (match_str.indexOf('\n') !== -1 || match_str.indexOf('\r') !== -1) {
+      lines = match_str.split(/(?:\r\n?|\n)/g);
+
+      if (lines.length > 1) {
+        this.yylineno += lines.length - 1;
+        this.yylloc.last_line = this.yylineno + 1;
+        this.yylloc.last_column = lines[lines.length - 1].length;
+      } else {
+        this.yylloc.last_column += match_str_len;
+      }
+
+      // }
+      this.yytext += match_str;
+
+      this.match += match_str;
+      this.matched += match_str;
+      this.matches = match;
+      this.yyleng = this.yytext.length;
+      this.yylloc.range[1] += match_str_len;
+
+      // previous lex rules MAY have invoked the `more()` API rather than producing a token:
+      // those rules will already have moved this `offset` forward matching their match lengths,
+      // hence we must only add our own match length now:
+      this.offset += match_str_len;
+
+      this._more = false;
+      this._backtrack = false;
+      this._input = this._input.slice(match_str_len);
+
+      // calling this method:
+      //
+      //   function lexer__performAction(yy, yyrulenumber, YY_START) {...}
+      token = this.performAction.call(
+        this,
+        this.yy,
+        indexed_rule,
+        this.conditionStack[this.conditionStack.length - 1] /* = YY_START */
+      );
+
+      // otherwise, when the action codes are all simple return token statements:
+      //token = this.simpleCaseActionClusters[indexed_rule];
+
+      if (this.done && this._input) {
+        this.done = false;
+      }
+
+      if (token) {
+        return token;
+      } else if (this._backtrack) {
+        // recover context
+        for (var k in backup) {
+          this[k] = backup[k];
+        }
+
+        this.__currentRuleSet__ = null;
+        return false;  // rule action called reject() implying the next rule should be tested instead. 
+      } else if (this._signaled_error_token) {
+        // produce one 'error' token as `.parseError()` in `reject()`
+        // did not guarantee a failure signal by throwing an exception!
+        token = this._signaled_error_token;
+
+        this._signaled_error_token = false;
+        return token;
+      }
+
+      return false;
+    },
+
+    /**
+     * return next match in input
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    next: function lexer_next() {
+      if (this.done) {
+        this.clear();
+        return this.EOF;
+      }
+
+      if (!this._input) {
+        this.done = true;
+      }
+
+      var token, match, tempMatch, index;
+
+      if (!this._more) {
+        this.clear();
+      }
+
+      var spec = this.__currentRuleSet__;
+
+      if (!spec) {
+        // Update the ruleset cache as we apparently encountered a state change or just started lexing.
+        // The cache is set up for fast lookup -- we assume a lexer will switch states much less often than it will
+        // invoke the `lex()` token-producing API and related APIs, hence caching the set for direct access helps
+        // speed up those activities a tiny bit.
+        spec = this.__currentRuleSet__ = this._currentRules();
+
+        // Check whether a *sane* condition has been pushed before: this makes the lexer robust against
+        // user-programmer bugs such as https://github.com/zaach/jison-lex/issues/19
+        if (!spec || !spec.rules) {
+          var lineno_msg = '';
+
+          if (this.options.trackPosition) {
+            lineno_msg = ' on line ' + (this.yylineno + 1);
+          }
+
+          var p = this.constructLexErrorInfo(
+            'Internal lexer engine error' + lineno_msg + ': The lex grammar programmer pushed a non-existing condition name "' + this.topState() + '"; this is a fatal error and should be reported to the application programmer team!',
+            false
+          );
+
+          // produce one 'error' token until this situation has been resolved, most probably by parse termination!
+          return this.parseError(p.errStr, p, this.JisonLexerError) || this.ERROR;
+        }
+      }
+
+      var rule_ids = spec.rules;
+      var regexes = spec.__rule_regexes;
+      var len = spec.__rule_count;
+
+      // Note: the arrays are 1-based, while `len` itself is a valid index,
+      // hence the non-standard less-or-equal check in the next loop condition!
+      for (var i = 1; i <= len; i++) {
+        tempMatch = this._input.match(regexes[i]);
+
+        if (tempMatch && (!match || tempMatch[0].length > match[0].length)) {
+          match = tempMatch;
+          index = i;
+
+          if (this.options.backtrack_lexer) {
+            token = this.test_match(tempMatch, rule_ids[i]);
+
+            if (token !== false) {
+              return token;
+            } else if (this._backtrack) {
+              match = undefined;
+              continue;  // rule action called reject() implying a rule MISmatch. 
+            } else {
+              // else: this is a lexer rule which consumes input without producing a token (e.g. whitespace)
+              return false;
+            }
+          } else if (!this.options.flex) {
+            break;
+          }
+        }
+      }
+
+      if (match) {
+        token = this.test_match(match, rule_ids[index]);
+
+        if (token !== false) {
+          return token;
+        }
+
+        // else: this is a lexer rule which consumes input without producing a token (e.g. whitespace)
+        return false;
+      }
+
+      if (!this._input) {
+        this.done = true;
+        this.clear();
+        return this.EOF;
+      } else {
+        var lineno_msg = '';
+
+        if (this.options.trackPosition) {
+          lineno_msg = ' on line ' + (this.yylineno + 1);
+        }
+
+        var p = this.constructLexErrorInfo(
+          'Lexical error' + lineno_msg + ': Unrecognized text.',
+          this.options.lexerErrorsAreRecoverable
+        );
+
+        var pendingInput = this._input;
+        var activeCondition = this.topState();
+        var conditionStackDepth = this.conditionStack.length;
+        token = this.parseError(p.errStr, p, this.JisonLexerError) || this.ERROR;
+
+        if (token === this.ERROR) {
+          // we can try to recover from a lexer error that `parseError()` did not 'recover' for us
+          // by moving forward at least one character at a time IFF the (user-specified?) `parseError()`
+          // has not consumed/modified any pending input or changed state in the error handler:
+          if (!this.matches && // and make sure the input has been modified/consumed ...
+          pendingInput === this._input && // ...or the lexer state has been modified significantly enough
+          // to merit a non-consuming error handling action right now.
+          activeCondition === this.topState() && conditionStackDepth === this.conditionStack.length) {
+            this.input();
+          }
+        }
+
+        return token;
+      }
+    },
+
+    /**
+     * return next match that has a token
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    lex: function lexer_lex() {
+      var r;
+
+      // allow the PRE/POST handlers set/modify the return token for maximum flexibility of the generated lexer:
+      if (typeof this.pre_lex === 'function') {
+        r = this.pre_lex.call(this, 0);
+      }
+
+      if (typeof this.options.pre_lex === 'function') {
+        // (also account for a userdef function which does not return any value: keep the token as is)
+        r = this.options.pre_lex.call(this, r) || r;
+      }
+
+      if (this.yy && typeof this.yy.pre_lex === 'function') {
+        // (also account for a userdef function which does not return any value: keep the token as is)
+        r = this.yy.pre_lex.call(this, r) || r;
+      }
+
+      while (!r) {
+        r = this.next();
+      }
+
+      if (this.yy && typeof this.yy.post_lex === 'function') {
+        // (also account for a userdef function which does not return any value: keep the token as is)
+        r = this.yy.post_lex.call(this, r) || r;
+      }
+
+      if (typeof this.options.post_lex === 'function') {
+        // (also account for a userdef function which does not return any value: keep the token as is)
+        r = this.options.post_lex.call(this, r) || r;
+      }
+
+      if (typeof this.post_lex === 'function') {
+        // (also account for a userdef function which does not return any value: keep the token as is)
+        r = this.post_lex.call(this, r) || r;
+      }
+
+      return r;
+    },
+
+    /**
+     * return next match that has a token. Identical to the `lex()` API but does not invoke any of the 
+     * `pre_lex()` nor any of the `post_lex()` callbacks.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    fastLex: function lexer_fastLex() {
+      var r;
+
+      while (!r) {
+        r = this.next();
+      }
+
+      return r;
+    },
+
+    /**
+     * return info about the lexer state that can help a parser or other lexer API user to use the
+     * most efficient means available. This API is provided to aid run-time performance for larger
+     * systems which employ this lexer.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    canIUse: function lexer_canIUse() {
+      var rv = {
+        fastLex: !(typeof this.pre_lex === 'function' || typeof this.options.pre_lex === 'function' || this.yy && typeof this.yy.pre_lex === 'function' || this.yy && typeof this.yy.post_lex === 'function' || typeof this.options.post_lex === 'function' || typeof this.post_lex === 'function') && typeof this.fastLex === 'function'
+      };
+
+      return rv;
+    },
+
+    /**
+     * backwards compatible alias for `pushState()`;
+     * the latter is symmetrical with `popState()` and we advise to use
+     * those APIs in any modern lexer code, rather than `begin()`.
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    begin: function lexer_begin(condition) {
+      return this.pushState(condition);
+    },
+
+    /**
+     * activates a new lexer condition state (pushes the new lexer
+     * condition state onto the condition stack)
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    pushState: function lexer_pushState(condition) {
+      this.conditionStack.push(condition);
+      this.__currentRuleSet__ = null;
+      return this;
+    },
+
+    /**
+     * pop the previously active lexer condition state off the condition
+     * stack
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    popState: function lexer_popState() {
+      var n = this.conditionStack.length - 1;
+
+      if (n > 0) {
+        this.__currentRuleSet__ = null;
+        return this.conditionStack.pop();
+      } else {
+        return this.conditionStack[0];
+      }
+    },
+
+    /**
+     * return the currently active lexer condition state; when an index
+     * argument is provided it produces the N-th previous condition state,
+     * if available
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    topState: function lexer_topState(n) {
+      n = this.conditionStack.length - 1 - Math.abs(n || 0);
+
+      if (n >= 0) {
+        return this.conditionStack[n];
+      } else {
+        return 'INITIAL';
+      }
+    },
+
+    /**
+     * (internal) determine the lexer rule set which is active for the
+     * currently active lexer condition state
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    _currentRules: function lexer__currentRules() {
+      if (this.conditionStack.length && this.conditionStack[this.conditionStack.length - 1]) {
+        return this.conditions[this.conditionStack[this.conditionStack.length - 1]];
+      } else {
+        return this.conditions['INITIAL'];
+      }
+    },
+
+    /**
+     * return the number of states currently on the stack
+     * 
+     * @public
+     * @this {RegExpLexer}
+     */
+    stateStackSize: function lexer_stateStackSize() {
+      return this.conditionStack.length;
+    },
+
+    options: {
+      trackPosition: true
+    },
+
+    JisonLexerError: JisonLexerError,
+
+    performAction: function lexer__performAction(yy, yyrulenumber, YY_START) {
+      var yy_ = this;
+      var YYSTATE = YY_START;
+
+      switch (yyrulenumber) {
+      case 1:
+        /*! Conditions:: INITIAL */
+        /*! Rule::       \s+ */
+        /* skip whitespace */
+        break;
+
+      default:
+        return this.simpleCaseActionClusters[yyrulenumber];
+      }
+    },
+
+    simpleCaseActionClusters: {
+      /*! Conditions:: INITIAL */
+      /*! Rule::       (--[0-9a-z-A-Z-]*) */
+      0: 13,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       \* */
+      2: 5,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       \/ */
+      3: 6,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       \+ */
+      4: 3,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       - */
+      5: 4,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)px\b */
+      6: 15,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)cm\b */
+      7: 15,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)mm\b */
+      8: 15,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)in\b */
+      9: 15,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)pt\b */
+      10: 15,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)pc\b */
+      11: 15,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)deg\b */
+      12: 16,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)grad\b */
+      13: 16,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)rad\b */
+      14: 16,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)turn\b */
+      15: 16,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)s\b */
+      16: 17,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)ms\b */
+      17: 17,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)Hz\b */
+      18: 18,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)kHz\b */
+      19: 18,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)dpi\b */
+      20: 19,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)dpcm\b */
+      21: 19,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)dppx\b */
+      22: 19,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)em\b */
+      23: 20,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)ex\b */
+      24: 21,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)ch\b */
+      25: 22,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)rem\b */
+      26: 23,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)vw\b */
+      27: 25,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)vh\b */
+      28: 24,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)vmin\b */
+      29: 26,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)vmax\b */
+      30: 27,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)% */
+      31: 28,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([0-9]+(\.[0-9]*)?|\.[0-9]+)\b */
+      32: 11,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       (calc) */
+      33: 9,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       (var) */
+      34: 12,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       ([a-z]+) */
+      35: 10,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       \( */
+      36: 7,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       \) */
+      37: 8,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       , */
+      38: 14,
+
+      /*! Conditions:: INITIAL */
+      /*! Rule::       $ */
+      39: 1
+    },
+
+    rules: [
+      /*  0: */  /^(?:(--[\d\-A-Za-z]*))/,
+      /*  1: */  /^(?:\s+)/,
+      /*  2: */  /^(?:\*)/,
+      /*  3: */  /^(?:\/)/,
+      /*  4: */  /^(?:\+)/,
+      /*  5: */  /^(?:-)/,
+      /*  6: */  /^(?:(\d+(\.\d*)?|\.\d+)px\b)/,
+      /*  7: */  /^(?:(\d+(\.\d*)?|\.\d+)cm\b)/,
+      /*  8: */  /^(?:(\d+(\.\d*)?|\.\d+)mm\b)/,
+      /*  9: */  /^(?:(\d+(\.\d*)?|\.\d+)in\b)/,
+      /* 10: */  /^(?:(\d+(\.\d*)?|\.\d+)pt\b)/,
+      /* 11: */  /^(?:(\d+(\.\d*)?|\.\d+)pc\b)/,
+      /* 12: */  /^(?:(\d+(\.\d*)?|\.\d+)deg\b)/,
+      /* 13: */  /^(?:(\d+(\.\d*)?|\.\d+)grad\b)/,
+      /* 14: */  /^(?:(\d+(\.\d*)?|\.\d+)rad\b)/,
+      /* 15: */  /^(?:(\d+(\.\d*)?|\.\d+)turn\b)/,
+      /* 16: */  /^(?:(\d+(\.\d*)?|\.\d+)s\b)/,
+      /* 17: */  /^(?:(\d+(\.\d*)?|\.\d+)ms\b)/,
+      /* 18: */  /^(?:(\d+(\.\d*)?|\.\d+)Hz\b)/,
+      /* 19: */  /^(?:(\d+(\.\d*)?|\.\d+)kHz\b)/,
+      /* 20: */  /^(?:(\d+(\.\d*)?|\.\d+)dpi\b)/,
+      /* 21: */  /^(?:(\d+(\.\d*)?|\.\d+)dpcm\b)/,
+      /* 22: */  /^(?:(\d+(\.\d*)?|\.\d+)dppx\b)/,
+      /* 23: */  /^(?:(\d+(\.\d*)?|\.\d+)em\b)/,
+      /* 24: */  /^(?:(\d+(\.\d*)?|\.\d+)ex\b)/,
+      /* 25: */  /^(?:(\d+(\.\d*)?|\.\d+)ch\b)/,
+      /* 26: */  /^(?:(\d+(\.\d*)?|\.\d+)rem\b)/,
+      /* 27: */  /^(?:(\d+(\.\d*)?|\.\d+)vw\b)/,
+      /* 28: */  /^(?:(\d+(\.\d*)?|\.\d+)vh\b)/,
+      /* 29: */  /^(?:(\d+(\.\d*)?|\.\d+)vmin\b)/,
+      /* 30: */  /^(?:(\d+(\.\d*)?|\.\d+)vmax\b)/,
+      /* 31: */  /^(?:(\d+(\.\d*)?|\.\d+)%)/,
+      /* 32: */  /^(?:(\d+(\.\d*)?|\.\d+)\b)/,
+      /* 33: */  /^(?:(calc))/,
+      /* 34: */  /^(?:(var))/,
+      /* 35: */  /^(?:([a-z]+))/,
+      /* 36: */  /^(?:\()/,
+      /* 37: */  /^(?:\))/,
+      /* 38: */  /^(?:,)/,
+      /* 39: */  /^(?:$)/
+    ],
+
+    conditions: {
+      'INITIAL': {
+        rules: [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39
+        ],
+
+        inclusive: true
+      }
+    }
+  };
+
+  return lexer;
+}();
+parser.lexer = lexer;
+
+
+
+function Parser() {
+  this.yy = {};
+}
+Parser.prototype = parser;
+parser.Parser = Parser;
+
+return new Parser();
+})();
+
+        
+
+
+if (true) {
+  exports.parser = parser;
+  exports.Parser = parser.Parser;
+  exports.parse = function () {
+    return parser.parse.apply(parser, arguments);
+  };
+  
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/index.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/index.js ***!
+  \*************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var parse = __webpack_require__(/*! ./parse */ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/parse.js");
+var walk = __webpack_require__(/*! ./walk */ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/walk.js");
+var stringify = __webpack_require__(/*! ./stringify */ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/stringify.js");
+
+function ValueParser(value) {
+  if (this instanceof ValueParser) {
+    this.nodes = parse(value);
+    return this;
+  }
+  return new ValueParser(value);
+}
+
+ValueParser.prototype.toString = function() {
+  return Array.isArray(this.nodes) ? stringify(this.nodes) : "";
+};
+
+ValueParser.prototype.walk = function(cb, bubble) {
+  walk(this.nodes, cb, bubble);
+  return this;
+};
+
+ValueParser.unit = __webpack_require__(/*! ./unit */ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/unit.js");
+
+ValueParser.walk = walk;
+
+ValueParser.stringify = stringify;
+
+module.exports = ValueParser;
+
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/parse.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/parse.js ***!
+  \*************************************************************************************/
+/***/ ((module) => {
+
+var openParentheses = "(".charCodeAt(0);
+var closeParentheses = ")".charCodeAt(0);
+var singleQuote = "'".charCodeAt(0);
+var doubleQuote = '"'.charCodeAt(0);
+var backslash = "\\".charCodeAt(0);
+var slash = "/".charCodeAt(0);
+var comma = ",".charCodeAt(0);
+var colon = ":".charCodeAt(0);
+var star = "*".charCodeAt(0);
+
+module.exports = function(input) {
+  var tokens = [];
+  var value = input;
+
+  var next, quote, prev, token, escape, escapePos, whitespacePos;
+  var pos = 0;
+  var code = value.charCodeAt(pos);
+  var max = value.length;
+  var stack = [{ nodes: tokens }];
+  var balanced = 0;
+  var parent;
+
+  var name = "";
+  var before = "";
+  var after = "";
+
+  while (pos < max) {
+    // Whitespaces
+    if (code <= 32) {
+      next = pos;
+      do {
+        next += 1;
+        code = value.charCodeAt(next);
+      } while (code <= 32);
+      token = value.slice(pos, next);
+
+      prev = tokens[tokens.length - 1];
+      if (code === closeParentheses && balanced) {
+        after = token;
+      } else if (prev && prev.type === "div") {
+        prev.after = token;
+      } else if (
+        code === comma ||
+        code === colon ||
+        (code === slash && value.charCodeAt(next + 1) !== star)
+      ) {
+        before = token;
+      } else {
+        tokens.push({
+          type: "space",
+          sourceIndex: pos,
+          value: token
+        });
+      }
+
+      pos = next;
+
+      // Quotes
+    } else if (code === singleQuote || code === doubleQuote) {
+      next = pos;
+      quote = code === singleQuote ? "'" : '"';
+      token = {
+        type: "string",
+        sourceIndex: pos,
+        quote: quote
+      };
+      do {
+        escape = false;
+        next = value.indexOf(quote, next + 1);
+        if (~next) {
+          escapePos = next;
+          while (value.charCodeAt(escapePos - 1) === backslash) {
+            escapePos -= 1;
+            escape = !escape;
+          }
+        } else {
+          value += quote;
+          next = value.length - 1;
+          token.unclosed = true;
+        }
+      } while (escape);
+      token.value = value.slice(pos + 1, next);
+
+      tokens.push(token);
+      pos = next + 1;
+      code = value.charCodeAt(pos);
+
+      // Comments
+    } else if (code === slash && value.charCodeAt(pos + 1) === star) {
+      token = {
+        type: "comment",
+        sourceIndex: pos
+      };
+
+      next = value.indexOf("*/", pos);
+      if (next === -1) {
+        token.unclosed = true;
+        next = value.length;
+      }
+
+      token.value = value.slice(pos + 2, next);
+      tokens.push(token);
+
+      pos = next + 2;
+      code = value.charCodeAt(pos);
+
+      // Dividers
+    } else if (code === slash || code === comma || code === colon) {
+      token = value[pos];
+
+      tokens.push({
+        type: "div",
+        sourceIndex: pos - before.length,
+        value: token,
+        before: before,
+        after: ""
+      });
+      before = "";
+
+      pos += 1;
+      code = value.charCodeAt(pos);
+
+      // Open parentheses
+    } else if (openParentheses === code) {
+      // Whitespaces after open parentheses
+      next = pos;
+      do {
+        next += 1;
+        code = value.charCodeAt(next);
+      } while (code <= 32);
+      token = {
+        type: "function",
+        sourceIndex: pos - name.length,
+        value: name,
+        before: value.slice(pos + 1, next)
+      };
+      pos = next;
+
+      if (name === "url" && code !== singleQuote && code !== doubleQuote) {
+        next -= 1;
+        do {
+          escape = false;
+          next = value.indexOf(")", next + 1);
+          if (~next) {
+            escapePos = next;
+            while (value.charCodeAt(escapePos - 1) === backslash) {
+              escapePos -= 1;
+              escape = !escape;
+            }
+          } else {
+            value += ")";
+            next = value.length - 1;
+            token.unclosed = true;
+          }
+        } while (escape);
+        // Whitespaces before closed
+        whitespacePos = next;
+        do {
+          whitespacePos -= 1;
+          code = value.charCodeAt(whitespacePos);
+        } while (code <= 32);
+        if (pos !== whitespacePos + 1) {
+          token.nodes = [
+            {
+              type: "word",
+              sourceIndex: pos,
+              value: value.slice(pos, whitespacePos + 1)
+            }
+          ];
+        } else {
+          token.nodes = [];
+        }
+        if (token.unclosed && whitespacePos + 1 !== next) {
+          token.after = "";
+          token.nodes.push({
+            type: "space",
+            sourceIndex: whitespacePos + 1,
+            value: value.slice(whitespacePos + 1, next)
+          });
+        } else {
+          token.after = value.slice(whitespacePos + 1, next);
+        }
+        pos = next + 1;
+        code = value.charCodeAt(pos);
+        tokens.push(token);
+      } else {
+        balanced += 1;
+        token.after = "";
+        tokens.push(token);
+        stack.push(token);
+        tokens = token.nodes = [];
+        parent = token;
+      }
+      name = "";
+
+      // Close parentheses
+    } else if (closeParentheses === code && balanced) {
+      pos += 1;
+      code = value.charCodeAt(pos);
+
+      parent.after = after;
+      after = "";
+      balanced -= 1;
+      stack.pop();
+      parent = stack[balanced];
+      tokens = parent.nodes;
+
+      // Words
+    } else {
+      next = pos;
+      do {
+        if (code === backslash) {
+          next += 1;
+        }
+        next += 1;
+        code = value.charCodeAt(next);
+      } while (
+        next < max &&
+        !(
+          code <= 32 ||
+          code === singleQuote ||
+          code === doubleQuote ||
+          code === comma ||
+          code === colon ||
+          code === slash ||
+          code === openParentheses ||
+          (code === closeParentheses && balanced)
+        )
+      );
+      token = value.slice(pos, next);
+
+      if (openParentheses === code) {
+        name = token;
+      } else {
+        tokens.push({
+          type: "word",
+          sourceIndex: pos,
+          value: token
+        });
+      }
+
+      pos = next;
+    }
+  }
+
+  for (pos = stack.length - 1; pos; pos -= 1) {
+    stack[pos].unclosed = true;
+  }
+
+  return stack[0].nodes;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/stringify.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/stringify.js ***!
+  \*****************************************************************************************/
+/***/ ((module) => {
+
+function stringifyNode(node, custom) {
+  var type = node.type;
+  var value = node.value;
+  var buf;
+  var customResult;
+
+  if (custom && (customResult = custom(node)) !== undefined) {
+    return customResult;
+  } else if (type === "word" || type === "space") {
+    return value;
+  } else if (type === "string") {
+    buf = node.quote || "";
+    return buf + value + (node.unclosed ? "" : buf);
+  } else if (type === "comment") {
+    return "/*" + value + (node.unclosed ? "" : "*/");
+  } else if (type === "div") {
+    return (node.before || "") + value + (node.after || "");
+  } else if (Array.isArray(node.nodes)) {
+    buf = stringify(node.nodes);
+    if (type !== "function") {
+      return buf;
+    }
+    return (
+      value +
+      "(" +
+      (node.before || "") +
+      buf +
+      (node.after || "") +
+      (node.unclosed ? "" : ")")
+    );
+  }
+  return value;
+}
+
+function stringify(nodes, custom) {
+  var result, i;
+
+  if (Array.isArray(nodes)) {
+    result = "";
+    for (i = nodes.length - 1; ~i; i -= 1) {
+      result = stringifyNode(nodes[i], custom) + result;
+    }
+    return result;
+  }
+  return stringifyNode(nodes, custom);
+}
+
+module.exports = stringify;
+
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/unit.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/unit.js ***!
+  \************************************************************************************/
+/***/ ((module) => {
+
+var minus = "-".charCodeAt(0);
+var plus = "+".charCodeAt(0);
+var dot = ".".charCodeAt(0);
+var exp = "e".charCodeAt(0);
+var EXP = "E".charCodeAt(0);
+
+module.exports = function(value) {
+  var pos = 0;
+  var length = value.length;
+  var dotted = false;
+  var sciPos = -1;
+  var containsNumber = false;
+  var code;
+
+  while (pos < length) {
+    code = value.charCodeAt(pos);
+
+    if (code >= 48 && code <= 57) {
+      containsNumber = true;
+    } else if (code === exp || code === EXP) {
+      if (sciPos > -1) {
+        break;
+      }
+      sciPos = pos;
+    } else if (code === dot) {
+      if (dotted) {
+        break;
+      }
+      dotted = true;
+    } else if (code === plus || code === minus) {
+      if (pos !== 0) {
+        break;
+      }
+    } else {
+      break;
+    }
+
+    pos += 1;
+  }
+
+  if (sciPos + 1 === pos) pos--;
+
+  return containsNumber
+    ? {
+        number: value.slice(0, pos),
+        unit: value.slice(pos)
+      }
+    : false;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/walk.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/reduce-css-calc/node_modules/postcss-value-parser/lib/walk.js ***!
+  \************************************************************************************/
+/***/ ((module) => {
+
+module.exports = function walk(nodes, cb, bubble) {
+  var i, max, node, result;
+
+  for (i = 0, max = nodes.length; i < max; i += 1) {
+    node = nodes[i];
+    if (!bubble) {
+      result = cb(node, i, nodes);
+    }
+
+    if (
+      result !== false &&
+      node.type === "function" &&
+      Array.isArray(node.nodes)
+    ) {
+      walk(node.nodes, cb, bubble);
+    }
+
+    if (bubble) {
+      cb(node, i, nodes);
+    }
+  }
+};
 
 
 /***/ }),
@@ -45639,7 +66840,7 @@ var loadLanguages = instance.loadLanguages;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"SUBMIT":"Submit","SEND_REQUEST":"Send a new request","REQUEST_PLACEHOLDER":"Type your request","R_PLACEHOLDER":"Type obstacle coefficient"}');
+module.exports = JSON.parse('{"SUBMIT":"Submit","SEND_REQUEST":"Send a new request","REQUEST_PLACEHOLDER":"Type your request","R_PLACEHOLDER":"Type obstacle coefficient","ANIMATION_TITLE":"Shock Absorber animation","R_PLACEHOLDER_2":"Obstacle height","CALCULATE_BUTTON":"Calculate","OCTAVE_CLI_TITLE":"Octave CLI","OCTAVE_RESULTS_PLACEHOLDER":"Result","OCTAVE_CLI_COMMANDS":"Commands","ACTIVE_USERS_TITLE":"Active users","ACTIVE_USERS_SUBTITLE":"Join them.","ACTIVE_USERS_INPUT":"Your name","ACTIVE_USERS_SUBMIT":"Join"}');
 
 /***/ }),
 
@@ -45679,13 +66880,16 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
+/******/ 			id: moduleId,
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -45751,6 +66955,18 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -45764,6 +66980,15 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
 /******/ 		};
 /******/ 	})();
 /******/ 	

@@ -6,7 +6,7 @@
         <title>Laravel</title>
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
-    <body class="antialiased relative flex flex-row justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-white">
+    <body class="antialiased relative flex flex-row justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 text-white">
         <div id="example"></div> 
         <script src="{{ mix('js/app.js')}}"> </script>
     </body>
