@@ -2,5 +2,16 @@
     "SUBMIT": "Submit",
     "SEND_REQUEST": "Send a new request",
     "REQUEST_PLACEHOLDER": "Type your request",
-    "R_PLACEHOLDER": "Type obstacle coefficient"
+    "R_PLACEHOLDER": "Type obstacle coefficient",
+
+    "ANIMATION_TITLE": "Shock Absorber animation",
+    "R_PLACEHOLDER_2": "Obstacle height",
+    "CALCULATE_BUTTON": "Calculate",
+    "OCTAVE_CLI_TITLE": "Octave CLI",
+    "OCTAVE_RESULTS_PLACEHOLDER": "Result",
+    "OCTAVE_CLI_COMMANDS": "Commands",
+    "ACTIVE_USERS_TITLE": "Active users",
+    "ACTIVE_USERS_SUBTITLE": "Join them.",
+    "ACTIVE_USERS_INPUT": "Your name",
+    "ACTIVE_USERS_SUBMIT": "Join"
 }

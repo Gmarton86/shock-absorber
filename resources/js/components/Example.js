@@ -2,6 +2,16 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useTranslation } from "react-i18next";
 import "../../../config/i18n";
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    ResponsiveContainer,
+} from "recharts";
 import axios from "axios";
 
 /*!
@@ -7448,6 +7458,20 @@ function Example() {
         console.log(rub);
     };
 
+    const chartData = [
+        {
+            wheel: 5,
+            chassis: 5,
+        },
+        {
+            wheel: 15,
+            chassis: 5,
+        },
+        {
+            wheel: -51,
+            chassis: 15,
+        },
+    ];
     useEffect(() => {
         const slider = document.getElementById("slider");
         const width = 400;
@@ -7463,30 +7487,30 @@ function Example() {
         wheel
             .circle(100, 100)
             .center(185, 110)
-            .fill("black")
-            .stroke({ width: 15, color: "white" });
+            .fill("white")
+            .stroke({ width: 15, color: "#24252A" });
         wheel
             .line(175, 150, 225, 250)
             .center(185, 110)
-            .fill("black")
-            .stroke({ width: 5, color: "white" });
+            .fill("white")
+            .stroke({ width: 5, color: "#24252A" });
         wheel
             .line(175, 150, 225, 250)
             .center(185, 110)
-            .fill("black")
-            .stroke({ width: 5, color: "white" })
+            .fill("white")
+            .stroke({ width: 5, color: "#24252A" })
             .rotate(45);
         wheel
             .line(175, 150, 225, 250)
             .center(185, 110)
-            .fill("black")
-            .stroke({ width: 5, color: "white" })
+            .fill("white")
+            .stroke({ width: 5, color: "#24252A" })
             .rotate(90);
         wheel
             .line(175, 150, 225, 250)
             .center(185, 110)
-            .fill("black")
-            .stroke({ width: 5, color: "white" })
+            .fill("white")
+            .stroke({ width: 5, color: "#24252A" })
             .rotate(135);
         wheel.animate(1000).ease("-").rotate(360).loop();
 
@@ -7496,26 +7520,26 @@ function Example() {
             .path(
                 "M 360,110 L 255,110 C 265,230 105,230 115,110 C 85,110 35,110 35,130 C 50,180 50,150 50,180 C 50,240 205,240 260,240 C 260,240 335,290 360,290"
             )
-            .fill("black")
-            .stroke({ width: 10, color: "white" });
+            .fill("white")
+            .stroke({ width: 5, color: "#24252A" });
 
         const absorberStart = chassis
             .circle(5)
-            .fill("red")
+            .fill("#D0312D")
             .center(185, 215)
             .back();
-        const absorberEnd = wheel.circle(5).fill("red").center(185, 110);
+        const absorberEnd = wheel.circle(5).fill("#D0312D").center(185, 110);
 
-        chassis.cy(chassis.cy() - 20);
+        chassis.cy(chassis.cy() - 30);
 
         const absorber = chassisCanvas.group();
-        //const absorberLine = absorber.line(absorberStart.cx(), absorberStart.cy(), absorberEnd.cx(), absorberEnd.cy()).stroke({width:5, color: 'red'});
         const absorberLine = absorber
             .path(
-                "M 185,215 L 160,205 L 200,195 L 160,185 L 200,175 L 160,165 L 200,155 L 160,145 L 200,135 L 160,125 L 185,115"
+                "M 185,215 L 160,205 L 200,195 L 160,185 L 200,175 L 160,165 L 200,155 L 160,145 L 200,135 L 160,125 L 200,115 L 185,105"
             )
             .fill("none")
-            .stroke({ width: 2, color: "red", linecap: "round" });
+            .stroke({ width: 3, color: "#D0312D", linecap: "round" });
+
         absorber.back();
         chassis.forward();
         wheel.front();
@@ -7529,14 +7553,26 @@ function Example() {
         const animateWheel = (now) => {
             let x1 = wheelStartX;
             let y1 = wheelStartY + parseInt(slider.value);
-            wheelCanvas.center(x1, y1);
+            wheelCanvas.center(wheelStartX, y1);
 
             let x2 = chassisStartX;
             let y2 = chassisStartY + slider.value / 5;
             chassis.center(chassis.cx(), y2);
 
             absorberLine.height(y2 - y1);
-            absorberLine.cy(y1 + (y2 - y1) / 2 + 10);
+            absorberLine.cy(y1 + (y2 - y1) / 2);
+
+            chartData.push({
+                wheel: slider.value,
+                chassis: slider.value / 5,
+            });
+
+            if (chartData.length == 201) {
+                chartData.shift();
+            }
+
+            console.log(chartData[chartData.length - 1].wheel);
+            console.log(chartData.length);
 
             SVG.Animator.frame(() => {
                 animateWheel(performance.now());
@@ -7547,68 +7583,233 @@ function Example() {
 
     const { t } = useTranslation();
     return (
-        <div className="container">
-            <div className="row justify-center mx-auto">
-                <div
-                    id="auto"
-                    className="flex items-center justify-center"
-                ></div>
-                <div className="mb-3 flex items-center justify-center">
-                    <input
-                        defaultValue="0"
-                        type="range"
-                        id="slider"
-                        max="100"
-                        min="-100"
-                    ></input>
-                </div>
-                <div className="flex mx-auto items-center justify-center shadow-lg mt-56 mx-8 mb-4 max-w-lg">
-                    <form className="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
-                        <div className="flex flex-wrap -mx-3 mb-6">
-                            <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">
-                                {t("SEND_REQUEST")}
-                            </h2>
-                            <div className="w-full md:w-full px-3 mb-2 mt-2">
-                                <textarea
-                                    className="bg-gray-100 text-black rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                                    name="body"
-                                    placeholder={t("REQUEST_PLACEHOLDER")}
-                                    required
-                                    onChange={(e) => setCommand(e.target.value)}
-                                ></textarea>
-                            </div>
-                            <div className="w-full md:w-full flex items-start md:w-full px-3">
-                                <div className="-mr-1">
-                                    <input
-                                        type="button"
-                                        onClick={(e) => handleSubmitCommand(e)}
-                                        className="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
-                                        value={t("SUBMIT")}
-                                    />
-                                </div>
+        <div className="grid grid-cols-2 gap-4">
+            <div className="w-full items-center bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+                <section>
+                    <h3 className="font-bold text-2xl text-gray-600">
+                        {t("ANIMATION_TITLE")}
+                    </h3>
+                </section>
+
+                <section className="mt-10">
+                    <form className="flex flex-col" method="POST" action="#">
+                        <LineChart
+                            width={400}
+                            height={200}
+                            data={chartData}
+                            margin={{
+                                top: 5,
+                                right: 50,
+                                left: 0,
+                                bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis />
+                            <YAxis type="number" domain={[-100, 100]} />
+                            <Line
+                                type="monotone"
+                                dataKey="wheel"
+                                stroke="#8884d8"
+                            />
+                            <Line
+                                type="monotone"
+                                dataKey="chassis"
+                                stroke="#82ca9d"
+                            />
+                        </LineChart>
+
+                        <div className="mb-6 pt-3 rounded bg-gray-200">
+                            <div
+                                id="auto"
+                                className="flex items-center justify-center"
+                            ></div>
+                            <div className="mb-3 flex items-center justify-center">
+                                <input
+                                    defaultValue="0"
+                                    type="range"
+                                    id="slider"
+                                    max="100"
+                                    min="-100"
+                                ></input>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div className="mt-5">
-                    <div className="rounded-full bg-white shadow flex w-full">
-                        <input
-                            type="number"
-                            placeholder={t("R_PLACEHOLDER")}
-                            className={
-                                "w-full rounded-tl-full rounded-bl-full py-2 px-4 text-black"
-                            }
-                            onChange={(e) => setRub(e.target.value)}
-                        />
+                        <div className="mb-6 pt-3 rounded bg-gray-200">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2 ml-3"
+                                for="email"
+                            >
+                                {t("R_PLACEHOLDER_2")}
+                            </label>
+                            <input
+                                type="text"
+                                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                            ></input>
+                        </div>
                         <button
-                            className="bg-yellow-300 rounded-tr-full rounded-br-full hover:bg-red-300 py-2 px-4"
-                            onClick={(e) => handleSubmitRub(e)}
+                            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+                            type="submit"
                         >
-                            <p className="font-semibold text-base uppercase">
-                                {t("SUBMIT")}
-                            </p>
+                            {t("CALCULATE_BUTTON")}
                         </button>
-                    </div>
+                    </form>
+                </section>
+            </div>
+
+            <div>
+                <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mb-4">
+                    <section>
+                        <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
+                            {t("OCTAVE_CLI_TITLE")}
+                        </h3>
+                    </section>
+
+                    <section className="mt-10">
+                        <form
+                            className="flex flex-col"
+                            method="POST"
+                            action="#"
+                        >
+                            <div className="mb-6 pt-3 rounded bg-gray-200">
+                                <div className="mb-3 flex items-center justify-center">
+                                    <h5 className="text-gray-600">
+                                        {t("OCTAVE_RESULTS_PLACEHOLDER")}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div className="mb-6 pt-3 rounded bg-gray-200">
+                                <label
+                                    className="block text-gray-700 text-sm font-bold mb-2 ml-3"
+                                    for="email"
+                                >
+                                    {t("OCTAVE_CLI_COMMANDS")}
+                                </label>
+                                <input
+                                    type="text"
+                                    className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                                ></input>
+                            </div>
+
+                            <button
+                                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+                                type="submit"
+                            >
+                                {t("CALCULATE_BUTTON")}
+                            </button>
+                        </form>
+                    </section>
+                </div>
+
+                <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mt-4">
+                    <section>
+                        <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
+                            {t("ACTIVE_USERS_TITLE")}
+                        </h3>
+                        <p className="text-gray-600 pt-2">
+                            {t("ACTIVE_USERS_SUBTITLE")}
+                        </p>
+                    </section>
+
+                    <section className="mt-10">
+                        <form
+                            className="flex flex-col"
+                            method="POST"
+                            action="#"
+                        >
+                            <div className="mb-6 pt-3 rounded">
+                                <div className="mb-3 flex items-center justify-center">
+                                    <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+                                        <button
+                                            aria-current="true"
+                                            type="button"
+                                            class=" text-left
+                                                px-6
+                                                py-2
+                                                border-b border-gray-200
+                                                w-full
+                                                rounded-t-lg
+                                                bg-slate-900
+                                                text-white
+                                                cursor-pointer
+                                            "
+                                        >
+                                            Fero
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="
+                                                text-left
+                                                px-6
+                                                py-2
+                                                border-b border-gray-200
+                                                w-full
+                                                hover:bg-gray-200 hover:text-gray-500
+                                                focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+                                                transition
+                                                duration-500
+                                                cursor-pointer
+                                            "
+                                        >
+                                            Jožo
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="
+                                                text-left
+                                                px-6
+                                                py-2
+                                                border-b border-gray-200
+                                                w-full
+                                                hover:bg-gray-200 hover:text-gray-500
+                                                focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+                                                transition
+                                                duration-500
+                                                cursor-pointer
+                                            "
+                                        >
+                                            Jano
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="
+                                                text-left
+                                                px-6
+                                                py-2
+                                                border-b border-gray-200
+                                                w-full
+                                                hover:bg-gray-200 hover:text-gray-500
+                                                focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+                                                transition
+                                                duration-500
+                                                cursor-pointer
+                                            "
+                                        >
+                                            Bonifác
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="mb-6 pt-3 rounded bg-gray-200">
+                                <label
+                                    className="block text-gray-700 text-sm font-bold mb-2 ml-3"
+                                    for="email"
+                                >
+                                    {t("ACTIVE_USERS_INPUT")}
+                                </label>
+                                <input
+                                    type="text"
+                                    className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                                ></input>
+                            </div>
+
+                            <button
+                                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+                                type="submit"
+                            >
+                                {t("ACTIVE_USERS_SUBMIT")}
+                            </button>
+                        </form>
+                    </section>
                 </div>
             </div>
         </div>
