@@ -13,6 +13,7 @@ import {
     ResponsiveContainer,
 } from "recharts";
 import axios from "axios";
+import i18n from "../../../config/i18n";
 
 /*!
  * @svgdotjs/svg.js - A lightweight library for manipulating and animating SVG.
@@ -7444,6 +7445,14 @@ function Example() {
     const [user, setUser] = useState("");
     const FileDownload = require("js-file-download");
 
+    const changeLanguage = (locale) => {
+        console.log(locale)
+        i18n.changeLanguage(locale, (err, t) => {
+            if(err) return console.log("Something went wrong loading", err);
+            t('key');
+        })
+    }
+
     const handleSubmitCommand = (e) => {
         e.preventDefault();
         let status = "";
@@ -7743,9 +7752,10 @@ function Example() {
                         >
                             <div className="mb-6 pt-3 rounded bg-gray-200">
                                 <div className="mb-3 flex items-center justify-center">
-                                    <h5 className="text-gray-600" id="cmdresult">
-                                        
-                                    </h5>
+                                    <h5
+                                        className="text-gray-600"
+                                        id="cmdresult"
+                                    ></h5>
                                 </div>
                             </div>
                             <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -7758,7 +7768,7 @@ function Example() {
                                 <input
                                     type="text"
                                     value={command}
-                                    onChange={e => setCommand(e.target.value)}
+                                    onChange={(e) => setCommand(e.target.value)}
                                     className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 ></input>
                             </div>
@@ -7886,14 +7896,27 @@ function Example() {
                     </section>
                 </div>
             </div>
-            <button
-                className="bg-yellow-300 rounded-tr-full rounded-br-full hover:bg-red-300 py-2 px-4"
-                onClick={(e) => exportCsv(e)}
-            >
-                <p className="font-semibold text-base uppercase">
-                    Export
-                </p>
-            </button>
+
+            <div className="flex items-center justify-center flex-row ">
+                <img
+                    src="https://countryflagsapi.com/png/us"
+                    alt="flagUs"
+                    style={{ height: "25px", cursor: "pointer" }}
+                    onClick={() => changeLanguage("en")}
+                ></img>
+                <img
+                    src="https://countryflagsapi.com/png/svk"
+                    alt="flagSvk"
+                    style={{ height: "25px", cursor: "pointer" }}
+                    onClick={() => changeLanguage("sk")}
+                ></img>
+                <button
+                    className="bg-yellow-300 rounded-tr-full rounded-br-full hover:bg-red-300 py-2 px-4"
+                    onClick={(e) => exportCsv(e)}
+                >
+                    <p className="font-semibold text-base uppercase">Export</p>
+                </button>
+            </div>
         </div>
     );
 }
