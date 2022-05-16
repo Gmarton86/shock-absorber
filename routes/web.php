@@ -23,14 +23,13 @@ Route::get('/wheel', function() {
     return view("welcome");
 });
 
-Route::post('/wheel', [OctaveController::class, 'calculateWheel'])->name("calculateWheel");
-
+Route::post('/wheel', [OctaveController::class, 'wheel'])->name("wheel");
 
 Route::get('/carbody', function() {
     return view("welcome");
 });
 
-Route::post('/carbody', [OctaveController::class, 'calculateBody'])->name("calculateBody");
+Route::post('/carbody', [OctaveController::class, 'body'])->name("carbody");
 
 
 Route::get('/cmd', function() {
