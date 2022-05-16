@@ -7439,20 +7439,37 @@ var SVG = (function () {
 function Example() {
     const [rub, setRub] = useState(0);
     const [command, setCommand] = useState("");
-    const [commnadResponse, setCommandResponse] = useState("");
+    const [commandResponse, setCommandResponse] = useState("");
     const [rubResponse, setRubResponse] = useState("");
+    const [user, setUser] = useState("");
     const FileDownload = require("js-file-download");
 
     const handleSubmitCommand = (e) => {
         e.preventDefault();
+        let status = "";
+        let issue = "";
+
         axios.post('/cmd', {
             cmd: command
         }).then(response => {
              setCommandResponse(response.data)
              let result = document.getElementById("cmdresult");
+             status = response.status;
              result.innerHTML = response.data;
-         }).catch(console.log)
-        console.log(command);
+         }).catch(error => {
+             issue = error;
+         }).finally(() => {
+            axios
+                .post("/logs", {
+                    command: command,
+                    commandType: "Basic",
+                    status: status.toString(),
+                    error: issue,
+                    username: user
+                })
+                .then(console.log)
+                .catch(console.log);
+         })
     };
 
 
@@ -7460,22 +7477,42 @@ function Example() {
         e.preventDefault();
 
         let i = 0;
+        let status = "";
+        let issue = "";
 
         console.log("test " + rub);
 
         const getWheelData = () => {
             let slider = document.getElementById("slider");
-
-
-            axios.post('/wheel', {
-                i,
-                r: rub
-            }).then(response => {
-             setRubResponse(response.data)
             
-             slider.value = response.data * 5000;
-             console.log(slider.value);
-            }).catch(console.log)
+            let data = {
+                i,
+                r: rub,
+            };
+
+            axios
+                .post("/wheel", data)
+                .then((response) => {
+                    setRubResponse(response.data);
+                    status = response.status
+                    slider.value = response.data * 5000;
+                    console.log(slider.value);
+                })
+                .catch(error => {
+                    issue = error;
+                })
+                .finally(() => {
+                    axios
+                        .post("/logs", {
+                            command: JSON.stringify(data),
+                            commandType: "Car",
+                            status: status.toString(),
+                            error: issue,
+                            username: user
+                        })
+                        .then(console.log)
+                        .catch(console.log);
+                });
 
             i++;
         };

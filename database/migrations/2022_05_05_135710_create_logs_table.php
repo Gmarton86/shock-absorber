@@ -18,8 +18,8 @@ class CreateLogsTable extends Migration
             $table->string('command');
             $table->string('commandType');
             $table->string('status');
-            $table->string('error');
-            $table->string('username');
+            $table->string('error')->nullable();
+            $table->string('username')->nullable();
             $table->timestamps();
         });
     }
