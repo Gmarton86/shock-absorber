@@ -13,5 +13,6 @@
     "ACTIVE_USERS_TITLE": "Active users",
     "ACTIVE_USERS_SUBTITLE": "Join them.",
     "ACTIVE_USERS_INPUT": "Your name",
-    "ACTIVE_USERS_SUBMIT": "Join"
+    "ACTIVE_USERS_SUBMIT": "Join",
+    "ABOUT_PAGE": "About page"
 }
