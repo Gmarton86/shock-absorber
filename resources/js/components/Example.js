@@ -7481,7 +7481,6 @@ function Example() {
          })
     };
 
-
     const handleSubmitRub = (e) => {
         e.preventDefault();
 
@@ -7525,8 +7524,8 @@ function Example() {
 
             i++;
         };
-    
-        let interval = setInterval(getWheelData, 30);
+
+        let interval = setInterval(getWheelData, 10);
     };
 
     const chartData = [
@@ -7583,7 +7582,7 @@ function Example() {
             .fill("white")
             .stroke({ width: 5, color: "#24252A" })
             .rotate(135);
-     //   wheel.animate(1000).ease("-").rotate(360).loop();
+        wheel.animate(1000).ease("-").rotate(360).loop();
 
         const chassisCanvas = draw.group().flip("y", height / 2);
         const chassis = chassisCanvas.group();
@@ -7642,7 +7641,6 @@ function Example() {
                 chartData.shift();
             }
 
-
             SVG.Animator.frame(() => {
                 animateWheel(performance.now());
             });
@@ -7652,110 +7650,66 @@ function Example() {
 
     const exportCsv = (e) => {
         e.preventDefault();
-        axios.get('/export/logs').then(
-        res => {
-            FileDownload(res.data, "logs.csv");
-        }).catch(console.log)
+        axios
+            .get("/export/logs")
+            .then((res) => {
+                FileDownload(res.data, "logs.csv");
+            })
+            .catch(console.log);
     };
 
     const { t } = useTranslation();
     return (
-        <div className="grid grid-cols-2 gap-4">
-            <div className="w-full items-center bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
-                <section>
-                    <h3 className="font-bold text-2xl text-gray-600">
-                        {t("ANIMATION_TITLE")}
-                    </h3>
-                </section>
-
-                <section className="mt-10">
-                    <form className="flex flex-col">
-                        <LineChart
-                            width={400}
-                            height={200}
-                            data={chartData}
-                            margin={{
-                                top: 5,
-                                right: 50,
-                                left: 0,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis />
-                            <YAxis type="number" domain={[-100, 100]} />
-                            <Line
-                                type="monotone"
-                                dataKey="wheel"
-                                stroke="#8884d8"
-                            />
-                            <Line
-                                type="monotone"
-                                dataKey="chassis"
-                                stroke="#82ca9d"
-                            />
-                        </LineChart>
-
-                        <div className="mb-6 pt-3 rounded bg-gray-200">
-                            <div
-                                id="auto"
-                                className="flex items-center justify-center"
-                            ></div>
-                            <div className="mb-3 flex items-center justify-center">
-                                <input
-                                    defaultValue="0"
-                                    type="range"
-                                    id="slider"
-                                    max="100"
-                                    min="-100"
-                                ></input>
-                            </div>
-                        </div>
-                        <div className="mb-6 pt-3 rounded bg-gray-200">
-                            <label
-                                className="block text-gray-700 text-sm font-bold mb-2 ml-3"
-                                for="email"
-                            >
-                                {t("R_PLACEHOLDER_2")}
-                            </label>
-                            <input
-                                value={rub}
-                                onChange={(e) => setRub(e.target.value)}
-                                type="text"
-                                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
-                            ></input>
-                        </div>
-                        <button
-                            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
-                            type="submit"
-                            onClick={(e) => handleSubmitRub(e)}
-                        >
-                            {t("CALCULATE_BUTTON")}
-                        </button>
-                    </form>
-                </section>
-            </div>
-
-            <div>
-                <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mb-4">
+        <div>
+            <div className="grid grid-cols-2 gap-4">
+                <div className="w-full items-center bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
                     <section>
-                        <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
-                            {t("OCTAVE_CLI_TITLE")}
+                        <h3 className="font-bold text-2xl text-gray-600">
+                            {t("ANIMATION_TITLE")}
                         </h3>
                     </section>
 
                     <section className="mt-10">
-                        <form
-                            className="flex flex-col"
-                            method="POST"
-                            action="#"
-                        >
+                        <form className="flex flex-col">
+                            <LineChart
+                                width={400}
+                                height={200}
+                                data={chartData}
+                                margin={{
+                                    top: 5,
+                                    right: 50,
+                                    left: 0,
+                                    bottom: 5,
+                                }}
+                            >
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis />
+                                <YAxis type="number" domain={[-100, 100]} />
+                                <Line
+                                    type="monotone"
+                                    dataKey="wheel"
+                                    stroke="#8884d8"
+                                />
+                                <Line
+                                    type="monotone"
+                                    dataKey="chassis"
+                                    stroke="#82ca9d"
+                                />
+                            </LineChart>
+
                             <div className="mb-6 pt-3 rounded bg-gray-200">
+                                <div
+                                    id="auto"
+                                    className="flex items-center justify-center"
+                                ></div>
                                 <div className="mb-3 flex items-center justify-center">
-                                    <h5
-                                        className="text-gray-600"
-                                        id="cmdresult"
-                                    ></h5>
+                                    <input
+                                        defaultValue="0"
+                                        type="range"
+                                        id="slider"
+                                        max="100"
+                                        min="-100"
+                                    ></input>
                                 </div>
                             </div>
                             <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -7763,20 +7717,19 @@ function Example() {
                                     className="block text-gray-700 text-sm font-bold mb-2 ml-3"
                                     for="email"
                                 >
-                                    {t("OCTAVE_CLI_COMMANDS")}
+                                    {t("R_PLACEHOLDER_2")}
                                 </label>
                                 <input
+                                    value={rub}
+                                    onChange={(e) => setRub(e.target.value)}
                                     type="text"
-                                    value={command}
-                                    onChange={(e) => setCommand(e.target.value)}
                                     className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                 ></input>
                             </div>
-
                             <button
                                 className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
                                 type="submit"
-                                onClick={handleSubmitCommand}
+                                onClick={(e) => handleSubmitRub(e)}
                             >
                                 {t("CALCULATE_BUTTON")}
                             </button>
@@ -7784,29 +7737,79 @@ function Example() {
                     </section>
                 </div>
 
-                <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mt-4">
-                    <section>
-                        <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
-                            {t("ACTIVE_USERS_TITLE")}
-                        </h3>
-                        <p className="text-gray-600 pt-2">
-                            {t("ACTIVE_USERS_SUBTITLE")}
-                        </p>
-                    </section>
+                <div>
+                    <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mb-4">
+                        <section>
+                            <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
+                                {t("OCTAVE_CLI_TITLE")}
+                            </h3>
+                        </section>
 
-                    <section className="mt-10">
-                        <form
-                            className="flex flex-col"
-                            method="POST"
-                            action="#"
-                        >
-                            <div className="mb-6 pt-3 rounded">
-                                <div className="mb-3 flex items-center justify-center">
-                                    <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
-                                        <button
-                                            aria-current="true"
-                                            type="button"
-                                            class=" text-left
+                        <section className="mt-10">
+                            <form
+                                className="flex flex-col"
+                                method="POST"
+                                action="#"
+                            >
+                                <div className="mb-6 pt-3 rounded bg-gray-200">
+                                    <div className="mb-3 flex items-center justify-center">
+                                        <h5
+                                            className="text-gray-600"
+                                            id="cmdresult"
+                                        ></h5>
+                                    </div>
+                                </div>
+                                <div className="mb-6 pt-3 rounded bg-gray-200">
+                                    <label
+                                        className="block text-gray-700 text-sm font-bold mb-2 ml-3"
+                                        for="email"
+                                    >
+                                        {t("OCTAVE_CLI_COMMANDS")}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={command}
+                                        onChange={(e) =>
+                                            setCommand(e.target.value)
+                                        }
+                                        className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                                    ></input>
+                                </div>
+
+                                <button
+                                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+                                    type="submit"
+                                    onClick={handleSubmitCommand}
+                                >
+                                    {t("CALCULATE_BUTTON")}
+                                </button>
+                            </form>
+                        </section>
+                    </div>
+
+                    <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mt-4">
+                        <section>
+                            <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
+                                {t("ACTIVE_USERS_TITLE")}
+                            </h3>
+                            <p className="text-gray-600 pt-2">
+                                {t("ACTIVE_USERS_SUBTITLE")}
+                            </p>
+                        </section>
+
+                        <section className="mt-10">
+                            <form
+                                className="flex flex-col"
+                                method="POST"
+                                action="#"
+                            >
+                                <div className="mb-6 pt-3 rounded">
+                                    <div className="mb-3 flex items-center justify-center">
+                                        <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+                                            <button
+                                                aria-current="true"
+                                                type="button"
+                                                class=" text-left
                                                 px-6
                                                 py-2
                                                 border-b border-gray-200
@@ -7816,12 +7819,12 @@ function Example() {
                                                 text-white
                                                 cursor-pointer
                                             "
-                                        >
-                                            Fero
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="
+                                            >
+                                                Fero
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="
                                                 text-left
                                                 px-6
                                                 py-2
@@ -7833,12 +7836,12 @@ function Example() {
                                                 duration-500
                                                 cursor-pointer
                                             "
-                                        >
-                                            Jožo
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="
+                                            >
+                                                Jožo
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="
                                                 text-left
                                                 px-6
                                                 py-2
@@ -7850,12 +7853,12 @@ function Example() {
                                                 duration-500
                                                 cursor-pointer
                                             "
-                                        >
-                                            Jano
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="
+                                            >
+                                                Jano
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="
                                                 text-left
                                                 px-6
                                                 py-2
@@ -7867,33 +7870,103 @@ function Example() {
                                                 duration-500
                                                 cursor-pointer
                                             "
-                                        >
-                                            Bonifác
-                                        </button>
+                                            >
+                                                Bonifác
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="mb-6 pt-3 rounded bg-gray-200">
-                                <label
-                                    className="block text-gray-700 text-sm font-bold mb-2 ml-3"
-                                    for="email"
-                                >
-                                    {t("ACTIVE_USERS_INPUT")}
-                                </label>
-                                <input
-                                    type="text"
-                                    className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
-                                ></input>
-                            </div>
+                                <div className="mb-6 pt-3 rounded bg-gray-200">
+                                    <label
+                                        className="block text-gray-700 text-sm font-bold mb-2 ml-3"
+                                        for="email"
+                                    >
+                                        {t("ACTIVE_USERS_INPUT")}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                                    ></input>
+                                </div>
 
+                                <button
+                                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+                                    type="submit"
+                                >
+                                    {t("ACTIVE_USERS_SUBMIT")}
+                                </button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="documentationModal"
+                tabIndex="-1"
+                ariaHidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+            >
+                <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                    <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div className="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                                Terms of Service
+                            </h3>
                             <button
-                                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
-                                type="submit"
+                                type="button"
+                                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                dataModalToggle="documentationModal"
                             >
-                                {t("ACTIVE_USERS_SUBMIT")}
+                                <svg
+                                    className="w-5 h-5"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clipRule="evenodd"
+                                    ></path>
+                                </svg>
                             </button>
-                        </form>
-                    </section>
+                        </div>
+                        <div className="p-6 space-y-6">
+                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                With less than a month to go before the European
+                                Union enacts new consumer privacy laws for its
+                                citizens, companies around the world are
+                                updating their terms of service agreements to
+                                comply.
+                            </p>
+                            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                The European Unions General Data Protection
+                                Regulation (G.D.P.R.) goes into effect on May 25
+                                and is meant to ensure a common set of data
+                                rights in the European Union. It requires
+                                organizations to notify users as soon as
+                                possible of high-risk data breaches that could
+                                personally affect them.
+                            </p>
+                        </div>
+                        <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+                            <button
+                                data-modal-toggle="documentationModal"
+                                type="button"
+                                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            >
+                                I accept
+                            </button>
+                            <button
+                                data-modal-toggle="documentationModal"
+                                type="button"
+                                className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                            >
+                                Decline
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -7917,6 +7990,43 @@ function Example() {
                     <p className="font-semibold text-base uppercase">Export</p>
                 </button>
             </div>
+            <footer className="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+                    © 2022 <a className="hover:underline">Kotva and Band™ </a>
+                    All Rights Reserved.
+                </span>
+                <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+                    <li>
+                        <p className="mr-4 hover:underline md:mr-6 ">
+                            {t("ABOUT_PAGE")}
+                        </p>
+                    </li>
+                    <li>
+                        <button
+                            type="button"
+                            dataModalToggle="documentationModal"
+                            className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+                        >
+                            <span
+                                className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                                dataModalToggle="documentationModal"
+                            >
+                                API Documentation
+                            </span>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            onClick={(e) => exportCsv(e)}
+                            className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+                        >
+                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                Export logs
+                            </span>
+                        </button>
+                    </li>
+                </ul>
+            </footer>
         </div>
     );
 }
