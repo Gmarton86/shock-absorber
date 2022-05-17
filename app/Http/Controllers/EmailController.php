@@ -10,6 +10,6 @@ class EmailController extends Controller
 {
     //
     public function email() {
-        Mail::to('erikzurvalec86@gmail.com')->send(new LogsMail());
+        Mail::to('webte2laravel@gmail.com')->send(new LogsMail());
     }
 }
