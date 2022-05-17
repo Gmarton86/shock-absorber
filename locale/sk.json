@@ -4,14 +4,15 @@
     "REQUEST_PLACEHOLDER": "Napíš tvoju požiadavku",
     "R_PLACEHOLDER": "Zadaj koeficient prekážky",
 
-    "ANIMATION_TITLE": "Animácia tlmičov",
+    "ANIMATION_TITLE": "Animácia tlmičov vozidla",
     "R_PLACEHOLDER_2": "Výška prekážky",
-    "CALCULATE_BUTTON": "Počítaj",
+    "CALCULATE_BUTTON": "Vypočítať",
     "OCTAVE_CLI_TITLE": "Octave CLI",
     "OCTAVE_RESULTS_PLACEHOLDER": "Výsledok",
     "OCTAVE_CLI_COMMANDS": "Príkazy",
-    "ACTIVE_USERS_TITLE": "Aktívny používatelia",
-    "ACTIVE_USERS_SUBTITLE": "Pripoj sa ku ním",
+    "ACTIVE_USERS_TITLE": "Aktívni používatelia",
+    "ACTIVE_USERS_SUBTITLE": "Pridaj sa k nim",
     "ACTIVE_USERS_INPUT": "Tvoje meno",
-    "ACTIVE_USERS_SUBMIT": "Pripoj sa"
+    "ACTIVE_USERS_SUBMIT": "Pripojiť sa",
+    "ABOUT_PAGE": "O stránke"
 }

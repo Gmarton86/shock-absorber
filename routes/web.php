@@ -37,6 +37,7 @@ Route::get('/wheel', function () {
 });
 
 Route::post('/wheel', [OctaveController::class, 'wheel'])->name("wheel");
+Route::post('/wheel2', [OctaveController::class, 'wheel2'])->name("wheel2");   
 
 Route::get('/carbody', function () {
     return view("welcome");
