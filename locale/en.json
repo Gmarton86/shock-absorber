@@ -5,7 +5,7 @@
     "R_PLACEHOLDER": "Type obstacle coefficient",
 
     "ANIMATION_TITLE": "Shock Absorber animation",
-    "R_PLACEHOLDER_2": "Obstacle height",
+    "R_PLACEHOLDER_2": "Obstacle height [m]",
     "CALCULATE_BUTTON": "Calculate",
     "OCTAVE_CLI_TITLE": "Octave CLI",
     "OCTAVE_RESULTS_PLACEHOLDER": "Result",
@@ -14,5 +14,13 @@
     "ACTIVE_USERS_SUBTITLE": "Join them.",
     "ACTIVE_USERS_INPUT": "Your name",
     "ACTIVE_USERS_SUBMIT": "Join",
-    "ABOUT_PAGE": "About page"
+    "ABOUT_PAGE": "About page",
+    "API_DOC": "API Description",
+    "EXPORT_LOGS": "Export Logs",
+    "CLOSE": "Close",
+    "INVALID_RUB_ALERT": "Enter a height between -0.3 a 0.3",
+    "ABOUT_PAGE_CONTENT": "",
+    "SIM_RUNNING": "Simulation is running!",
+    "SIM_RUNNING_SECONDARY": "Wait, please.",
+    "SAVE_PDF": "Save as PDF"
 }

@@ -5,7 +5,7 @@
     "R_PLACEHOLDER": "Zadaj koeficient prekážky",
 
     "ANIMATION_TITLE": "Animácia tlmičov vozidla",
-    "R_PLACEHOLDER_2": "Výška prekážky",
+    "R_PLACEHOLDER_2": "Výška prekážky [m]",
     "CALCULATE_BUTTON": "Vypočítať",
     "OCTAVE_CLI_TITLE": "Octave CLI",
     "OCTAVE_RESULTS_PLACEHOLDER": "Výsledok",
@@ -14,5 +14,13 @@
     "ACTIVE_USERS_SUBTITLE": "Pridaj sa k nim",
     "ACTIVE_USERS_INPUT": "Tvoje meno",
     "ACTIVE_USERS_SUBMIT": "Pripojiť sa",
-    "ABOUT_PAGE": "O stránke"
+    "ABOUT_PAGE": "O stránke",
+    "API_DOC": "Popis API",
+    "EXPORT_LOGS": "Exportovať Logy",
+    "CLOSE": "Zavrieť",
+    "INVALID_RUB_ALERT": "Zadajte výšku medzi -0.3 a 0.3",
+    "ABOUT_PAGE_CONTENT": "",
+    "SIM_RUNNING": "Simulácia beží!",
+    "SIM_RUNNING_SECONDARY": "Počkajte prosím.",
+    "SAVE_PDF": "Uložiť ako PDF"
 }

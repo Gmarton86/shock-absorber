@@ -7443,7 +7443,10 @@ function Example() {
     const [commandResponse, setCommandResponse] = useState("");
     const [rubResponse, setRubResponse] = useState("");
     const [user, setUser] = useState("");
+    const [alert, setAlert] = useState(false);
     const [modal, setModal] = useState(false);
+    const [simRunning, setSimRunning] = useState(false);
+    const [modalAPI, setModalAPI] = useState(false);
     const FileDownload = require("js-file-download");
 
     const chartData = [];
@@ -7455,6 +7458,21 @@ function Example() {
             if (err) return console.log("Something went wrong loading", err);
             t("key");
         });
+    };
+
+    const handleAlert = (e) => {
+        e.preventDefault();
+        setAlert(false);
+    };
+
+    const handleModal = (e) => {
+        e.preventDefault();
+        setModal(false);
+    };
+
+    const handleModalAPI = (e) => {
+        e.preventDefault();
+        setModalAPI(false);
     };
 
     const handleSubmitCommand = (e) => {
@@ -7493,52 +7511,59 @@ function Example() {
     const handleSubmitRub = (e) => {
         e.preventDefault();
 
-        let data = {
-            r: rub,
-        };
-        let slider = document.getElementById("slider");
-        let i = 0;
-        let status = "";
-        let issue = "";
-        clearInterval(interval);
+        if (rub > 0.3 || rub < -0.3) {
+            setAlert(true);
+        } else {
+            let data = {
+                r: rub,
+            };
+            let slider = document.getElementById("slider");
+            let i = 0;
+            let status = "";
+            let issue = "";
+            clearInterval(interval);
+            setSimRunning(true);
 
-        axios
-            .post("/wheel2", data)
-            .then((response) => {
-                setRubResponse(response.data);
-                status = response.status;
-                console.log(response.data);
-                interval = setInterval(() => {
-                    slider.value = parseInt(response.data[i] * 5000);
-                    i++;
-                    if (i == response.data.length) {
-                        clearInterval(interval);
-                    }
-                    console.log("Y: " + response.data[i] * 5000);
-                    setChart((array) => [
-                        ...array,
-                        {
-                            wheel: parseInt(response.data[i] * 5000),
-                            chassis: parseInt(response.data[i] * 1000),
-                        },
-                    ]);
-                }, 25);
-            })
-            .catch((error) => {
-                issue = error;
-            })
-            .finally(() => {
-                axios
-                    .post("/logs", {
-                        command: JSON.stringify(data),
-                        commandType: "Car",
-                        status: status.toString(),
-                        error: issue,
-                        username: user,
-                    })
-                    .then(console.log)
-                    .catch(console.log);
-            });
+            axios
+                .post("/wheel2", data)
+                .then((response) => {
+                    setRubResponse(response.data);
+                    status = response.status;
+                    console.log(response.data);
+                    interval = setInterval(() => {
+                        slider.value = parseInt(response.data[i] * 5000);
+                        i++;
+                        if (i == response.data.length) {
+                            clearInterval(interval);
+                            setSimRunning(false);
+                        }
+                        console.log("Y: " + response.data[i] * 5000);
+                        setChart((array) => [
+                            ...array,
+                            {
+                                wheel: parseInt(response.data[i] * 5000),
+                                chassis: parseInt(response.data[i] * 1000),
+                            },
+                        ]);
+                    }, 24);
+                })
+                .catch((error) => {
+                    issue = error;
+                })
+                .finally(() => {
+                    axios
+                        .post("/logs", {
+                            command: JSON.stringify(data),
+                            commandType: "Car",
+                            status: status.toString(),
+                            error: issue,
+                            username: user,
+                        })
+                        .then(console.log)
+                        .catch(console.log);
+                });
+            setAlert(false);
+        }
     };
 
     useEffect(() => {
@@ -7620,11 +7645,9 @@ function Example() {
 
         const start = performance.now();
         const animateWheel = (now) => {
-            let x1 = wheelStartX;
             let y1 = wheelStartY + parseInt(slider.value);
             wheelCanvas.center(wheelStartX, y1);
 
-            let x2 = chassisStartX;
             let y2 = chassisStartY + slider.value / 5;
             chassis.center(chassis.cx(), y2);
 
@@ -7674,20 +7697,22 @@ function Example() {
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis />
-                                <YAxis type="number" domain={[-100, 100]} />
+                                <YAxis type="number" domain={[-80, 80]} />
                                 <Line
                                     type="monotone"
                                     dataKey="wheel"
                                     stroke="#8884d8"
+                                    dot={false}
                                 />
                                 <Line
                                     type="monotone"
                                     dataKey="chassis"
                                     stroke="#82ca9d"
+                                    dot={false}
                                 />
                             </LineChart>
 
-                            <div className="mb-6 pt-3 rounded bg-gray-200">
+                            <div className="mb-3 pt-3 rounded bg-gray-200">
                                 <div
                                     id="auto"
                                     className="flex items-center justify-center"
@@ -7711,27 +7736,89 @@ function Example() {
                                     ></input>
                                 </div>
                             </div>
-                            <div className="mb-6 pt-3 rounded bg-gray-200">
-                                <label
-                                    className="block text-gray-700 text-sm font-bold mb-2 ml-3"
-                                    for="email"
+
+                            {alert ? (
+                                <div
+                                    id="alert-2"
+                                    class="flex p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200"
                                 >
-                                    {t("R_PLACEHOLDER_2")}
-                                </label>
-                                <input
-                                    value={rub}
-                                    onChange={(e) => setRub(e.target.value)}
-                                    type="text"
-                                    className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
-                                ></input>
-                            </div>
-                            <button
-                                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
-                                type="submit"
-                                onClick={(e) => handleSubmitRub(e)}
-                            >
-                                {t("CALCULATE_BUTTON")}
-                            </button>
+                                    <svg
+                                        class="flex-shrink-0 w-5 h-5 text-red-700 dark:text-red-800"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"></path>
+                                    </svg>
+                                    <div class="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
+                                        {t("INVALID_RUB_ALERT")}
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={handleAlert}
+                                        class="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300"
+                                    >
+                                        <svg
+                                            class="w-5 h-5"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+
+                            {simRunning ? (
+                                <div
+                                    class="flex p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 w-full"
+                                    role="alert"
+                                >
+                                    <svg
+                                        class="inline flex-shrink-0 mr-3 w-5 h-5"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-bold">
+                                            {t("SIM_RUNNING")}
+                                        </span>{" "}
+                                        {t("SIM_RUNNING_SECONDARY")}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="w-full">
+                                    <div className="mb-6 pt-3 rounded bg-gray-200">
+                                        <label
+                                            className="block text-gray-700 text-sm font-bold mb-2 ml-3"
+                                            for="email"
+                                        >
+                                            {t("R_PLACEHOLDER_2")}
+                                        </label>
+                                        <input
+                                            value={rub}
+                                            onChange={(e) =>
+                                                setRub(e.target.value)
+                                            }
+                                            type="text"
+                                            className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                                        ></input>
+                                    </div>
+                                    <button
+                                        className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 w-full"
+                                        type="submit"
+                                        onClick={handleSubmitRub}
+                                    >
+                                        {t("CALCULATE_BUTTON")}
+                                    </button>
+                                </div>
+                            )}
                         </form>
                     </section>
                 </div>
@@ -7902,69 +7989,205 @@ function Example() {
 
             {modal ? (
                 <div
-                    id="documentationModal"
-                    tabIndex="-1"
-                    ariaHidden="true"
-                    class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+                    class="relative z-10"
+                    aria-labelledby="modal-title"
+                    role="dialog"
+                    aria-modal="true"
                 >
-                    <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
-                        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <div className="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                                    Terms of Service
-                                </h3>
-                                <button
-                                    type="button"
-                                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                    onClick={() => setModal(false)}
-                                >
-                                    <svg
-                                        className="w-5 h-5"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
+                    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"></div>
+
+                    <div class="fixed z-10 inset-0 overflow-y-auto">
+                        <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                            <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                    <div class="sm:flex sm:items-start">
+                                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                            <h3
+                                                class="text-lg leading-6 font-medium text-gray-900"
+                                                id="modal-title"
+                                            >
+                                                {t("ABOUT_PAGE")}
+                                            </h3>
+                                            <div class="mt-2">
+                                                <p class="text-sm text-gray-500">
+                                                    {t("ABOUT_PAGE_CONTENT")}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                    <button
+                                        className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+                                        onClick={handleModal}
                                     >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                            clipRule="evenodd"
-                                        ></path>
-                                    </svg>
-                                </button>
+                                        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                            {t("CLOSE")}
+                                        </span>
+                                    </button>
+
+                                    <button
+                                        class="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                                        onClick={handleModal}
+                                    >
+                                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                            {t("SAVE_PDF")}
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
-                            <div className="p-6 space-y-6">
-                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    With less than a month to go before the
-                                    European Union enacts new consumer privacy
-                                    laws for its citizens, companies around the
-                                    world are updating their terms of service
-                                    agreements to comply.
-                                </p>
-                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    The European Unions General Data Protection
-                                    Regulation (G.D.P.R.) goes into effect on
-                                    May 25 and is meant to ensure a common set
-                                    of data rights in the European Union. It
-                                    requires organizations to notify users as
-                                    soon as possible of high-risk data breaches
-                                    that could personally affect them.
-                                </p>
-                            </div>
-                            <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                                <button
-                                    onClick={() => setModal(false)}
-                                    type="button"
-                                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                >
-                                    I accept
-                                </button>
-                                <button
-                                    onClick={() => setModal(false)}
-                                    type="button"
-                                    className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-                                >
-                                    Decline
-                                </button>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <></>
+            )}
+
+            {modalAPI ? (
+                <div
+                    class="relative z-10"
+                    aria-labelledby="modal-title"
+                    role="dialog"
+                    aria-modal="true"
+                >
+                    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"></div>
+
+                    <div class="fixed z-10 inset-0 overflow-y-auto">
+                        <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                            <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                        <h3
+                                            class="text-lg leading-6 font-medium text-gray-900 my-2"
+                                            id="modal-title"
+                                        >
+                                            {t("API_DOC")}
+                                        </h3>
+                                        <hr></hr>
+                                        <div>
+                                            <div class="my-2 text-gray-900 w-full">
+                                                <span class="text-gray-900 font-bold">
+                                                    <span class="text-blue-800 font-bold">
+                                                        GET{" "}
+                                                    </span>
+                                                    /wheel
+                                                </span>
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    class="font-bold"
+                                                >
+                                                    Slovný popis end pointu
+                                                </p>
+
+                                                <div class="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                <em>
+                                                                    HTTP 200{" "}
+                                                                </em>
+                                                                - returned
+                                                                when...
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <em>
+                                                                    HTTP 404{" "}
+                                                                </em>
+                                                                - returned
+                                                                when...
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div class="my-2 text-gray-900 w-full">
+                                                <span class="text-gray-900 font-bold">
+                                                    <span class="text-green-800 font-bold">
+                                                        POST{" "}
+                                                    </span>
+                                                    /wheel/&#123;surname&#125;
+                                                </span>
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    class="font-bold"
+                                                >
+                                                    Slovný popis end pointu
+                                                </p>
+
+                                                <div class="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                <em>
+                                                                    HTTP 200{" "}
+                                                                </em>
+                                                                - returned
+                                                                when...
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <em>
+                                                                    HTTP 404{" "}
+                                                                </em>
+                                                                - returned
+                                                                when...
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div class="my-2 text-gray-900 w-full">
+                                                <span class="text-gray-900 font-bold">
+                                                    <span class="text-blue-800 font-bold">
+                                                        GET{" "}
+                                                    </span>
+                                                    /wheel
+                                                </span>
+                                                <p class="font-bold">
+                                                    Slovný popis end pointu
+                                                </p>
+
+                                                <div class="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                <em>
+                                                                    HTTP 200{" "}
+                                                                </em>
+                                                                - returned
+                                                                when...
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                <em>
+                                                                    HTTP 404{" "}
+                                                                </em>
+                                                                - returned
+                                                                when...
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                    <button
+                                        className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+                                        onClick={handleModalAPI}
+                                    >
+                                        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                            {t("CLOSE")}
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -7979,42 +8202,53 @@ function Example() {
                     All Rights Reserved.
                 </span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-                    <li>
+                    <li className="mr-3">
                         <img
                             src="https://countryflagsapi.com/png/us"
-                            className="mx-2"
                             alt="flagUs"
-                            style={{ height: "25px", cursor: "pointer" }}
+                            style={{
+                                width: "30px",
+                                height: "20px",
+                                cursor: "pointer",
+                            }}
                             onClick={() => changeLanguage("en")}
                         ></img>
-                    </li>
-                    <li>
                         <img
                             src="https://countryflagsapi.com/png/svk"
                             alt="flagSvk"
-                            className="mx-2"
-                            style={{ height: "25px", cursor: "pointer" }}
+                            className="mt-2"
+                            style={{
+                                width: "30px",
+                                height: "20px",
+                                cursor: "pointer",
+                            }}
                             onClick={() => changeLanguage("sk")}
                         ></img>
                     </li>
+
                     <li>
-                        <p className="mr-4 hover:underline md:mr-6 ">
-                            {t("ABOUT_PAGE")}
-                        </p>
+                        <button
+                            onClick={() => setModal(true)}
+                            className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+                        >
+                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                {t("ABOUT_PAGE")}
+                            </span>
+                        </button>
                     </li>
 
                     <li>
                         <button
                             type="button"
                             dataModalToggle="documentationModal"
-                            onClick={() => setModal(true)}
+                            onClick={() => setModalAPI(true)}
                             className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
                         >
                             <span
                                 className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
                                 dataModalToggle="documentationModal"
                             >
-                                API Documentation
+                                {t("API_DOC")}
                             </span>
                         </button>
                     </li>
@@ -8024,7 +8258,7 @@ function Example() {
                             className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
                         >
                             <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                Export logs
+                                {t("EXPORT_LOGS")}
                             </span>
                         </button>
                     </li>

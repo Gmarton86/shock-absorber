@@ -8,6 +8,7 @@
     </head>
     <body class="antialiased relative flex flex-row justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 text-white">
         <div id="example"></div> 
+        <div id="root"></div> 
         <script src="{{ mix('js/app.js')}}"> </script>
     </body>
 </html>
