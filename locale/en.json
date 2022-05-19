@@ -30,5 +30,6 @@
     "ABOUT_PAGE_CONTENT_4": "Only the Footer remains under the main three sections. On its left side there is an information about the authors. The right half of Footer starts with the flags of the USA and Slovakia, which are used to switch between the languages. The 'About page' button follows, which displays a description of our site and instructions for using it in a modal window. This entire description can also be saved as PDF using the button in the modal window. The next button in Footer is 'API Description', which also displays a modal window, but this time with a description of our API. It contains a list of end-points, the form of input and output data, etc. End of the Footer is populated by the 'Export logs' button, thanks to which it is possible to download a record of commands sent to our API. Records can be downloaded as a CSV file.",
     "SIM_RUNNING": "Simulation is running!",
     "SIM_RUNNING_SECONDARY": "Wait, please.",
-    "SAVE_PDF": "Save as PDF"
+    "SAVE_PDF": "Save as PDF",
+    "LOGS_EMAIL": "Send logs to email"
 }

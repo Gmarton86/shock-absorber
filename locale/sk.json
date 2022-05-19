@@ -31,5 +31,6 @@
 
     "SIM_RUNNING": "Simulácia beží!",
     "SIM_RUNNING_SECONDARY": "Počkajte prosím.",
-    "SAVE_PDF": "Uložiť ako PDF"
+    "SAVE_PDF": "Uložiť ako PDF",
+    "LOGS_EMAIL": "Odošli logy na email"
 }

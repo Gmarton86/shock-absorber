@@ -7494,10 +7494,12 @@ function Example() {
         let status = "";
         let issue = "";
 
+        let data = {
+            cmd: command,
+        };
+
         axios
-            .post("/cmd", {
-                cmd: command,
-            })
+            .post("/cmd", data)
             .then((response) => {
                 setCommandResponse(response.data);
                 let result = document.getElementById("cmdresult");
@@ -7510,7 +7512,7 @@ function Example() {
             .finally(() => {
                 axios
                     .post("/logs", {
-                        command: command,
+                        command: JSON.stringify(data),
                         commandType: "Basic",
                         status: status.toString(),
                         error: issue,
@@ -7682,6 +7684,15 @@ function Example() {
             .then((res) => {
                 FileDownload(res.data, "logs.csv");
             })
+            .catch(console.log);
+    };
+
+    
+    const sendLogs = (e) => {
+        e.preventDefault();
+        axios
+            .get("/email")
+            .then(console.log)
             .catch(console.log);
     };
 
@@ -8322,6 +8333,16 @@ function Example() {
                         >
                             <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                 {t("EXPORT_LOGS")}
+                            </span>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            onClick={(e) => sendLogs(e)}
+                            className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+                        >
+                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                {t("LOGS_EMAIL")}
                             </span>
                         </button>
                     </li>
