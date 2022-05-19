@@ -7534,6 +7534,7 @@ function Example() {
                 r: rub,
             };
             let slider = document.getElementById("slider");
+            let slider2 = document.getElementById("slider2");
             let i = 0;
             let status = "";
             let issue = "";
@@ -7541,24 +7542,26 @@ function Example() {
             setSimRunning(true);
 
             axios
-                .post("/wheel2", data)
+                .post("/values", data)
                 .then((response) => {
+
                     setRubResponse(response.data);
                     status = response.status;
                     console.log(response.data);
                     interval = setInterval(() => {
-                        slider.value = parseInt(response.data[i] * 5000);
+                        slider.value = parseInt(response.data.wheel[i] * 500);
+                        slider2.value = parseInt(response.data.chassis[i] * 500);
                         i++;
-                        if (i == response.data.length) {
+                        if (i == response.data.wheel.length) {
                             clearInterval(interval);
                             setSimRunning(false);
                         }
-                        console.log("Y: " + response.data[i] * 5000);
+                        console.log("Y: " + response.data.wheel[i] * 500);
                         setChart((array) => [
                             ...array,
                             {
-                                wheel: parseInt(response.data[i] * 5000),
-                                chassis: parseInt(response.data[i] * 1000),
+                                wheel: parseInt(response.data.wheel[i] * 500),
+                                chassis: parseInt(response.data.chassis[i] * 500),
                             },
                         ]);
                     }, 24);
@@ -7584,6 +7587,7 @@ function Example() {
 
     useEffect(() => {
         const slider = document.getElementById("slider");
+        const slider2 = document.getElementById("slider2");
         const width = 400;
         const height = 300;
 
@@ -7664,7 +7668,7 @@ function Example() {
             let y1 = wheelStartY + parseInt(slider.value);
             wheelCanvas.center(wheelStartX, y1);
 
-            let y2 = chassisStartY + slider.value / 5;
+            let y2 = chassisStartY + parseInt(slider2.value);
             chassis.center(chassis.cx(), y2);
 
             absorberLine.height(y2 - y1);
@@ -7758,6 +7762,15 @@ function Example() {
                                                 },
                                             ]);
                                         }}
+                                    ></input>
+
+                                    <input
+                                        class="hidden"
+                                        defaultValue="0"
+                                        type="range"
+                                        id="slider2"
+                                        max="80"
+                                        min="-80"
                                     ></input>
                                 </div>
                             </div>
@@ -8141,7 +8154,7 @@ function Example() {
                                                     <span className="text-blue-800 font-bold">
                                                         GET{" "}
                                                     </span>
-                                                    /wheel
+                                                    /values
                                                 </span>
                                                 <p
                                                     data-entity-type="request-title"
@@ -8179,7 +8192,7 @@ function Example() {
                                                     <span className="text-green-800 font-bold">
                                                         POST{" "}
                                                     </span>
-                                                    /wheel/&#123;surname&#125;
+                                                    /values/&#123;surname&#125;
                                                 </span>
                                                 <p
                                                     data-entity-type="request-title"
@@ -8224,7 +8237,7 @@ function Example() {
                                                     <span className="text-blue-800 font-bold">
                                                         GET{" "}
                                                     </span>
-                                                    /wheel
+                                                    /values
                                                 </span>
                                                 <p className="font-bold">
                                                     Slovný popis end pointu

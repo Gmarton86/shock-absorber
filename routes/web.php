@@ -31,13 +31,7 @@ Route::get('/export/logs', [LogsController::class, 'exportCsv']);
 
 Route::get('/email', [EmailController::class, 'email']);
 
-
-Route::get('/wheel', function () {
-    return view("welcome");
-});
-
-Route::post('/wheel', [OctaveController::class, 'wheel'])->name("wheel");
-Route::post('/wheel2', [OctaveController::class, 'wheel2'])->name("wheel2");   
+Route::post('/values', [OctaveController::class, 'values'])->name("values");   
 
 Route::get('/carbody', function () {
     return view("welcome");
