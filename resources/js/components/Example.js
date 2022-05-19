@@ -7544,24 +7544,34 @@ function Example() {
             axios
                 .post("/values", data)
                 .then((response) => {
-
                     setRubResponse(response.data);
                     status = response.status;
                     console.log(response.data);
                     interval = setInterval(() => {
-                        slider.value = parseInt(response.data.wheel[i] * 500);
-                        slider2.value = parseInt(response.data.chassis[i] * 500);
+                        slider.value = parseInt(
+                            response.data.wheel[i] * 100 - rub * 100
+                        );
+                        slider2.value = parseInt(
+                            response.data.chassis[i] * 100
+                        );
                         i++;
-                        if (i == response.data.wheel.length) {
+                        if (i == response.data.wheel.length - 1) {
                             clearInterval(interval);
                             setSimRunning(false);
                         }
-                        console.log("Y: " + response.data.wheel[i] * 500);
+                        // console.log(
+                        //     "Wheel Y: " + (response.data.wheel[i] - rub) * 100
+                        // );
+                        // console.log(
+                        //     "Chassis Y: " + response.data.chassis[i] * 100
+                        // );
                         setChart((array) => [
                             ...array,
                             {
-                                wheel: parseInt(response.data.wheel[i] * 500),
-                                chassis: parseInt(response.data.chassis[i] * 500),
+                                wheel: parseInt(response.data.wheel[i] * 100),
+                                chassis: parseInt(
+                                    response.data.chassis[i] * 100
+                                ),
                             },
                         ]);
                     }, 24);
@@ -7665,11 +7675,13 @@ function Example() {
 
         const start = performance.now();
         const animateWheel = (now) => {
-            let y1 = wheelStartY + parseInt(slider.value);
+            let y1 = wheelStartY + parseInt(slider.value * 2);
             wheelCanvas.center(wheelStartX, y1);
+            // console.log(parseInt(slider.value));
 
-            let y2 = chassisStartY + parseInt(slider2.value);
+            let y2 = chassisStartY + parseInt(slider2.value * 2);
             chassis.center(chassis.cx(), y2);
+            // console.log(parseInt(slider2.value));
 
             absorberLine.height(y2 - y1);
             absorberLine.cy(y1 + (y2 - y1) / 2);
@@ -7691,13 +7703,9 @@ function Example() {
             .catch(console.log);
     };
 
-    
     const sendLogs = (e) => {
         e.preventDefault();
-        axios
-            .get("/email")
-            .then(console.log)
-            .catch(console.log);
+        axios.get("/email").then(console.log).catch(console.log);
     };
 
     const { t } = useTranslation();
@@ -7726,7 +7734,7 @@ function Example() {
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis />
-                                <YAxis type="number" domain={[-80, 80]} />
+                                <YAxis type="number" domain={[-50, 50]} />
                                 <Line
                                     type="monotone"
                                     dataKey="wheel"
@@ -7751,14 +7759,14 @@ function Example() {
                                         defaultValue="0"
                                         type="range"
                                         id="slider"
-                                        max="80"
-                                        min="-80"
+                                        max="50"
+                                        min="-50"
                                         onChange={(e) => {
                                             setChart((array) => [
                                                 ...array,
                                                 {
                                                     wheel: e.target.value / 1,
-                                                    chassis: e.target.value / 5,
+                                                    chassis: 0,
                                                 },
                                             ]);
                                         }}
@@ -7769,8 +7777,8 @@ function Example() {
                                         defaultValue="0"
                                         type="range"
                                         id="slider2"
-                                        max="80"
-                                        min="-80"
+                                        max="50"
+                                        min="-50"
                                     ></input>
                                 </div>
                             </div>
@@ -8147,63 +8155,32 @@ function Example() {
                                         >
                                             {t("API_DOC")}
                                         </h3>
-                                        <hr></hr>
                                         <div>
+                                            <hr></hr>
                                             <div className="my-2 text-gray-900 w-full">
                                                 <span className="text-gray-900 font-bold">
-                                                    <span className="text-blue-800 font-bold">
-                                                        GET{" "}
+                                                    <span className="text-green-700 font-bold">
+                                                        POST{" "}
                                                     </span>
                                                     /values
                                                 </span>
                                                 <p
                                                     data-entity-type="request-title"
-                                                    className="font-bold"
+                                                    className="font-medium"
                                                 >
-                                                    Slovný popis end pointu
-                                                </p>
-
-                                                <div className="">
-                                                    <ul>
-                                                        <li>
-                                                            <span>
-                                                                <em>
-                                                                    HTTP 200{" "}
-                                                                </em>
-                                                                - returned
-                                                                when...
-                                                            </span>
-                                                        </li>
-                                                        <li>
-                                                            <span>
-                                                                <em>
-                                                                    HTTP 404{" "}
-                                                                </em>
-                                                                - returned
-                                                                when...
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <hr></hr>
-                                            <div className="my-2 text-gray-900 w-full">
-                                                <span className="text-gray-900 font-bold">
-                                                    <span className="text-green-800 font-bold">
-                                                        POST{" "}
-                                                    </span>
-                                                    /values/&#123;surname&#125;
-                                                </span>
-                                                <p
-                                                    data-entity-type="request-title"
-                                                    className="font-bold"
-                                                >
-                                                    Slovný popis end pointu
+                                                    {t("API_DOC_0")}
                                                 </p>
                                                 <pre className="text-gray-900">
                                                     {`
+Request body:
 {
-    "r": int
+    r : integer
+}
+
+Response body:
+{
+    wheel : [integer],
+    chassis: [integer]
 }
 
 `}
@@ -8212,20 +8189,12 @@ function Example() {
                                                     <ul>
                                                         <li>
                                                             <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
                                                                 <em>
                                                                     HTTP 200{" "}
                                                                 </em>
-                                                                - returned
-                                                                when...
-                                                            </span>
-                                                        </li>
-                                                        <li>
-                                                            <span>
-                                                                <em>
-                                                                    HTTP 404{" "}
-                                                                </em>
-                                                                - returned
-                                                                when...
                                                             </span>
                                                         </li>
                                                     </ul>
@@ -8234,33 +8203,256 @@ function Example() {
                                             <hr></hr>
                                             <div className="my-2 text-gray-900 w-full">
                                                 <span className="text-gray-900 font-bold">
-                                                    <span className="text-blue-800 font-bold">
-                                                        GET{" "}
+                                                    <span className="text-green-700 font-bold">
+                                                        POST{" "}
                                                     </span>
-                                                    /values
+                                                    /cmd
                                                 </span>
-                                                <p className="font-bold">
-                                                    Slovný popis end pointu
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    className="font-medium"
+                                                >
+                                                    {t("API_DOC_1")}
                                                 </p>
+                                                <pre className="text-gray-900">
+                                                    {`
+Request body:
+{
+    cmd : string
+}
 
+Response body:
+{
+    result : string
+}
+
+`}
+                                                </pre>
                                                 <div className="">
                                                     <ul>
                                                         <li>
                                                             <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
                                                                 <em>
                                                                     HTTP 200{" "}
                                                                 </em>
-                                                                - returned
-                                                                when...
                                                             </span>
                                                         </li>
                                                         <li>
                                                             <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
                                                                 <em>
-                                                                    HTTP 404{" "}
+                                                                    HTTP 400{" "}
                                                                 </em>
-                                                                - returned
-                                                                when...
+                                                                {t("API_DOC_7")}
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-green-700 font-bold">
+                                                        POST{" "}
+                                                    </span>
+                                                    /logs
+                                                </span>
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    className="font-medium"
+                                                >
+                                                    {t("API_DOC_2")}
+                                                </p>
+                                                <pre className="text-gray-900">
+                                                    {`
+Request body:
+{
+    command : string,
+    commandType : string(car/basic),
+    status : string,
+    error : string,
+    username : string
+}
+
+Response body:
+{
+    command : string,
+    commandType : string(car/basic),
+    status : string,
+    error : string,
+    username : string
+}
+
+`}
+                                                </pre>
+                                                <div className="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
+                                                                <em>
+                                                                    HTTP 201{" "}
+                                                                </em>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-blue-700 font-bold">
+                                                        GET{" "}
+                                                    </span>
+                                                    /logs
+                                                </span>
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    className="font-medium"
+                                                >
+                                                    {t("API_DOC_3")}
+                                                </p>
+                                                <pre className="text-gray-900">
+                                                    {`
+Response body:
+{
+    command : string,
+    commandType : string(car/basic),
+    status : string,
+    error : string,
+    username : string
+}
+
+`}
+                                                </pre>
+                                                <div className="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
+                                                                <em>
+                                                                    HTTP 200{" "}
+                                                                </em>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-blue-700 font-bold">
+                                                        GET{" "}
+                                                    </span>
+                                                    /logs/&#123;username&#125;
+                                                </span>
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    className="font-medium"
+                                                >
+                                                    {t("API_DOC_4")}
+                                                </p>
+                                                <pre className="text-gray-900">
+                                                    {`
+Response body:
+{
+    command : string,
+    commandType : string(car/basic),
+    status : string,
+    error : string,
+    username : string
+}
+
+`}
+                                                </pre>
+                                                <div className="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
+                                                                <em>
+                                                                    HTTP 200{" "}
+                                                                </em>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
+                                                                <em>
+                                                                    HTTP 500{" "}
+                                                                </em>
+                                                                {t("API_DOC_8")}
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-blue-700 font-bold">
+                                                        GET{" "}
+                                                    </span>
+                                                    /export/logs
+                                                </span>
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    className="font-medium"
+                                                >
+                                                    {t("API_DOC_5")}
+                                                </p>
+                                                <div className="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
+                                                                <em>
+                                                                    HTTP 200{" "}
+                                                                </em>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-blue-700 font-bold">
+                                                        GET{" "}
+                                                    </span>
+                                                    /email
+                                                </span>
+                                                <p
+                                                    data-entity-type="request-title"
+                                                    className="font-medium"
+                                                >
+                                                    {t("API_DOC_6")}
+                                                </p>
+                                                <div className="">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                {t(
+                                                                    "API_DOC_RETURNS"
+                                                                )}{" "}
+                                                                <em>
+                                                                    HTTP 200{" "}
+                                                                </em>
                                                             </span>
                                                         </li>
                                                     </ul>
