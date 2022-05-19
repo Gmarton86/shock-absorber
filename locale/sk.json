@@ -19,7 +19,16 @@
     "EXPORT_LOGS": "Exportovať Logy",
     "CLOSE": "Zavrieť",
     "INVALID_RUB_ALERT": "Zadajte výšku medzi -0.3 a 0.3",
-    "ABOUT_PAGE_CONTENT": "",
+    "ABOUT_PAGE_CONTENT_0": "Naša stránka má podobu dashboardu, v ktorom má každá sekcia svoj jedinečný účel.",
+    "ABOUT_PAGE_CONTENT_1_TITLE": "Animácia tlmičov vozidla.",
+    "ABOUT_PAGE_CONTENT_1": "Prvou a najväčšou sekciou je 'Animácia tlmičov vozidla'. Skladá sa z grafu, samotnej animácie vozidla so sliderom, textového vstupu a tlačilda. Používateľ spustí simuláciu tak, že do textového vstupu zadá číslo v rozpätí -0.3 a 0.3. Toto číslo predstavuje výšku prekážky, po ktorej naše vozidlo prejde. V prípade zápornej výšky ide o jamu. Ak používateľ zadá hodnotu mimo spomenutého intervalu, bude na to upozornený. Ak zadá správnu výšku, animácia sa spustí a textový vstup s tlačidlom sú nahradené informačným textom, že prebieha simulácia. Pred zadaním ďalšej hodnoty tak musí používateľ počkať, kým prebiehajúca simulácia skončí. Graf, nachádzajúci sa nad animáciou, je s animáciou synchronizovaný a zapisujú sa doň aktuálne pozície kolesa a karosérie. Slider, ktorý sa nachádza pod animáciou je tiež spojený s kolesom vozidla a hodnoty vytvorené pohybom slidera sa taktiež odrazia na grafe.",
+    "ABOUT_PAGE_CONTENT_2_TITLE": "Octave CLI.",
+    "ABOUT_PAGE_CONTENT_2": "Ďalšou sekciou, nachádzajúcou sa vpravo hore, je príkazový riadok Octave. Táto sekcia funguje veľmi jednoducho. Používateľ napíše žiadaný príkaz do textového vstupu a stlačí tlačidlo hneď pod ním. Následne dostane výsledok v šedom poli nad textovým vstupom.",
+    "ABOUT_PAGE_CONTENT_3_TITLE": "Aktívni používatelia.",
+    "ABOUT_PAGE_CONTENT_3": "Táto sekcia obsahuje zoznam aktívnych používateľov na našej stránke a textový vstup, ktorý slúži na pridanie sa k nim. Používateľ iba zadá svoj username a stane sa súčasťou zoznamu. Samotný zoznam pozostáva z tlačidiel s menami používateľov. Po kliknutí na jedno z tlačidiel môže používateľ pasívne sledovať experimentovanie zvolenej osoby.",
+    "ABOUT_PAGE_CONTENT_4_TITLE": "Footer.",
+    "ABOUT_PAGE_CONTENT_4": "Pod hlavnými tromi sekciami nám už ostáva len Footer. Na jeho ľavej strane sa nachádza informácia o autoroch. Pravá polovica Footeru začína vlajkami USA a Slovenska, ktoré slúžia na prepínanie jazyka na stránke. Nasleduje tlačidlo 'O stránke', ktoré v modálnom okne zobrazí popis našej stránky a návod na jej použitie. Celý tento popis sa tiež dá uložiť ako PDF pomocou tlačidla v modálnom okne. Ďalšie tlačidlo vo Footeri je 'Popis API', ktoré taktiež zobrazí modálne okno, tentokrát však s popisom našej API. Obsahuje zoznam end-pointov, podobu vstupných aj výstupných dát, atď. Footer je ukončený tlačidlom 'Exportovať logy', vďaka ktorému je možné stiahnuť si záznam príkazov posielaných do našej API. Záznamy sa dajú stiahnuť v podobe CSV súboru.",
+
     "SIM_RUNNING": "Simulácia beží!",
     "SIM_RUNNING_SECONDARY": "Počkajte prosím.",
     "SAVE_PDF": "Uložiť ako PDF"

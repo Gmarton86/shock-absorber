@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import axios from "axios";
 import i18n from "../../../config/i18n";
+import html2pdf from "html2pdf.js";
 
 /*!
  * @svgdotjs/svg.js - A lightweight library for manipulating and animating SVG.
@@ -7475,6 +7476,19 @@ function Example() {
         setModalAPI(false);
     };
 
+    const handleDescriptionPrint = (e) => {
+        e.preventDefault();
+        var printOptions = {
+            margin: 15,
+            filename: "shock-absorber-description.pdf",
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        };
+
+        var element = document.getElementById("element-to-print");
+        html2pdf(element, printOptions);
+    };
+
     const handleSubmitCommand = (e) => {
         e.preventDefault();
         let status = "";
@@ -7675,7 +7689,7 @@ function Example() {
     return (
         <div>
             <div className="grid grid-cols-2 gap-4">
-                <div className="w-full items-center bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+                <div className="w-full items-center bg-white max-w-lg mx-auto 6 md:p-12 my-10 rounded-lg shadow-2xl">
                     <section>
                         <h3 className="font-bold text-2xl text-gray-600">
                             {t("ANIMATION_TITLE")}
@@ -7701,13 +7715,13 @@ function Example() {
                                 <Line
                                     type="monotone"
                                     dataKey="wheel"
-                                    stroke="#8884d8"
+                                    stroke="#9061f9"
                                     dot={false}
                                 />
                                 <Line
                                     type="monotone"
                                     dataKey="chassis"
-                                    stroke="#82ca9d"
+                                    stroke="#e74694"
                                     dot={false}
                                 />
                             </LineChart>
@@ -7722,8 +7736,8 @@ function Example() {
                                         defaultValue="0"
                                         type="range"
                                         id="slider"
-                                        max="100"
-                                        min="-100"
+                                        max="80"
+                                        min="-80"
                                         onChange={(e) => {
                                             setChart((array) => [
                                                 ...array,
@@ -7740,26 +7754,26 @@ function Example() {
                             {alert ? (
                                 <div
                                     id="alert-2"
-                                    class="flex p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200"
+                                    className="flex p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200"
                                 >
                                     <svg
-                                        class="flex-shrink-0 w-5 h-5 text-red-700 dark:text-red-800"
+                                        className="flex-shrink-0 w-5 h-5 text-red-700 dark:text-red-800"
                                         fill="currentColor"
                                         viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"></path>
                                     </svg>
-                                    <div class="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
+                                    <div className="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
                                         {t("INVALID_RUB_ALERT")}
                                     </div>
                                     <button
                                         type="button"
                                         onClick={handleAlert}
-                                        class="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300"
+                                        className="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300"
                                     >
                                         <svg
-                                            class="w-5 h-5"
+                                            className="w-5 h-5"
                                             fill="currentColor"
                                             viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -7774,11 +7788,11 @@ function Example() {
 
                             {simRunning ? (
                                 <div
-                                    class="flex p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 w-full"
+                                    className="flex p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 w-full"
                                     role="alert"
                                 >
                                     <svg
-                                        class="inline flex-shrink-0 mr-3 w-5 h-5"
+                                        className="inline flex-shrink-0 mr-3 w-5 h-5"
                                         fill="currentColor"
                                         viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -7786,7 +7800,7 @@ function Example() {
                                         <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"></path>
                                     </svg>
                                     <div>
-                                        <span class="font-bold">
+                                        <span className="font-bold">
                                             {t("SIM_RUNNING")}
                                         </span>{" "}
                                         {t("SIM_RUNNING_SECONDARY")}
@@ -7794,7 +7808,7 @@ function Example() {
                                 </div>
                             ) : (
                                 <div className="w-full">
-                                    <div className="mb-6 pt-3 rounded bg-gray-200">
+                                    <div className="mb-4 pt-3 rounded bg-gray-200">
                                         <label
                                             className="block text-gray-700 text-sm font-bold mb-2 ml-3"
                                             for="email"
@@ -7810,10 +7824,11 @@ function Example() {
                                             className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                         ></input>
                                     </div>
+
                                     <button
-                                        className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 w-full"
-                                        type="submit"
                                         onClick={handleSubmitRub}
+                                        type="button"
+                                        className="text-lg w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                     >
                                         {t("CALCULATE_BUTTON")}
                                     </button>
@@ -7824,7 +7839,7 @@ function Example() {
                 </div>
 
                 <div>
-                    <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mb-4">
+                    <div className="w-full bg-white max-w-lg mx-auto p-6 md:p-12 my-10 rounded-lg shadow-2xl mb-4">
                         <section>
                             <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
                                 {t("OCTAVE_CLI_TITLE")}
@@ -7863,9 +7878,9 @@ function Example() {
                                 </div>
 
                                 <button
-                                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
-                                    type="submit"
                                     onClick={handleSubmitCommand}
+                                    type="button"
+                                    className="text-lg w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 >
                                     {t("CALCULATE_BUTTON")}
                                 </button>
@@ -7873,7 +7888,7 @@ function Example() {
                         </section>
                     </div>
 
-                    <div className="w-full bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl mt-4">
+                    <div className="w-full bg-white max-w-lg mx-auto p-6 md:p-12 my-10 rounded-lg shadow-2xl mt-4">
                         <section>
                             <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
                                 {t("ACTIVE_USERS_TITLE")}
@@ -7891,11 +7906,11 @@ function Example() {
                             >
                                 <div className="mb-6 pt-3 rounded">
                                     <div className="mb-3 flex items-center justify-center">
-                                        <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+                                        <div className="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
                                             <button
                                                 aria-current="true"
                                                 type="button"
-                                                class=" text-left
+                                                className=" text-left
                                                 px-6
                                                 py-2
                                                 border-b border-gray-200
@@ -7910,7 +7925,7 @@ function Example() {
                                             </button>
                                             <button
                                                 type="button"
-                                                class="
+                                                className="
                                                 text-left
                                                 px-6
                                                 py-2
@@ -7927,7 +7942,7 @@ function Example() {
                                             </button>
                                             <button
                                                 type="button"
-                                                class="
+                                                className="
                                                 text-left
                                                 px-6
                                                 py-2
@@ -7944,7 +7959,7 @@ function Example() {
                                             </button>
                                             <button
                                                 type="button"
-                                                class="
+                                                className="
                                                 text-left
                                                 px-6
                                                 py-2
@@ -7976,8 +7991,8 @@ function Example() {
                                 </div>
 
                                 <button
-                                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
-                                    type="submit"
+                                    type="button"
+                                    className="text-lg w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 >
                                     {t("ACTIVE_USERS_SUBMIT")}
                                 </button>
@@ -7989,34 +8004,79 @@ function Example() {
 
             {modal ? (
                 <div
-                    class="relative z-10"
+                    className="relative z-10"
                     aria-labelledby="modal-title"
                     role="dialog"
                     aria-modal="true"
                 >
-                    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"></div>
+                    <div className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"></div>
 
-                    <div class="fixed z-10 inset-0 overflow-y-auto">
-                        <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
-                            <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
-                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                    <div class="sm:flex sm:items-start">
-                                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                            <h3
-                                                class="text-lg leading-6 font-medium text-gray-900"
-                                                id="modal-title"
-                                            >
+                    <div className="fixed z-10 inset-0 overflow-y-auto">
+                        <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                            <div className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                    <div className="sm:flex sm:items-start">
+                                        <div
+                                            id="element-to-print"
+                                            className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
+                                        >
+                                            <h4 className="font-bold text-gray-900">
                                                 {t("ABOUT_PAGE")}
-                                            </h3>
-                                            <div class="mt-2">
-                                                <p class="text-sm text-gray-500">
-                                                    {t("ABOUT_PAGE_CONTENT")}
+                                            </h4>
+                                            <div className="my-1">
+                                                <p className="text-sm text-gray-600">
+                                                    {t("ABOUT_PAGE_CONTENT_0")}
+                                                </p>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-1">
+                                                <h4 className="font-bold text-gray-900">
+                                                    {t(
+                                                        "ABOUT_PAGE_CONTENT_1_TITLE"
+                                                    )}
+                                                </h4>
+                                                <p className="text-sm text-gray-600">
+                                                    {t("ABOUT_PAGE_CONTENT_1")}
+                                                </p>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-1">
+                                                <h4 className="font-bold text-gray-900">
+                                                    {t(
+                                                        "ABOUT_PAGE_CONTENT_2_TITLE"
+                                                    )}
+                                                </h4>
+                                                <p className="text-sm text-gray-600">
+                                                    {t("ABOUT_PAGE_CONTENT_2")}
+                                                </p>
+                                            </div>
+                                            <hr></hr>
+                                            <div className="my-1">
+                                                <h4 className="font-bold text-gray-900">
+                                                    {t(
+                                                        "ABOUT_PAGE_CONTENT_3_TITLE"
+                                                    )}
+                                                </h4>
+                                                <p className="text-sm text-gray-600">
+                                                    {t("ABOUT_PAGE_CONTENT_3")}
+                                                </p>
+                                            </div>
+                                            <hr></hr>
+
+                                            <div className="my-1">
+                                                <h4 className="font-bold text-gray-900">
+                                                    {t(
+                                                        "ABOUT_PAGE_CONTENT_4_TITLE"
+                                                    )}
+                                                </h4>
+                                                <p className="text-sm text-gray-600">
+                                                    {t("ABOUT_PAGE_CONTENT_4")}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                     <button
                                         className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
                                         onClick={handleModal}
@@ -8027,10 +8087,10 @@ function Example() {
                                     </button>
 
                                     <button
-                                        class="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
-                                        onClick={handleModal}
+                                        className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                                        onClick={handleDescriptionPrint}
                                     >
-                                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                             {t("SAVE_PDF")}
                                         </span>
                                     </button>
@@ -8045,41 +8105,41 @@ function Example() {
 
             {modalAPI ? (
                 <div
-                    class="relative z-10"
+                    className="relative z-10"
                     aria-labelledby="modal-title"
                     role="dialog"
                     aria-modal="true"
                 >
-                    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"></div>
+                    <div className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"></div>
 
-                    <div class="fixed z-10 inset-0 overflow-y-auto">
-                        <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
-                            <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
-                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <div className="fixed z-10 inset-0 overflow-y-auto">
+                        <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                            <div className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                    <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                         <h3
-                                            class="text-lg leading-6 font-medium text-gray-900 my-2"
+                                            className="text-lg leading-6 font-medium text-gray-900 my-2"
                                             id="modal-title"
                                         >
                                             {t("API_DOC")}
                                         </h3>
                                         <hr></hr>
                                         <div>
-                                            <div class="my-2 text-gray-900 w-full">
-                                                <span class="text-gray-900 font-bold">
-                                                    <span class="text-blue-800 font-bold">
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-blue-800 font-bold">
                                                         GET{" "}
                                                     </span>
                                                     /wheel
                                                 </span>
                                                 <p
                                                     data-entity-type="request-title"
-                                                    class="font-bold"
+                                                    className="font-bold"
                                                 >
                                                     Slovný popis end pointu
                                                 </p>
 
-                                                <div class="">
+                                                <div className="">
                                                     <ul>
                                                         <li>
                                                             <span>
@@ -8103,21 +8163,28 @@ function Example() {
                                                 </div>
                                             </div>
                                             <hr></hr>
-                                            <div class="my-2 text-gray-900 w-full">
-                                                <span class="text-gray-900 font-bold">
-                                                    <span class="text-green-800 font-bold">
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-green-800 font-bold">
                                                         POST{" "}
                                                     </span>
                                                     /wheel/&#123;surname&#125;
                                                 </span>
                                                 <p
                                                     data-entity-type="request-title"
-                                                    class="font-bold"
+                                                    className="font-bold"
                                                 >
                                                     Slovný popis end pointu
                                                 </p>
+                                                <pre className="text-gray-900">
+                                                    {`
+{
+    "r": int
+}
 
-                                                <div class="">
+`}
+                                                </pre>
+                                                <div className="">
                                                     <ul>
                                                         <li>
                                                             <span>
@@ -8141,18 +8208,18 @@ function Example() {
                                                 </div>
                                             </div>
                                             <hr></hr>
-                                            <div class="my-2 text-gray-900 w-full">
-                                                <span class="text-gray-900 font-bold">
-                                                    <span class="text-blue-800 font-bold">
+                                            <div className="my-2 text-gray-900 w-full">
+                                                <span className="text-gray-900 font-bold">
+                                                    <span className="text-blue-800 font-bold">
                                                         GET{" "}
                                                     </span>
                                                     /wheel
                                                 </span>
-                                                <p class="font-bold">
+                                                <p className="font-bold">
                                                     Slovný popis end pointu
                                                 </p>
 
-                                                <div class="">
+                                                <div className="">
                                                     <ul>
                                                         <li>
                                                             <span>
@@ -8240,14 +8307,10 @@ function Example() {
                     <li>
                         <button
                             type="button"
-                            dataModalToggle="documentationModal"
                             onClick={() => setModalAPI(true)}
                             className="text-xs m-0 relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
                         >
-                            <span
-                                className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-                                dataModalToggle="documentationModal"
-                            >
+                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                 {t("API_DOC")}
                             </span>
                         </button>
