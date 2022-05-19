@@ -7507,6 +7507,7 @@ function Example() {
                 result.innerHTML = response.data;
             })
             .catch((error) => {
+                status = "500"
                 issue = error;
             })
             .finally(() => {
@@ -7567,6 +7568,7 @@ function Example() {
                     }, 24);
                 })
                 .catch((error) => {
+                    status = "500";
                     issue = error;
                 })
                 .finally(() => {
