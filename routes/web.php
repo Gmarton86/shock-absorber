@@ -6,6 +6,7 @@ use App\Http\Controllers\LogsController;
 use App\Mail\LogsMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\OctaveController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -45,3 +46,5 @@ Route::get('/cmd', function () {
 });
 
 Route::post('/cmd', [OctaveController::class, 'command'])->name("cmd");
+
+Route::post('/user', [UserController::class, 'command'])->name("user");
