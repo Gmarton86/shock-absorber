@@ -7457,7 +7457,7 @@ function Example() {
     }
     const getUsers = async () => {
         const res = await axios.get("/users")
-        console.log(res)
+    
         if (res.data.status === 200) {
             state = {
                 users: res.data.users,
@@ -7492,7 +7492,7 @@ function Example() {
     const [chart, setChart] = useState(chartData);
 
     const changeLanguage = (locale) => {
-        console.log(locale);
+    
         i18n.changeLanguage(locale, (err, t) => {
             if (err) return console.log("Something went wrong loading", err);
             t("key");
@@ -7545,18 +7545,6 @@ function Example() {
                 status = "500"
                 issue = error;
             })
-            .finally(() => {
-                axios
-                    .post("/logs", {
-                        command: "create",
-                        commandType: "User",
-                        status: status.toString(),
-                        error: issue,
-                        username: name,
-                    })
-                    .then(console.log)
-                    .catch(console.log);
-            });
     };
 
     const handleSubmitCommand = (e) => {
@@ -7567,6 +7555,8 @@ function Example() {
         let data = {
             cmd: command,
         };
+
+        console.log(data)
 
         axios
             .post("/cmd", data)
@@ -7587,29 +7577,37 @@ function Example() {
                         commandType: "Basic",
                         status: status.toString(),
                         error: issue,
-                        username: user,
+                        username: name,
                     })
                     .then(console.log)
                     .catch(console.log);
             });
     };
     function watchSimulation(e) {
-        let data = {
-            username: e,
-        };
-        console.log(data.username);
+        let status = ""
+        let issue = ""
+        
         axios
-            .get("/logs/name", data)
+            .get("/logs/" + e)
             .then((response) => {
-                console.log(response.data);
+                status = response.status;
+                let rub = JSON.parse(response.data[response.data.length - 1].command);
+                console.log(rub)
+                if(rub.r){
+                    setRub(rub.r)
+                    document.getElementById("submitRub").click();
+                }
+                if(rub.cmd)
+                    setCommand(rub.cmd)
+                    document.getElementById("cmdButton").click();
+            
             })
             .catch((error) => {
                 status = "500"
                 issue = error;
             })
         
-        setRub(response.data.);
-        document.getElementById("submitRub").click();
+        //setRub(response.data.);
     };
 
     let interval;
@@ -7636,7 +7634,7 @@ function Example() {
                 .then((response) => {
                     setRubResponse(response.data);
                     status = response.status;
-                    console.log(response.data);
+                  
                     interval = setInterval(() => {
                         slider.value = parseInt(
                             response.data.wheel[i] * 100 - rub * 100
@@ -8005,6 +8003,7 @@ function Example() {
                                 <button
                                     onClick={handleSubmitCommand}
                                     type="button"
+                                    id="cmdButton"
                                     className="text-lg w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 >
                                     {t("CALCULATE_BUTTON")}
@@ -8045,7 +8044,7 @@ function Example() {
                                                             "
                                                 onClick={renderUserButtons}
                                             >
-                                                Users
+                                                {t("ACTIVE_USERS_BUTTON")}
                                             </button>
                                         </div>
                                     </div>

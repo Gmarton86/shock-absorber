@@ -35,12 +35,13 @@
     "ABOUT_PAGE_CONTENT_2_TITLE": "Octave CLI.",
     "ABOUT_PAGE_CONTENT_2": "Ďalšou sekciou, nachádzajúcou sa vpravo hore, je príkazový riadok Octave. Táto sekcia funguje veľmi jednoducho. Používateľ napíše žiadaný príkaz do textového vstupu a stlačí tlačidlo hneď pod ním. Následne dostane výsledok v šedom poli nad textovým vstupom.",
     "ABOUT_PAGE_CONTENT_3_TITLE": "Aktívni používatelia.",
-    "ABOUT_PAGE_CONTENT_3": "Táto sekcia obsahuje zoznam aktívnych používateľov na našej stránke a textový vstup, ktorý slúži na pridanie sa k nim. Používateľ iba zadá svoj username a stane sa súčasťou zoznamu. Samotný zoznam pozostáva z tlačidiel s menami používateľov. Po kliknutí na jedno z tlačidiel môže používateľ pasívne sledovať experimentovanie zvolenej osoby.",
+    "ABOUT_PAGE_CONTENT_3": "Táto sekcia obsahuje zoznam aktívnych používateľov na našej stránke a textový vstup, ktorý slúži na pridanie sa k nim. Zoznám používateľov sa zobrazí po stlačení tlačidla Používatelia. Kliknutím na meno používateľa sa vykoná posledný úkon tohto používateľa. Ak používateľ zadá svoj unikátny username, stane sa súčasťou zoznamu. Samotný zoznam pozostáva z tlačidiel s menami používateľov.",
     "ABOUT_PAGE_CONTENT_4_TITLE": "Footer.",
     "ABOUT_PAGE_CONTENT_4": "Pod hlavnými tromi sekciami nám už ostáva len Footer. Na jeho ľavej strane sa nachádza informácia o autoroch. Pravá polovica Footeru začína vlajkami USA a Slovenska, ktoré slúžia na prepínanie jazyka na stránke. Nasleduje tlačidlo 'O stránke', ktoré v modálnom okne zobrazí popis našej stránky a návod na jej použitie. Celý tento popis sa tiež dá uložiť ako PDF pomocou tlačidla v modálnom okne. Ďalšie tlačidlo vo Footeri je 'Popis API', ktoré taktiež zobrazí modálne okno, tentokrát však s popisom našej API. Obsahuje zoznam end-pointov, podobu vstupných aj výstupných dát, atď. Footer je ukončený tlačidlom 'Exportovať logy', vďaka ktorému je možné stiahnuť si záznam príkazov posielaných do našej API. Záznamy sa dajú stiahnuť v podobe CSV súboru.",
 
     "SIM_RUNNING": "Simulácia beží!",
     "SIM_RUNNING_SECONDARY": "Počkajte prosím.",
     "SAVE_PDF": "Uložiť ako PDF",
-    "LOGS_EMAIL": "Odošli logy na email"
+    "LOGS_EMAIL": "Odošli logy na email",
+    "ACTIVE_USERS_BUTTON": "Používatelia"
 }

@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::post('/logs', [LogsController::class, 'store']);
 Route::get('/logs', [LogsController::class, 'index']);
-Route::get('/logs/name', [LogsController::class, 'show'])->name("name");
+Route::get('/logs/{name}', [LogsController::class, 'show']);
 Route::get('/export/logs', [LogsController::class, 'exportCsv']);
 
 Route::get('/email', [EmailController::class, 'email']);
