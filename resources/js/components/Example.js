@@ -144,8 +144,8 @@ var SVG = (function () {
             [ox, oy] = Array.isArray(origin)
                 ? origin
                 : typeof origin === "object"
-                ? [origin.x, origin.y]
-                : [origin, origin];
+                    ? [origin.x, origin.y]
+                    : [origin, origin];
         } // Make sure to only call bbox when actually needed
 
         const condX = typeof ox === "string";
@@ -158,16 +158,16 @@ var SVG = (function () {
                 ox = ox.includes("left")
                     ? x
                     : ox.includes("right")
-                    ? x + width
-                    : x + width / 2;
+                        ? x + width
+                        : x + width / 2;
             }
 
             if (condY) {
                 oy = oy.includes("top")
                     ? y
                     : oy.includes("bottom")
-                    ? y + height
-                    : y + height / 2;
+                        ? y + height
+                        : y + height / 2;
             }
         } // Return the origin as it is if it wasn't a string
 
@@ -635,10 +635,10 @@ var SVG = (function () {
                 v === null
                     ? null
                     : r === true ||
-                      typeof v === "string" ||
-                      typeof v === "number"
-                    ? v
-                    : JSON.stringify(v)
+                        typeof v === "string" ||
+                        typeof v === "number"
+                        ? v
+                        : JSON.stringify(v)
             );
         }
 
@@ -691,14 +691,14 @@ var SVG = (function () {
     function sixDigitHex(hex) {
         return hex.length === 4
             ? [
-                  "#",
-                  hex.substring(1, 2),
-                  hex.substring(1, 2),
-                  hex.substring(2, 3),
-                  hex.substring(2, 3),
-                  hex.substring(3, 4),
-                  hex.substring(3, 4),
-              ].join("")
+                "#",
+                hex.substring(1, 2),
+                hex.substring(1, 2),
+                hex.substring(2, 3),
+                hex.substring(2, 3),
+                hex.substring(3, 4),
+                hex.substring(3, 4),
+            ].join("")
             : hex;
     }
 
@@ -710,7 +710,7 @@ var SVG = (function () {
     }
 
     function is(object, space) {
-        for (let i = space.length; i--; ) {
+        for (let i = space.length; i--;) {
             if (object[space[i]] == null) {
                 return false;
             }
@@ -722,58 +722,58 @@ var SVG = (function () {
     function getParameters(a, b) {
         const params = is(a, "rgb")
             ? {
-                  _a: a.r,
-                  _b: a.g,
-                  _c: a.b,
-                  _d: 0,
-                  space: "rgb",
-              }
+                _a: a.r,
+                _b: a.g,
+                _c: a.b,
+                _d: 0,
+                space: "rgb",
+            }
             : is(a, "xyz")
-            ? {
-                  _a: a.x,
-                  _b: a.y,
-                  _c: a.z,
-                  _d: 0,
-                  space: "xyz",
-              }
-            : is(a, "hsl")
-            ? {
-                  _a: a.h,
-                  _b: a.s,
-                  _c: a.l,
-                  _d: 0,
-                  space: "hsl",
-              }
-            : is(a, "lab")
-            ? {
-                  _a: a.l,
-                  _b: a.a,
-                  _c: a.b,
-                  _d: 0,
-                  space: "lab",
-              }
-            : is(a, "lch")
-            ? {
-                  _a: a.l,
-                  _b: a.c,
-                  _c: a.h,
-                  _d: 0,
-                  space: "lch",
-              }
-            : is(a, "cmyk")
-            ? {
-                  _a: a.c,
-                  _b: a.m,
-                  _c: a.y,
-                  _d: a.k,
-                  space: "cmyk",
-              }
-            : {
-                  _a: 0,
-                  _b: 0,
-                  _c: 0,
-                  space: "rgb",
-              };
+                ? {
+                    _a: a.x,
+                    _b: a.y,
+                    _c: a.z,
+                    _d: 0,
+                    space: "xyz",
+                }
+                : is(a, "hsl")
+                    ? {
+                        _a: a.h,
+                        _b: a.s,
+                        _c: a.l,
+                        _d: 0,
+                        space: "hsl",
+                    }
+                    : is(a, "lab")
+                        ? {
+                            _a: a.l,
+                            _b: a.a,
+                            _c: a.b,
+                            _d: 0,
+                            space: "lab",
+                        }
+                        : is(a, "lch")
+                            ? {
+                                _a: a.l,
+                                _b: a.c,
+                                _c: a.h,
+                                _d: 0,
+                                space: "lch",
+                            }
+                            : is(a, "cmyk")
+                                ? {
+                                    _a: a.c,
+                                    _b: a.m,
+                                    _c: a.y,
+                                    _d: a.k,
+                                    space: "cmyk",
+                                }
+                                : {
+                                    _a: 0,
+                                    _b: 0,
+                                    _c: 0,
+                                    space: "rgb",
+                                };
         params.space = b || params.space;
         return params;
     }
@@ -913,17 +913,17 @@ var SVG = (function () {
             const s = isGrey
                 ? 0
                 : l > 0.5
-                ? delta / (2 - max - min)
-                : delta / (max + min);
+                    ? delta / (2 - max - min)
+                    : delta / (max + min);
             const h = isGrey
                 ? 0
                 : max === r
-                ? ((g - b) / delta + (g < b ? 6 : 0)) / 6
-                : max === g
-                ? ((b - r) / delta + 2) / 6
-                : max === b
-                ? ((r - g) / delta + 4) / 6
-                : 0; // Construct and return the new color
+                    ? ((g - b) / delta + (g < b ? 6 : 0)) / 6
+                    : max === g
+                        ? ((b - r) / delta + 2) / 6
+                        : max === b
+                            ? ((r - g) / delta + 4) / 6
+                            : 0; // Construct and return the new color
 
             const color = new Color(360 * h, 100 * s, 100 * l, "hsl");
             return color;
@@ -1001,42 +1001,42 @@ var SVG = (function () {
             const components =
                 this.space === "rgb"
                     ? {
-                          r: _a,
-                          g: _b,
-                          b: _c,
-                      }
+                        r: _a,
+                        g: _b,
+                        b: _c,
+                    }
                     : this.space === "xyz"
-                    ? {
-                          x: _a,
-                          y: _b,
-                          z: _c,
-                      }
-                    : this.space === "hsl"
-                    ? {
-                          h: _a,
-                          s: _b,
-                          l: _c,
-                      }
-                    : this.space === "lab"
-                    ? {
-                          l: _a,
-                          a: _b,
-                          b: _c,
-                      }
-                    : this.space === "lch"
-                    ? {
-                          l: _a,
-                          c: _b,
-                          h: _c,
-                      }
-                    : this.space === "cmyk"
-                    ? {
-                          c: _a,
-                          m: _b,
-                          y: _c,
-                          k: _d,
-                      }
-                    : {};
+                        ? {
+                            x: _a,
+                            y: _b,
+                            z: _c,
+                        }
+                        : this.space === "hsl"
+                            ? {
+                                h: _a,
+                                s: _b,
+                                l: _c,
+                            }
+                            : this.space === "lab"
+                                ? {
+                                    l: _a,
+                                    a: _b,
+                                    b: _c,
+                                }
+                                : this.space === "lch"
+                                    ? {
+                                        l: _a,
+                                        c: _b,
+                                        h: _c,
+                                    }
+                                    : this.space === "cmyk"
+                                        ? {
+                                            c: _a,
+                                            m: _b,
+                                            y: _c,
+                                            k: _d,
+                                        }
+                                        : {};
             Object.assign(this, components);
         }
 
@@ -1238,18 +1238,18 @@ var SVG = (function () {
 
             const source = Array.isArray(x)
                 ? {
-                      x: x[0],
-                      y: x[1],
-                  }
+                    x: x[0],
+                    y: x[1],
+                }
                 : typeof x === "object"
-                ? {
-                      x: x.x,
-                      y: x.y,
-                  }
-                : {
-                      x: x,
-                      y: y,
-                  }; // merge source
+                    ? {
+                        x: x.x,
+                        y: x.y,
+                    }
+                    : {
+                        x: x,
+                        y: y,
+                    }; // merge source
 
             this.x = source.x == null ? base.x : source.x;
             this.y = source.y == null ? base.y : source.y;
@@ -1298,34 +1298,34 @@ var SVG = (function () {
                 o.skew && o.skew.length
                     ? o.skew[0]
                     : isFinite(o.skew)
-                    ? o.skew
-                    : isFinite(o.skewX)
-                    ? o.skewX
-                    : 0;
+                        ? o.skew
+                        : isFinite(o.skewX)
+                            ? o.skewX
+                            : 0;
             const skewY =
                 o.skew && o.skew.length
                     ? o.skew[1]
                     : isFinite(o.skew)
-                    ? o.skew
-                    : isFinite(o.skewY)
-                    ? o.skewY
-                    : 0;
+                        ? o.skew
+                        : isFinite(o.skewY)
+                            ? o.skewY
+                            : 0;
             const scaleX =
                 o.scale && o.scale.length
                     ? o.scale[0] * flipX
                     : isFinite(o.scale)
-                    ? o.scale * flipX
-                    : isFinite(o.scaleX)
-                    ? o.scaleX * flipX
-                    : flipX;
+                        ? o.scale * flipX
+                        : isFinite(o.scaleX)
+                            ? o.scaleX * flipX
+                            : flipX;
             const scaleY =
                 o.scale && o.scale.length
                     ? o.scale[1] * flipY
                     : isFinite(o.scale)
-                    ? o.scale * flipY
-                    : isFinite(o.scaleY)
-                    ? o.scaleY * flipY
-                    : flipY;
+                        ? o.scale * flipY
+                        : isFinite(o.scaleY)
+                            ? o.scaleY * flipY
+                            : flipY;
             const shear = o.shear || 0;
             const theta = o.rotate || o.theta || 0;
             const origin = new Point(
@@ -1495,8 +1495,8 @@ var SVG = (function () {
             return axis === "x"
                 ? this.scaleO(-1, 1, around, 0)
                 : axis === "y"
-                ? this.scaleO(1, -1, 0, around)
-                : this.scaleO(-1, -1, axis, around || axis); // Define an x, y flip point
+                    ? this.scaleO(1, -1, 0, around)
+                    : this.scaleO(-1, -1, axis, around || axis); // Define an x, y flip point
         } // Initialize
 
         init(source) {
@@ -1506,16 +1506,16 @@ var SVG = (function () {
                 source instanceof Element
                     ? source.matrixify()
                     : typeof source === "string"
-                    ? Matrix.fromArray(source.split(delimiter).map(parseFloat))
-                    : Array.isArray(source)
-                    ? Matrix.fromArray(source)
-                    : typeof source === "object" && Matrix.isMatrixLike(source)
-                    ? source
-                    : typeof source === "object"
-                    ? new Matrix().transform(source)
-                    : arguments.length === 6
-                    ? Matrix.fromArray([].slice.call(arguments))
-                    : base; // Merge the source matrix with the base matrix
+                        ? Matrix.fromArray(source.split(delimiter).map(parseFloat))
+                        : Array.isArray(source)
+                            ? Matrix.fromArray(source)
+                            : typeof source === "object" && Matrix.isMatrixLike(source)
+                                ? source
+                                : typeof source === "object"
+                                    ? new Matrix().transform(source)
+                                    : arguments.length === 6
+                                        ? Matrix.fromArray([].slice.call(arguments))
+                                        : base; // Merge the source matrix with the base matrix
 
             this.a = source.a != null ? source.a : base.a;
             this.b = source.b != null ? source.b : base.b;
@@ -1828,17 +1828,17 @@ var SVG = (function () {
                 typeof source === "string"
                     ? source.split(delimiter).map(parseFloat)
                     : Array.isArray(source)
-                    ? source
-                    : typeof source === "object"
-                    ? [
-                          source.left != null ? source.left : source.x,
-                          source.top != null ? source.top : source.y,
-                          source.width,
-                          source.height,
-                      ]
-                    : arguments.length === 4
-                    ? [].slice.call(arguments)
-                    : base;
+                        ? source
+                        : typeof source === "object"
+                            ? [
+                                source.left != null ? source.left : source.x,
+                                source.top != null ? source.top : source.y,
+                                source.width,
+                                source.height,
+                            ]
+                            : arguments.length === 4
+                                ? [].slice.call(arguments)
+                                : base;
             this.x = source[0] || 0;
             this.y = source[1] || 0;
             this.width = this.w = source[2] || 0;
@@ -1931,8 +1931,7 @@ var SVG = (function () {
             } catch (e) {
                 // We give up...
                 throw new Error(
-                    `Getting bbox of element "${
-                        el.node.nodeName
+                    `Getting bbox of element "${el.node.nodeName
                     }" is not possible: ${e.toString()}`
                 );
             }
@@ -2228,7 +2227,7 @@ var SVG = (function () {
     }
 
     class EventTarget extends Base {
-        addEventListener() {}
+        addEventListener() { }
 
         dispatch(event, data, options) {
             return dispatch(this, event, data, options);
@@ -2271,11 +2270,11 @@ var SVG = (function () {
             return this;
         }
 
-        removeEventListener() {}
+        removeEventListener() { }
     }
     register(EventTarget, "EventTarget");
 
-    function noop() {} // Default animation values
+    function noop() { } // Default animation values
 
     const timeline = {
         duration: 400,
@@ -2390,10 +2389,10 @@ var SVG = (function () {
                 this.value = isNaN(value)
                     ? 0
                     : !isFinite(value)
-                    ? value < 0
-                        ? -3.4e38
-                        : +3.4e38
-                    : value;
+                        ? value < 0
+                            ? -3.4e38
+                            : +3.4e38
+                        : value;
             } else if (typeof value === "string") {
                 unit = value.match(numberAndUnit);
 
@@ -2447,8 +2446,8 @@ var SVG = (function () {
                 (this.unit === "%"
                     ? ~~(this.value * 1e8) / 1e6
                     : this.unit === "s"
-                    ? this.value / 1e3
-                    : this.value) + this.unit
+                        ? this.value / 1e3
+                        : this.value) + this.unit
             );
         }
 
@@ -2494,8 +2493,8 @@ var SVG = (function () {
             return val == null
                 ? attrs[attr]
                 : isNumber.test(val)
-                ? parseFloat(val)
-                : val;
+                    ? parseFloat(val)
+                    : val;
         } else {
             // Loop through hooks and execute them to convert value
             val = hooks.reduce((_val, hook) => {
@@ -2813,7 +2812,7 @@ var SVG = (function () {
 
             well.innerHTML = xmlOrFn; // Transplant nodes into the fragment
 
-            for (let len = well.children.length; len--; ) {
+            for (let len = well.children.length; len--;) {
                 fragment.appendChild(well.firstElementChild);
             }
 
@@ -3038,21 +3037,21 @@ var SVG = (function () {
         skew: function (x, y, cx, cy) {
             return arguments.length === 1 || arguments.length === 3
                 ? this.transform(
-                      {
-                          skew: x,
-                          ox: y,
-                          oy: cx,
-                      },
-                      true
-                  )
+                    {
+                        skew: x,
+                        ox: y,
+                        oy: cx,
+                    },
+                    true
+                )
                 : this.transform(
-                      {
-                          skew: [x, y],
-                          ox: cx,
-                          oy: cy,
-                      },
-                      true
-                  );
+                    {
+                        skew: [x, y],
+                        ox: cx,
+                        oy: cy,
+                    },
+                    true
+                );
         },
         shear: function (lam, cx, cy) {
             return this.transform(
@@ -3068,21 +3067,21 @@ var SVG = (function () {
         scale: function (x, y, cx, cy) {
             return arguments.length === 1 || arguments.length === 3
                 ? this.transform(
-                      {
-                          scale: x,
-                          ox: y,
-                          oy: cx,
-                      },
-                      true
-                  )
+                    {
+                        scale: x,
+                        ox: y,
+                        oy: cx,
+                    },
+                    true
+                )
                 : this.transform(
-                      {
-                          scale: [x, y],
-                          ox: cx,
-                          oy: cy,
-                      },
-                      true
-                  );
+                    {
+                        scale: [x, y],
+                        ox: cx,
+                        oy: cy,
+                    },
+                    true
+                );
         },
         // Map translate to transform
         translate: function (x, y) {
@@ -3153,15 +3152,15 @@ var SVG = (function () {
             return a === "leading"
                 ? this.leading(v)
                 : a === "anchor"
-                ? this.attr("text-anchor", v)
-                : a === "size" ||
-                  a === "family" ||
-                  a === "weight" ||
-                  a === "stretch" ||
-                  a === "variant" ||
-                  a === "style"
-                ? this.attr("font-" + a, v)
-                : this.attr(a, v);
+                    ? this.attr("text-anchor", v)
+                    : a === "size" ||
+                        a === "family" ||
+                        a === "weight" ||
+                        a === "stretch" ||
+                        a === "variant" ||
+                        a === "style"
+                        ? this.attr("font-" + a, v)
+                        : this.attr(a, v);
         },
     }); // Add events to elements
 
@@ -3302,7 +3301,7 @@ var SVG = (function () {
     }
     register(Defs, "Defs");
 
-    class Shape extends Element {}
+    class Shape extends Element { }
     register(Shape, "Shape");
 
     function rx(rx) {
@@ -3402,24 +3401,24 @@ var SVG = (function () {
     function from(x, y) {
         return (this._element || this).type === "radialGradient"
             ? this.attr({
-                  fx: new SVGNumber(x),
-                  fy: new SVGNumber(y),
-              })
+                fx: new SVGNumber(x),
+                fy: new SVGNumber(y),
+            })
             : this.attr({
-                  x1: new SVGNumber(x),
-                  y1: new SVGNumber(y),
-              });
+                x1: new SVGNumber(x),
+                y1: new SVGNumber(y),
+            });
     }
     function to(x, y) {
         return (this._element || this).type === "radialGradient"
             ? this.attr({
-                  cx: new SVGNumber(x),
-                  cy: new SVGNumber(y),
-              })
+                cx: new SVGNumber(x),
+                cy: new SVGNumber(y),
+            })
             : this.attr({
-                  x2: new SVGNumber(x),
-                  y2: new SVGNumber(y),
-              });
+                x2: new SVGNumber(x),
+                y2: new SVGNumber(y),
+            });
     }
 
     var gradiented = {
@@ -3710,7 +3709,7 @@ var SVG = (function () {
                 m = new Matrix(m);
             }
 
-            for (let i = this.length; i--; ) {
+            for (let i = this.length; i--;) {
                 // Perform the matrix multiplication
                 const [x, y] = this[i];
                 this[i][0] = m.a * x + m.c * y + m.e;
@@ -4193,7 +4192,7 @@ var SVG = (function () {
         return (
             parser.segment.length &&
             parser.segment.length - 1 ===
-                segmentParameters[parser.segment[0].toUpperCase()]
+            segmentParameters[parser.segment[0].toUpperCase()]
         );
     }
 
@@ -4610,16 +4609,16 @@ var SVG = (function () {
                 result = this._to
                     ? result[this._to[4]]()
                     : this._from
-                    ? result[this._from[4]]()
-                    : result;
+                        ? result[this._from[4]]()
+                        : result;
             }
 
             if (this._type === ObjectBag) {
                 result = this._to
                     ? result.align(this._to)
                     : this._from
-                    ? result.align(this._from)
-                    : result;
+                        ? result.align(this._from)
+                        : result;
             }
 
             result = result.toArray();
@@ -4716,7 +4715,7 @@ var SVG = (function () {
                 if (this.values[i] === Color) {
                     const space = other[i + 6];
                     const color = new Color(this.values.splice(i + 2, 5))
-                        [space]()
+                    [space]()
                         .toArray();
                     this.values.splice(i + 2, 0, ...color);
                 }
@@ -4815,11 +4814,11 @@ var SVG = (function () {
             return d == null
                 ? this.array()
                 : this.clear().attr(
-                      "d",
-                      typeof d === "string"
-                          ? d
-                          : (this._array = new PathArray(d))
-                  );
+                    "d",
+                    typeof d === "string"
+                        ? d
+                        : (this._array = new PathArray(d))
+                );
         } // Set element size to given width and height
 
         size(width, height) {
@@ -4874,9 +4873,9 @@ var SVG = (function () {
         return p == null
             ? this.array()
             : this.clear().attr(
-                  "points",
-                  typeof p === "string" ? p : (this._array = new PointArray(p))
-              );
+                "points",
+                typeof p === "string" ? p : (this._array = new PointArray(p))
+            );
     } // Set element size to given width and height
 
     function size$1(width, height) {
@@ -4971,10 +4970,10 @@ var SVG = (function () {
                 typeof value.next !== "undefined"
                     ? value
                     : {
-                          value: value,
-                          next: null,
-                          prev: null,
-                      }; // Deal with the queue being empty or populated
+                        value: value,
+                        next: null,
+                        prev: null,
+                    }; // Deal with the queue being empty or populated
 
             if (this._last) {
                 item.prev = this._last;
@@ -5364,7 +5363,7 @@ var SVG = (function () {
             // and therefore should win the attribute battle
             // this can be solved by reseting them backwards
 
-            for (let k = this._runners.length; k--; ) {
+            for (let k = this._runners.length; k--;) {
                 // Get and run the current runner and ignore it if its inactive
                 const runnerInfo = this._runners[k];
                 const runner = runnerInfo.runner; // Make sure that we give the actual difference
@@ -5677,8 +5676,8 @@ var SVG = (function () {
                     x <= 0
                         ? Math.round(f(1e-5))
                         : x < endTime
-                        ? f(x)
-                        : Math.round(f(endTime - 1e-5));
+                            ? f(x)
+                            : Math.round(f(endTime - 1e-5));
                 return position;
             } // Work out the loops done and add the position to the loops done
 
@@ -5915,7 +5914,7 @@ var SVG = (function () {
             this.done = done;
         }
 
-        clearTransformsFromQueue() {}
+        clearTransformsFromQueue() { }
     }
     extend([Runner, FakeRunner], {
         mergeWith(runner) {
@@ -6194,8 +6193,8 @@ var SVG = (function () {
                 transforms.affine != null
                     ? transforms.affine
                     : affine != null
-                    ? affine
-                    : !isMatrix; // Create a morepher and set its type
+                        ? affine
+                        : !isMatrix; // Create a morepher and set its type
 
             const morpher = new Morphable(this._stepper).type(
                 affine ? TransformBag : Matrix
@@ -7440,6 +7439,7 @@ var SVG = (function () {
 
 function Example() {
     const [rub, setRub] = useState(0);
+    const [name, setName] = useState("");
     const [command, setCommand] = useState("");
     const [commandResponse, setCommandResponse] = useState("");
     const [rubResponse, setRubResponse] = useState("");
@@ -7449,6 +7449,44 @@ function Example() {
     const [simRunning, setSimRunning] = useState(false);
     const [modalAPI, setModalAPI] = useState(false);
     const FileDownload = require("js-file-download");
+    let showUsers = false;
+
+    let state = {
+        users: [],
+        loading: true,
+    }
+    const getUsers = async () => {
+        const res = await axios.get("/users")
+        console.log(res)
+        if (res.data.status === 200) {
+            state = {
+                users: res.data.users,
+                loading: false,
+            };
+        }
+    }
+
+    getUsers();
+
+    function renderUserButtons() {
+        if (showUsers == false) {
+            showUsers = true;
+            if (state.users.length > 0) {
+                state.users.forEach(element => {
+                    var b = document.createElement('button');
+                    b.className = "text-left px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-200 hover:text-gray-500 focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600 transition duration-500 cursor-pointer";
+                    b.innerHTML = element.name;
+                    b.id = element.name;
+                    b.type = "button";
+                    document.getElementById("buttons").appendChild(b);
+                    let button = document.getElementById(element.name);
+                    button.onclick = function () {
+                        watchSimulation(element.name);
+                    };
+                });
+            }
+        }
+    }
 
     const chartData = [];
     const [chart, setChart] = useState(chartData);
@@ -7489,6 +7527,38 @@ function Example() {
         html2pdf(element, printOptions);
     };
 
+    const handleSubmitName = (e) => {
+        e.preventDefault();
+        let status = "";
+        let issue = "";
+
+        let data = {
+            name: name,
+        };
+
+        axios
+            .post("/name", data)
+            .then((response) => {
+                status = response.status;
+            })
+            .catch((error) => {
+                status = "500"
+                issue = error;
+            })
+            .finally(() => {
+                axios
+                    .post("/logs", {
+                        command: "create",
+                        commandType: "User",
+                        status: status.toString(),
+                        error: issue,
+                        username: name,
+                    })
+                    .then(console.log)
+                    .catch(console.log);
+            });
+    };
+
     const handleSubmitCommand = (e) => {
         e.preventDefault();
         let status = "";
@@ -7523,9 +7593,28 @@ function Example() {
                     .catch(console.log);
             });
     };
+    function watchSimulation(e) {
+        let data = {
+            username: e,
+        };
+        console.log(data.username);
+        axios
+            .get("/logs/name", data)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                status = "500"
+                issue = error;
+            })
+        
+        setRub(response.data.);
+        document.getElementById("submitRub").click();
+    };
 
     let interval;
     const handleSubmitRub = (e) => {
+        console.log("ideme?");
         e.preventDefault();
 
         if (rub > 0.3 || rub < -0.3) {
@@ -7588,7 +7677,7 @@ function Example() {
                             commandType: "Car",
                             status: status.toString(),
                             error: issue,
-                            username: user,
+                            username: name,
                         })
                         .then(console.log)
                         .catch(console.log);
@@ -7863,6 +7952,7 @@ function Example() {
                                         onClick={handleSubmitRub}
                                         type="button"
                                         className="text-lg w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                        id = "submitRub"
                                     >
                                         {t("CALCULATE_BUTTON")}
                                     </button>
@@ -7927,9 +8017,7 @@ function Example() {
                             <h3 className="font-bold text-2xl text-gray-600text-gray-600 text-gray-600">
                                 {t("ACTIVE_USERS_TITLE")}
                             </h3>
-                            <p className="text-gray-600 pt-2">
-                                {t("ACTIVE_USERS_SUBTITLE")}
-                            </p>
+
                         </section>
 
                         <section className="mt-10">
@@ -7940,73 +8028,23 @@ function Example() {
                             >
                                 <div className="mb-6 pt-3 rounded">
                                     <div className="mb-3 flex items-center justify-center">
-                                        <div className="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+                                        <div id="buttons" className="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
                                             <button
                                                 aria-current="true"
                                                 type="button"
                                                 className=" text-left
-                                                px-6
-                                                py-2
-                                                border-b border-gray-200
-                                                w-full
-                                                rounded-t-lg
-                                                bg-slate-900
-                                                text-white
-                                                cursor-pointer
-                                            "
+                                                            px-6
+                                                            py-2
+                                                            border-b border-gray-200
+                                                            w-full
+                                                            rounded-t-lg
+                                                            bg-slate-900
+                                                            text-white
+                                                            cursor-pointer
+                                                            "
+                                                onClick={renderUserButtons}
                                             >
-                                                Fero
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="
-                                                text-left
-                                                px-6
-                                                py-2
-                                                border-b border-gray-200
-                                                w-full
-                                                hover:bg-gray-200 hover:text-gray-500
-                                                focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
-                                                transition
-                                                duration-500
-                                                cursor-pointer
-                                            "
-                                            >
-                                                Jožo
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="
-                                                text-left
-                                                px-6
-                                                py-2
-                                                border-b border-gray-200
-                                                w-full
-                                                hover:bg-gray-200 hover:text-gray-500
-                                                focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
-                                                transition
-                                                duration-500
-                                                cursor-pointer
-                                            "
-                                            >
-                                                Jano
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="
-                                                text-left
-                                                px-6
-                                                py-2
-                                                border-b border-gray-200
-                                                w-full
-                                                hover:bg-gray-200 hover:text-gray-500
-                                                focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
-                                                transition
-                                                duration-500
-                                                cursor-pointer
-                                            "
-                                            >
-                                                Bonifác
+                                                Users
                                             </button>
                                         </div>
                                     </div>
@@ -8021,9 +8059,9 @@ function Example() {
                                     <input
                                         type="text"
                                         value={name}
-                                            onChange={(e) =>
-                                                setName(e.target.value)
-                                            }
+                                        onChange={(e) =>
+                                            setName(e.target.value)
+                                        }
                                         className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
                                     ></input>
                                 </div>
@@ -8032,7 +8070,7 @@ function Example() {
                                     type="submit"
                                     className="text-lg w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                     onClick={handleSubmitName}
-                                >   
+                                >
                                     {t("ACTIVE_USERS_SUBMIT")}
                                 </button>
                             </form>

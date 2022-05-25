@@ -16,11 +16,9 @@ class LogsController extends Controller
         return $logs;
     }
 
-    public function show($username)
+    public function show(Request $req)
     {
-
-        $logs = Log::where('username', $username)->get();
-
+        $logs = Log::where('username', '=', $req->username)->get();
         return $logs;
     }
 

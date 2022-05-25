@@ -7,6 +7,7 @@ use App\Mail\LogsMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\OctaveController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SessionController;
 
 
 /*
@@ -27,7 +28,7 @@ Route::get('/', function () {
 
 Route::post('/logs', [LogsController::class, 'store']);
 Route::get('/logs', [LogsController::class, 'index']);
-Route::get('/logs/{username}', [LogsController::class, 'show']);
+Route::get('/logs/name', [LogsController::class, 'show'])->name("name");
 Route::get('/export/logs', [LogsController::class, 'exportCsv']);
 
 Route::get('/email', [EmailController::class, 'email']);
@@ -47,4 +48,9 @@ Route::get('/cmd', function () {
 
 Route::post('/cmd', [OctaveController::class, 'command'])->name("cmd");
 
-Route::post('/user', [UserController::class, 'command'])->name("user");
+Route::post('/name', [UserController::class, 'user'])->name("name");
+Route::get('/users', [UserController::class, 'all']);
+
+Route::get('/session/get', [SessionController::class, 'getSession'])->name("session.get");
+Route::get('/session/set', [SessionController::class, 'storeSession'])->name("session.store");
+Route::get('/session/remove', [SessionController::class, 'deleteSession'])->name("session.delete");
