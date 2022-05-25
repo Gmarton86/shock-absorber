@@ -36,7 +36,7 @@ var SVG = (function () {
             for (const _name of name) {
                 registerMethods(_name, m);
             }
-
+m
             return;
         }
 
@@ -7727,7 +7727,7 @@ function Example() {
             .fill("white")
             .stroke({ width: 5, color: "#24252A" })
             .rotate(135);
-        wheel.animate(1000).ease("-").rotate(360).loop();
+       // wheel.animate(1000).ease("-").rotate(360).loop();
 
         const chassisCanvas = draw.group().flip("y", height / 2);
         const chassis = chassisCanvas.group();
@@ -7774,6 +7774,7 @@ function Example() {
             chassis.center(chassis.cx(), y2);
             // console.log(parseInt(slider2.value));
 
+            wheel.rotate(10);
             absorberLine.height(y2 - y1);
             absorberLine.cy(y1 + (y2 - y1) / 2);
 
